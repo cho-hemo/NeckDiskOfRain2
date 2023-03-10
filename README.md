@@ -5,10 +5,10 @@
 v0.0.1
 
 # =====Commit Convetion(커밋 규칙)=====
-# [이름] 활동 대상 (전부 소문자)
+# [이름] 활동 대상
 ## EX)
 ```
-"[cho] setup project"
+"[cho] Setup Project"
 ```
 
 
