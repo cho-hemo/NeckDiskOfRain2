@@ -103,7 +103,7 @@ public static partial class GioleFunc
     }       // GetRect()
 
 
-    //! 오브젝트 액커 포지션을 연산한는 함수
+    //! 오브젝트 앵커 포지션을 연산한는 함수
     public static void AddAnchoredPos(this GameObject obj_,
         Vector2 position2D)
     {
@@ -179,8 +179,6 @@ public static partial class GioleFunc
     }           // AddLocalPos()
     #endregion
 
-
-
     //! 새로운 오브젝트를 만들어서 컴포넌트를 리턴하는 함수
     public static T CreateObj<T>(string objName) where T : Component
     {
@@ -193,7 +191,6 @@ public static partial class GioleFunc
     {
         Object.Destroy(obj_, delay);
     }       // DestroyObj()
-
 
     //! 로컬 포지션을 기준으로 두 타일 오브젝트의 위치를 비교하는 함수
     public static int CompareTileObjToLocalPos2D(

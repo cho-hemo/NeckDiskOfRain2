@@ -13,6 +13,10 @@ public static partial class GioleData
 
 
     public const string POPUPMENU_OBJ_NAME = "PopUpMenu";
+    public const string PLAYER_UI_CANVAS_OBJ_NAME = "PlayerUi_Canvas";
+    public const string TIMER_TXT_OBJ_NAME = "TimerTxt";
+
+
 
 
 
