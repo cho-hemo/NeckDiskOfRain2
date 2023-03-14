@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Monster : MonoBehaviour, IDamageable // 몬스터 공통
 {
     // 필드
-    public float closerDamage = default; // 근접 공격력
-    public float longerDamage = default; // 원거리 공격력
     public float maxHp = default; // 최대 체력
     public float hp = default; // 현재 체력
     public bool dead = default; // 생존 확인
     public event Action OnDeath; // 사망 시 발동할 이벤트
 
-    
-    
+    //protected Transform enemyObj;
+
 
     protected virtual void OnEnable() 
     {
@@ -74,6 +73,29 @@ public class Monster : MonoBehaviour, IDamageable // 몬스터 공통
         Debug.Log("원거리 공격");
     }
 
+    //protected enum MonsterState
+    //{
+    //    Attack,
+    //    Move,
+    //    OnDamaged
+    //}
+
+    //protected void DoAction(MonsterState monsterMode)
+    //{
+
+    //    switch (monsterMode)
+    //    {
+    //        case MonsterState.Attack:
+    //            Debug.Log("근접 공격");
+    //            break;
+    //        case MonsterState.Move:
+                
+    //            break;
+    //        case MonsterState.OnDamaged:
+                
+    //            break;
+    //    }
+    //}
 }
 
 
