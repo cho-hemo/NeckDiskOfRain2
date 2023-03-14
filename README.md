@@ -29,7 +29,7 @@ public class ExamClass
 public Interface IExamInterface
 ```
 
-# public Field / PascalCase(파스칼)
+# public Field / CamelCase(카멜)
 ## Ex) 
 ```
 public bool IsValid;
