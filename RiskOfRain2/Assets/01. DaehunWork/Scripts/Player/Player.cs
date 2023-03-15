@@ -63,7 +63,6 @@ public abstract class Player : MonoBehaviour, IPlayerSkill
     [Tooltip("플레이어 타입(종류)")]
     protected PlayerType _playerType = PlayerType.NONE;
 
-
     #endregion
 
     #region Property
@@ -83,22 +82,18 @@ public abstract class Player : MonoBehaviour, IPlayerSkill
     #endregion
 
 #if ENABLE_INPUT_SYSTEM
-    protected PlayerInput _playerInput;
-    protected PlayerKeyInput _input;
+    //protected PlayerInput _playerInput;
+    //protected PlayerKeyInput _input;
 
-    public PlayerInput PlayerInput { get { return _playerInput; } protected set { _playerInput = value; } }
-    public PlayerKeyInput Input { get { return _input; } protected set { _input = value; } }
+    //public PlayerInput PlayerInput { get { return _playerInput; } protected set { _playerInput = value; } }
+    //public PlayerKeyInput Input { get { return _input; } protected set { _input = value; } }
 #endif    
 
     protected StateMachine _stateMachine = default;
     public StateMachine StateMachine { get { return _stateMachine; } set { _stateMachine = value; } }
 
-
-
     public void Start()
     {
-        PlayerInput = GetComponent<PlayerInput>();
-        Input = GetComponent<PlayerKeyInput>();
         StateMachine = new StateMachine();
         StateMachine.SetState(new Player_IdleState(this));
     }

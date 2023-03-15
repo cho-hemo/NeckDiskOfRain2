@@ -1862,7 +1862,6 @@ GameObject:
   - component: {fileID: 1629950100753966466}
   - component: {fileID: 2149745719492034363}
   - component: {fileID: 2149745719492034365}
-  - component: {fileID: 2149745719492034364}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1891,19 +1890,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2149745719492034364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2149745719492034360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48180b5445d93f54fbdb44724d5d369f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 10
 --- !u!143 &2149745719492034365
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4204,7 +4190,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4416926083445964123}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ed76ba631b2d6804ba94cfab14894a10, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: bb7adadfc90be82419210ee68c49dfc6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -4233,9 +4219,18 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   shoot: 0
+  mainSkill: 0
+  SubSkill: 0
+  utilitySkill: 0
+  specialSkill: 0
+  useEquipment: 0
+  interaction: 0
+  informationScreen: 0
+  sendPing: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
+  player: {fileID: 0}
 --- !u!114 &6982812147838991773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4260,7 +4255,7 @@ MonoBehaviour:
   _gravity: -9.81
   _osp: 0
   _focusPoint: {fileID: 5678502860832412670}
-  _playerType: 0
+  _playerType: 1
 --- !u!33 &6987127356941017788
 MeshFilter:
   m_ObjectHideFlags: 0

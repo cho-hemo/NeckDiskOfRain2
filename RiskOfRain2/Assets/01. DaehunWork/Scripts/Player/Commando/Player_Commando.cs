@@ -6,23 +6,24 @@ public class Player_Commando : Player
     public new void Start()
     {
         base.Start();
-        StartCoroutine(Shoot());
+        PlayerType = PlayerType.COMMANDO;
+        //StartCoroutine(Shoot());
     }
-    public IEnumerator Shoot()
-    {
-        while (true)
-        {
-            if (!Input.shoot)
-            {
-                yield return new WaitForSeconds(1 / AttackDelay);
-                continue;
-            }
-            GameObject tempObject = ObjectPoolManager.Instance.ObjectPoolPop(ObjectPoolManager.BULLET);
-            tempObject.transform.localPosition = FocusPoint.position;
-            tempObject.SetActive(true);
-            yield return new WaitForSeconds(1 / AttackDelay);
-        }
-    }
+    // public IEnumerator Shoot()
+    // {
+    //     while (true)
+    //     {
+    //         // if (!Input.shoot)
+    //         // {
+    //         //     yield return new WaitForSeconds(1 / AttackDelay);
+    //         //     continue;
+    //         // }
+    //         GameObject tempObject = ObjectPoolManager.Instance.ObjectPoolPop(ObjectPoolManager.BULLET);
+    //         tempObject.transform.localPosition = FocusPoint.position;
+    //         tempObject.SetActive(true);
+    //         yield return new WaitForSeconds(1 / AttackDelay);
+    //     }
+    // }
 
     public override void PassiveSkill()
     {
@@ -41,7 +42,7 @@ public class Player_Commando : Player
 
     public override void UtilitySkill()
     {
-
+        StateMachine.SetState(new Player_Commando_RollState(this));
     }
 
     public override void SpecialSkill()
