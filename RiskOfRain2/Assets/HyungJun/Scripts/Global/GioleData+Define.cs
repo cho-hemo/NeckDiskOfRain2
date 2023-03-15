@@ -23,12 +23,13 @@ public static partial class GioleData
 }
 
 
-//! 지형의 속성을 정의하기 위한 타입
-public enum TerrainType
+/// <summary>
+///  난이도를 설정하기 위한 타입
+/// </summary>
+public enum Difficulty
 {
     NONE = -1,
-    PLAIN_PASS,
-    OCEAN_N_PASS
+    EASY, NORMAL, HARD
 }       // TerrainType
 
 
