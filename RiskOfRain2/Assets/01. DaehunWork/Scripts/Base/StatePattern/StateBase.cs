@@ -1,8 +1,8 @@
 public class StateMachine
 {
-    private State _currentState = default;
+    private IState _currentState = default;
 
-    public void SetState(State state)
+    public void SetState(IState state)
     {
         if (_currentState != null)
         {
@@ -40,7 +40,12 @@ public class StateMachine
         _currentState.ChangeState();
     }
 
-    public State GetState()
+    public void AnimationChange()
+    {
+        _currentState.AnimationChange();
+    }
+
+    public IState GetState()
     {
         return _currentState;
     }
@@ -48,11 +53,12 @@ public class StateMachine
 
 }
 
-public interface State
+public interface IState
 {
     public void OnEnter();
     public void UpdateState();
     public void OnExit();
     public void Action();
     public void ChangeState();
+    public void AnimationChange();
 }

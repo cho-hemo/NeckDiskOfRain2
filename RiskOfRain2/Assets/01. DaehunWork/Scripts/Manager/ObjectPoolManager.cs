@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPoolManager : SingletonBase<ObjectPoolManager>
 {
-    [System.Serializable]
+    public const string BULLET = "Bullet";
+
+    #region Inspector
+    [Serializable]
     public class PoolingObject
     {
         [Tooltip("추가할 오브젝트에 이름")]
@@ -17,6 +21,7 @@ public class ObjectPoolManager : SingletonBase<ObjectPoolManager>
 
     [Header("오브젝트 풀링 목록")]
     public List<PoolingObject> poolingObjectList = default;
+    #endregion
 
     private Dictionary<string, Stack<GameObject>> _objectPool = default;
 
@@ -35,6 +40,7 @@ public class ObjectPoolManager : SingletonBase<ObjectPoolManager>
 
     }
 
+    ///<summary>ObjectPool을 초기화 하는 함수</summary>
     private void ObjectPoolInit()
     {
         _objectPool = new Dictionary<string, Stack<GameObject>>();

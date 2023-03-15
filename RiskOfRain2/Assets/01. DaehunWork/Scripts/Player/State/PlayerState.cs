@@ -1,4 +1,6 @@
-public class Player_IdleState : State
+using UnityEngine;
+
+public class Player_IdleState : IState
 {
     private Player _player;
     public Player_IdleState(Player player_)
@@ -12,6 +14,14 @@ public class Player_IdleState : State
 
     public void UpdateState()
     {
+        if (_player.Input.move != Vector2.zero)
+        {
+            _player.StateMachine.SetState(new Player_WalkState(_player));
+        }
+        else if (_player.Input.jump == true)
+        {
+            _player.StateMachine.SetState(new Player_JumpState(_player));
+        }
     }
 
     public void OnExit()
@@ -25,9 +35,14 @@ public class Player_IdleState : State
     public void ChangeState()
     {
     }
+
+    public void AnimationChange()
+    {
+
+    }
 }
 
-public class Player_WalkState : State
+public class Player_WalkState : IState
 {
     private Player _player;
     public Player_WalkState(Player player_)
@@ -40,6 +55,7 @@ public class Player_WalkState : State
     }
     public void UpdateState()
     {
+
     }
 
     public void OnExit()
@@ -53,9 +69,13 @@ public class Player_WalkState : State
     public void ChangeState()
     {
     }
+    public void AnimationChange()
+    {
+
+    }
 }
 
-public class Player_SprintState : State
+public class Player_SprintState : IState
 {
 
     private Player _player;
@@ -82,9 +102,13 @@ public class Player_SprintState : State
     public void ChangeState()
     {
     }
+    public void AnimationChange()
+    {
+
+    }
 }
 
-public class Player_JumpState : State
+public class Player_JumpState : IState
 {
 
     private Player _player;
@@ -111,38 +135,13 @@ public class Player_JumpState : State
     public void ChangeState()
     {
     }
-}
-
-public class Player_RollState : State
-{
-
-    private Player _player;
-    public Player_RollState(Player player_)
+    public void AnimationChange()
     {
-        this._player = player_;
-    }
 
-    public void OnEnter()
-    {
-    }
-    public void UpdateState()
-    {
-    }
-
-    public void OnExit()
-    {
-    }
-
-    public void Action()
-    {
-    }
-
-    public void ChangeState()
-    {
     }
 }
 
-public class Player_DeadState : State
+public class Player_DeadState : IState
 {
     private Player _player;
     public Player_DeadState(Player player_)
@@ -167,5 +166,9 @@ public class Player_DeadState : State
 
     public void ChangeState()
     {
+    }
+    public void AnimationChange()
+    {
+
     }
 }
