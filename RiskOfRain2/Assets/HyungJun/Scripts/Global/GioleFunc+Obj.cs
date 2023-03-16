@@ -218,4 +218,8 @@ public static partial class GioleFunc
 
         return compareResult;
     }       // CompareTileObjToLocalPos2D()
+
+
+
+
 }

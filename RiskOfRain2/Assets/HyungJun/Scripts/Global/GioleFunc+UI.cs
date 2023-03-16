@@ -31,21 +31,25 @@ public static partial class GioleFunc
     /// <summary>
     /// 이미지의 타입이 Filled 인 상태이고 해당 양을 조정한다.
     /// </summary>
-    /// <param name="imageObj"></param>
+    /// <param name="imageObj_"></param>
     /// <param name="fValue_">0 ~ 1 의 조정할 float 값</param>
-    public static void FilledImageControll(this GameObject imageObj, float fValue_)
+    public static void FilledImageControll(this GameObject imageObj_, float fValue_)
     {
-        Image targetImage = imageObj.GetComponent<Image>();
+        Image targetImage = imageObj_.GetComponent<Image>();
         if (targetImage.type == Image.Type.Filled)
         {
             targetImage.fillAmount = fValue_;
         }
         else
         {
-            Debug.Log($"[{imageObj.name}]해당 이미지는 이미지 타입이 Filled가 아닙니다.");
+            Debug.Log($"[{imageObj_.name}]해당 이미지는 이미지 타입이 Filled가 아닙니다.");
             return;
         }
-
-
     }       // FilledImageCortroll()
+
+    public static void ImageColorControll(this GameObject imageObj_, float r, float g, float b)
+    {
+        Image targetImage = imageObj_.GetComponentMust<Image>();
+        targetImage.color = new Color(r, g, b);
+    }
 }
