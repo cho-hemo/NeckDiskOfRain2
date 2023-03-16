@@ -45,6 +45,7 @@ public class Player_WalkState : IState
 
     public void OnEnter()
     {
+        _player.PlayerAnimator.SetBool("IsMove", true);
     }
     public void UpdateState()
     {

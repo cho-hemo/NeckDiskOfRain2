@@ -3,10 +3,13 @@ using System.Collections;
 using UnityEngine;
 public class Player_Commando : Player
 {
+    public Transform IKARMTEST_L;
+    public Transform IKARMTEST_R;
     public new void Start()
     {
         base.Start();
         PlayerType = PlayerType.COMMANDO;
+
         //StartCoroutine(Shoot());
     }
     // public IEnumerator Shoot()
@@ -30,24 +33,26 @@ public class Player_Commando : Player
 
     }
 
-    public override void MainSkill()
+    public override void MainSkill(bool isPressed_)
+    {
+        PlayerAnimator.SetBool("IsMainSkill", isPressed_);
+    }
+
+    public override void SubSkill(bool isPressed_)
+    {
+        PlayerAnimator.SetTrigger("SubSkill");
+    }
+
+    public override void UtilitySkill(bool isPressed_)
+    {
+        if (isPressed_)
+        {
+            StateMachine.SetState(new Player_Commando_RollState(this));
+        }
+    }
+
+    public override void SpecialSkill(bool isPressed_)
     {
 
     }
-
-    public override void SubSkill()
-    {
-
-    }
-
-    public override void UtilitySkill()
-    {
-        StateMachine.SetState(new Player_Commando_RollState(this));
-    }
-
-    public override void SpecialSkill()
-    {
-
-    }
-
 }

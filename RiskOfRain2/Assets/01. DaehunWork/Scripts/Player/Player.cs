@@ -63,6 +63,9 @@ public abstract class Player : MonoBehaviour, IPlayerSkill
     [Tooltip("플레이어 타입(종류)")]
     protected PlayerType _playerType = PlayerType.NONE;
 
+    [SerializeField]
+    [Tooltip("애니메이터 컨트롤러")]
+    protected Animator _playerAnimator;
     #endregion
 
     #region Property
@@ -79,6 +82,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill
     public bool Osp { get { return _osp; } protected set { _osp = value; } }
     public Transform FocusPoint { get { return _focusPoint; } protected set { _focusPoint = value; } }
     public PlayerType PlayerType { get { return _playerType; } protected set { _playerType = value; } }
+    public Animator PlayerAnimator { get { return _playerAnimator; } protected set { _playerAnimator = value; } }
     #endregion
 
 #if ENABLE_INPUT_SYSTEM
@@ -90,12 +94,13 @@ public abstract class Player : MonoBehaviour, IPlayerSkill
 #endif    
 
     protected StateMachine _stateMachine = default;
-    public StateMachine StateMachine { get { return _stateMachine; } set { _stateMachine = value; } }
+    public StateMachine StateMachine { get { return _stateMachine; } protected set { _stateMachine = value; } }
 
     public void Start()
     {
         StateMachine = new StateMachine();
         StateMachine.SetState(new Player_IdleState(this));
+        TryGetComponent(out _playerAnimator);
     }
 
     public void Update()
@@ -133,9 +138,9 @@ public abstract class Player : MonoBehaviour, IPlayerSkill
     }
 
     public abstract void PassiveSkill();
-    public abstract void MainSkill();
-    public abstract void SubSkill();
-    public abstract void UtilitySkill();
-    public abstract void SpecialSkill();
+    public abstract void MainSkill(bool isPressed_);
+    public abstract void SubSkill(bool isPressed_);
+    public abstract void UtilitySkill(bool isPressed_);
+    public abstract void SpecialSkill(bool isPressed_);
 
 }

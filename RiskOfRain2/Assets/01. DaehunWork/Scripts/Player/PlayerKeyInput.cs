@@ -91,25 +91,25 @@ public class PlayerKeyInput : MonoBehaviour
     public void OnMainSkill(InputValue value)
     {
         MainSkillInput(value.isPressed);
-        player.MainSkill();
+        player.MainSkill(value.isPressed);
     }
 
     public void OnSubSkill(InputValue value)
     {
         SubSkillInput(value.isPressed);
-        player.SubSkill();
+        player.SubSkill(value.isPressed);
     }
 
     public void OnUtilitySkill(InputValue value)
     {
         UtilitySkillInput(value.isPressed);
-        player.UtilitySkill();
+        player.UtilitySkill(value.isPressed);
     }
 
     public void OnSpecialSkill(InputValue value)
     {
         SpecialSkillInput(value.isPressed);
-        player.SpecialSkill();
+        player.SpecialSkill(value.isPressed);
     }
 
     public void OnUseEquipment(InputValue value)

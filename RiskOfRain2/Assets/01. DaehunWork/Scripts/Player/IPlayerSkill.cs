@@ -1,8 +1,8 @@
 public interface IPlayerSkill
 {
     public void PassiveSkill();
-    public void MainSkill();
-    public void SubSkill();
-    public void UtilitySkill();
-    public void SpecialSkill();
+    public void MainSkill(bool isPressed_);
+    public void SubSkill(bool isPressed_);
+    public void UtilitySkill(bool isPressed_);
+    public void SpecialSkill(bool isPressed_);
 }
