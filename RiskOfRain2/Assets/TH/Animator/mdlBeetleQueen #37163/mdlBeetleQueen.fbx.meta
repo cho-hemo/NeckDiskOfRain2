@@ -3,7 +3,12 @@ guid: 54a99390458e37b41bfc6b3a0b90765f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matBeetleQueen
+    second: {fileID: -4593446398185274638, guid: d2582da8790cbf24b9ad20232accb2c9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -105,7 +110,7 @@ ModelImporter:
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 0
