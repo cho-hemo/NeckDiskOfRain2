@@ -8,7 +8,7 @@ public class LivingThings : MonoBehaviour, IDamageableT
     protected float health;
     protected bool dead;
 
-    public virtual void Start()
+    protected virtual void Start()
     {
         health = startingHealth;
     }
@@ -22,7 +22,7 @@ public class LivingThings : MonoBehaviour, IDamageableT
         }
     }
 
-    public void Die() 
+    protected void Die() 
     {
         dead = true;
         GameObject.Destroy(gameObject);

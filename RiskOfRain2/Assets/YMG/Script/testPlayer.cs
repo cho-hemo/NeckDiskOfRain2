@@ -12,7 +12,7 @@ public class TestPlayer : LivingThings // 이녀석이 이미 모노와 아이뎀 가지고 있�
     TestPlayerController controller;
     GunController gunController;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
         controller = GetComponent<TestPlayerController>();

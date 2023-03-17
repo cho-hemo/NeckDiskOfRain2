@@ -24,7 +24,7 @@ public class TestPlayerController : MonoBehaviour
         transform.LookAt(heightCorrectedPoint);
     }
 
-    public void FixedUpdate() // ���������� ª�� �ݺ�������
+    private void FixedUpdate() // 
     {
         myRigidbody.MovePosition(myRigidbody.position + velocity * Time.fixedDeltaTime);
     }
