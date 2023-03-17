@@ -7,23 +7,23 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class Beetle : Monster
 {
-    public float lookRange = 20f; // ½Ã¾ß °Å¸®
-    public float attackRange = 3f; // °ø°Ý °Å¸®
+    public float lookRange = 20f; // ï¿½Ã¾ï¿½ ï¿½Å¸ï¿½
+    public float attackRange = 3f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½
     Transform target;
     NavMeshAgent navMeshAgent;
 
-    public LayerMask targetLayer; // ÃßÀû ´ë»ó ·¹ÀÌ¾î
+    public LayerMask targetLayer; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
     public LayerMask movementMask;
 
     public Animator beetleAnimator;
 
-    public float speed = default; // ÀÌµ¿ ¼Óµµ
-    public float attack = default; // °ø°Ý·Â
-    private float timeBetAttack = 0.5f; // °ø°Ý °£°Ý
-    private float lastAttackTime;  // ¸¶Áö¸· °ø°Ý ½ÃÁ¡
+    public float speed = default; // ï¿½Ìµï¿½ ï¿½Óµï¿½
+    public float attack = default; // ï¿½ï¿½ï¿½Ý·ï¿½
+    private float timeBetAttack = 0.5f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private float lastAttackTime;  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    public string spawnAnime = ""; // »ý¼º ¾Ö´Ï¸ÞÀÌ¼Ç
-    public string dieAnime = ""; // »ç¸Á ¾Ö´Ï¸ÞÀÌ¼Ç
+    public string spawnAnime = ""; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
+    public string dieAnime = ""; // ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
     private string moveAnime = "isMove";
     private string attackAnime = "isAttack";
     public string idleAnime = "";
@@ -35,7 +35,7 @@ public class Beetle : Monster
     void Start()
     {
         cam = Camera.main;
-        target = PlayerManager.instance.player.transform;
+        target = testPlayerManager.instance.player.transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         //nowMode = idleAnime;
@@ -58,9 +58,9 @@ public class Beetle : Monster
 
             if (distance <= navMeshAgent.stoppingDistance)
             {
-                // ¸ñÇ¥ °ø°Ý
+                // ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
 
-                // ¸ñÇ¥ º¸±â
+                // ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
                 FaceTarget();
             }
 
@@ -70,10 +70,10 @@ public class Beetle : Monster
         {
             navMeshAgent.SetDestination(target.position);
 
-                //Debug.Log($"¹ÚÄ¡±â / ºñÆ²ÀÇ °Å¸® {distance} ¸ØÃß´Â ÁöÁ¡ == {navMeshAgent.stoppingDistance}");
+                //Debug.Log($"ï¿½ï¿½Ä¡ï¿½ï¿½ / ï¿½ï¿½Æ²ï¿½ï¿½ ï¿½Å¸ï¿½ {distance} ï¿½ï¿½ï¿½ß´ï¿½ ï¿½ï¿½ï¿½ï¿½ == {navMeshAgent.stoppingDistance}");
             if (distance <= navMeshAgent.stoppingDistance + attackRange)
             {
-                Debug.Log("ºñÆ²ÀÌ °ø°ÝÇÔ");
+                Debug.Log("ï¿½ï¿½Æ²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                 navMeshAgent.SetDestination(transform.position);
                 CloseCombat();
             }

@@ -1,6 +1,10 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "com.unity.cinemachine": "2.8.9",
+=======
+    "com.unity.animation.rigging": "1.1.1",
+>>>>>>> e994976e26d50f8fc04d15e21e843ceb1bd7f7bc
     "com.unity.collab-proxy": "2.0.1",
     "com.unity.feature.development": "1.0.1",
     "com.unity.ide.rider": "3.0.18",
