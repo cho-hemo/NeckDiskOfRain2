@@ -1,0 +1,992 @@
+fileFormatVersion: 2
+guid: 99e8cbf11e64aaf41b88cff718ff4701
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: BeetleArmature|RunLeftRM
+      takeName: BeetleArmature|RunLeftRM
+      internalID: -61509688415817792
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|RunForwardRM
+      takeName: BeetleArmature|RunForwardRM
+      internalID: 95217621705988276
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|RunRightRM
+      takeName: BeetleArmature|RunRightRM
+      internalID: -6804839259756940627
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Hurt1
+      takeName: BeetleArmature|Hurt1
+      internalID: -1241411995638069131
+      firstFrame: 0
+      lastFrame: 54
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Death
+      takeName: BeetleArmature|Death
+      internalID: 4717259264029246932
+      firstFrame: 0
+      lastFrame: 131
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Hurt2
+      takeName: BeetleArmature|Hurt2
+      internalID: -7542190941677514857
+      firstFrame: 0
+      lastFrame: 131
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Headbutt
+      takeName: BeetleArmature|Headbutt
+      internalID: 7570010672536006877
+      firstFrame: 0
+      lastFrame: 131
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Spawn1
+      takeName: BeetleArmature|Spawn1
+      internalID: -3247251495056633262
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Idle, Single
+      takeName: BeetleArmature|Idle, Single
+      internalID: 8786467101765395990
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Surprise
+      takeName: BeetleArmature|Surprise
+      internalID: -9137551625288724502
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|airLoopDown
+      takeName: BeetleArmature|airLoopDown
+      internalID: 7655514468751185522
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|airLoopUp
+      takeName: BeetleArmature|airLoopUp
+      internalID: 4805109386983803394
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|aimVertical
+      takeName: BeetleArmature|aimVertical
+      internalID: -6882350094302584841
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|aimHorizontal
+      takeName: BeetleArmature|aimHorizontal
+      internalID: -554013499401965721
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|lightImpact
+      takeName: BeetleArmature|lightImpact
+      internalID: -3120300678566223935
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Flinch2
+      takeName: BeetleArmature|Flinch2
+      internalID: 3478121939900051643
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Flinch1
+      takeName: BeetleArmature|Flinch1
+      internalID: 2973701881275233844
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|Flinch3
+      takeName: BeetleArmature|Flinch3
+      internalID: 7894907385873690640
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BeetleArmature|IdleLoop
+      takeName: BeetleArmature|IdleLoop
+      internalID: -4427899570653278154
+      firstFrame: 0
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: mdlBeetle(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: AimAssist
+      parentName: mdlBeetle(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LogBookTarget
+      parentName: mdlBeetle(Clone)
+      position: {x: 0.00186, y: 0.016900001, z: 0.00744}
+      rotation: {x: 0.032309104, y: 0.95804197, z: -0.10846677, w: 0.26333767}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LogBookCamera
+      parentName: LogBookTarget
+      position: {x: 0.00022999999, y: -0.00246, z: -0.03016}
+      rotation: {x: 0.0043025664, y: -0.039384298, z: 0.00928045, w: 0.9991718}
+      scale: {x: 1, y: 1, z: 1}
+    - name: BeetleArmature
+      parentName: mdlBeetle(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ROOT
+      parentName: BeetleArmature
+      position: {x: 3.1392857e-11, y: 0.000028986347, z: 0.004827701}
+      rotation: {x: -0.0000002219725, y: -0.7071068, z: 0.7071068, w: 0.0000002219725}
+      scale: {x: 0.99999976, y: 0.9999999, z: 0.9999999}
+    - name: footIK.r
+      parentName: ROOT
+      position: {x: -0.0044910843, y: 0.004697788, z: 0.0040572975}
+      rotation: {x: 0.00000020610524, y: 0.7071068, z: -0.7071068, w: 0.00000022197251}
+      scale: {x: 0.99999976, y: 0.99999976, z: 0.99999976}
+    - name: footPole.r
+      parentName: footIK.r
+      position: {x: 0.00031899783, y: 0.036238097, z: 0.007762275}
+      rotation: {x: 3.5023385e-15, y: 0.0000000112198375, z: 0.000000009459256, w: 1}
+      scale: {x: 1, y: 0.9999997, z: 0.99999976}
+    - name: footPole.r_end
+      parentName: footPole.r
+      position: {x: -0, y: 0.0019691228, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: footIK.l
+      parentName: ROOT
+      position: {x: 0.0044910796, y: 0.0046531823, z: 0.0041644424}
+      rotation: {x: 0.00000020610516, y: 0.7071068, z: -0.7071068, w: 0.00000022197251}
+      scale: {x: 0.99999976, y: 0.99999976, z: 0.99999976}
+    - name: footPole.l
+      parentName: footIK.l
+      position: {x: -0.00031899894, y: 0.036238097, z: 0.007762275}
+      rotation: {x: 3.5023555e-15, y: 0.000000011219894, z: 0.000000009459256, w: 1}
+      scale: {x: 1, y: 0.9999997, z: 0.99999976}
+    - name: footPole.l_end
+      parentName: footPole.l
+      position: {x: -0, y: 0.0019691228, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: armIK.r
+      parentName: ROOT
+      position: {x: -0.008031118, y: 0.003959823, z: 0.017282689}
+      rotation: {x: -0.26332396, y: 0.65624726, z: -0.6562473, w: -0.26332396}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000004}
+    - name: armPole.r
+      parentName: armIK.r
+      position: {x: -0.017709404, y: 0.025998376, z: 0.017052704}
+      rotation: {x: 0.000000013504177, y: 0.00000007264316, z: 0.38268375, w: 0.9238794}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1.0000001}
+    - name: armPole.r_end
+      parentName: armPole.r
+      position: {x: -0, y: 0.0036550602, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: armIK.l
+      parentName: ROOT
+      position: {x: 0.006173619, y: 0.0020680204, z: 0.017231273}
+      rotation: {x: 0.26332414, y: 0.6562472, z: -0.6562472, w: 0.26332426}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+    - name: armPole.l
+      parentName: armIK.l
+      position: {x: 0.015100363, y: 0.01882066, z: 0.020589368}
+      rotation: {x: 0.000000085448846, y: 0.00000004703179, z: -0.38268358, w: 0.9238795}
+      scale: {x: 0.9999998, y: 1.0000002, z: 1.0000002}
+    - name: armPole.l_end
+      parentName: armPole.l
+      position: {x: -0, y: 0.0036550602, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: base
+      parentName: ROOT
+      position: {x: 0.0000000020101527, y: -0.007990931, z: -0.0032017317}
+      rotation: {x: 0.7071069, y: -0.00000022197251, z: 0.00000022197257, w: 0.70710677}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: chest
+      parentName: base
+      position: {x: 1.5766807e-18, y: 0.0049278117, z: 6.891787e-10}
+      rotation: {x: 0.000000052191602, y: -0.7974832, z: -0.60334116, w: 0.000000046784795}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Hurtbox
+      parentName: chest
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: chest
+      position: {x: -3.5576797e-10, y: 0.008445333, z: -8.652935e-10}
+      rotation: {x: -0.000000044986653, y: 0.9941683, z: 0.107840285, w: -0.00000020644944}
+      scale: {x: 1.0000005, y: 1.0000001, z: 1.0000004}
+    - name: Hurtbox (Head Shell)
+      parentName: Head
+      position: {x: -0, y: 0.0025799999, z: 0.00127}
+      rotation: {x: 0.22669168, y: -4.2632568e-14, z: -1.1368685e-13, w: 0.9739666}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HeadbuttHitbox
+      parentName: Head
+      position: {x: -0, y: 0.0032300001, z: 0.0015299999}
+      rotation: {x: 0.19550855, y: 0.000000014901161, z: 1.3251799e-16, w: 0.98070204}
+      scale: {x: 0.9585154, y: 1.0365698, z: 1.7237248}
+    - name: Hurtbox (Face)
+      parentName: Head
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.22669166, y: -1.4210852e-14, z: -9.947597e-14, w: 0.9739666}
+      scale: {x: 1, y: 1.0000004, z: 1.0000007}
+    - name: Head_end
+      parentName: Head
+      position: {x: -0, y: 0.0035821586, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: upper_arm.r
+      parentName: chest
+      position: {x: 0.004864711, y: 0.0039358153, z: -0.000023906528}
+      rotation: {x: 0.6876814, y: 0.6396929, z: 0.25400487, w: -0.2310174}
+      scale: {x: 1.0000002, y: 1.0000001, z: 0.99999976}
+    - name: Hurtbox
+      parentName: upper_arm.r
+      position: {x: -0.0002, y: 0.0072299996, z: 0.00037}
+      rotation: {x: -0.0264082, y: 0.5137973, z: -0.044015814, w: 0.8563747}
+      scale: {x: 1, y: 1, z: 1}
+    - name: lower_arm.r
+      parentName: upper_arm.r
+      position: {x: -0.0000000012665987, y: 0.012230462, z: -8.1956386e-10}
+      rotation: {x: 0.01996266, y: 0.34651452, z: -0.047584035, w: 0.9366243}
+      scale: {x: 1, y: 1.0000002, z: 1.0000007}
+    - name: Hurtbox
+      parentName: lower_arm.r
+      position: {x: 0.00056, y: 0.00573, z: 0.0002}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000008, y: 1.0000001, z: 1.0000004}
+    - name: HandR
+      parentName: lower_arm.r
+      position: {x: -0, y: 0.0112499995, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: finger1.r
+      parentName: lower_arm.r
+      position: {x: -0.00014919773, y: 0.0111086, z: 0.0003692425}
+      rotation: {x: 0.05234835, y: -0.6551532, z: -0.03620543, w: -0.7528101}
+      scale: {x: 1, y: 0.9999998, z: 0.9999999}
+    - name: finger1.r_end
+      parentName: finger1.r
+      position: {x: -0, y: 0.0022727817, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: finger2.r
+      parentName: lower_arm.r
+      position: {x: -0.00014748596, y: 0.011277929, z: 0.00002119189}
+      rotation: {x: 0.05735116, y: -0.6524792, z: -0.031715076, w: -0.7549675}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1}
+    - name: finger2.r_end
+      parentName: finger2.r
+      position: {x: -0, y: 0.0032937445, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: finger3.r
+      parentName: lower_arm.r
+      position: {x: -0.00010788692, y: 0.011378209, z: -0.0005055578}
+      rotation: {x: 0.057351004, y: -0.6524788, z: -0.031715345, w: -0.75496775}
+      scale: {x: 1.0000011, y: 1.0000005, z: 1.0000006}
+    - name: finger3.r_end
+      parentName: finger3.r
+      position: {x: -0, y: 0.0032937443, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: thumb.r
+      parentName: lower_arm.r
+      position: {x: -0.0008225242, y: 0.007170596, z: -0.00003198385}
+      rotation: {x: 0.37577698, y: -0.5749261, z: -0.3119367, w: -0.65646565}
+      scale: {x: 1, y: 0.9999998, z: 0.9999999}
+    - name: thumb.r_end
+      parentName: thumb.r
+      position: {x: -0, y: 0.00227278, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: upper_arm.l
+      parentName: chest
+      position: {x: -0.004864711, y: 0.0039358158, z: -0.000023908317}
+      rotation: {x: 0.6876814, y: -0.6396927, z: -0.25400496, w: -0.23101749}
+      scale: {x: 1.0000005, y: 1, z: 1.0000005}
+    - name: Hurtbox
+      parentName: upper_arm.l
+      position: {x: 0.0001, y: 0.0058899997, z: -0.000080000005}
+      rotation: {x: -0.000000044703484, y: -0.42284736, z: 0.000000029802322, w: 0.90620095}
+      scale: {x: 1, y: 1, z: 1}
+    - name: lower_arm.l
+      parentName: upper_arm.l
+      position: {x: 0.0000000012014061, y: 0.012230465, z: -0.0000000010430813}
+      rotation: {x: -0.020151848, y: 0.3465902, z: -0.047811348, w: -0.9365806}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000005}
+    - name: Hurtbox
+      parentName: lower_arm.l
+      position: {x: 0.00010999999, y: 0.0063300002, z: 0.00006}
+      rotation: {x: 0.010228621, y: -0.25614572, z: -0.03856783, w: 0.96581435}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HandL
+      parentName: lower_arm.l
+      position: {x: -0, y: 0.01172, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: finger1.l
+      parentName: lower_arm.l
+      position: {x: 0.00016002178, y: 0.011193885, z: 0.00038988754}
+      rotation: {x: -0.05234839, y: -0.6551532, z: -0.036205266, w: 0.7528101}
+      scale: {x: 1.0000008, y: 1.0000005, z: 1.0000004}
+    - name: finger1.l_end
+      parentName: finger1.l
+      position: {x: -0, y: 0.0022727817, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: finger2.l
+      parentName: lower_arm.l
+      position: {x: 0.00015091836, y: 0.011288887, z: 0.000014778227}
+      rotation: {x: -0.057351284, y: -0.6524791, z: -0.031714987, w: 0.7549676}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000001}
+    - name: finger2.l_end
+      parentName: finger2.l
+      position: {x: -0, y: 0.0032937445, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: finger3.l
+      parentName: lower_arm.l
+      position: {x: 0.00009362966, y: 0.011281968, z: -0.0005197873}
+      rotation: {x: -0.057351038, y: -0.6524788, z: -0.031715166, w: 0.75496775}
+      scale: {x: 0.9999997, y: 1.0000002, z: 1.0000001}
+    - name: finger3.l_end
+      parentName: finger3.l
+      position: {x: -0, y: 0.0032937443, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: thumb.l
+      parentName: lower_arm.l
+      position: {x: 0.0008225232, y: 0.007170597, z: -0.00003198594}
+      rotation: {x: -0.3757769, y: -0.5749262, z: -0.3119364, w: 0.6564657}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1}
+    - name: thumb.l_end
+      parentName: thumb.l
+      position: {x: -0, y: 0.00227278, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hip
+      parentName: base
+      position: {x: 1.5766807e-18, y: 0.0049278117, z: 6.891787e-10}
+      rotation: {x: 0.00000014671072, y: -0.65212536, z: 0.7581112, w: -0.00000013485125}
+      scale: {x: 0.9999999, y: 1.0000002, z: 1.0000001}
+    - name: Hurtbox
+      parentName: hip
+      position: {x: 0.00078933715, y: 0.0010213795, z: 0.0020548312}
+      rotation: {x: 0.1339306, y: -0.6672719, z: 0.7221467, w: 0.12375377}
+      scale: {x: 0.99999803, y: 0.9999985, z: 1}
+    - name: thigh.r
+      parentName: hip
+      position: {x: 0.0024116673, y: 0.0024494336, z: -0.00037026303}
+      rotation: {x: 0.020321617, y: -0.013900826, z: -0.09349377, w: 0.99531543}
+      scale: {x: 0.9999997, y: 1.0000002, z: 1.0000001}
+    - name: Hurtbox
+      parentName: thigh.r
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: calf.r
+      parentName: thigh.r
+      position: {x: 4.9651133e-10, y: 0.0062648105, z: -2.6077032e-10}
+      rotation: {x: -0.1746157, y: 0.9498472, z: -0.25942132, w: 0.00039142364}
+      scale: {x: 1.0000006, y: 1.000001, z: 1.0000001}
+    - name: Hurtbox
+      parentName: calf.r
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FootR
+      parentName: calf.r
+      position: {x: -0, y: 0.0057599996, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: calf.r_end
+      parentName: calf.r
+      position: {x: -0, y: 0.007620121, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: thigh.l
+      parentName: hip
+      position: {x: -0.002411667, y: 0.0024494333, z: -0.0003702613}
+      rotation: {x: 0.02032162, y: 0.013901278, z: 0.09349377, w: 0.99531543}
+      scale: {x: 0.9999996, y: 0.9999999, z: 0.9999998}
+    - name: Hurtbox
+      parentName: thigh.l
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: calf.l
+      parentName: thigh.l
+      position: {x: 2.4214386e-10, y: 0.006264809, z: 7.4505804e-11}
+      rotation: {x: 0.17461573, y: 0.9498472, z: -0.25942126, w: -0.00039140315}
+      scale: {x: 1.0000007, y: 1.0000012, z: 1.0000007}
+    - name: Hurtbox
+      parentName: calf.l
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9999997, y: 0.9999986, z: 0.99999815}
+    - name: FootL
+      parentName: calf.l
+      position: {x: -0, y: 0.00574, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: calf.l_end
+      parentName: calf.l
+      position: {x: -0, y: 0.007620121, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mesh
+      parentName: mdlBeetle(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: BeetleArmature
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
