@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof (NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
     NavMeshAgent pathfinder;
@@ -24,11 +24,11 @@ public class Enemy : MonoBehaviour
 
     IEnumerator UpdatePath() 
     {
-        float refreshRate = 1f;
+        float refreshRate = .25f;
 
         while (target != null) 
         {
-            Vector3 targetPosition = new Vector3(target.position.x, target.position.z);
+            Vector3 targetPosition = new Vector3(target.position.x, 0, target.position.z);
             pathfinder.SetDestination(targetPosition);
             yield return new WaitForSeconds(refreshRate);
         }

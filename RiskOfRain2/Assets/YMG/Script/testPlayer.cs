@@ -39,8 +39,13 @@ public class testPlayer : MonoBehaviour
             controller.LookAt(point);
         }
 
+<<<<<<< HEAD:RiskOfRain2/Assets/YMG/Script/testPlayer.cs
         // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetMouseButton(0))
+=======
+        // ¹«±â Á¶ÀÛ
+        if (Input.GetMouseButton(0)) // 0 == ¸¶¿ì½º ¿ÞÂÊ ¹öÆ°
+>>>>>>> 677080379c4cdb867b5feeb57c84cb9e234685b9:RiskOfRain2/Assets/YMG/Script/Player.cs
         {
             gunController.Shoot();
         }
