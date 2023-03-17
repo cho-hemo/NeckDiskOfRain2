@@ -3,9 +3,7 @@ using System.Collections;
 using UnityEngine;
 public class Player_Commando : Player
 {
-    public Transform IKARMTEST_L;
-    public Transform IKARMTEST_R;
-    public new void Start()
+    protected new void Start()
     {
         base.Start();
         PlayerType = PlayerType.COMMANDO;

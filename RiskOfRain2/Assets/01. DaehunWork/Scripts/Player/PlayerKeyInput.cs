@@ -86,6 +86,7 @@ public class PlayerKeyInput : MonoBehaviour
     public void OnSprint(InputValue value)
     {
         SprintInput();
+        player.Sprint();
     }
 
     public void OnMainSkill(InputValue value)

@@ -6,15 +6,20 @@ public class StateMachine
     {
         if (_currentState != null)
         {
-            _currentState.OnExit();
+            OnExit();
             _currentState = state;
-            _currentState.OnEnter();
+            OnEnter();
         }
         else
         {
             _currentState = state;
-            _currentState.OnEnter();
+            OnEnter();
         }
+    }
+
+    public IState GetState()
+    {
+        return _currentState;
     }
 
     public void UpdateState()
@@ -45,10 +50,6 @@ public class StateMachine
         _currentState.AnimationChange();
     }
 
-    public IState GetState()
-    {
-        return _currentState;
-    }
 
 
 }
@@ -62,3 +63,4 @@ public interface IState
     public void ChangeState();
     public void AnimationChange();
 }
+

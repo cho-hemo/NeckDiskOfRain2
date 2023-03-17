@@ -45,7 +45,7 @@ public class Player_WalkState : IState
 
     public void OnEnter()
     {
-        _player.PlayerAnimator.SetBool("IsMove", true);
+        _player.SetBool("IsMove", true);
     }
     public void UpdateState()
     {
@@ -80,6 +80,7 @@ public class Player_SprintState : IState
 
     public void OnEnter()
     {
+        _player.SetBool("IsSprint", _player.IsSprint);
     }
     public void UpdateState()
     {
@@ -113,6 +114,7 @@ public class Player_JumpState : IState
 
     public void OnEnter()
     {
+        _player.SetTrigger("Jump");
     }
     public void UpdateState()
     {
@@ -145,6 +147,7 @@ public class Player_DeadState : IState
 
     public void OnEnter()
     {
+        _player.SetBool("IsDead", _player.IsDead);
     }
     public void UpdateState()
     {
