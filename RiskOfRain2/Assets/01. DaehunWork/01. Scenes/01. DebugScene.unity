@@ -4253,12 +4253,15 @@ MonoBehaviour:
   _sprintSpeed: 8.75
   _jumpHeight: 1.5
   _gravity: -9.81
+  _isMove: 0
+  _isSprint: 0
+  _isGrounded: 0
+  _isDead: 0
   _osp: 0
   _focusPoint: {fileID: 5678502860832412670}
   _playerType: 1
   _playerAnimator: {fileID: 0}
-  IKARMTEST_L: {fileID: 0}
-  IKARMTEST_R: {fileID: 0}
+  _characterController: {fileID: 0}
 --- !u!33 &6987127356941017788
 MeshFilter:
   m_ObjectHideFlags: 0
