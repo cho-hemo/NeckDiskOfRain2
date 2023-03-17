@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class PlayerCamera : MonoBehaviour
 {
     public float SensitivityX = default;        // 마우스 X축 감도 설정을 위한 값
     public float SensitivityY = default;        // 마우스 Y축 감도 설정을 위한 값
