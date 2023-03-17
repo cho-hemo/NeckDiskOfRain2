@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         }
 
         // 무기 조작
-        if (Input.GetMouseButton(0)) 
+        if (Input.GetMouseButton(0)) // 0 == 마우스 왼쪽 버튼
         {
             gunController.Shoot();
         }
