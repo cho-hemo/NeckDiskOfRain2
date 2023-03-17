@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/RiskOfRain2/Scenes/Title.unity
+    path: Assets/HyungJun/Scenes/Title.unity
     guid: 3e9799b8823229f4fb1e351eaa83bc3c
   - enabled: 1
-    path: Assets/RiskOfRain2/Scenes/SelectCharacter.unity
+    path: Assets/HyungJun/Scenes/SelectCharacter.unity
     guid: cc6c9236712f96148836357b6cfc10bf
   - enabled: 1
-    path: Assets/RiskOfRain2/Scenes/Golemplains.unity
+    path: Assets/HyungJun/Scenes/Golemplains.unity
     guid: 55031ae3508909741afcb9092355ed97
   m_configObjects: {}
