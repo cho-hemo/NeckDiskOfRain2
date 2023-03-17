@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 508b82772361fe74a947154bd6ff63f3
+guid: 73966c393e2cbc647849aae63725d5fc
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: matTeleporterClean
-    second: {fileID: 2100000, guid: f83a5ff362cc6cd41880905b627ca9e7, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
