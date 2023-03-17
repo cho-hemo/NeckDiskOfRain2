@@ -2,32 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(testPlayerController))]
+[RequireComponent(typeof(TestPlayerController))]
 [RequireComponent(typeof(GunController))]
-public class testPlayer : MonoBehaviour
+public class TestPlayer : LivingThings // ÀÌ³à¼®ÀÌ ÀÌ¹Ì ¸ð³ë¿Í ¾ÆÀÌµ© °¡Áö°í ÀÖÀ½
 {
     public float moveSpeed = 5f;
 
     Camera viewCamera;
-    testPlayerController controller;
+    TestPlayerController controller;
     GunController gunController;
 
-    void Start()
+    public override void Start()
     {
-        controller = GetComponent<testPlayerController>();
+        base.Start();
+        controller = GetComponent<TestPlayerController>();
         gunController = GetComponent<GunController>();
         viewCamera = Camera.main;
     }
 
     void Update()
     {
-        // ï¿½Ìµï¿½ ï¿½Ô·ï¿½
+        // Movement input
         Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        // GetAxis (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)  GetAxisRaw (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ x)
+        //
         Vector3 moveVelocity = moveInput.normalized * moveSpeed;
         controller.Move(moveVelocity);
 
-        // ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½
+        // Look input
         Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayDistance;
@@ -39,13 +40,9 @@ public class testPlayer : MonoBehaviour
             controller.LookAt(point);
         }
 
-<<<<<<< HEAD:RiskOfRain2/Assets/YMG/Script/testPlayer.cs
-        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-        if (Input.GetMouseButton(0))
-=======
-        // ¹«±â Á¶ÀÛ
+
+        // Weapo input
         if (Input.GetMouseButton(0)) // 0 == ¸¶¿ì½º ¿ÞÂÊ ¹öÆ°
->>>>>>> 677080379c4cdb867b5feeb57c84cb9e234685b9:RiskOfRain2/Assets/YMG/Script/Player.cs
         {
             gunController.Shoot();
         }

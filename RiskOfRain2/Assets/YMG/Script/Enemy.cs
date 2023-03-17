@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof (NavMeshAgent))]
-public class Enemy : MonoBehaviour
+public class Enemy : LivingThings
 {
     NavMeshAgent pathfinder;
     Transform target;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         pathfinder= GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
 

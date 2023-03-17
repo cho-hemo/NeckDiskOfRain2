@@ -264,7 +264,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &292127483
 GameObject:
@@ -394,8 +394,7 @@ Transform:
   m_LocalPosition: {x: -13.96, y: 0, z: -5.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4694086328653310490}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 78.81, z: 0}
@@ -811,6 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ed1bbc8ca6a134bba5315fa8a2ad62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 5
 --- !u!1 &977997618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,8 +1046,8 @@ GameObject:
   - component: {fileID: 1305616413}
   - component: {fileID: 1305616414}
   - component: {fileID: 1305616417}
-  - component: {fileID: 1305616419}
-  - component: {fileID: 1305616418}
+  - component: {fileID: 1305616422}
+  - component: {fileID: 1305616421}
   - component: {fileID: 1305616420}
   m_Layer: 3
   m_Name: Player
@@ -1134,7 +1134,7 @@ Transform:
   m_Children:
   - {fileID: 1224073965}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1305616417
 Rigidbody:
@@ -1152,31 +1152,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1305616418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305616412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cc67074392b3514fa43553a4667d92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
---- !u!114 &1305616419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305616412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7ffbdcd56c080b4d91ef64686d6eb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1305616420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,6 +1166,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHold: {fileID: 1224073965}
   startingGun: {fileID: 4007725152722575598, guid: 63c66cd9f3fbbf54daefc4a005644557, type: 3}
+--- !u!114 &1305616421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305616412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc67074392b3514fa43553a4667d92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 10
+  moveSpeed: 5
+--- !u!114 &1305616422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305616412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ffbdcd56c080b4d91ef64686d6eb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1532291566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,8 +2500,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5363626669893857440}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.63479793, z: -0, w: 0.77267826}
+  m_LocalPosition: {x: -13.96, y: 0, z: -5.08}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2508,8 +2509,8 @@ Transform:
   - {fileID: 1421075925914227804}
   - {fileID: 53818477783383993}
   - {fileID: 8262661306770558245}
-  m_Father: {fileID: 376803699}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4723297932638000592
 GameObject:
@@ -2750,7 +2751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &5363626669893857441
 Animator:
   serializedVersion: 5

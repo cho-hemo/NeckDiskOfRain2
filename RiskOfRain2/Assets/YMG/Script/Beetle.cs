@@ -35,7 +35,7 @@ public class Beetle : Monster
     void Start()
     {
         cam = Camera.main;
-        target = testPlayerManager.instance.player.transform;
+        target = TestPlayerManager.instance.player.transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         //nowMode = idleAnime;
