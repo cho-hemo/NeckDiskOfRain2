@@ -141,8 +141,8 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 
     public void Start()
     {
-        GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
         GameObject.Find("Player").TryGetComponent(out player);
+        GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
     }
 
     ///<summary>움직임에 관련된 입력을 받는 함수</summary>
