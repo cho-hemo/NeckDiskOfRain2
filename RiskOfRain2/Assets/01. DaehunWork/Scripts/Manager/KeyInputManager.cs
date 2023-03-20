@@ -141,13 +141,8 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 
     public void Start()
     {
-<<<<<<< HEAD:RiskOfRain2/Assets/01. DaehunWork/Scripts/Player/PlayerKeyInput.cs
-        TryGetComponent(out player);
-
-=======
         GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
         GameObject.Find("Player").TryGetComponent(out player);
->>>>>>> 894ed5145f2b15153b31a8ef386a7282a7e385f1:RiskOfRain2/Assets/01. DaehunWork/Scripts/Manager/KeyInputManager.cs
     }
 
     ///<summary>움직임에 관련된 입력을 받는 함수</summary>
