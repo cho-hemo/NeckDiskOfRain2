@@ -5,13 +5,14 @@ using UnityEngine.Events;
 
 public class UIManager : SingletonBase<UIManager>
 {
+    public UnityEvent interactionEvent = new UnityEvent();
     private PlayerUiManager _playerUiManagerCs = default;
+
 
     public new void Awake()
     {
         base.Awake();
         _playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
-
     }
 
     /// <summary>

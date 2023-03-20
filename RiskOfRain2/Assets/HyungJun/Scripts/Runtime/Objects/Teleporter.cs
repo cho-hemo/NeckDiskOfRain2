@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleporter : MonoBehaviour
+public class Teleporter : InteractionObjects
 {
     private bool _isActive = true;
     private void OnTriggerEnter(Collider other)

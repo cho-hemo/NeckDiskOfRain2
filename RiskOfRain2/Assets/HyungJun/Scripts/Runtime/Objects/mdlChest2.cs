@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mdlChest2 : MonoBehaviour
+public class mdlChest2 : InteractionObjects
 {
     private GameObject _neededMoneyObj = default;
     private Animator _chestAni = default;
@@ -53,7 +53,7 @@ public class mdlChest2 : MonoBehaviour
     {
         if (other.tag.Equals("Player") && !_chestAni.GetBool("Open"))
         {
-            // 플레이어가 상자와의 거리가 0.1f 일경우
+            // 플레이어가 상자와의 거리가 2f 일경우
             if (Vector3.Distance(gameObject.transform.position, other.transform.position) <= 2f)
             {
                 if (_inArea)
@@ -65,6 +65,7 @@ public class mdlChest2 : MonoBehaviour
                 {
                     _chestAni.SetBool("Open", true);
                     Debug.Log("[mdlChest2] OntriggerStay : 상자 오픈!");
+                    _neededMoneyObj.SetActive(false);
                     UIManager.Instance.PopupUIActive("", false);
                 }
                 // 플레이어와 상자의 거리를 계산해서 적다면 열어주기

@@ -70,7 +70,7 @@ public partial class PlayerUiManager : MonoBehaviour
     /// <summary>플레이어 레벨을 반환하는 프로퍼티</summary>
     public int PlayerLevel { get; private set; } = 1;
 
-    public int PlayerMoney { get; private set; } = 0;
+    public int PlayerMoney { get; private set; } = 100;
     public int PlayerLunaCoin { get; private set; } = 0;
 
     /// <summary>난이도를 설정하는 변수</summary>
@@ -327,6 +327,12 @@ public partial class PlayerUiManager : MonoBehaviour
         StartCoroutine(SkillActive(num, coolTime_));
     }
 
+
+    /// <summary>
+    /// 팝업 UI를 관리하는 함수
+    /// </summary>
+    /// <param name="text_"></param>
+    /// <param name="active_"></param>
     public void InteractionPopupUIActive(string text_, bool active_)
     {
         if (active_)
