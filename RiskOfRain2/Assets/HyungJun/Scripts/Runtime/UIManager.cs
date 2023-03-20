@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Singletone : GioleSingletone<Singletone>
+public class UIManager : SingletonBase<UIManager>
 {
     private PlayerUiManager _uiManagerCs = default;
 
-    public override void Awake()
+    public new void Awake()
     {
         base.Awake();
         _uiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
-    }
 
+    }
 
     /// <summary>
     /// 플레이어의 상호작용 팝업 UI를 활성화 하는 함수

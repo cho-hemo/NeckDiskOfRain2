@@ -138,6 +138,7 @@ public class PlayerKeyInput : MonoBehaviour
     public void Start()
     {
         TryGetComponent(out player);
+
     }
 
     ///<summary>움직임에 관련된 입력을 받는 함수</summary>

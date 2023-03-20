@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        pathfinder= GetComponent<NavMeshAgent>();
+        pathfinder = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
         StartCoroutine(UpdatePath());
@@ -22,11 +22,11 @@ public class Enemy : MonoBehaviour
         //pathfinder.SetDestination(target.position);
     }
 
-    IEnumerator UpdatePath() 
+    IEnumerator UpdatePath()
     {
         float refreshRate = 1f;
 
-        while (target != null) 
+        while (target != null)
         {
             Vector3 targetPosition = new Vector3(target.position.x, target.position.z);
             pathfinder.SetDestination(targetPosition);

@@ -143,6 +143,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     }
 
+
     public void TakeDamage(float damage_)
     {
         if (Osp) return;

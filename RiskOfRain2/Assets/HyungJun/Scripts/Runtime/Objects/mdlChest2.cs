@@ -59,13 +59,13 @@ public class mdlChest2 : MonoBehaviour
                 if (_inArea)
                 {
                     _inArea = false;
-                    Singletone.Instance.PopupUIActive(" 상자열기", true);
+                    UIManager.Instance.PopupUIActive(" 상자열기", true);
                 }
-                else if (Input.GetKeyDown(KeyCode.E) && Singletone.Instance.IsPayMoney(-NeededMoney))
+                else if (Input.GetKeyDown(KeyCode.E) && UIManager.Instance.IsPayMoney(-NeededMoney))
                 {
                     _chestAni.SetBool("Open", true);
                     Debug.Log("[mdlChest2] OntriggerStay : 상자 오픈!");
-                    Singletone.Instance.PopupUIActive("", false);
+                    UIManager.Instance.PopupUIActive("", false);
                 }
                 // 플레이어와 상자의 거리를 계산해서 적다면 열어주기
             }
@@ -73,7 +73,7 @@ public class mdlChest2 : MonoBehaviour
             else if (!_inArea)
             {
                 _inArea = true;
-                Singletone.Instance.PopupUIActive("", false);
+                UIManager.Instance.PopupUIActive("", false);
             }
             // 가격이 플레이어 보기
             _neededMoneyObj.transform.LookAt(other.transform);

@@ -89,7 +89,6 @@ public partial class PlayerUiManager : MonoBehaviour
         // } DebugMode
 
 
-
         GameObject uiObj_ = GioleFunc.GetRootObj(GioleData.PLAYER_UI_CANVAS_OBJ_NAME);
 
         // Init Instance
@@ -177,6 +176,7 @@ public partial class PlayerUiManager : MonoBehaviour
 
     }
 
+
     private void Update()
     {
         // 타이머 반영
@@ -261,8 +261,6 @@ public partial class PlayerUiManager : MonoBehaviour
         _hpBarObj.FilledImageControll(_hpBarValue);
     }
 
-
-
     /// <summary>
     /// 플레이어의 돈을 관리하는 함수
     /// </summary>
@@ -319,6 +317,11 @@ public partial class PlayerUiManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 스킬을 발동하는 함수
+    /// </summary>
+    /// <param name="num">발동 시킬 스킬의 넘버 0 ~ 4</param>
+    /// <param name="coolTime_">설정할 쿨타임</param>
     public void PlayerSkillActiveIcon(int num, float coolTime_)
     {
         StartCoroutine(SkillActive(num, coolTime_));
