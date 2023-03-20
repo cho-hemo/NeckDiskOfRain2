@@ -32,4 +32,9 @@ public class Teleporter : MonoBehaviour
             UIManager.Instance.PopupUIActive("", false);
         }
     }
+
+
+
+
+
 }
