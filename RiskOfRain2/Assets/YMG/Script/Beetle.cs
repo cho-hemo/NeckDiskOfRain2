@@ -7,23 +7,23 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class Beetle : Monster
 {
-    public float lookRange = 20f; // �þ� �Ÿ�
-    public float attackRange = 3f; // ���� �Ÿ�
+    public float lookRange = 20f; 
+    public float attackRange = 3f; 
     Transform target;
     NavMeshAgent navMeshAgent;
 
-    public LayerMask targetLayer; // ���� ��� ���̾�
+    public LayerMask targetLayer; 
     public LayerMask movementMask;
 
     public Animator beetleAnimator;
 
-    public float speed = default; // �̵� �ӵ�
-    public float attack = default; // ���ݷ�
-    private float timeBetAttack = 0.5f; // ���� ����
-    private float lastAttackTime;  // ������ ���� ����
+    public float speed = default; 
+    public float attack = default; 
+    private float timeBetAttack = 0.5f; 
+    private float lastAttackTime;  
 
-    public string spawnAnime = ""; // ���� �ִϸ��̼�
-    public string dieAnime = ""; // ��� �ִϸ��̼�
+    public string spawnAnime = ""; 
+    public string dieAnime = ""; 
     private string moveAnime = "isMove";
     private string attackAnime = "isAttack";
     public string idleAnime = "";
@@ -31,6 +31,7 @@ public class Beetle : Monster
     string nowMode = "";
 
     Camera cam;
+
 
     void Start()
     {
@@ -95,6 +96,12 @@ public class Beetle : Monster
         //Debug.Log(beetleAnimator.hasRootMotion);
         //transform.position = beetleAnimator.rootPosition;
     }
+
+    public void CloseAttack() 
+    {
+        
+    }
+
 
     public void MoveToPoint(Vector3 point) 
     {
