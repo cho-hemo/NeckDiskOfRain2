@@ -103,30 +103,41 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     {
         SubSkillInput(value.isPressed);
         player.SubSkill(value.isPressed);
+        // { 2023-03-20 / HyungJun / PlayerUIWorks
+        playerUIManager.PlayerSkillActiveIcon(1, 5f);
     }
 
+    // Shift skill
     public void OnUtilitySkill(InputValue value)
     {
         UtilitySkillInput(value.isPressed);
         player.UtilitySkill(value.isPressed);
+        playerUIManager.PlayerSkillActiveIcon(2, 5f);
     }
 
+    // R skill
     public void OnSpecialSkill(InputValue value)
     {
         SpecialSkillInput(value.isPressed);
         player.SpecialSkill(value.isPressed);
+        playerUIManager.PlayerSkillActiveIcon(3, 5f);
     }
 
+    // Q KeyInput
     public void OnUseEquipment(InputValue value)
     {
         UseEquipmentInput(value.isPressed);
+        playerUIManager.PlayerSkillActiveIcon(4, 5f);
+        // } 2023-03-20 / HyungJun / PlayerUIWorks
     }
 
+    // E KeyInput
     public void OnInteraction(InputValue value)
     {
         InteractionInput(value.isPressed);
     }
 
+    // Tap KeyInput
     public void OnInformationScreen(InputValue value)
     {
         InformationScreenInput(value.isPressed);
@@ -142,7 +153,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     public void Start()
     {
         GameObject.Find("Player").TryGetComponent(out player);
-        GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
+        GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);
     }
 
     ///<summary>움직임에 관련된 입력을 받는 함수</summary>

@@ -54,7 +54,7 @@ public class mdlChest2 : MonoBehaviour
         if (other.tag.Equals("Player") && !_chestAni.GetBool("Open"))
         {
             // 플레이어가 상자와의 거리가 0.1f 일경우
-            if (Vector3.Distance(gameObject.transform.position, other.transform.position) <= 0.1f)
+            if (Vector3.Distance(gameObject.transform.position, other.transform.position) <= 2f)
             {
                 if (_inArea)
                 {
@@ -78,6 +78,8 @@ public class mdlChest2 : MonoBehaviour
             // 가격이 플레이어 보기
             _neededMoneyObj.transform.LookAt(other.transform);
         }
-    }
+    }       // OnTriggerStay()
 
-}       // OntriggerStay()
+
+
+}       // class mdlChest2

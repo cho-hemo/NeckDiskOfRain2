@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public class UIManager : SingletonBase<UIManager>
 {
-    private PlayerUiManager _uiManagerCs = default;
+    private PlayerUiManager _playerUiManagerCs = default;
 
     public new void Awake()
     {
         base.Awake();
-        _uiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
+        _playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
 
     }
 
@@ -21,7 +21,7 @@ public class UIManager : SingletonBase<UIManager>
     /// <param name="active_">True : 활성화, false : 비활성화</param>
     public void PopupUIActive(string text_, bool active_)
     {
-        _uiManagerCs.InteractionPopupUIActive(text_, active_);
+        _playerUiManagerCs.InteractionPopupUIActive(text_, active_);
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ public class UIManager : SingletonBase<UIManager>
     /// <returns>성공시 True, 실패시 False</returns>
     public bool IsPayMoney(int money_)
     {
-        return _uiManagerCs.PlayerMoneyControl(money_);
+        return _playerUiManagerCs.PlayerMoneyControl(money_);
     }
 
 
