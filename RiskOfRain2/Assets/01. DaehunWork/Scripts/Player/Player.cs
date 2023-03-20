@@ -123,9 +123,6 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     //     public PlayerKeyInput Input { get { return _input; } protected set { _input = value; } }
     // #endif
 
-
-
-
     protected void Start()
     {
         StateMachine = new StateMachine();
@@ -299,13 +296,13 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     }
 
-
-
+    #region IPlayerSkill
     public abstract void PassiveSkill();
     public abstract void MainSkill(bool isPressed_);
     public abstract void SubSkill(bool isPressed_);
     public abstract void UtilitySkill(bool isPressed_);
     public abstract void SpecialSkill(bool isPressed_);
+    #endregion
 
     #region Observer Pattern
     protected List<IObserver> _observers = new List<IObserver>();
@@ -318,6 +315,14 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public void RemoveObserver(IObserver observer)
     {
         Observers.Remove(observer);
+    }
+
+    public void NotifyObservers(object data)
+    {
+        foreach (var observer in Observers)
+        {
+            observer.UpdateDate(data);
+        }
     }
 
     public void NotifyObservers()
