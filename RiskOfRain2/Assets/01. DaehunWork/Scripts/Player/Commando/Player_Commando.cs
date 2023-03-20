@@ -38,10 +38,11 @@ public class Player_Commando : Player
 
     public override void SubSkill(bool isPressed_)
     {
-        if (isPressed_)
-        {
-            PlayerAnimator.SetBool(Global.PLAYER_IS_SUB_SKILL, isPressed_);
-        }
+        PlayerAnimator.SetTrigger(Global.PLAYER_SUB_SKILL);
+        // if (isPressed_)
+        // {
+        //     PlayerAnimator.SetBool(Global.PLAYER_IS_SUB_SKILL, isPressed_);
+        // }
     }
 
     public override void UtilitySkill(bool isPressed_)

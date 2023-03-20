@@ -302,6 +302,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
             else
             {
                 StateMachine.SetState(new Player_WalkState(this));
+
             }
         }
     }
@@ -310,7 +311,8 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     public void Look(Vector2 value)
     {
-        Global.Log($"Look : {value}");
+        Global.Log($"Look Debug : {value}");
+
         if (value.sqrMagnitude >= 0.01f)
         {
             CinemachineTargetYaw += value.x + Time.deltaTime;
