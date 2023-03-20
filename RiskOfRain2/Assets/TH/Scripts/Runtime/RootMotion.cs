@@ -51,8 +51,8 @@ public class RootMotion : MonoBehaviour
 
         if (_isMove)
         {
-            //_agent.SetDestination(_player.transform.position);
-            //SyncRootPosAndAgent();
+            _agent.SetDestination(_player.transform.position);
+            SyncRootPosAndAgent();
         }
     }
 
@@ -89,34 +89,29 @@ public class RootMotion : MonoBehaviour
 
     private void OnAnimatorMove()
     {
-        //Vector3 nextPos = _animator.rootPosition;
-        //nextPos.y = _agent.nextPosition.y;
+        Vector3 nextPos = _animator.rootPosition;
+        nextPos.y = _agent.nextPosition.y;
 
-        //transform.position = nextPos;
+        transform.position = nextPos;
 
-        //_agent.nextPosition = transform.position;
-        transform.position += _animator.deltaPosition;
+        _agent.nextPosition = transform.position;
+        //transform.position += _animator.deltaPosition;
 
-		//footsteps
-		for (int i = 0; i < footTargets.Length; i++)
-		{
-			var foot = footTargets[i];
-			var ray = new Ray(foot.transform.position + Vector3.up * 0.5f, Vector3.down);
-			var hitInfo = new RaycastHit();
-			if (Physics.SphereCast(ray, 0.05f, out hitInfo, 0.50f))
-			{
-				Vector3 prevPos = foot.position;
-				//Debug.Log($"{i}. {hitInfo}");
-				foot.position = hitInfo.point + Vector3.up * 0.05f;
+        ////footsteps
+        //for (int i = 0; i < footTargets.Length; i++)
+        //{
+        //	var foot = footTargets[i];
+        //	var ray = new Ray(foot.transform.position + Vector3.up * 0.5f, Vector3.down);
+        //	var hitInfo = new RaycastHit();
+        //	if (Physics.SphereCast(ray, 0.05f, out hitInfo, 0.50f))
+        //	{
+        //		Vector3 prevPos = foot.position;
+        //		//Debug.Log($"{i}. {hitInfo}");
+        //		foot.position = hitInfo.point + Vector3.up * 0.05f;
 
-				if (prevPos != foot.position && i == 0)
-					Debug.Log($"{i}. [prev]{prevPos} [curr]{foot.position}");
-			}
-		}
-	}
-
-    private void LateUpdate()
-	{
-
+        //		if (prevPos != foot.position && i == 0)
+        //			Debug.Log($"{i}. [prev]{prevPos} [curr]{foot.position}");
+        //	}
+        //}
     }
 }
