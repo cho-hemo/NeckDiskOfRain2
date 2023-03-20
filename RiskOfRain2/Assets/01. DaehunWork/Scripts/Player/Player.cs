@@ -7,6 +7,19 @@ using UnityEngine.InputSystem;
 public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 {
     #region Inspector
+    [Header("Player Controller")]
+    [SerializeField]
+    [Tooltip("카메라 윗 방향 최대 각도")]
+    protected float _topClamp;
+
+    [SerializeField]
+    [Tooltip("카메라 아랫 방향 최대 각도")]
+    protected float _bottomClamp;
+    // [SerializeField]
+    // [Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
+    // public float CameraAngleOverride = 0.0f;
+
+    [Space(5)]
     [Header("Player Stat")]
 
     [SerializeField]
@@ -28,6 +41,10 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     [SerializeField]
     [Tooltip("공격 속도")]
     protected float _attackDelay;
+
+    [SerializeField]
+    [Tooltip("스킬 쿨타임")]
+    protected List<float> _skillCoolTime = default;
 
     [SerializeField]
     [Tooltip("체력 회복")]
@@ -90,14 +107,25 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     [SerializeField]
     [Tooltip("Charcter Controller")]
     protected CharacterController _characterController;
+
+    [SerializeField]
+    [Tooltip("CameraTarget")]
+    protected GameObject _cinemachineCameraTarget;
     #endregion
 
+    // cinemachine
+    protected float _cinemachineTargetYaw;
+    protected float _cinemachineTargetPitch;
+
     #region Property
+    public float TopClamp { get { return _topClamp; } protected set { _topClamp = value; } }
+    public float BottomClamp { get { return _bottomClamp; } protected set { _bottomClamp = value; } }
     public float MaxHp { get { return _maxHp; } protected set { _maxHp = value; } }
     public float CurrentHp { get { return _currentHp; } protected set { _currentHp = value; } }
     public float Defense { get { return _defense; } protected set { _defense = value; } }
     public float AttackDamage { get { return _attackDamage; } protected set { _attackDamage = value; } }
     public float AttackDelay { get { return _attackDelay; } protected set { _attackDelay = value; } }
+    public List<float> SkillCoolTime { get { return _skillCoolTime; } protected set { _skillCoolTime = value; } }
     public float HealthRegen { get { return _healthRegen; } protected set { _healthRegen = value; } }
     public float Speed { get { return _speed; } protected set { _speed = value; } }
     public float SprintSpeed { get { return _sprintSpeed; } protected set { _sprintSpeed = value; } }
@@ -113,6 +141,9 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public StateMachine StateMachine { get { return _stateMachine; } protected set { _stateMachine = value; } }
     public Animator PlayerAnimator { get { return _playerAnimator; } protected set { _playerAnimator = value; } }
     public CharacterController CharacterController { get { return _characterController; } protected set { _characterController = value; } }
+    public GameObject CinemachineCameraTarget { get { return _cinemachineCameraTarget; } protected set { _cinemachineCameraTarget = value; } }
+    public float CinemachineTargetYaw { get { return _cinemachineTargetYaw; } protected set { _cinemachineTargetYaw = value; } }
+    public float CinemachineTargetPitch { get { return _cinemachineTargetPitch; } protected set { _cinemachineTargetPitch = value; } }
     #endregion
 
     // #if ENABLE_INPUT_SYSTEM
@@ -205,7 +236,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public void Move(Vector2 value)
     {
         // // set target speed based on move speed, sprint speed and if sprint is pressed
-        // float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+        //float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
         // // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -275,9 +306,27 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         }
     }
 
+
+
     public void Look(Vector2 value)
     {
+        Global.Log($"Look : {value}");
+        if (value.sqrMagnitude >= 0.01f)
+        {
+            CinemachineTargetYaw += value.x + Time.deltaTime;
+            CinemachineTargetPitch += value.y + Time.deltaTime;
+        }
 
+        CinemachineTargetYaw = ClampAngle(CinemachineTargetYaw, float.MinValue, float.MaxValue);
+        CinemachineTargetPitch = ClampAngle(CinemachineTargetPitch, BottomClamp, TopClamp);
+        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(CinemachineTargetPitch, CinemachineTargetYaw, 0.0f);
+    }
+
+    private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+    {
+        if (lfAngle < -360f) lfAngle += 360f;
+        if (lfAngle > 360f) lfAngle -= 360f;
+        return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
     public void Jump(bool isPressed)

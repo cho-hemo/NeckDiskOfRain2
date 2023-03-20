@@ -103,7 +103,7 @@ namespace StarterAssets
 #endif
         private Animator _animator;
         private CharacterController _controller;
-        private KeyInputManager _input;
+        private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
@@ -138,8 +138,7 @@ namespace StarterAssets
 
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
-            //_input = GetComponent<PlayerKeyInput>();
-            _input = KeyInputManager.Instance;
+            _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
 #else
@@ -187,7 +186,7 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                //_animator.SetBool(_animIDGrounded, Grounded);
+                _animator.SetBool(_animIDGrounded, Grounded);
             }
         }
 
@@ -275,8 +274,8 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                // _animator.SetFloat(_animIDSpeed, _animationBlend);
-                // _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                _animator.SetFloat(_animIDSpeed, _animationBlend);
+                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
 
@@ -290,8 +289,8 @@ namespace StarterAssets
                 // update animator if using character
                 if (_hasAnimator)
                 {
-                    // _animator.SetBool(_animIDJump, false);
-                    // _animator.SetBool(_animIDFreeFall, false);
+                    _animator.SetBool(_animIDJump, false);
+                    _animator.SetBool(_animIDFreeFall, false);
                 }
 
                 // stop our velocity dropping infinitely when grounded
@@ -309,7 +308,7 @@ namespace StarterAssets
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        //_animator.SetBool(_animIDJump, true);
+                        _animator.SetBool(_animIDJump, true);
                     }
                 }
 
@@ -334,7 +333,7 @@ namespace StarterAssets
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        //_animator.SetBool(_animIDFreeFall, true);
+                        _animator.SetBool(_animIDFreeFall, true);
                     }
                 }
 

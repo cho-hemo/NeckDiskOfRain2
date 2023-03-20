@@ -75,6 +75,8 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
         if (cursorInputForLook)
         {
             LookInput(value.Get<Vector2>());
+            player.Look(value.Get<Vector2>());
+            //Global.Log($"Mouse Pos : {value.Get<Vector2>()}");
         }
     }
 
@@ -142,7 +144,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     public void Start()
     {
         GameObject.Find("Player").TryGetComponent(out player);
-        GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
+        //GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
     }
 
     ///<summary>움직임에 관련된 입력을 받는 함수</summary>

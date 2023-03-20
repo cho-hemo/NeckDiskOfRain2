@@ -33,12 +33,15 @@ public class Player_Commando : Player
 
     public override void MainSkill(bool isPressed_)
     {
-        PlayerAnimator.SetBool("IsMainSkill", isPressed_);
+        PlayerAnimator.SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed_);
     }
 
     public override void SubSkill(bool isPressed_)
     {
-        PlayerAnimator.SetTrigger("SubSkill");
+        if (isPressed_)
+        {
+            PlayerAnimator.SetBool(Global.PLAYER_IS_SUB_SKILL, isPressed_);
+        }
     }
 
     public override void UtilitySkill(bool isPressed_)
@@ -51,6 +54,9 @@ public class Player_Commando : Player
 
     public override void SpecialSkill(bool isPressed_)
     {
-
+        if (isPressed_)
+        {
+            PlayerAnimator.SetBool(Global.PLAYER_IS_SPECIAL_SKILL, isPressed_);
+        }
     }
 }

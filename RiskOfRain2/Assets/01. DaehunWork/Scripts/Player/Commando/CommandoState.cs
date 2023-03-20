@@ -12,7 +12,7 @@ public class Player_Commando_RollState : IState
         Global.Log("Player_Commando_RollState Debug : OnEnter()");
         _player.PlayerAnimator.SetFloat("PosX", 0);
         _player.PlayerAnimator.SetFloat("PosY", 1);
-        _player.PlayerAnimator.SetTrigger("Roll");
+        _player.PlayerAnimator.SetBool(Global.PLAYER_IS_UTILITY_SKILL, true);
     }
 
     public void UpdateState()
