@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerKeyInput : MonoBehaviour
+public class KeyInputManager : SingletonBase<KeyInputManager>
 {
     [Header("캐릭터 입력 값")]
 
@@ -54,6 +54,10 @@ public class PlayerKeyInput : MonoBehaviour
     [Space(5)]
     [Header("플레이어")]
     public Player player = default;
+
+    [Space(5)]
+    [Header("플레이어 UI Manager")]
+    public PlayerUiManager playerUIManager = default;
 
 #if ENABLE_INPUT_SYSTEM
 
@@ -137,7 +141,8 @@ public class PlayerKeyInput : MonoBehaviour
 
     public void Start()
     {
-        TryGetComponent(out player);
+        GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
+        GameObject.Find("Player").TryGetComponent(out player);
     }
 
     ///<summary>움직임에 관련된 입력을 받는 함수</summary>

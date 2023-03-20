@@ -103,7 +103,7 @@ namespace StarterAssets
 #endif
         private Animator _animator;
         private CharacterController _controller;
-        private PlayerKeyInput _input;
+        private KeyInputManager _input;
         private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
@@ -138,7 +138,8 @@ namespace StarterAssets
 
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
-            _input = GetComponent<PlayerKeyInput>();
+            //_input = GetComponent<PlayerKeyInput>();
+            _input = KeyInputManager.Instance;
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
 #else

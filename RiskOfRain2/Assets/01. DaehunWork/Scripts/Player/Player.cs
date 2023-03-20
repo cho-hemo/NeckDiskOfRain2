@@ -123,9 +123,6 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     //     public PlayerKeyInput Input { get { return _input; } protected set { _input = value; } }
     // #endif
 
-
-
-
     protected void Start()
     {
         StateMachine = new StateMachine();
