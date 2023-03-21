@@ -1,14 +1,10 @@
 using System;
 using UnityEngine;
 
+
+
 public abstract class MonsterState
 {
-    protected const string ANIM_SPAWM = "OnSpawn";
-    protected const string ANIM_IDLE = "OnIdle";
-    protected const string ANIM_MOVE = "OnMove";
-    protected const string ANIM_ACTION = "OnAction";
-    protected const string ANIM_DEATH = "OnDeath";
-
     protected MonsterFSM _fsm;
     protected Animator _anim;
 
@@ -48,7 +44,7 @@ public class MonsterIdle : MonsterState
 	public override void Enter()
 	{
 		base.Enter();
-		_anim.SetTrigger(ANIM_IDLE);
+		_anim.SetTrigger(Functions.MONSTER_ANIM_IDLE);
 	}
 
 	public override void Loop()
@@ -57,7 +53,7 @@ public class MonsterIdle : MonsterState
 
 		if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
 		{
-			_fsm.ChangeState(new MonsterAction(_fsm));
+			_fsm.ChangeState(new MonsterSkill(_fsm));
 		}
 		else if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrDetectRange)
 		{
@@ -79,7 +75,7 @@ public class MonsterMove : MonsterState
     public override void Enter()
     {
         base.Enter();
-        _anim.SetTrigger(ANIM_MOVE);
+        _anim.SetTrigger(Functions.MONSTER_ANIM_MOVE);
     }
 
     public override void Loop()
@@ -88,7 +84,7 @@ public class MonsterMove : MonsterState
         if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
         {
 			Debug.Log("Change Attack");
-            _fsm.ChangeState(new MonsterAction(_fsm));
+            _fsm.ChangeState(new MonsterSkill(_fsm));
         }
         else
         {
@@ -103,9 +99,9 @@ public class MonsterMove : MonsterState
     }
 }
 
-public class MonsterAction : MonsterState
+public class MonsterSkill : MonsterState
 {
-    public MonsterAction(MonsterFSM fsm) : base(fsm)
+    public MonsterSkill(MonsterFSM fsm) : base(fsm)
     {
 
     }
@@ -113,7 +109,7 @@ public class MonsterAction : MonsterState
     public override void Enter()
     {
         base.Enter();
-        _anim.SetTrigger(ANIM_ACTION);
+        _anim.SetTrigger(Functions.MONSTER_ANIM_SKILL);
     }
 
     public override void Loop()
@@ -141,7 +137,7 @@ public class MonsterSpawn : MonsterState
     public override void Enter()
     {
         base.Enter();
-        _anim.SetTrigger(ANIM_SPAWM);
+        _anim.SetTrigger(Functions.MONSTER_ANIM_SPAWM);
     }
 
     public override void Loop()
@@ -169,7 +165,7 @@ public class MonsterDeath : MonsterState
     public override void Enter()
     {
         base.Enter();
-        _anim.SetTrigger(ANIM_DEATH);
+        _anim.SetTrigger(Functions.MONSTER_ANIM_DEATH);
     }
 
     public override void Loop()
@@ -183,7 +179,7 @@ public class MonsterDeath : MonsterState
     }
 }
 
-public class MonsterAction1 : MonsterAction
+public class MonsterAction1 : MonsterSkill
 {
     public MonsterAction1(MonsterFSM fsm) : base(fsm)
     {

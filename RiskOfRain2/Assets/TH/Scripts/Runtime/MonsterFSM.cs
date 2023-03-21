@@ -13,7 +13,7 @@ public class MonsterFSM : MonoBehaviour
     public bool IsAnimationEnd { get; private set; } = false;
 
     private MonsterState currentState;
-    private List<MonsterAction> skillList = new List<MonsterAction>();
+    private List<MonsterSkill> skillList = new List<MonsterSkill>();
 
     private float _detectRange = 200;
     private float _maxAttackRange = 50;

@@ -69,7 +69,6 @@ public class RootMotion : MonoBehaviour
 
     public void Stop()
     {
-        Debug.Log("Stop");
         _animator.applyRootMotion = false;
         _agent.updatePosition = false;
         _agent.updateRotation = false;
