@@ -1,17 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public abstract class MonsterState
 {
+    protected const string ANIM_SPAWM = "OnSpawn";
+    protected const string ANIM_IDLE = "OnIdle";
+    protected const string ANIM_MOVE = "OnMove";
+    protected const string ANIM_ACTION = "OnAction";
+    protected const string ANIM_DEATH = "OnDeath";
+
     protected MonsterFSM _fsm;
-	protected Animator _anim;
+    protected Animator _anim;
+
+    //
     protected string _animTriggerName;
 
     public MonsterState(MonsterFSM fsm)
     {
         _fsm = fsm;
-		_anim = fsm.GetComponent<Animator>();
+        _anim = fsm.GetComponent<Animator>();
         Enter();
     }
 
@@ -31,27 +38,69 @@ public abstract class MonsterState
     }
 }
 
-public class MonsterMove : MonsterState
+public class MonsterIdle : MonsterState
 {
-	public MonsterMove(MonsterFSM fsm) : base(fsm)
+	public MonsterIdle(MonsterFSM fsm) : base(fsm)
 	{
 
 	}
 
 	public override void Enter()
-    {
+	{
 		base.Enter();
-        _animTriggerName = "OnMove";
-    }
+		_anim.SetTrigger(ANIM_IDLE);
+	}
 
 	public override void Loop()
 	{
 		base.Loop();
+
 		if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
 		{
 			_fsm.ChangeState(new MonsterAction(_fsm));
 		}
+		else if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrDetectRange)
+		{
+			_fsm.ChangeState(new MonsterMove(_fsm));
+		}
 	}
+}
+
+public class MonsterMove : MonsterState
+{
+    private RootMotion _rootMotion;
+
+    public MonsterMove(MonsterFSM fsm) : base(fsm)
+    {
+        _rootMotion = _fsm.GetComponent<RootMotion>();
+        _rootMotion.InitMove();
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        _anim.SetTrigger(ANIM_MOVE);
+    }
+
+    public override void Loop()
+    {
+		base.Loop();
+        if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
+        {
+			Debug.Log("Change Attack");
+            _fsm.ChangeState(new MonsterAction(_fsm));
+        }
+        else
+        {
+            _rootMotion.Move();
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        _rootMotion.Stop();
+    }
 }
 
 public class MonsterAction : MonsterState
@@ -63,37 +112,23 @@ public class MonsterAction : MonsterState
 
     public override void Enter()
     {
-		base.Enter();
-		_animTriggerName = "OnAction";
+        base.Enter();
+        _anim.SetTrigger(ANIM_ACTION);
     }
 
     public override void Loop()
     {
-		base.Loop();
-	}
-}
-
-public class MonsterIdle : MonsterState
-{
-    public MonsterIdle(MonsterFSM fsm) : base(fsm)
-    {
-
+        base.Loop();
+        if (_fsm.IsAnimationEnd)
+        {
+            _fsm.ChangeState(new MonsterIdle(_fsm));
+        }
     }
 
-    public override void Enter()
+    public override void Exit()
     {
-		base.Enter();
-		_animTriggerName = "OnIdle";
+        base.Exit();
     }
-
-	public override void Loop()
-	{
-		base.Loop();
-		if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrDetectRange)
-		{
-			_fsm.ChangeState(new MonsterMove(_fsm));
-		}
-	}
 }
 
 public class MonsterSpawn : MonsterState
@@ -105,8 +140,22 @@ public class MonsterSpawn : MonsterState
 
     public override void Enter()
     {
-		base.Enter();
-        _animTriggerName = "OnSpawn";
+        base.Enter();
+        _anim.SetTrigger(ANIM_SPAWM);
+    }
+
+    public override void Loop()
+    {
+        base.Loop();
+        if (_fsm.IsAnimationEnd)
+        {
+            _fsm.ChangeState(new MonsterIdle(_fsm));
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
     }
 }
 
@@ -119,19 +168,19 @@ public class MonsterDeath : MonsterState
 
     public override void Enter()
     {
-		base.Enter();
-		_animTriggerName = "OnDeath";
+        base.Enter();
+        _anim.SetTrigger(ANIM_DEATH);
     }
 
     public override void Loop()
     {
-		base.Loop();
-	}
+        base.Loop();
+    }
 
     public override void Exit()
     {
-		base.Exit();
-	}
+        base.Exit();
+    }
 }
 
 public class MonsterAction1 : MonsterAction
