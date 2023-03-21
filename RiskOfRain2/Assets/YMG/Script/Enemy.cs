@@ -3,55 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof (NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : LivingThings
 {
-    NavMeshAgent pathfinder; // ±æÃ£±â °ü¸®
-    Transform target; // Ã£À» ¸ñÇ¥
+	NavMeshAgent pathfinder; // ï¿½ï¿½Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	Transform target; // Ã£ï¿½ï¿½ ï¿½ï¿½Ç¥
 
-    protected override void Start() // ÀÇ Start() ¿Í °ãÄ§
-    {
-<<<<<<< HEAD
-        pathfinder = GetComponent<NavMeshAgent>();
-=======
-        base.Start();
-        pathfinder= GetComponent<NavMeshAgent>(); // ÇÒ´ç
->>>>>>> f04aa8b4a60290ce456c87dc99869efb5253e9a5
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        // ÇÃ·¹ÀÌ¾î´Â "Player" ÅÂ±×¸¦ °¡Áö°í ÀÖ´Ù
+	protected override void Start() // ï¿½ï¿½ Start() ï¿½ï¿½ ï¿½ï¿½Ä§
+	{
+		base.Start();
+		pathfinder = GetComponent<NavMeshAgent>(); // ï¿½Ò´ï¿½
+		target = GameObject.FindGameObjectWithTag("Player").transform;
+		// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ "Player" ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½
 
-        StartCoroutine(UpdatePath()); // ¹ØÀÇ ÄÚ·çÆ¾ ½ÇÇà
-    }
+		StartCoroutine(UpdatePath()); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
+	}
 
-    void Update()
-    {
-        //pathfinder.SetDestination(target.position);
-        //// ¸ñÀûÁö Å¸°Ù À§Ä¡
-    }
+	void Update()
+	{
+		//pathfinder.SetDestination(target.position);
+		//// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½Ä¡
+	}
 
-<<<<<<< HEAD
-    IEnumerator UpdatePath()
-    {
-        float refreshRate = 1f;
+	IEnumerator UpdatePath()
+	{
+		float refreshRate = 1f;
 
-        while (target != null)
-        {
-            Vector3 targetPosition = new Vector3(target.position.x, target.position.z);
-            pathfinder.SetDestination(targetPosition);
-=======
-    IEnumerator UpdatePath() // ÄÚ·çÆ¾
-    { // ¸Å ÇÁ·¹ÀÓ¸¶´Ù ¾÷µ¥ÀÌÆ® ÇÏÁö ¸»°í, Å¸ÀÌ¸Ó·Î °íÁ¤µÈ °£°Ý
-        float refreshRate = .25f;
-
-        while (target != null) 
-        { // Å¸°ÙÀÌ Á¸ÀçÇÏ´Â µ¿¾È
-            Vector3 targetPosition = new Vector3(target.position.x, 0, target.position.z);
-            if (!dead)
-            {
-                pathfinder.SetDestination(targetPosition);
-            }
->>>>>>> f04aa8b4a60290ce456c87dc99869efb5253e9a5
-            yield return new WaitForSeconds(refreshRate);
-        }
-    }
+		while (target != null)
+		{
+			Vector3 targetPosition = new Vector3(target.position.x, target.position.z);
+			pathfinder.SetDestination(targetPosition);
+			yield return new WaitForSeconds(refreshRate);
+		}
+	}
 }
