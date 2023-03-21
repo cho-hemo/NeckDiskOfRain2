@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Singletone : GioleSingletone<Singletone>
+public class UIManager : SingletonBase<UIManager>
 {
-    private PlayerUiManager _uiManagerCs = default;
+    public UnityEvent interactionEvent = new UnityEvent();
+    private PlayerUiManager _playerUiManagerCs = default;
 
-    public override void Awake()
+
+    public new void Awake()
     {
         base.Awake();
-        _uiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
+        _playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
     }
-
 
     /// <summary>
     /// 플레이어의 상호작용 팝업 UI를 활성화 하는 함수
@@ -20,7 +22,7 @@ public class Singletone : GioleSingletone<Singletone>
     /// <param name="active_">True : 활성화, false : 비활성화</param>
     public void PopupUIActive(string text_, bool active_)
     {
-        _uiManagerCs.InteractionPopupUIActive(text_, active_);
+        _playerUiManagerCs.InteractionPopupUIActive(text_, active_);
     }
 
     /// <summary>
@@ -30,7 +32,7 @@ public class Singletone : GioleSingletone<Singletone>
     /// <returns>성공시 True, 실패시 False</returns>
     public bool IsPayMoney(int money_)
     {
-        return _uiManagerCs.PlayerMoneyControl(money_);
+        return _playerUiManagerCs.PlayerMoneyControl(money_);
     }
 
 

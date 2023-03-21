@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleporter : MonoBehaviour
+public class Teleporter : InteractionObjects
 {
     private bool _isActive = true;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player") && _isActive)
         {
-            Singletone.Instance.PopupUIActive(" 텔레포터 가동..?", true);
+            UIManager.Instance.PopupUIActive(" 텔레포터 가동..?", true);
         }
     }
 
@@ -19,7 +19,7 @@ public class Teleporter : MonoBehaviour
         if (other.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
         {
             _isActive = false;
-            Singletone.Instance.PopupUIActive("", false);
+            UIManager.Instance.PopupUIActive("", false);
 
 
         }
@@ -29,7 +29,12 @@ public class Teleporter : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
-            Singletone.Instance.PopupUIActive("", false);
+            UIManager.Instance.PopupUIActive("", false);
         }
     }
+
+
+
+
+
 }

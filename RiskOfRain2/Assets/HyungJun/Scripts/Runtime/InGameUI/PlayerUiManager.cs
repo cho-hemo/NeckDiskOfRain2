@@ -70,7 +70,7 @@ public partial class PlayerUiManager : MonoBehaviour
     /// <summary>플레이어 레벨을 반환하는 프로퍼티</summary>
     public int PlayerLevel { get; private set; } = 1;
 
-    public int PlayerMoney { get; private set; } = 0;
+    public int PlayerMoney { get; private set; } = 100;
     public int PlayerLunaCoin { get; private set; } = 0;
 
     /// <summary>난이도를 설정하는 변수</summary>
@@ -87,7 +87,6 @@ public partial class PlayerUiManager : MonoBehaviour
         // { DebugMode
         // Time.timeScale = 10f;
         // } DebugMode
-
 
 
         GameObject uiObj_ = GioleFunc.GetRootObj(GioleData.PLAYER_UI_CANVAS_OBJ_NAME);
@@ -177,6 +176,7 @@ public partial class PlayerUiManager : MonoBehaviour
 
     }
 
+
     private void Update()
     {
         // 타이머 반영
@@ -261,8 +261,6 @@ public partial class PlayerUiManager : MonoBehaviour
         _hpBarObj.FilledImageControll(_hpBarValue);
     }
 
-
-
     /// <summary>
     /// 플레이어의 돈을 관리하는 함수
     /// </summary>
@@ -319,11 +317,22 @@ public partial class PlayerUiManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 스킬을 발동하는 함수
+    /// </summary>
+    /// <param name="num">발동 시킬 스킬의 넘버 0 ~ 4</param>
+    /// <param name="coolTime_">설정할 쿨타임</param>
     public void PlayerSkillActiveIcon(int num, float coolTime_)
     {
         StartCoroutine(SkillActive(num, coolTime_));
     }
 
+
+    /// <summary>
+    /// 팝업 UI를 관리하는 함수
+    /// </summary>
+    /// <param name="text_"></param>
+    /// <param name="active_"></param>
     public void InteractionPopupUIActive(string text_, bool active_)
     {
         if (active_)
