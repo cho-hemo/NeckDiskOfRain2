@@ -4164,7 +4164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _topClamp: 70
-  _bottomClamp: -30
+  _bottomClamp: -90
   _maxHp: 0
   _currentHp: 0
   _defense: 0
