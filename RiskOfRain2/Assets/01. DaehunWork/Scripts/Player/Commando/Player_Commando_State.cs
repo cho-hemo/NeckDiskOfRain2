@@ -9,10 +9,8 @@ public class Player_Commando_RollState : IState
 
     public void OnEnter()
     {
-        Global.Log("Player_Commando_RollState Debug : OnEnter()");
-        _player.PlayerAnimator.SetFloat("PosX", 0);
-        _player.PlayerAnimator.SetFloat("PosY", 1);
-        //_player.PlayerAnimator.SetBool(Global.PLAYER_IS_UTILITY_SKILL, true);
+        _player.SetFloat("PosX", _player.InputMove.x);
+        _player.SetFloat("PosY", _player.InputMove.y);
         _player.PlayerAnimator.SetTrigger(Global.PLAYER_UTILITY_SKILL);
     }
 
