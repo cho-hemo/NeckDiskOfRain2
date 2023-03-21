@@ -7,35 +7,36 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class Beetle : Monster
 {
-    public float lookRange = 20f; // �þ� �Ÿ�
-    public float attackRange = 3f; // ���� �Ÿ�
+    public float lookRange = 20f; 
+    public float attackRange = 3f; 
     Transform target;
     NavMeshAgent navMeshAgent;
 
-    public LayerMask targetLayer; // ���� ��� ���̾�
+    public LayerMask targetLayer; 
     public LayerMask movementMask;
 
     public Animator beetleAnimator;
 
-    public float speed = default; // �̵� �ӵ�
-    public float attack = default; // ���ݷ�
-    private float timeBetAttack = 0.5f; // ���� ����
-    private float lastAttackTime;  // ������ ���� ����
+    public float speed = default; 
+    public float attack = default; 
+    //private float timeBetAttack = 0.5f; 
+    //private float lastAttackTime;  
 
-    public string spawnAnime = ""; // ���� �ִϸ��̼�
-    public string dieAnime = ""; // ��� �ִϸ��̼�
+    public string spawnAnime = ""; 
+    public string dieAnime = ""; 
     private string moveAnime = "isMove";
     private string attackAnime = "isAttack";
     public string idleAnime = "";
 
-    string nowMode = "";
+    //string nowMode = "";
 
     Camera cam;
+
 
     void Start()
     {
         cam = Camera.main;
-        target = testPlayerManager.instance.player.transform;
+        target = TestPlayerManager.instance.player.transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         //nowMode = idleAnime;
@@ -58,22 +59,22 @@ public class Beetle : Monster
 
             if (distance <= navMeshAgent.stoppingDistance)
             {
-                // ��ǥ ����
+                
 
-                // ��ǥ ����
+                
                 FaceTarget();
             }
 
         }
-        //Debug.Log($"{distance}");
+        
         if (distance <= attackRange)
         {
             navMeshAgent.SetDestination(target.position);
 
-                //Debug.Log($"��ġ�� / ��Ʋ�� �Ÿ� {distance} ���ߴ� ���� == {navMeshAgent.stoppingDistance}");
+            
             if (distance <= navMeshAgent.stoppingDistance + attackRange)
             {
-                Debug.Log("��Ʋ�� ������");
+                
                 navMeshAgent.SetDestination(transform.position);
                 CloseCombat();
             }
@@ -95,6 +96,12 @@ public class Beetle : Monster
         //Debug.Log(beetleAnimator.hasRootMotion);
         //transform.position = beetleAnimator.rootPosition;
     }
+
+    public void CloseAttack() 
+    {
+        
+    }
+
 
     public void MoveToPoint(Vector3 point) 
     {

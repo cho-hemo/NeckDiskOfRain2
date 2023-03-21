@@ -6,6 +6,10 @@ TagManager:
   tags:
   - CinemachineTarget
   - Bullet
+  - Weapon
+  - Melee
+  - Floor
+  - Wall
   layers:
   - Default
   - TransparentFX
