@@ -19,8 +19,8 @@ public class Beetle : Monster
 
     public float speed = default; 
     public float attack = default; 
-    private float timeBetAttack = 0.5f; 
-    private float lastAttackTime;  
+    //private float timeBetAttack = 0.5f; 
+    //private float lastAttackTime;  
 
     public string spawnAnime = ""; 
     public string dieAnime = ""; 
@@ -28,7 +28,7 @@ public class Beetle : Monster
     private string attackAnime = "isAttack";
     public string idleAnime = "";
 
-    string nowMode = "";
+    //string nowMode = "";
 
     Camera cam;
 
@@ -59,22 +59,22 @@ public class Beetle : Monster
 
             if (distance <= navMeshAgent.stoppingDistance)
             {
-                // ��ǥ ����
+                
 
-                // ��ǥ ����
+                
                 FaceTarget();
             }
 
         }
-        //Debug.Log($"{distance}");
+        
         if (distance <= attackRange)
         {
             navMeshAgent.SetDestination(target.position);
 
-                //Debug.Log($"��ġ�� / ��Ʋ�� �Ÿ� {distance} ���ߴ� ���� == {navMeshAgent.stoppingDistance}");
+            
             if (distance <= navMeshAgent.stoppingDistance + attackRange)
             {
-                Debug.Log("��Ʋ�� ������");
+                
                 navMeshAgent.SetDestination(transform.position);
                 CloseCombat();
             }
