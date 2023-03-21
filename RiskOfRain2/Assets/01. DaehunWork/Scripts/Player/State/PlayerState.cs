@@ -10,7 +10,6 @@ public class Player_IdleState : IState
 
     public void OnEnter()
     {
-
         _player.PlayerAnimator.SetFloat("PosX", 0);
         _player.PlayerAnimator.SetFloat("PosY", 0);
     }
@@ -48,9 +47,10 @@ public class Player_WalkState : IState
 
     public void OnEnter()
     {
+        // _player.SetFloat("PosX", _player.InputMove.x);
+        // _player.SetFloat("PosY", _player.InputMove.y);
+        _player.SetFloat("PosY", 1f);
         _player.SetBool("IsMove", _player.IsMove);
-        _player.SetFloat("PosX", _player.InputMove.x);
-        _player.SetFloat("PosY", _player.InputMove.y);
     }
     public void UpdateState()
     {
@@ -63,8 +63,8 @@ public class Player_WalkState : IState
         {
             _player.StateMachine.SetState(new Player_SprintState(_player));
         }
-        _player.SetFloat("PosX", _player.InputMove.x);
-        _player.SetFloat("PosY", _player.InputMove.y);
+        // _player.SetFloat("PosX", _player.InputMove.x);
+        // _player.SetFloat("PosY", _player.InputMove.y);
         _player.Move();
     }
 
@@ -110,8 +110,6 @@ public class Player_SprintState : IState
         {
             _player.StateMachine.SetState(new Player_WalkState(_player));
         }
-        _player.SetFloat("PosX", _player.InputMove.x);
-        _player.SetFloat("PosY", _player.InputMove.y);
         _player.Move();
     }
 

@@ -3228,7 +3228,7 @@ MonoBehaviour:
   _gravity: -9.81
   _isMove: 0
   _isSprint: 0
-  _isGrounded: 0
+  _isGrounded: 1
   _isDead: 0
   _osp: 0
   _focusPoint: {fileID: 3386476320399352337}

@@ -8,46 +8,39 @@ public class Player_Commando : Player
         base.Start();
         PlayerType = PlayerType.COMMANDO;
 
-        //StartCoroutine(Shoot());
     }
-    // public IEnumerator Shoot()
-    // {
-    //     while (true)
-    //     {
-    //         // if (!Input.shoot)
-    //         // {
-    //         //     yield return new WaitForSeconds(1 / AttackDelay);
-    //         //     continue;
-    //         // }
-    //         GameObject tempObject = ObjectPoolManager.Instance.ObjectPoolPop(ObjectPoolManager.BULLET);
-    //         tempObject.transform.localPosition = FocusPoint.position;
-    //         tempObject.SetActive(true);
-    //         yield return new WaitForSeconds(1 / AttackDelay);
-    //     }
-    // }
 
     public override void PassiveSkill()
     {
-
     }
 
     public override void MainSkill(bool isPressed_)
     {
+        switch (StateMachine.GetState())
+        {
+            case Player_Commando_RollState:
+                return;
+        }
         PlayerAnimator.SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed_);
     }
 
     public override void SubSkill(bool isPressed_)
     {
+        switch (StateMachine.GetState())
+        {
+            case Player_Commando_RollState:
+                return;
+        }
         PlayerAnimator.SetTrigger(Global.PLAYER_SUB_SKILL);
-        // if (isPressed_)
-        // {
-        //     PlayerAnimator.SetBool(Global.PLAYER_IS_SUB_SKILL, isPressed_);
-        // }
     }
 
     public override void UtilitySkill(bool isPressed_)
     {
-        //PlayerAnimator.GetCurrentAnimatorStateInfo(0)
+        switch (StateMachine.GetState())
+        {
+            case Player_Commando_RollState:
+                return;
+        }
         if (isPressed_)
         {
             StateMachine.SetState(new Player_Commando_RollState(this));
@@ -56,6 +49,11 @@ public class Player_Commando : Player
 
     public override void SpecialSkill(bool isPressed_)
     {
+        switch (StateMachine.GetState())
+        {
+            case Player_Commando_RollState:
+                return;
+        }
         if (isPressed_)
         {
             PlayerAnimator.SetBool(Global.PLAYER_IS_SPECIAL_SKILL, isPressed_);

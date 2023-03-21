@@ -149,6 +149,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     #region Property
     #region PlayerController
+    // { PlayerController Property
     public float TopClamp { get { return _topClamp; } protected set { _topClamp = value; } }
     public float BottomClamp { get { return _bottomClamp; } protected set { _bottomClamp = value; } }
     public Vector2 InputMove { get { return _inputMove; } protected set { _inputMove = value; } }
@@ -158,7 +159,10 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public float RotationSmoothTime { get { return _rotationSmoothTime; } protected set { _rotationSmoothTime = value; } }
     public float VerticalVelocity { get { return _verticalVelocity; } protected set { _verticalVelocity = value; } }
     public float RotationVelocity { get { return _rotationVelocity; } protected set { _rotationVelocity = value; } }
+    // } PlayerController Property
     #endregion
+
+    #region Player Stat
     public float MaxHp { get { return _maxHp; } protected set { _maxHp = value; } }
     public float CurrentHp { get { return _currentHp; } protected set { _currentHp = value; } }
     public float Defense { get { return _defense; } protected set { _defense = value; } }
@@ -176,6 +180,9 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public bool IsGrounded { get { return _isGrounded; } protected set { _isGrounded = value; } }
     public bool IsDead { get { return _isDead; } protected set { _isDead = value; } }
     public bool Osp { get { return _osp; } protected set { _osp = value; } }
+    #endregion
+
+    #region Player Object
     public Transform FocusPoint { get { return _focusPoint; } protected set { _focusPoint = value; } }
     public PlayerType PlayerType { get { return _playerType; } protected set { _playerType = value; } }
     public StateMachine StateMachine { get { return _stateMachine; } protected set { _stateMachine = value; } }
@@ -184,6 +191,8 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public GameObject CinemachineCameraTarget { get { return _cinemachineCameraTarget; } protected set { _cinemachineCameraTarget = value; } }
     public float CinemachineTargetYaw { get { return _cinemachineTargetYaw; } protected set { _cinemachineTargetYaw = value; } }
     public float CinemachineTargetPitch { get { return _cinemachineTargetPitch; } protected set { _cinemachineTargetPitch = value; } }
+    #endregion
+
     #endregion
 
     // #if ENABLE_INPUT_SYSTEM
@@ -255,6 +264,33 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         Osp = false;
     }
 
+    #region StateMachine Warpping
+    public void UpdateState()
+    {
+        StateMachine.UpdateState();
+    }
+    public void SetState(IState state)
+    {
+        StateMachine.SetState(state);
+    }
+    public IState GetState()
+    {
+        return StateMachine.GetState();
+    }
+    public void ChangeState()
+    {
+        StateMachine.ChangeState();
+    }
+    public void AnimationChange()
+    {
+        StateMachine.AnimationChange();
+    }
+    public void Action()
+    {
+        StateMachine.Action();
+    }
+    #endregion
+
     #region SetAnimatorParameter Func warpping
     public void SetTrigger(string param)
     {
@@ -300,7 +336,6 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
             StateMachine.SetState(new Player_WalkState(this));
         }
     }
-
 
     public void Move()
     {
