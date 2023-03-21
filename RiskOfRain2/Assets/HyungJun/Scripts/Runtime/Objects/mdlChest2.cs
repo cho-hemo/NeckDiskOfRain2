@@ -61,7 +61,7 @@ public class mdlChest2 : InteractionObjects
                     _inArea = false;
                     UIManager.Instance.PopupUIActive(" 상자열기", true);
                 }
-                else if (Input.GetKeyDown(KeyCode.E) && UIManager.Instance.IsPayMoney(-NeededMoney))
+                else if (Input.GetKeyDown(KeyCode.E) && UIManager.Instance.IsHaveMoney(-NeededMoney))
                 {
                     _chestAni.SetBool("Open", true);
                     Debug.Log("[mdlChest2] OntriggerStay : 상자 오픈!");

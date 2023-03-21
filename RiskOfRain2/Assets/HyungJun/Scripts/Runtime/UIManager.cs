@@ -30,10 +30,16 @@ public class UIManager : SingletonBase<UIManager>
     /// </summary>
     /// <param name="money_">+ 또는 - 의 값</param>
     /// <returns>성공시 True, 실패시 False</returns>
-    public bool IsPayMoney(int money_)
+    public bool IsHaveMoney(int money_)
     {
         return _playerUiManagerCs.PlayerMoneyControl(money_);
     }
+
+    public void PlayerHaveExp(int exp_)
+    {
+        _playerUiManagerCs.PlayerExpPlus(exp_);
+    }
+
 
 
 

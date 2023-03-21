@@ -268,7 +268,6 @@ public partial class PlayerUiManager : MonoBehaviour
     /// <returns>성공시 true 실패시 false</returns>
     public bool PlayerMoneyControl(int moneyValue_)
     {
-        _moneyTxtObj.SetTmpText(PlayerMoney.ToString());
         if (moneyValue_ < 0)
         {
             if (PlayerMoney < Mathf.Abs(moneyValue_))
@@ -279,12 +278,14 @@ public partial class PlayerUiManager : MonoBehaviour
             else
             {
                 PlayerMoney -= moneyValue_;
+                _moneyTxtObj.SetTmpText(PlayerMoney.ToString());
                 return true;
             }
         }
         else
         {
             PlayerMoney += moneyValue_;
+            _moneyTxtObj.SetTmpText(PlayerMoney.ToString());
             return true;
         }
     }       // PlayerMoneyControl()
