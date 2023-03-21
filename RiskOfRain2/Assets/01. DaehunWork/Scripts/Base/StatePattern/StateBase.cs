@@ -1,3 +1,4 @@
+using UnityEngine;
 public class StateMachine
 {
     private IState _currentState = default;
@@ -62,5 +63,6 @@ public interface IState
     public void Action();
     public void ChangeState();
     public void AnimationChange();
+    //public void MoveInput(Vector2 value);
 }
 
