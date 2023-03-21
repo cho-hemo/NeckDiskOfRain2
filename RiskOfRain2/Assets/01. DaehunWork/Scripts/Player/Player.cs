@@ -17,8 +17,33 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     protected float _bottomClamp;
 
     [SerializeField]
-    [Tooltip("Player Move Input")]
+    [Tooltip("Player Move 입력")]
     protected Vector2 _inputMove;
+
+    [SerializeField]
+    [Tooltip("Player Look Input")]
+    protected Vector2 _inputLook;
+
+    [SerializeField]
+    [Tooltip("가속 감속")]
+    protected float _speedChangeRate = 10.0f;
+
+    [SerializeField]
+    [Tooltip("타겟 회전")]
+    protected float _targetRotation = 0.0f;
+
+    [SerializeField]
+    [Tooltip("캐릭터 회전 속도")]
+    [Range(0.0f, 0.3f)]
+    protected float _rotationSmoothTime = 0.12f;
+
+    [SerializeField]
+    [Tooltip("Player 회전 가속도")]
+    protected float _rotationVelocity;
+
+    [SerializeField]
+    [Tooltip("Player 세로 가속도")]
+    protected float _verticalVelocity = 0;
 
     [Space(5)]
     [Header("Player Stat")]
@@ -52,8 +77,12 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     protected float _healthRegen;
 
     [SerializeField]
-    [Tooltip("이동속도")]
-    protected float _speed = 7.0f;
+    [Tooltip("기본 이동속도")]
+    protected float _defaultSpeed = 7.0f;
+
+    [SerializeField]
+    [Tooltip("현재 이동속도")]
+    protected float _currentSpeed = 0f;
 
     [SerializeField]
     [Tooltip("질주속도")]
@@ -77,7 +106,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     [SerializeField]
     [Tooltip("바닥 체크")]
-    protected bool _isGrounded = false;
+    protected bool _isGrounded = true;
 
     [SerializeField]
     [Tooltip("사망 체크")]
@@ -119,9 +148,17 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     protected float _cinemachineTargetPitch;
 
     #region Property
+    #region PlayerController
     public float TopClamp { get { return _topClamp; } protected set { _topClamp = value; } }
     public float BottomClamp { get { return _bottomClamp; } protected set { _bottomClamp = value; } }
     public Vector2 InputMove { get { return _inputMove; } protected set { _inputMove = value; } }
+    public Vector2 InputLook { get { return _inputLook; } protected set { _inputLook = value; } }
+    public float SpeedChangeRate { get { return _speedChangeRate; } protected set { _speedChangeRate = value; } }
+    public float TargetRotation { get { return _targetRotation; } protected set { _targetRotation = value; } }
+    public float RotationSmoothTime { get { return _rotationSmoothTime; } protected set { _rotationSmoothTime = value; } }
+    public float VerticalVelocity { get { return _verticalVelocity; } protected set { _verticalVelocity = value; } }
+    public float RotationVelocity { get { return _rotationVelocity; } protected set { _rotationVelocity = value; } }
+    #endregion
     public float MaxHp { get { return _maxHp; } protected set { _maxHp = value; } }
     public float CurrentHp { get { return _currentHp; } protected set { _currentHp = value; } }
     public float Defense { get { return _defense; } protected set { _defense = value; } }
@@ -129,7 +166,8 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public float AttackDelay { get { return _attackDelay; } protected set { _attackDelay = value; } }
     public List<float> SkillCoolTime { get { return _skillCoolTime; } protected set { _skillCoolTime = value; } }
     public float HealthRegen { get { return _healthRegen; } protected set { _healthRegen = value; } }
-    public float Speed { get { return _speed; } protected set { _speed = value; } }
+    public float DefaultSpeed { get { return _defaultSpeed; } protected set { _defaultSpeed = value; } }
+    public float CurrentSpeed { get { return _currentSpeed; } protected set { _currentSpeed = value; } }
     public float SprintSpeed { get { return _sprintSpeed; } protected set { _sprintSpeed = value; } }
     public float JumpHeight { get { return _jumpHeight; } protected set { _jumpHeight = value; } }
     public float Gravity { get { return _gravity; } protected set { _gravity = value; } }
@@ -158,9 +196,13 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     protected void Start()
     {
+        TryGetComponent(out _playerAnimator);
+        PlayerAnimator.SetBool("IsGrounded", IsGrounded);
+        TryGetComponent(out _characterController);
+        CinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+
         StateMachine = new StateMachine();
         StateMachine.SetState(new Player_IdleState(this));
-        TryGetComponent(out _playerAnimator);
     }
 
     protected void Update()
@@ -170,9 +212,8 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     protected void LateUpdate()
     {
-
+        CameraRotation();
     }
-
 
     public void TakeDamage(float damage_)
     {
@@ -238,35 +279,87 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     public void Move(Vector2 value)
     {
-        if (value != Vector2.zero)
+        if (value == Vector2.zero)
         {
-            InputMove = value;
-            if (IsSprint)
-            {
-                StateMachine.SetState(new Player_SprintState(this));
-            }
-            else
-            {
-                StateMachine.SetState(new Player_WalkState(this));
-            }
-
-            StateMachine.UpdateState();
+            IsMove = false;
+            IsSprint = false;
         }
+        else
+        {
+            IsMove = true;
+        }
+
+        InputMove = value;
+
+        if (IsSprint)
+        {
+            StateMachine.SetState(new Player_SprintState(this));
+        }
+        else
+        {
+            StateMachine.SetState(new Player_WalkState(this));
+        }
+    }
+
+
+    public void Move()
+    {
+        float targetSpeed = IsSprint ? SprintSpeed : DefaultSpeed;
+
+        if (InputMove == Vector2.zero) targetSpeed = 0.0f;
+
+        float currentHorizontalSpeed = new Vector3(CharacterController.velocity.x, 0.0f, CharacterController.velocity.z).magnitude;
+
+        float speedOffset = 0.1f;
+        float inputMagnitude = KeyInputManager.Instance.analogMovement ? InputMove.magnitude : 1f;
+
+        if (currentHorizontalSpeed < targetSpeed - speedOffset ||
+            currentHorizontalSpeed > targetSpeed + speedOffset)
+        {
+            CurrentSpeed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
+                Time.deltaTime * SpeedChangeRate);
+
+            CurrentSpeed = Mathf.Round(CurrentSpeed * 1000f) / 1000f;
+        }
+        else
+        {
+            CurrentSpeed = targetSpeed;
+        }
+
+        Vector3 inputDirection = new Vector3(InputMove.x, 0.0f, InputMove.y).normalized;
+
+        if (InputMove != Vector2.zero)
+        {
+            TargetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                              Camera.main.transform.eulerAngles.y;
+            float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetRotation, ref _rotationVelocity,
+                RotationSmoothTime);
+
+            transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+        }
+
+        Vector3 targetDirection = Quaternion.Euler(0.0f, TargetRotation, 0.0f) * Vector3.forward;
+
+        CharacterController.Move(targetDirection.normalized * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
     }
 
     public void Look(Vector2 value)
     {
-        //Global.Log($"Look Debug : {value}");
+        InputLook = value;
+    }
 
-        if (value.sqrMagnitude >= 0.01f)
+    private void CameraRotation()
+    {
+        if (InputLook.sqrMagnitude >= 0.01f)
         {
-            CinemachineTargetYaw += value.x + Time.deltaTime;
-            CinemachineTargetPitch += value.y + Time.deltaTime;
+            CinemachineTargetYaw += InputLook.x * 1.0f;
+            CinemachineTargetPitch += InputLook.y * 1.0f;
         }
 
         CinemachineTargetYaw = ClampAngle(CinemachineTargetYaw, float.MinValue, float.MaxValue);
         CinemachineTargetPitch = ClampAngle(CinemachineTargetPitch, BottomClamp, TopClamp);
-        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(CinemachineTargetPitch, CinemachineTargetYaw, 0.0f);
+
+        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(CinemachineTargetPitch + 0f, CinemachineTargetYaw, 0.0f);
     }
 
     private float ClampAngle(float lfAngle, float lfMin, float lfMax)
