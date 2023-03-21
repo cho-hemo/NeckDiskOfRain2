@@ -47,6 +47,7 @@ public class Player_Commando : Player
 
     public override void UtilitySkill(bool isPressed_)
     {
+        //PlayerAnimator.GetCurrentAnimatorStateInfo(0)
         if (isPressed_)
         {
             StateMachine.SetState(new Player_Commando_RollState(this));

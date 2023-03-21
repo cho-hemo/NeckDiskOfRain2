@@ -66,6 +66,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     public void OnMove(InputValue value)
     {
         MoveInput(value.Get<Vector2>());
+        player.Move(value.Get<Vector2>());
     }
 
     ///<summary>마우스 이동, Right Stick 입력 할 시 호출되는 함수</summary>
@@ -156,7 +157,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     {
         GameObject.Find("Player").TryGetComponent(out player);
         //GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
-        GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);
+        //GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);
     }
 
     ///<summary>움직임에 관련된 입력을 받는 함수</summary>
