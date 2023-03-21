@@ -62,22 +62,22 @@ public class ObjectPoolManager : SingletonBase<ObjectPoolManager>
     }
 
     ///<summary>특정 오브젝트를 ObjectPool에서 Pop하는 함수</summary>
-    ///<param name = "objectName_">꺼낼 오브젝트의 이름</param>
-    public GameObject ObjectPoolPop(string objectName_)
+    ///<param name = "objectPoolName_">꺼낼 오브젝트의 이름</param>
+    public GameObject ObjectPoolPop(string objectPoolName_)
     {
-        GameObject obj = _objectPool[objectName_].Pop();
+        GameObject obj = _objectPool[objectPoolName_].Pop();
         return obj;
     }
 
     ///<summary>특정 오브젝트를 풀에 Push하는 함수</summary>
-    ///<param name = "objectName_">넣을 ObjectPool에 이름</param>
+    ///<param name = "objectPoolName_">넣을 ObjectPool에 이름</param>
     ///<param name = "obj_">ObjectPool에 넣을 오브젝트</param>
-    public void ObjectPoolPush(string objectName_, GameObject obj_)
+    public void ObjectPoolPush(string objectPoolName_, GameObject obj_)
     {
         obj_.SetActive(false);
         obj_.transform.localPosition = Vector3.zero;
         obj_.transform.rotation = Quaternion.identity;
-        _objectPool[objectName_].Push(obj_);
+        _objectPool[objectPoolName_].Push(obj_);
     }
 
     ///<summary>특정 오브젝트를 풀에 Push하는 함수</summary>

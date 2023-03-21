@@ -22,7 +22,7 @@ public class mdlBarrel1 : InteractionObjects
                 _isActive = false;
                 UIManager.Instance.PopupUIActive("", false);
                 StartCoroutine(PlayerHaveMoney(10, 5));
-                StartCoroutine(PlayerHaveExp(1, 5));
+                ExpEffectSpawn(5);
             }
         }
     }
@@ -35,6 +35,18 @@ public class mdlBarrel1 : InteractionObjects
             UIManager.Instance.PopupUIActive("", false);
         }
     }
+
+    private void ExpEffectSpawn(int cycle)
+    {
+        for (int i = 0; i < cycle; i++)
+        {
+            GameObject expEffect = ObjectPoolManager.Instance.ObjectPoolPop("ExpEffect");
+            expEffect.transform.position = transform.position;
+            expEffect.SetActive(true);
+        }
+    }
+
+
 
     /// <summary>
     /// 사이클 수 만큼 돈을 지급
@@ -51,12 +63,5 @@ public class mdlBarrel1 : InteractionObjects
         }
     }
 
-    private IEnumerator PlayerHaveExp(int exp, int cycle)
-    {
-        for (int i = 0; i < cycle; i++)
-        {
-            UIManager.Instance.PlayerHaveExp(exp);
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
+
 }
