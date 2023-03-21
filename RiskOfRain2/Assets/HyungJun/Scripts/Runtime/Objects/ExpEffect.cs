@@ -9,7 +9,7 @@ public class ExpEffect : MonoBehaviour
     private void OnEnable()
     {
         // 플레이어 트렌스폼 초기화
-        _playerTransform = GioleFunc.GetRootObj("Player").transform;
+        _playerTransform = GameManager.Instance.PlayerTransform;
 
 
         StartCoroutine(ActiveEffect());

@@ -218,14 +218,6 @@ public partial class PlayerUiManager : MonoBehaviour
     }
 
 
-    // private IEnumerator LevelBarMove()
-    // {
-    //     while (true)
-    //     {
-    //         yield return new WaitForSeconds(0.37f);
-    //         _levelBarObj.transform.localPosition += Vector3.left * 0.1f;
-    //     }
-    // }
 
     /// <summary>
     /// 플레이어의 경험치를 올려주고 최대 경험치량에 도달할 경우 레벨 업 함수

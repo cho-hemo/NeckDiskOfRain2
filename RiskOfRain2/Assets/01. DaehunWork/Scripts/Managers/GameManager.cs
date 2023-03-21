@@ -10,6 +10,7 @@ public class GameManager : SingletonBase<GameManager>
     {
         base.Awake();
         Global.AddOnSceneLoaded(OnSceneLoaded);
+        PlayerTransform = Global.FindRootObject("Player").transform;
     }
     private void Start()
     {
