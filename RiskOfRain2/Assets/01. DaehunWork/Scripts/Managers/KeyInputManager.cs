@@ -81,7 +81,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
         }
         else
         {
-
+            player.Look(Vector2.zero);
         }
     }
 
