@@ -21,6 +21,7 @@ public partial class PlayerUiManager : MonoBehaviour
 	}
 	// } Debug Mode
 
+	#region 게임오브젝트
 	private GameObject _popMenuObj = default;
 	private GameObject _timerObj = default;
 	private GameObject _timermillSecondObj = default;
@@ -56,6 +57,11 @@ public partial class PlayerUiManager : MonoBehaviour
 
 
 	private GameObject _chatBoxObj = default;
+
+	#endregion 게임오브젝트
+
+
+
 
 	private List<GameObject> _skillList = new List<GameObject>();
 	private List<bool> _isSkillActivation = new List<bool>();

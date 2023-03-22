@@ -61,6 +61,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 
 #if ENABLE_INPUT_SYSTEM
 
+<<<<<<< HEAD
 	///<summary>WASD, 방향키, Left Stick 입력 할 시 호출되는 함수</summary>
 	///<param name = "value">Vector2 값을 받음</param>
 	public void OnMove(InputValue value)
@@ -87,6 +88,39 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 	{
 		JumpInput(value.isPressed);
 	}
+=======
+    #region InputSystem
+    ///<summary>WASD, 방향키, Left Stick 입력 할 시 호출되는 함수</summary>
+    ///<param name = "value">Vector2 값을 받음</param>
+    public void OnMove(InputValue value)
+    {
+        MoveInput(value.Get<Vector2>());
+        player.Move(value.Get<Vector2>());
+    }
+
+    ///<summary>마우스 이동, Right Stick 입력 할 시 호출되는 함수</summary>
+    ///<param name = "value">Vector2 값을 받음</param>
+    public void OnLook(InputValue value)
+    {
+        if (cursorLocked)
+        {
+            LookInput(value.Get<Vector2>());
+            player.Look(value.Get<Vector2>());
+        }
+        else
+        {
+
+        }
+    }
+
+    ///<summary>스페이스바, 게임패드에 South키를 입력 할 시 호출되는 함수</summary>
+    ///<param name = "value">Bool 값을 받음</param>
+    public void OnJump(InputValue value)
+    {
+        JumpInput(value.isPressed);
+        player.Jump(value.isPressed);
+    }
+>>>>>>> 682b8242ba21e83dcf1ee02481e7ea918ec3f9e8
 
 	///<summary>Ctrl, 게임패드에 Left Stick Press키를 입력 할 시 호출되는 함수</summary>
 	///<param name = "value">Bool 값을 받음</param>
@@ -140,24 +174,60 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 		InteractionInput(value.isPressed);
 	}
 
+<<<<<<< HEAD
 	// Tap KeyInput
 	public void OnInformationScreen(InputValue value)
 	{
 		InformationScreenInput(value.isPressed);
 	}
+=======
+    // Tap KeyInput
+    public void OnInformationScreen(InputValue value)
+    {
+        InformationScreenInput(value.isPressed);
+        //  { 2023-03-22 / Daehun / KeyInput Works
+        if (value.isPressed)
+        {
+            SetCursorState(!value.isPressed);
+        }
+        else
+        {
+            SetCursorState(!value.isPressed);
+        }
+        cursorLocked = !value.isPressed;
+        //  } 2023-03-22 / Daehun / KeyInput Works
+    }
+>>>>>>> 682b8242ba21e83dcf1ee02481e7ea918ec3f9e8
 
 	public void OnSendPing(InputValue value)
 	{
 		SendPingInput(value.isPressed);
 	}
 
+    //  { 2023-03-22 / Daehun / KeyInput Works
+    public void OnEsc(InputValue value)
+    {
+        cursorLocked = !cursorLocked;
+    }
+    //  } 2023-03-22 / Daehun / KeyInput Works
+    #endregion
 #endif
 
+<<<<<<< HEAD
 	public void Start()
 	{
 		GameObject.Find("Player").TryGetComponent(out player);
 		GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
 	}
+=======
+    public void Start()
+    {
+        GameObject.Find("Player").TryGetComponent(out player);
+        SetCursorState(cursorLocked);
+        //GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
+        //GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);
+    }
+>>>>>>> 682b8242ba21e83dcf1ee02481e7ea918ec3f9e8
 
 	///<summary>움직임에 관련된 입력을 받는 함수</summary>
 	///<param name = "newMoveDirection">Vector2 값 -1 ~ 1 까지의 값이 들어옴</param>
@@ -219,6 +289,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 		sendPing = newSendPingInput_;
 	}
 
+<<<<<<< HEAD
 	///<summary>화면 밖으로 마우스가 못 나가게 하는 함수</summary>
 	private void OnApplicationFocus(bool hasFocus)
 	{
@@ -231,4 +302,12 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 	{
 		Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 	}
+=======
+    ///<summary>화면 밖으로 마우스가 못 나가게 하는 함수</summary>
+    ///<param name = "newState">true가 들어오면 화면 밖으로 마우스가 나가지 않고 false가 들어오면 밖으로 나갈 수 있음</param>
+    private void SetCursorState(bool newState)
+    {
+        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+>>>>>>> 682b8242ba21e83dcf1ee02481e7ea918ec3f9e8
 }
