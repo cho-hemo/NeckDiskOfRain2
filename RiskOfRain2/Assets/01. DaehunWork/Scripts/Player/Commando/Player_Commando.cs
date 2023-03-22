@@ -21,7 +21,7 @@ public class Player_Commando : Player
             case Player_Commando_RollState:
                 return;
         }
-        PlayerAnimator.SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed_);
+        SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed_);
     }
 
     public override void SubSkill(bool isPressed_)
@@ -31,7 +31,7 @@ public class Player_Commando : Player
             case Player_Commando_RollState:
                 return;
         }
-        PlayerAnimator.SetTrigger(Global.PLAYER_SUB_SKILL);
+        SetTrigger(Global.PLAYER_SUB_SKILL);
     }
 
     public override void UtilitySkill(bool isPressed_)
@@ -43,7 +43,7 @@ public class Player_Commando : Player
         }
         if (isPressed_)
         {
-            StateMachine.SetState(new Player_Commando_RollState(this));
+            SetState(new Player_Commando_RollState(this));
         }
     }
 
@@ -56,7 +56,7 @@ public class Player_Commando : Player
         }
         if (isPressed_)
         {
-            PlayerAnimator.SetBool(Global.PLAYER_IS_SPECIAL_SKILL, isPressed_);
+            SetBool(Global.PLAYER_IS_SPECIAL_SKILL, isPressed_);
         }
     }
 }

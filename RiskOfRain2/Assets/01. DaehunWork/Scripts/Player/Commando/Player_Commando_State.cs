@@ -11,7 +11,7 @@ public class Player_Commando_RollState : IState
     {
         _player.SetFloat("PosX", _player.InputMove.x);
         _player.SetFloat("PosY", _player.InputMove.y);
-        _player.PlayerAnimator.SetTrigger(Global.PLAYER_UTILITY_SKILL);
+        _player.SetTrigger(Global.PLAYER_UTILITY_SKILL);
     }
 
     public void UpdateState()

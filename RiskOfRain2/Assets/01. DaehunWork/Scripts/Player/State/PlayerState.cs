@@ -10,8 +10,8 @@ public class Player_IdleState : IState
 
     public void OnEnter()
     {
-        _player.PlayerAnimator.SetFloat("PosX", 0);
-        _player.PlayerAnimator.SetFloat("PosY", 0);
+        _player.SetFloat("PosX", 0);
+        _player.SetFloat("PosY", 0);
     }
 
     public void UpdateState()
@@ -56,12 +56,12 @@ public class Player_WalkState : IState
     {
         if (_player.InputMove == Vector2.zero)
         {
-            _player.StateMachine.SetState(new Player_IdleState(_player));
+            _player.SetState(new Player_IdleState(_player));
             return;
         }
         else if (_player.IsSprint)
         {
-            _player.StateMachine.SetState(new Player_SprintState(_player));
+            _player.SetState(new Player_SprintState(_player));
         }
         // _player.SetFloat("PosX", _player.InputMove.x);
         // _player.SetFloat("PosY", _player.InputMove.y);
@@ -103,12 +103,12 @@ public class Player_SprintState : IState
     {
         if (_player.InputMove == Vector2.zero)
         {
-            _player.StateMachine.SetState(new Player_IdleState(_player));
+            _player.SetState(new Player_IdleState(_player));
             return;
         }
         else if (!_player.IsSprint)
         {
-            _player.StateMachine.SetState(new Player_WalkState(_player));
+            _player.SetState(new Player_WalkState(_player));
         }
         _player.Move();
     }
@@ -146,6 +146,7 @@ public class Player_JumpState : IState
     }
     public void UpdateState()
     {
+        _player.Move();
     }
 
     public void OnExit()

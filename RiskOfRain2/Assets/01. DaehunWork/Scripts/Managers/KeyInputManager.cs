@@ -61,6 +61,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 
 #if ENABLE_INPUT_SYSTEM
 
+    #region InputSystem
     ///<summary>WASD, 방향키, Left Stick 입력 할 시 호출되는 함수</summary>
     ///<param name = "value">Vector2 값을 받음</param>
     public void OnMove(InputValue value)
@@ -73,11 +74,14 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     ///<param name = "value">Vector2 값을 받음</param>
     public void OnLook(InputValue value)
     {
-        if (cursorInputForLook)
+        if (cursorLocked)
         {
             LookInput(value.Get<Vector2>());
             player.Look(value.Get<Vector2>());
-            //Global.Log($"Mouse Pos : {value.Get<Vector2>()}");
+        }
+        else
+        {
+
         }
     }
 
@@ -86,6 +90,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     public void OnJump(InputValue value)
     {
         JumpInput(value.isPressed);
+        player.Jump(value.isPressed);
     }
 
     ///<summary>Ctrl, 게임패드에 Left Stick Press키를 입력 할 시 호출되는 함수</summary>
@@ -144,6 +149,17 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     public void OnInformationScreen(InputValue value)
     {
         InformationScreenInput(value.isPressed);
+        //  { 2023-03-22 / Daehun / KeyInput Works
+        if (value.isPressed)
+        {
+            SetCursorState(!value.isPressed);
+        }
+        else
+        {
+            SetCursorState(!value.isPressed);
+        }
+        cursorLocked = !value.isPressed;
+        //  } 2023-03-22 / Daehun / KeyInput Works
     }
 
     public void OnSendPing(InputValue value)
@@ -151,11 +167,19 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
         SendPingInput(value.isPressed);
     }
 
+    //  { 2023-03-22 / Daehun / KeyInput Works
+    public void OnEsc(InputValue value)
+    {
+        cursorLocked = !cursorLocked;
+    }
+    //  } 2023-03-22 / Daehun / KeyInput Works
+    #endregion
 #endif
 
     public void Start()
     {
         GameObject.Find("Player").TryGetComponent(out player);
+        SetCursorState(cursorLocked);
         //GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
         //GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);
     }
@@ -218,12 +242,6 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     public void SendPingInput(bool newSendPingInput_)
     {
         sendPing = newSendPingInput_;
-    }
-
-    ///<summary>화면 밖으로 마우스가 못 나가게 하는 함수</summary>
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        SetCursorState(cursorLocked);
     }
 
     ///<summary>화면 밖으로 마우스가 못 나가게 하는 함수</summary>

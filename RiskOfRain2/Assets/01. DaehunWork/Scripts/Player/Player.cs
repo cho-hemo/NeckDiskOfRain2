@@ -42,8 +42,36 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     protected float _rotationVelocity;
 
     [SerializeField]
-    [Tooltip("Player 세로 가속도")]
+    [Tooltip("Player 추락 가속도")]
     protected float _verticalVelocity = 0;
+
+    [SerializeField]
+    [Tooltip("Ground와 거리")]
+    protected float _groundedOffset = -0.14f;
+
+    [SerializeField]
+    [Tooltip("Ground 체크를 위한 반지름 CharacterController와 일치해야함")]
+    protected float _groundedRadius = 0.3f;
+
+    [SerializeField]
+    [Tooltip("캐릭터가 밟을 수 있는 Ground의 Layer")]
+    protected LayerMask _groundLayers;
+
+    [SerializeField]
+    [Tooltip("낙하 상태 진입까지 소요되는 시간")]
+    protected float _fallTimeout = 0.15f;
+
+    [SerializeField]
+    [Tooltip("다시 점프를 하기 위한 딜레이 시간")]
+    protected float _jumpTimeout = 0.1f;
+
+    [SerializeField]
+    [Tooltip("추락 TimeOut DeltaTime")]
+    protected float _fallTimeoutDelta;
+
+    [SerializeField]
+    [Tooltip("점프 TimeOut DeltaTime")]
+    protected float _jumpTimeoutDelta;
 
     [Space(5)]
     [Header("Player Stat")]
@@ -89,8 +117,16 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     protected float _sprintSpeed = 8.75f;
 
     [SerializeField]
+    [Tooltip("최대 점프 카운트")]
+    protected int _maxJumpCount = 1;
+
+    [SerializeField]
+    [Tooltip("현재 점프 횟수")]
+    protected int _currentJumpCount = default;
+
+    [SerializeField]
     [Tooltip("점프력")]
-    protected float _jumpHeight = 1.5f;
+    protected float _jumpHeight = 5f;
 
     [SerializeField]
     [Tooltip("중력")]
@@ -138,14 +174,16 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     [Tooltip("Charcter Controller")]
     protected CharacterController _characterController;
 
+    [Space(5)]
+    [Header("CineMachine")]
     [SerializeField]
     [Tooltip("CameraTarget")]
     protected GameObject _cinemachineCameraTarget;
-    #endregion
-
-    // cinemachine
+    [SerializeField]
     protected float _cinemachineTargetYaw;
+    [SerializeField]
     protected float _cinemachineTargetPitch;
+    #endregion
 
     #region Property
     #region PlayerController
@@ -159,6 +197,13 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public float RotationSmoothTime { get { return _rotationSmoothTime; } protected set { _rotationSmoothTime = value; } }
     public float VerticalVelocity { get { return _verticalVelocity; } protected set { _verticalVelocity = value; } }
     public float RotationVelocity { get { return _rotationVelocity; } protected set { _rotationVelocity = value; } }
+    public float GroundedOffset { get { return _groundedOffset; } protected set { _groundedOffset = value; } }
+    public float GroundedRadius { get { return _groundedOffset; } protected set { _groundedOffset = value; } }
+    public LayerMask GroundLayers { get { return _groundLayers; } protected set { _groundLayers = value; } }
+    public float FallTimeOut { get { return _fallTimeout; } protected set { _fallTimeout = value; } }
+    public float JumpTimeOut { get { return _jumpTimeout; } protected set { _jumpTimeout = value; } }
+    public float FallTimeoutDelta { get { return _fallTimeoutDelta; } protected set { _fallTimeoutDelta = value; } }
+    public float JumpTimeoutDelta { get { return _jumpTimeoutDelta; } protected set { _jumpTimeoutDelta = value; } }
     // } PlayerController Property
     #endregion
 
@@ -173,6 +218,8 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public float DefaultSpeed { get { return _defaultSpeed; } protected set { _defaultSpeed = value; } }
     public float CurrentSpeed { get { return _currentSpeed; } protected set { _currentSpeed = value; } }
     public float SprintSpeed { get { return _sprintSpeed; } protected set { _sprintSpeed = value; } }
+    public int MaxJumpCount { get { return _maxJumpCount; } protected set { _maxJumpCount = value; } }
+    public int CurrentJumpCount { get { return _currentJumpCount; } protected set { _currentJumpCount = value; } }
     public float JumpHeight { get { return _jumpHeight; } protected set { _jumpHeight = value; } }
     public float Gravity { get { return _gravity; } protected set { _gravity = value; } }
     public bool IsMove { get { return _isMove; } protected set { _isMove = value; } }
@@ -211,12 +258,14 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         CinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
         StateMachine = new StateMachine();
-        StateMachine.SetState(new Player_IdleState(this));
+        SetState(new Player_IdleState(this));
     }
 
     protected void Update()
     {
-        StateMachine.UpdateState();
+        GroundedCheck();
+        JumpAndGravity();
+        UpdateState();
     }
 
     protected void LateUpdate()
@@ -234,7 +283,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
             {
                 CurrentHp = 0;
                 IsDead = true;
-                StateMachine.SetState(new Player_DeadState(this));
+                SetState(new Player_DeadState(this));
             }
             else
             {
@@ -248,7 +297,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
             {
                 CurrentHp = 0;
                 IsDead = true;
-                StateMachine.SetState(new Player_DeadState(this));
+                SetState(new Player_DeadState(this));
             }
             else
             {
@@ -327,13 +376,16 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
         InputMove = value;
 
-        if (IsSprint)
+        if (IsGrounded)
         {
-            StateMachine.SetState(new Player_SprintState(this));
-        }
-        else
-        {
-            StateMachine.SetState(new Player_WalkState(this));
+            if (IsSprint)
+            {
+                SetState(new Player_SprintState(this));
+            }
+            else
+            {
+                SetState(new Player_WalkState(this));
+            }
         }
     }
 
@@ -394,7 +446,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         CinemachineTargetYaw = ClampAngle(CinemachineTargetYaw, float.MinValue, float.MaxValue);
         CinemachineTargetPitch = ClampAngle(CinemachineTargetPitch, BottomClamp, TopClamp);
 
-        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(CinemachineTargetPitch + 0f, CinemachineTargetYaw, 0.0f);
+        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(CinemachineTargetPitch, CinemachineTargetYaw, 0.0f);
     }
 
     private float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -406,9 +458,11 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     public void Jump(bool isPressed)
     {
-        if (isPressed)
+        if (isPressed && IsGrounded && CurrentJumpCount < MaxJumpCount)
         {
-            StateMachine.SetState(new Player_JumpState(this));
+            SetState(new Player_JumpState(this));
+            VerticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+            CurrentJumpCount++;
         }
     }
 
@@ -419,8 +473,70 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     public void GroundedCheck()
     {
-
+        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+        IsGrounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
     }
+
+    private void JumpAndGravity()
+    {
+        if (IsGrounded)
+        {
+            SetBool("IsGrounded", IsGrounded);
+            FallTimeoutDelta = FallTimeOut;
+            CurrentJumpCount = 0;
+            //_animator.SetBool(_animIDFreeFall, false);
+
+
+            // stop our velocity dropping infinitely when grounded
+            if (VerticalVelocity < 0.0f)
+            {
+                VerticalVelocity = -2f;
+            }
+
+            // // Jump
+            // if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+            // {
+            //     // the square root of H * -2 * G = how much velocity needed to reach desired height
+            //     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+            //     // update animator if using character
+            //     if (_hasAnimator)
+            //     {
+            //         _animator.SetBool(_animIDJump, true);
+            //     }
+            // }
+
+            // jump timeout
+            if (JumpTimeoutDelta >= 0.0f)
+            {
+                JumpTimeoutDelta -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            SetBool("IsGrounded", IsGrounded);
+            // reset the jump timeout timer
+            JumpTimeoutDelta = JumpTimeOut;
+
+            // fall timeout
+            if (FallTimeoutDelta >= 0.0f)
+            {
+                FallTimeoutDelta -= Time.deltaTime;
+            }
+            else
+            {
+                // update animator if using character
+                SetFloat("JumpPower", VerticalVelocity);
+            }
+        }
+
+        // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+        if (VerticalVelocity < 100.0f)
+        {
+            VerticalVelocity += Gravity * Time.deltaTime;
+        }
+    }
+
 
     #region IPlayerSkill
     public abstract void PassiveSkill();

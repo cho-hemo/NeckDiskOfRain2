@@ -60,23 +60,23 @@ AvatarMask:
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach
     m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/head
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/head/head_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/head/Hurtbox
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/LeftJet
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/Point
       Light, Left
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/Point
       Light, Right
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/RightJet
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/upper_arm.l
     m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/upper_arm.l/lower_arm.l
