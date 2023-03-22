@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class MonsterFSM : MonoBehaviour
 {
@@ -13,18 +11,30 @@ public class MonsterFSM : MonoBehaviour
     public bool IsAnimationEnd { get; private set; } = false;
 
     private MonsterState currentState;
-    private List<MonsterSkill> skillList = new List<MonsterSkill>();
+    private List<MonsterOnSkill> skillList = new List<MonsterOnSkill>();
 
     private float _detectRange = 200;
     private float _maxAttackRange = 50;
 
-    /// <summary>
-    /// 몬스터의 상태를 변경하는 메서드
-    /// </summary>
-    /// <param name="newState">새로 변경할 상태</param>
-    public void ChangeState(MonsterState newState)
+	/// <summary>
+	/// 몬스터의 초기 상태를 설정하는 메서드
+	/// </summary>
+	/// <param name="defaultState"></param>
+	public void InitializeState(MonsterState defaultState)
+	{
+		IsAnimationEnd = false;
+
+		currentState = defaultState;
+		currentState.Enter();
+	}
+
+	/// <summary>
+	/// 몬스터의 상태를 변경하는 메서드
+	/// </summary>
+	/// <param name="newState">새로 변경할 상태</param>
+	public void ChangeState(MonsterState newState)
     {
-		Debug.Log($"{currentState} -> {newState}");
+        Debug.Log($"{currentState} -> {newState}");
 
         currentState.Exit();
         IsAnimationEnd = false;
@@ -50,14 +60,6 @@ public class MonsterFSM : MonoBehaviour
         IsAnimationEnd = true;
     }
 
-    private void InitializeState(MonsterState defaultState)
-    {
-        IsAnimationEnd = false;
-
-        currentState = defaultState;
-        currentState.Enter();
-    }
-
     private void Awake()
     {
         if (_player == null)
@@ -66,16 +68,15 @@ public class MonsterFSM : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        InitializeState(new MonsterSpawn(this));
-    }
-
     private void Update()
     {
-		GioleFunc.Log(currentState);
-		currentState.Loop();
+        currentState.Loop();
     }
+
+	private void SelectAttack()
+	{
+
+	}
 
     private void OnDrawGizmosSelected()
     {

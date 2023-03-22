@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-
-
 
 public abstract class MonsterState
 {
@@ -36,30 +33,30 @@ public abstract class MonsterState
 
 public class MonsterIdle : MonsterState
 {
-	public MonsterIdle(MonsterFSM fsm) : base(fsm)
-	{
+    public MonsterIdle(MonsterFSM fsm) : base(fsm)
+    {
 
-	}
+    }
 
-	public override void Enter()
-	{
-		base.Enter();
-		_anim.SetTrigger(Functions.MONSTER_ANIM_IDLE);
-	}
+    public override void Enter()
+    {
+        base.Enter();
+        _anim.SetTrigger(Functions.MONSTER_ANIM_IDLE);
+    }
 
-	public override void Loop()
-	{
-		base.Loop();
+    public override void Loop()
+    {
+        base.Loop();
 
-		if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
-		{
-			_fsm.ChangeState(new MonsterSkill(_fsm));
-		}
-		else if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrDetectRange)
-		{
-			_fsm.ChangeState(new MonsterMove(_fsm));
-		}
-	}
+        if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
+        {
+            _fsm.ChangeState(new MonsterOnSkill(_fsm));
+        }
+        else if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrDetectRange)
+        {
+            _fsm.ChangeState(new MonsterMove(_fsm));
+        }
+    }
 }
 
 public class MonsterMove : MonsterState
@@ -70,6 +67,8 @@ public class MonsterMove : MonsterState
     {
         _rootMotion = _fsm.GetComponent<RootMotion>();
         _rootMotion.InitMove();
+
+		_rootMotion.Move();
     }
 
     public override void Enter()
@@ -80,15 +79,15 @@ public class MonsterMove : MonsterState
 
     public override void Loop()
     {
-		base.Loop();
+        base.Loop();
         if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
         {
-			Debug.Log("Change Attack");
-            _fsm.ChangeState(new MonsterSkill(_fsm));
+            Debug.Log("Change Attack");
+            _fsm.ChangeState(new MonsterOnSkill(_fsm));
         }
         else
         {
-            _rootMotion.Move();
+            //_rootMotion.Move();
         }
     }
 
@@ -99,9 +98,9 @@ public class MonsterMove : MonsterState
     }
 }
 
-public class MonsterSkill : MonsterState
+public class MonsterOnSkill : MonsterState
 {
-    public MonsterSkill(MonsterFSM fsm) : base(fsm)
+    public MonsterOnSkill(MonsterFSM fsm) : base(fsm)
     {
 
     }
@@ -109,7 +108,7 @@ public class MonsterSkill : MonsterState
     public override void Enter()
     {
         base.Enter();
-        _anim.SetTrigger(Functions.MONSTER_ANIM_SKILL);
+        _anim.SetTrigger(Functions.MONSTER_ANIM_ON_SKILL);
     }
 
     public override void Loop()
@@ -179,7 +178,35 @@ public class MonsterDeath : MonsterState
     }
 }
 
-public class MonsterAction1 : MonsterSkill
+public class MonsterOnDamaged : MonsterState
+{
+    public MonsterOnDamaged(MonsterFSM fsm) : base(fsm)
+    {
+
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        _anim.SetTrigger(Functions.MONSTER_ANIM_DEATH);
+    }
+
+    public override void Loop()
+    {
+        base.Loop();
+        if (_fsm.IsAnimationEnd)
+        {
+            _fsm.ChangeState(new MonsterIdle(_fsm));
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+}
+
+public class MonsterAction1 : MonsterOnSkill
 {
     public MonsterAction1(MonsterFSM fsm) : base(fsm)
     {

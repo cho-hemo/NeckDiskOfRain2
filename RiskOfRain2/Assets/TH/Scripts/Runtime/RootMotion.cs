@@ -10,9 +10,6 @@ public class RootMotion : MonoBehaviour
     private Animator _animator;
     private NavMeshAgent _agent;
 
-    //
-    private bool _isMove = false;
-
     private Vector2 _velocity;
     private Vector2 SmoothDeltaPosition;
 
@@ -20,9 +17,6 @@ public class RootMotion : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
-
-        //
-        InitMove();
     }
 
     private void Start()
@@ -30,28 +24,6 @@ public class RootMotion : MonoBehaviour
         //transform.GetChild(0).transform.localPosition = Vector3.zero;
         //_agent.SetDestination(_player.transform.position);
         //SyncRootPosAndAgent();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _isMove = !_isMove;
-
-            //if (_isMove)
-            //{
-            //    _animator.SetBool("isMove", true);
-            //}
-            //else
-            //{
-            //    _animator.SetBool("isMove", false);
-            //}
-        }
-
-        if (_isMove)
-        {
-            Move();
-        }
     }
 
     public void InitMove()
@@ -76,7 +48,7 @@ public class RootMotion : MonoBehaviour
 
     private void SyncRootPosAndAgent()
     {
-		Vector3 worldDeltaPosition = _agent.nextPosition - transform.position;
+        Vector3 worldDeltaPosition = _agent.nextPosition - transform.position;
         worldDeltaPosition.y = 0;
 
         float dx = Vector3.Dot(transform.right, worldDeltaPosition);
@@ -108,33 +80,33 @@ public class RootMotion : MonoBehaviour
 
     private void OnAnimatorMove()
     {
-		Vector3 nextPos = _animator.rootPosition;
-		nextPos.y = _agent.nextPosition.y;
+        Vector3 nextPos = _animator.rootPosition;
+        nextPos.y = _agent.nextPosition.y;
 
-		transform.position = nextPos;
+        transform.position = nextPos;
 
-		_agent.nextPosition = transform.position;
+        _agent.nextPosition = transform.position;
 
 
-		//
-		//transform.position += _animator.deltaPosition;
-		//
+        //
+        //transform.position += _animator.deltaPosition;
+        //
 
-		////footsteps
-		//for (int i = 0; i < footTargets.Length; i++)
-		//{
-		//	var foot = footTargets[i];
-		//	var ray = new Ray(foot.transform.position + Vector3.up * 0.5f, Vector3.down);
-		//	var hitInfo = new RaycastHit();
-		//	if (Physics.SphereCast(ray, 0.05f, out hitInfo, 0.50f))
-		//	{
-		//		Vector3 prevPos = foot.position;
-		//		//Debug.Log($"{i}. {hitInfo}");
-		//		foot.position = hitInfo.point + Vector3.up * 0.05f;
+        ////footsteps
+        //for (int i = 0; i < footTargets.Length; i++)
+        //{
+        //	var foot = footTargets[i];
+        //	var ray = new Ray(foot.transform.position + Vector3.up * 0.5f, Vector3.down);
+        //	var hitInfo = new RaycastHit();
+        //	if (Physics.SphereCast(ray, 0.05f, out hitInfo, 0.50f))
+        //	{
+        //		Vector3 prevPos = foot.position;
+        //		//Debug.Log($"{i}. {hitInfo}");
+        //		foot.position = hitInfo.point + Vector3.up * 0.05f;
 
-		//		if (prevPos != foot.position && i == 0)
-		//			Debug.Log($"{i}. [prev]{prevPos} [curr]{foot.position}");
-		//	}
-		//}
-	}
+        //		if (prevPos != foot.position && i == 0)
+        //			Debug.Log($"{i}. [prev]{prevPos} [curr]{foot.position}");
+        //	}
+        //}
+    }
 }
