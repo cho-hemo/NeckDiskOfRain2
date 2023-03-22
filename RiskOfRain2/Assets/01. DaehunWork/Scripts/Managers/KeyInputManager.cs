@@ -171,6 +171,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     public void OnEsc(InputValue value)
     {
         cursorLocked = !cursorLocked;
+        SetCursorState(cursorLocked);
     }
     //  } 2023-03-22 / Daehun / KeyInput Works
     #endregion
