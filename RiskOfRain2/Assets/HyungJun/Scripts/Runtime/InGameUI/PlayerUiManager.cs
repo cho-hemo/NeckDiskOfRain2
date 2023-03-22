@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public partial class PlayerUiManager : MonoBehaviour
 {
@@ -56,7 +58,10 @@ public partial class PlayerUiManager : MonoBehaviour
 	private GameObject _bossHpbarTxtObj = default;
 
 
-	private GameObject _chatBoxObj = default;
+	private GameObject _chatLineObj = default;
+
+	// 미션 UI 오브젝트
+	private GameObject _missionUiObj = default;
 
 	#endregion 게임오브젝트
 
@@ -140,11 +145,13 @@ public partial class PlayerUiManager : MonoBehaviour
 		_bossUiObj = uiObj_.FindChildObj("BossUI");
 		_bossHpbarTxtObj = uiObj_.FindChildObj("BossHpTxt");
 
-		_chatBoxObj = uiObj_.FindChildObj("ChatBoxUI");
+		_chatLineObj = uiObj_.FindChildObj("ChatBoxUI").FindChildObj("ChatLine");
 		_bossHpbarObj = uiObj_.FindChildObj("BossHpBar");
 
 		_scoreBoardObj = uiObj_.FindChildObj("ScoreBoardUI");
 		_crossHair = uiObj_.FindChildObj("CrossHair");
+
+		_missionUiObj = uiObj_.FindChildObj("MissionUI");
 
 
 		StageLevel = 1;
@@ -166,7 +173,7 @@ public partial class PlayerUiManager : MonoBehaviour
 		_popMenuObj.SetActive(false);
 		_interactionPopupObj.SetActive(false);
 		_bossUiObj.SetActive(false);
-		_chatBoxObj.SetActive(false);
+		_chatLineObj.SetActive(false);
 		_scoreBoardObj.SetActive(false);
 
 		foreach (Transform obj_ in _levelIconObj.transform)
@@ -259,13 +266,13 @@ public partial class PlayerUiManager : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Return) && !_popMenuObj.activeSelf)
 		{
-			if (!_chatBoxObj.activeSelf)
+			if (!_chatLineObj.activeSelf)
 			{
-				_chatBoxObj.SetActive(true);
+				_chatLineObj.SetActive(true);
 			}
-			else if (_chatBoxObj.activeSelf)
+			else if (_chatLineObj.activeSelf)
 			{
-				_chatBoxObj.SetActive(false);
+				_chatLineObj.SetActive(false);
 			}
 		}
 
@@ -287,14 +294,65 @@ public partial class PlayerUiManager : MonoBehaviour
 		// } 2023-03-21 / HyungJun / DebugMode
 
 
-	}
+
+
+		// { 2023-03-22 / HyungJun / Develop Message Box
+		// if (Input.GetKeyDown(KeyCode.M))
+		// {
+		// 	SendMessageToChat("[PlayerUiMnager] Update : NewMessage Add");
+		// }
+	}       // Update()
+
+	// private int _maxChatNum = 25;
+	// public GameObject chatPanel, textObject;
+
+	// [SerializeField]
+	// private List<Message> _messageList = new List<Message>();
+	// public void SendMessageToChat(string text_)
+	// {
+	// 	if (_maxChatNum <= _messageList.Count)
+	// 	{
+	// 		Destroy(_messageList[0].textObject.gameObject);
+	// 		_messageList.Remove(_messageList[0]);
+	// 	}
+	// 	Message newMessage = new Message();
+
+	// 	newMessage.text = text_;
+
+	// 	GameObject newText = Instantiate(textObject, chatPanel.transform);
+
+	// 	newMessage.textObject = newText.GetComponent<Text>();
+
+	// 	newMessage.textObject.text = newMessage.text;
+
+	// 	_messageList.Add(newMessage);
+	// }       // SendMessageToChat()
+
+	// [Serializable]
+	// public class Message
+	// {
+	// 	public string text;
+	// 	public Text textObject;
+	// }       // class Message
+	// // } 2023-03-22 / HyungJun / Develop Message Box
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	public void ScoreBoardPopup(bool popupCheck)
 	{
 		_scoreBoardObj.SetActive(popupCheck);
 		_crossHair.SetActive(!popupCheck);
-
 	}
 
 
@@ -423,12 +481,31 @@ public partial class PlayerUiManager : MonoBehaviour
 		_bossUiObj.SetActive(true);
 	}
 
+	/// <summary>
+	/// 보스의 UI를 설정하고 보여주는 함수
+	/// </summary>
+	/// <param name="name_">보스이름</param>
+	/// <param name="secondName_">보스의 두번쨰 이름</param>
 	public void SetBossUi(string name_, string secondName_)
 	{
 		BossHpControl(0);
 		_bossUiObj.FindChildObj("BossNameTxt").SetTmpText(name_);
-		_bossUiObj.FindChildObj("BossSecondNameTxt").SetTmpText(secondName_);
+
+		_bossUiObj.FindChildObj("BossSecondNameTxt").SetTmpText("<sprite name=\"CloudLeft\">" + secondName_ + "<sprite name=\"CloudRight\">");
 	}       // SetBossUi
+
+
+	/// <summary>
+	/// 미션 UI를 체크해주는 함수
+	/// </summary>
+	public void CheckMissionUiComplate()
+	{
+		_missionUiObj.FindChildObj("CheckBoxImage").SetActive(false);
+		_missionUiObj.FindChildObj("CheckBoxComeplateImage").SetActive(true);
+		_missionUiObj.FindChildObj("MissionTxt").SetFontStyle(TMPro.FontStyles.Strikethrough);
+		_missionUiObj.FindChildObj("MissionTxt").SetFontColor(0.5f, 0.5f, 0.5f);
+	}
+
 
 	public void BossHpControl(int hpValue_)
 	{

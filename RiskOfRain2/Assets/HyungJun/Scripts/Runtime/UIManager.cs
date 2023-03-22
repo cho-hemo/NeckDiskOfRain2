@@ -52,6 +52,11 @@ public class UIManager : SingletonBase<UIManager>
 		_playerUiManagerCs.ActiveBossUi();
 	}
 
+	public void BossMissionComplete()
+	{
+		_playerUiManagerCs.CheckMissionUiComplate();
+	}
+
 
 	public void BossHpControl(int value_)
 	{
