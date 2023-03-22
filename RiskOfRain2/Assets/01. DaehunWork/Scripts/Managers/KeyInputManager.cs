@@ -70,6 +70,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 		player.Move(value.Get<Vector2>());
 	}
 
+<<<<<<< HEAD
 	///<summary>마우스 이동, Right Stick 입력 할 시 호출되는 함수</summary>
 	///<param name = "value">Vector2 값을 받음</param>
 	public void OnLook(InputValue value)
@@ -84,6 +85,22 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 
 		}
 	}
+=======
+    ///<summary>마우스 이동, Right Stick 입력 할 시 호출되는 함수</summary>
+    ///<param name = "value">Vector2 값을 받음</param>
+    public void OnLook(InputValue value)
+    {
+        if (cursorLocked)
+        {
+            LookInput(value.Get<Vector2>());
+            player.Look(value.Get<Vector2>());
+        }
+        else
+        {
+            player.Look(Vector2.zero);
+        }
+    }
+>>>>>>> 0fa5aa3b251e35f04e415e3844ea2d926ab8fdeb
 
 	///<summary>스페이스바, 게임패드에 South키를 입력 할 시 호출되는 함수</summary>
 	///<param name = "value">Bool 값을 받음</param>
@@ -165,6 +182,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 		SendPingInput(value.isPressed);
 	}
 
+<<<<<<< HEAD
 	//  { 2023-03-22 / Daehun / KeyInput Works
 	public void OnEsc(InputValue value)
 	{
@@ -172,6 +190,38 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 	}
 	//  } 2023-03-22 / Daehun / KeyInput Works
 	#endregion
+=======
+    // Tap KeyInput
+    public void OnInformationScreen(InputValue value)
+    {
+        InformationScreenInput(value.isPressed);
+        //  { 2023-03-22 / Daehun / KeyInput Works
+        if (value.isPressed)
+        {
+            SetCursorState(!value.isPressed);
+        }
+        else
+        {
+            SetCursorState(!value.isPressed);
+        }
+        cursorLocked = !value.isPressed;
+        //  } 2023-03-22 / Daehun / KeyInput Works
+    }
+
+    public void OnSendPing(InputValue value)
+    {
+        SendPingInput(value.isPressed);
+    }
+
+    //  { 2023-03-22 / Daehun / KeyInput Works
+    public void OnEsc(InputValue value)
+    {
+        cursorLocked = !cursorLocked;
+        SetCursorState(cursorLocked);
+    }
+    //  } 2023-03-22 / Daehun / KeyInput Works
+    #endregion
+>>>>>>> 0fa5aa3b251e35f04e415e3844ea2d926ab8fdeb
 #endif
 
 	public void Start()
