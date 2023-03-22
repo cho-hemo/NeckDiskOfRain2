@@ -44,6 +44,10 @@ public partial class PlayerUiManager : MonoBehaviour
 
 	private GameObject _interactionPopupObj = default;
 
+	private GameObject _scoreBoardObj = default;
+	private GameObject _crossHair = default;
+
+
 
 	// 보스 게임 오브젝트
 	private GameObject _bossUiObj = default;
@@ -55,6 +59,8 @@ public partial class PlayerUiManager : MonoBehaviour
 
 	private List<GameObject> _skillList = new List<GameObject>();
 	private List<bool> _isSkillActivation = new List<bool>();
+
+
 
 	[SerializeField]
 	private int _playerCurrentHp = 0;
@@ -95,6 +101,7 @@ public partial class PlayerUiManager : MonoBehaviour
 	private float _expBarValue = 0f;
 
 
+
 	private void Awake()
 	{
 		// { DebugMode
@@ -130,6 +137,10 @@ public partial class PlayerUiManager : MonoBehaviour
 		_chatBoxObj = uiObj_.FindChildObj("ChatBoxUI");
 		_bossHpbarObj = uiObj_.FindChildObj("BossHpBar");
 
+		_scoreBoardObj = uiObj_.FindChildObj("ScoreBoardUI");
+		_crossHair = uiObj_.FindChildObj("CrossHair");
+
+
 		StageLevel = 1;
 
 		// 플레이어 최대 경험치 설정
@@ -150,6 +161,7 @@ public partial class PlayerUiManager : MonoBehaviour
 		_interactionPopupObj.SetActive(false);
 		_bossUiObj.SetActive(false);
 		_chatBoxObj.SetActive(false);
+		_scoreBoardObj.SetActive(false);
 
 		foreach (Transform obj_ in _levelIconObj.transform)
 		{
@@ -251,6 +263,15 @@ public partial class PlayerUiManager : MonoBehaviour
 			}
 		}
 
+		if (Input.GetKeyDown(KeyCode.Tab))
+		{
+			ScoreBoardPopup(true);
+
+		}
+		else if (Input.GetKeyUp(KeyCode.Tab))
+		{
+			ScoreBoardPopup(false);
+		}
 
 		// { 2023-03-21 / HyungJun / DebugMode
 		if (Input.GetKeyDown(KeyCode.H))
@@ -262,6 +283,13 @@ public partial class PlayerUiManager : MonoBehaviour
 
 	}
 
+
+	public void ScoreBoardPopup(bool popupCheck)
+	{
+		_scoreBoardObj.SetActive(popupCheck);
+		_crossHair.SetActive(!popupCheck);
+
+	}
 
 
 	/// <summary>
@@ -314,7 +342,7 @@ public partial class PlayerUiManager : MonoBehaviour
 			}
 			else
 			{
-				PlayerMoney -= moneyValue_;
+				PlayerMoney += moneyValue_;
 				_moneyTxtObj.SetTmpText(PlayerMoney.ToString());
 				return true;
 			}

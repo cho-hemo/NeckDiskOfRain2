@@ -12,13 +12,8 @@ public class MonsterFSM : MonoBehaviour
 	public float SqrMaxAttackRange { get { return _maxAttackRange * _maxAttackRange; } }
 	public bool IsAnimationEnd { get; private set; } = false;
 
-<<<<<<< HEAD
 	private MonsterState currentState;
-	private List<MonsterAction> skillList = new List<MonsterAction>();
-=======
-    private MonsterState currentState;
-    private List<MonsterSkill> skillList = new List<MonsterSkill>();
->>>>>>> 8e04fc6b834c5e2c707a664fe3554c7f232036cd
+	private List<MonsterSkill> skillList = new List<MonsterSkill>();
 
 	private float _detectRange = 200;
 	private float _maxAttackRange = 50;
