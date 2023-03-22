@@ -67,6 +67,7 @@ public class RootMotion : MonoBehaviour
 		SyncRootPosAndAgent();
 	}
 
+<<<<<<< HEAD
 	public void Stop()
 	{
 		// Debug.Log("Stop");
@@ -74,6 +75,14 @@ public class RootMotion : MonoBehaviour
 		_agent.updatePosition = false;
 		_agent.updateRotation = false;
 	}
+=======
+    public void Stop()
+    {
+        _animator.applyRootMotion = false;
+        _agent.updatePosition = false;
+        _agent.updateRotation = false;
+    }
+>>>>>>> 8e04fc6b834c5e2c707a664fe3554c7f232036cd
 
 	private void SyncRootPosAndAgent()
 	{

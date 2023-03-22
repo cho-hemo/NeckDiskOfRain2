@@ -35,13 +35,13 @@ Shader "CustomShader/Cel"
             {
                 float4 vertex : POSITION;				
                 float4 uv : TEXCOORD0;
-                //float3 normal : NORMAL;
+                float3 normal : NORMAL;
             };
 
             struct v2f
             {
                 float4 pos : SV_POSITION;
-                //float3 worldNormal : NORMAL;
+                float3 worldNormal : NORMAL;
                 float2 uv : TEXCOORD0;
                 float3 viewDir : TEXCOORD1;	
 
@@ -60,7 +60,7 @@ Shader "CustomShader/Cel"
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-                //o.worldNormal = UnityObjectToWorldNormal(v.normal);
+                o.worldNormal = UnityObjectToWorldNormal(v.normal);
                 o.viewDir = WorldSpaceViewDir(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 
@@ -84,8 +84,8 @@ Shader "CustomShader/Cel"
             float4 frag (v2f i) : SV_Target
             {
                 float4 normalMapSample = tex2D(_NormalMap, i.uv);
-                float3 normal = normalize(normalMapSample.rgb);
-                //float3 normal = normalize(i.worldNormal);
+                //float3 normal = normalize(normalMapSample.rgb);
+                float3 normal = normalize(i.worldNormal);
                 float3 viewDir = normalize(i.viewDir);
 
                 float NdotL = dot(_WorldSpaceLightPos0, normal);
