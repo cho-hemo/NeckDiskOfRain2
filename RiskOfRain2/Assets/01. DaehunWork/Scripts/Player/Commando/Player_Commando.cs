@@ -14,49 +14,63 @@ public class Player_Commando : Player
     {
     }
 
-    public override void MainSkill(bool isPressed_)
+    public override void MainSkill(bool isPressed)
     {
         switch (StateMachine.GetState())
         {
             case Player_Commando_RollState:
                 return;
         }
-        SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed_);
+        SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed);
+        SetFloat(Global.ATTACK_SPEED, AttackSpeed);
     }
 
-    public override void SubSkill(bool isPressed_)
+    public override void SubSkill(bool isPressed)
     {
         switch (StateMachine.GetState())
         {
             case Player_Commando_RollState:
                 return;
         }
-        SetTrigger(Global.PLAYER_SUB_SKILL);
+        if (isPressed)
+        {
+            SetTrigger(Global.PLAYER_SUB_SKILL);
+        }
     }
 
-    public override void UtilitySkill(bool isPressed_)
+    public override void UtilitySkill(bool isPressed)
     {
         switch (StateMachine.GetState())
         {
             case Player_Commando_RollState:
                 return;
         }
-        if (isPressed_)
+        if (isPressed)
         {
             SetState(new Player_Commando_RollState(this));
         }
     }
 
-    public override void SpecialSkill(bool isPressed_)
+    public override void SpecialSkill(bool isPressed)
     {
         switch (StateMachine.GetState())
         {
             case Player_Commando_RollState:
                 return;
         }
-        if (isPressed_)
+        if (isPressed)
         {
-            SetBool(Global.PLAYER_IS_SPECIAL_SKILL, isPressed_);
+            StartCoroutine(SpecialSkillCoroutine(isPressed));
+        }
+    }
+
+    IEnumerator SpecialSkillCoroutine(bool isPressed)
+    {
+        int loopCount_ = Mathf.RoundToInt(AttackSpeed * 6);
+        for (int i = 0; i < loopCount_; i++)
+        {
+            SetTrigger(Global.PLAYER_SPECIAL_SKILL);
+            yield return new WaitForSeconds(1 / loopCount_);
         }
     }
 }

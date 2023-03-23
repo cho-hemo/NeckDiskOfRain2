@@ -112,7 +112,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
         SubSkillInput(value.isPressed);
         player.SubSkill(value.isPressed);
         // { 2023-03-20 / HyungJun / PlayerUIWorks
-        playerUIManager.PlayerSkillActiveIcon(1, 5f);
+        //playerUIManager.PlayerSkillActiveIcon(1, 5f);
     }
 
     // Shift skill
@@ -120,7 +120,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     {
         UtilitySkillInput(value.isPressed);
         player.UtilitySkill(value.isPressed);
-        playerUIManager.PlayerSkillActiveIcon(2, 5f);
+        //playerUIManager.PlayerSkillActiveIcon(2, 5f);
     }
 
     // R skill
@@ -128,7 +128,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
     {
         SpecialSkillInput(value.isPressed);
         player.SpecialSkill(value.isPressed);
-        playerUIManager.PlayerSkillActiveIcon(3, 5f);
+        //playerUIManager.PlayerSkillActiveIcon(3, 5f);
     }
 
     // Q KeyInput

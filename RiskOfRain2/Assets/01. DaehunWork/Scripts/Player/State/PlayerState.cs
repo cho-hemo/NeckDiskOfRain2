@@ -51,6 +51,9 @@ public class Player_WalkState : IState
         // _player.SetFloat("PosY", _player.InputMove.y);
         _player.SetFloat("PosY", 1f);
         _player.SetBool("IsMove", _player.IsMove);
+
+        float speed_ = _player.CurrentSpeed / _player.WalkSpeed;
+        //_player.SetFloat(Global.MOVE_SPEED, speed_);
     }
     public void UpdateState()
     {
@@ -98,6 +101,9 @@ public class Player_SprintState : IState
     public void OnEnter()
     {
         _player.SetBool("IsSprint", _player.IsSprint);
+
+        float speed_ = _player.CurrentSpeed / _player.SprintSpeed;
+        //_player.SetFloat(Global.MOVE_SPEED, speed_);
     }
     public void UpdateState()
     {
