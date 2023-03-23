@@ -10,20 +10,13 @@ public class MonsterFSM : MonoBehaviour
 	public float SqrMaxAttackRange { get { return _maxAttackRange * _maxAttackRange; } }
 	public bool IsAnimationEnd { get; private set; } = false;
 
-<<<<<<< HEAD
 	private MonsterState currentState;
-	private List<MonsterSkill> skillList = new List<MonsterSkill>();
-=======
-    private MonsterState currentState;
-    private List<MonsterOnSkill> skillList = new List<MonsterOnSkill>();
->>>>>>> 3eb7a07df05fc4644d46cd2a4d7ddcb37be9bd20
+	private List<MonsterOnSkill> skillList = new List<MonsterOnSkill>();
 
 	private float _detectRange = 200;
 	private float _maxAttackRange = 50;
 
 	/// <summary>
-<<<<<<< HEAD
-=======
 	/// 몬스터의 초기 상태를 설정하는 메서드
 	/// </summary>
 	/// <param name="defaultState"></param>
@@ -36,18 +29,12 @@ public class MonsterFSM : MonoBehaviour
 	}
 
 	/// <summary>
->>>>>>> 3eb7a07df05fc4644d46cd2a4d7ddcb37be9bd20
 	/// 몬스터의 상태를 변경하는 메서드
 	/// </summary>
 	/// <param name="newState">새로 변경할 상태</param>
 	public void ChangeState(MonsterState newState)
-<<<<<<< HEAD
 	{
 		Debug.Log($"{currentState} -> {newState}");
-=======
-    {
-        Debug.Log($"{currentState} -> {newState}");
->>>>>>> 3eb7a07df05fc4644d46cd2a4d7ddcb37be9bd20
 
 		currentState.Exit();
 		IsAnimationEnd = false;
@@ -73,15 +60,6 @@ public class MonsterFSM : MonoBehaviour
 		IsAnimationEnd = true;
 	}
 
-<<<<<<< HEAD
-	private void InitializeState(MonsterState defaultState)
-	{
-		IsAnimationEnd = false;
-
-		currentState = defaultState;
-		currentState.Enter();
-	}
-
 	private void Awake()
 	{
 		if (_player == null)
@@ -90,15 +68,14 @@ public class MonsterFSM : MonoBehaviour
 		}
 	}
 
-	private void Start()
-	{
-		InitializeState(new MonsterSpawn(this));
-	}
-
 	private void Update()
 	{
-		GioleFunc.Log(currentState);
 		currentState.Loop();
+	}
+
+	private void SelectAttack()
+	{
+
 	}
 
 	private void OnDrawGizmosSelected()
@@ -108,31 +85,4 @@ public class MonsterFSM : MonoBehaviour
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, _maxAttackRange);
 	}
-=======
-    private void Awake()
-    {
-        if (_player == null)
-        {
-            _player = GioleFunc.GetRootObj(PLAYER);
-        }
-    }
-
-    private void Update()
-    {
-        currentState.Loop();
-    }
-
-	private void SelectAttack()
-	{
-
-	}
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _detectRange);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere (transform.position, _maxAttackRange);
-    }
->>>>>>> 3eb7a07df05fc4644d46cd2a4d7ddcb37be9bd20
 }
