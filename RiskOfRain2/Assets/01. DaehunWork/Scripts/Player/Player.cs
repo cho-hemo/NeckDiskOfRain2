@@ -432,7 +432,16 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     public void Look(Vector2 value)
     {
-        InputLook = value;
+        if (InputLook != value)
+        {
+            InputLook = value;
+            float aimY_ = (CinemachineTargetPitch + BottomClamp * -1) / (BottomClamp * -1 + TopClamp);
+            Debug.Log($"aimY : {aimY_} / {CinemachineTargetPitch}");
+            float aimX_ = (CinemachineTargetYaw + 90) / 180f;
+            Debug.Log($"aimX : {aimX_} / {CinemachineTargetYaw}");
+            PlayerAnimator.CrossFade("Aim_Horizontal", 0f, 1, aimX_);
+            PlayerAnimator.CrossFade("Aim_Vertical", 0f, 2, aimY_);
+        }
     }
 
     private void CameraRotation()

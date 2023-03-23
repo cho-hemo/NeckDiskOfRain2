@@ -3205,7 +3205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04ea801636931f4290c92571e945a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topClamp: 70
+  _topClamp: 90
   _bottomClamp: -80
   _inputMove: {x: 0, y: 0}
   _inputLook: {x: 0, y: 0}

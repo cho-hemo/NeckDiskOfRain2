@@ -133,7 +133,6 @@ public class Player_SprintState : IState
 
 public class Player_JumpState : IState
 {
-
     private Player _player;
     public Player_JumpState(Player player_)
     {
@@ -143,6 +142,39 @@ public class Player_JumpState : IState
     public void OnEnter()
     {
         _player.SetTrigger("Jump");
+    }
+    public void UpdateState()
+    {
+        _player.Move();
+    }
+
+    public void OnExit()
+    {
+    }
+
+    public void Action()
+    {
+    }
+
+    public void ChangeState()
+    {
+    }
+    public void AnimationChange()
+    {
+
+    }
+}
+
+public class Player_FlightState : IState
+{
+    private Player _player;
+    public Player_FlightState(Player player_)
+    {
+        this._player = player_;
+    }
+
+    public void OnEnter()
+    {
     }
     public void UpdateState()
     {

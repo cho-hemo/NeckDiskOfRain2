@@ -6,7 +6,7 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Aim_Commando
+  m_Name: FirePsitol_Commando 1
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
@@ -24,17 +24,17 @@ AvatarMask:
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base
     m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/IKArmTarget.l
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/IKArmTarget.l/IKArmPole.l
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/IKArmTarget.l/IKArmPole.l/IKArmPole.l_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/IKArmTarget.r
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/IKArmTarget.r/IKArmPole.r
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/IKArmTarget.r/IKArmPole.r/IKArmPole.r_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/pelvis
     m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/pelvis/thigh.l
@@ -58,25 +58,25 @@ AvatarMask:
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/pelvis/thigh.r/calf.r/foot.r/toe.r/toe.r_end
     m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest
     m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/head
     m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/head/head_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/head/Hurtbox
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/LeftJet
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/Point
       Light, Left
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/Point
       Light, Right
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/RightJet
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/upper_arm.l
     m_Weight: 1
   - m_Path: ModelBase/mdlCommandoDualies/CommandoArmature/ROOT/base/stomach/chest/upper_arm.l/lower_arm.l
