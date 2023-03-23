@@ -105,20 +105,24 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     protected float _healthRegen;
 
     [SerializeField]
-    [Tooltip("기본 이동속도")]
-    protected float _defaultSpeed = 7.0f;
-
-    [SerializeField]
     [Tooltip("현재 이동속도")]
     protected float _currentSpeed = 0f;
 
     [SerializeField]
-    [Tooltip("걷기 속도")]
-    protected float _walkSpeed = 7.0f;
+    [Tooltip("기본 걷기 속도")]
+    protected float _defaultWalkSpeed = 7.0f;
 
     [SerializeField]
-    [Tooltip("질주 속도")]
-    protected float _sprintSpeed = 8.75f;
+    [Tooltip("현재 걷기 속도")]
+    protected float _currentWalkSpeed = 7.0f;
+
+    [SerializeField]
+    [Tooltip("기본 질주 속도")]
+    protected float _defaultSprintSpeed = 8.75f;
+
+    [SerializeField]
+    [Tooltip("현재 질주 속도")]
+    protected float _currentSprintSpeed = 8.75f;
 
     [SerializeField]
     [Tooltip("최대 점프 카운트")]
@@ -220,10 +224,11 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public float AttackSpeed { get { return _attackSpeed; } protected set { _attackSpeed = value; } }
     public List<float> SkillCoolTime { get { return _skillCoolTime; } protected set { _skillCoolTime = value; } }
     public float HealthRegen { get { return _healthRegen; } protected set { _healthRegen = value; } }
-    public float DefaultSpeed { get { return _defaultSpeed; } protected set { _defaultSpeed = value; } }
     public float CurrentSpeed { get { return _currentSpeed; } protected set { _currentSpeed = value; } }
-    public float WalkSpeed { get { return _walkSpeed; } protected set { _walkSpeed = value; } }
-    public float SprintSpeed { get { return _sprintSpeed; } protected set { _sprintSpeed = value; } }
+    public float DefaultWalkSpeed { get { return _defaultWalkSpeed; } protected set { _defaultWalkSpeed = value; } }
+    public float CurrentWalkSpeed { get { return _currentWalkSpeed; } protected set { _currentWalkSpeed = value; } }
+    public float DefaultSprintSpeed { get { return _defaultSprintSpeed; } protected set { _defaultSprintSpeed = value; } }
+    public float CurrentSprintSpeed { get { return _currentSprintSpeed; } protected set { _currentSprintSpeed = value; } }
     public int MaxJumpCount { get { return _maxJumpCount; } protected set { _maxJumpCount = value; } }
     public int CurrentJumpCount { get { return _currentJumpCount; } protected set { _currentJumpCount = value; } }
     public float JumpHeight { get { return _jumpHeight; } protected set { _jumpHeight = value; } }
@@ -386,6 +391,12 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
         InputMove = value;
 
+        switch (StateMachine.GetState())
+        {
+            case Player_Commando_RollState:
+                return;
+        }
+
         if (IsGrounded)
         {
             if (IsSprint)
@@ -401,7 +412,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     public void Move()
     {
-        float targetSpeed = IsSprint ? SprintSpeed : WalkSpeed;
+        float targetSpeed = IsSprint ? CurrentSprintSpeed : CurrentWalkSpeed;
 
         if (InputMove == Vector2.zero) targetSpeed = 0.0f;
 
@@ -410,11 +421,9 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         float speedOffset = 0.1f;
         float inputMagnitude = KeyInputManager.Instance.analogMovement ? InputMove.magnitude : 1f;
 
-        if (currentHorizontalSpeed < targetSpeed - speedOffset ||
-            currentHorizontalSpeed > targetSpeed + speedOffset)
+        if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            CurrentSpeed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
-                Time.deltaTime * SpeedChangeRate);
+            CurrentSpeed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
 
             CurrentSpeed = Mathf.Round(CurrentSpeed * 1000f) / 1000f;
         }
@@ -436,11 +445,9 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
         TargetRotation = Mathf.Atan2(inputDirection_.x, inputDirection_.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
-        float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetRotation, ref _rotationVelocity,
-            RotationSmoothTime);
+        float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetRotation, ref _rotationVelocity, RotationSmoothTime);
 
         transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-
     }
 
     public void Look(Vector2 value)
@@ -523,6 +530,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         if (IsGrounded)
         {
             SetBool("IsGrounded", IsGrounded);
+
             FallTimeoutDelta = FallTimeOut;
             CurrentJumpCount = 0;
             //_animator.SetBool(_animIDFreeFall, false);
@@ -555,29 +563,25 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         }
         else
         {
-            SetBool("IsGrounded", IsGrounded);
-            // reset the jump timeout timer
+            SetState(new Player_FlightState(this));
+
             JumpTimeoutDelta = JumpTimeOut;
 
-            // fall timeout
             if (FallTimeoutDelta >= 0.0f)
             {
                 FallTimeoutDelta -= Time.deltaTime;
             }
             else
             {
-                // update animator if using character
                 SetFloat("JumpPower", VerticalVelocity);
             }
         }
 
-        // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
         if (VerticalVelocity < 100.0f)
         {
             VerticalVelocity += Gravity * Time.deltaTime;
         }
     }
-
 
     #region IPlayerSkill
     public abstract void PassiveSkill();

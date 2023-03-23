@@ -21,6 +21,10 @@ public class Player_Commando : Player
             case Player_Commando_RollState:
                 return;
         }
+        if (isPressed)
+        {
+            IsSprint = false;
+        }
         SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed);
         SetFloat(Global.ATTACK_SPEED, AttackSpeed);
     }
@@ -35,6 +39,7 @@ public class Player_Commando : Player
         if (isPressed)
         {
             SetTrigger(Global.PLAYER_SUB_SKILL);
+            IsSprint = false;
         }
     }
 
@@ -48,6 +53,7 @@ public class Player_Commando : Player
         if (isPressed)
         {
             SetState(new Player_Commando_RollState(this));
+            IsSprint = false;
         }
     }
 
@@ -61,6 +67,7 @@ public class Player_Commando : Player
         if (isPressed)
         {
             StartCoroutine(SpecialSkillCoroutine(isPressed));
+            IsSprint = false;
         }
     }
 
@@ -90,7 +97,6 @@ public class Player_Commando : Player
         bullet_.transform.rotation = rotation;
         bullet_.SetActive(true);
     }
-
 
     IEnumerator SpecialSkillCoroutine(bool isPressed)
     {
