@@ -54,27 +54,20 @@ public class Beetle : Monster
 
         if (distance <= lookRange)
         {
-
             navMeshAgent.SetDestination(target.position);
 
             if (distance <= navMeshAgent.stoppingDistance)
             {
-                
-
-                
                 FaceTarget();
             }
-
         }
         
         if (distance <= attackRange)
         {
             navMeshAgent.SetDestination(target.position);
-
             
             if (distance <= navMeshAgent.stoppingDistance + attackRange)
             {
-                
                 navMeshAgent.SetDestination(transform.position);
                 CloseCombat();
             }
@@ -101,7 +94,6 @@ public class Beetle : Monster
     {
         
     }
-
 
     public void MoveToPoint(Vector3 point) 
     {

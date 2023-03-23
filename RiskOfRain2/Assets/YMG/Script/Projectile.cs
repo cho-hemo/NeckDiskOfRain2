@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // LayerMask ¾î¶² ¿ÀºêÁ§Æ®, ¾î¶² ·¹ÀÌ¾î°¡ ¹ß»çÃ¼¿Í Ãæµ¹ÇÒÁö °áÁ¤
+    // LayerMask ì–´ë–¤ ì˜¤ë¸Œì íŠ¸, ì–´ë–¤ ë ˆì´ì–´ê°€ ë°œì‚¬ì²´ì™€ ì¶©ëŒí• ì§€ ê²°ì •
     public LayerMask collisionMask;
     float speed = 10;
 
@@ -13,12 +13,12 @@ public class Projectile : MonoBehaviour
         speed = newSpeed;
     }
 
-    void Update() // ·¹ÀÌÄ³½ºÆ® »ç¿ë
-    { // Ãæµ¹ °¨Áö collision
-        // ·¹ÀÌÀÇ ÀÌµ¿ÇÒ °Å¸®¿Í Ãæµ¹¿¡ ´ëÇÑ °á°ú
+    void Update() // ë ˆì´ìºìŠ¤íŠ¸ ì‚¬ìš©
+    { // ì¶©ëŒ ê°ì§€ collision
+        // ë ˆì´ì˜ ì´ë™í•  ê±°ë¦¬ì™€ ì¶©ëŒì— ëŒ€í•œ ê²°ê³¼
 
-        float moveDistance = speed * Time.deltaTime; // ÇÁ·¹ÀÓ¿¡¼­ ÀÌµ¿ÇÒ °Å¸®
-        CheckCollisions (moveDistance); // »õ·Î¿î ¸Å¼­µå
+        float moveDistance = speed * Time.deltaTime; // í”„ë ˆì„ì—ì„œ ì´ë™í•  ê±°ë¦¬
+        CheckCollisions (moveDistance); // ìƒˆë¡œìš´ ë§¤ì„œë“œ
         transform.Translate (Vector3.forward * moveDistance);
         Debug.DrawRay(transform.position, transform.forward, Color.red);
     }
@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     //    float moveDistance_ = 10.0f;
 
     //    Ray ray = new Ray(transform.position, transform.forward);
-    //    // Ãæµ¹ ¿ÀºêÁ§Æ®¿¡ ´ëÇØ¼­ ¹İÈ¯ÇÑ Á¤º¸
+    //    // ì¶©ëŒ ì˜¤ë¸Œì íŠ¸ì— ëŒ€í•´ì„œ ë°˜í™˜í•œ ì •ë³´
     //    RaycastHit hit;
 
     //    if (Physics.Raycast(ray, out hit, moveDistance_, collisionMask,
@@ -47,26 +47,26 @@ public class Projectile : MonoBehaviour
     void CheckCollisions(float moveDistance) 
     {
 
-        // ·¹ÀÌ¸¦ Á¤ÀÇ, ½ÃÀÛ ÁöÁ¡°ú ¹æÇâ
-        // ¹ß»çÃ¼ÀÇ À§Ä¡¿Í, ¹ß»çÃ¼ÀÇ Á¤¸é ¹æÇâ
+        // ë ˆì´ë¥¼ ì •ì˜, ì‹œì‘ ì§€ì ê³¼ ë°©í–¥
+        // ë°œì‚¬ì²´ì˜ ìœ„ì¹˜ì™€, ë°œì‚¬ì²´ì˜ ì •ë©´ ë°©í–¥
         Ray ray = new Ray (transform.position, transform.forward);
-        // Ãæµ¹ ¿ÀºêÁ§Æ®¿¡ ´ëÇØ¼­ ¹İÈ¯ÇÑ Á¤º¸
+        // ì¶©ëŒ ì˜¤ë¸Œì íŠ¸ì— ëŒ€í•´ì„œ ë°˜í™˜í•œ ì •ë³´
         RaycastHit hit;
         //Debug.DrawRay(ray.origin, ray.direction * 10000, Color.blue);
-        Debug.Log("½ÇÇà");
+        //Debug.Log("ì‹¤í–‰");
         if (Physics.Raycast(transform.position, transform.forward, out hit, moveDistance, collisionMask
             /*QueryTriggerInteraction.Collide*/))
-        // QueryTriggerInteraction Æ®¸®°Å Äİ¶óÀÌ´õµé°ú Ãæµ¹ÇÒ Áö ¾ÈÇÒÁö
+        // QueryTriggerInteraction íŠ¸ë¦¬ê±° ì½œë¼ì´ë”ë“¤ê³¼ ì¶©ëŒí•  ì§€ ì•ˆí• ì§€
         {
-            // ¸¸¾à ¹«¾ğ°¡¿Í Ãæµ¹Çß´Ù¸é OnHitObject() È£Ãâ
-            //Debug.Log($"ÃÑ¾ËÀÌ Ãæµ¹Çß´ÂÁö?, {moveDistance}");
+            // ë§Œì•½ ë¬´ì–¸ê°€ì™€ ì¶©ëŒí–ˆë‹¤ë©´ OnHitObject() í˜¸ì¶œ
+            //Debug.Log($"ì´ì•Œì´ ì¶©ëŒí–ˆëŠ”ì§€?, {moveDistance}");
             OnHitObject(hit);
         }
 
-        //Debug.Log($"{hit}°¡ Á¸Àç ÇÏ´ÂÁö?, {moveDistance}°¡ Á¸ÀçÇÏ´ÂÁö?, {transform.rotation.eulerAngles}");
+        //Debug.Log($"{hit}ê°€ ì¡´ì¬ í•˜ëŠ”ì§€?, {moveDistance}ê°€ ì¡´ì¬í•˜ëŠ”ì§€?, {transform.rotation.eulerAngles}");
     }
 
-    void OnHitObject(RaycastHit hit) // Ãæµ¹ÇÑ ¿ÀºêÁ§Æ® Á¤º¸¸¦ °¡Á®¿Ã RaycastHit hit
+    void OnHitObject(RaycastHit hit) // ì¶©ëŒí•œ ì˜¤ë¸Œì íŠ¸ ì •ë³´ë¥¼ ê°€ì ¸ì˜¬ RaycastHit hit
     {
         IDamageableT damageableObject = hit.collider.GetComponent<IDamageableT> ();
         if (damageableObject != null) 
@@ -74,7 +74,7 @@ public class Projectile : MonoBehaviour
             //damageableObject.TakeHit(damage, hit);
         }
         print(hit.collider.gameObject.name);
-        // ¿ÀºêÁ§Æ®¿¡ Ãæµ¹ÇßÀ» ¶§ ¹ß»çÃ¼¸¦ ÆÄ±«
+        // ì˜¤ë¸Œì íŠ¸ì— ì¶©ëŒí–ˆì„ ë•Œ ë°œì‚¬ì²´ë¥¼ íŒŒê´´
 
         GameObject.Destroy(gameObject);
         //GameObject.Destroy(hit.transform.gameObject);

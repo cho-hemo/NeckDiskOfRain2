@@ -1540,7 +1540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305616412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.38, y: 1, z: -6.37}
+  m_LocalPosition: {x: -12.54, y: 1, z: 13.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2842,6 +2842,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1155711852, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3806698491185135600, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -2856,7 +2860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3806698491185135600, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.65
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3806698491185135600, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2890,7 +2894,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeetleMK2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3806698491185135605, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806698491185135607, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: m_Speed
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7331448642186516206, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
 --- !u!1 &3834489557130860639
 GameObject:
