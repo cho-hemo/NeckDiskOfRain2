@@ -157,7 +157,6 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 		{
 			SetCursorState(!value.isPressed);
 		}
-		cursorLocked = !value.isPressed;
 		//  } 2023-03-22 / Daehun / KeyInput Works
 	}
 
@@ -246,8 +245,9 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 
 	///<summary>화면 밖으로 마우스가 못 나가게 하는 함수</summary>
 	///<param name = "newState">true가 들어오면 화면 밖으로 마우스가 나가지 않고 false가 들어오면 밖으로 나갈 수 있음</param>
-	private void SetCursorState(bool newState)
+	public void SetCursorState(bool newState)
 	{
 		Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+		cursorLocked = newState;
 	}
 }

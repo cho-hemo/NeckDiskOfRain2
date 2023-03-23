@@ -69,9 +69,12 @@ public static partial class GioleFunc
 	/// <param name="r">0 ~ 1의 값</param>
 	/// <param name="g">0 ~ 1의 값</param>
 	/// <param name="b">0 ~ 1의 값</param>
-	public static void ImageColorControll(this GameObject imageObj_, float r, float g, float b)
+	public static void SetImageColor(this GameObject imageObj_, float r, float g, float b)
 	{
 		Image targetImage = imageObj_.GetComponentMust<Image>();
 		targetImage.color = new Color(r, g, b);
-	}
+	}       // ImageColorControll()
+
+
+
 }
