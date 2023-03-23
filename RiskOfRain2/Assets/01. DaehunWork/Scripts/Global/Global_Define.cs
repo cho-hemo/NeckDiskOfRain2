@@ -12,4 +12,8 @@ public static partial class Global
     public static string PLAYER_SPECIAL_SKILL = "SpecialSkill";
     public static string ATTACK_SPEED = "AttackSpeed";
     public static string MOVE_SPEED = "MoveSpeed";
+    public static int PLAYER_BASE_LAYER = 0;
+    public static int PLAYER_AIM_HORIZONTAL_LAYER = 1;
+    public static int PLAYER_AIM_VERTICAL_LAYER = 2;
+    public static int PLAYER_ATTACK_LAYER = 3;
 }

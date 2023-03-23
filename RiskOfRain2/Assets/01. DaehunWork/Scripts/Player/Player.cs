@@ -347,6 +347,10 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     #endregion
 
     #region Animator Caching
+    public AnimatorStateInfo GetCurrentAnimatorStateInfo(int layer)
+    {
+        return PlayerAnimator.GetCurrentAnimatorStateInfo(layer);
+    }
     public void SetTrigger(string param)
     {
         PlayerAnimator.SetTrigger(param);

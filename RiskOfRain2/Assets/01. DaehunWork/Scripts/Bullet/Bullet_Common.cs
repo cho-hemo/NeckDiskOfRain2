@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Bullet_Common : MonoBehaviour
 {
-
-
-    // Start is called before the first frame update
+    private Rigidbody _bulletRigidbody = default;
+    private float _speed = 100f;
     void Start()
+    {
+        TryGetComponent(out _bulletRigidbody);
+    }
+
+    private void OnEnable()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-
+        _bulletRigidbody.velocity = transform.forward * _speed;
     }
 }
