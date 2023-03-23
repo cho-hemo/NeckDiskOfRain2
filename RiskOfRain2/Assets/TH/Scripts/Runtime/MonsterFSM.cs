@@ -11,28 +11,27 @@ public class MonsterFSM : MonoBehaviour
     public bool IsAnimationEnd { get; private set; } = false;
 
     private MonsterState currentState;
-    private List<MonsterOnSkill> skillList = new List<MonsterOnSkill>();
 
     private float _detectRange = 200;
     private float _maxAttackRange = 50;
 
-	/// <summary>
-	/// 몬스터의 초기 상태를 설정하는 메서드
-	/// </summary>
-	/// <param name="defaultState"></param>
-	public void InitializeState(MonsterState defaultState)
-	{
-		IsAnimationEnd = false;
+    /// <summary>
+    /// 몬스터의 초기 상태를 설정하는 메서드
+    /// </summary>
+    /// <param name="defaultState"></param>
+    public void InitializeState(MonsterState defaultState)
+    {
+        IsAnimationEnd = false;
 
-		currentState = defaultState;
-		currentState.Enter();
-	}
+        currentState = defaultState;
+        currentState.Enter();
+    }
 
-	/// <summary>
-	/// 몬스터의 상태를 변경하는 메서드
-	/// </summary>
-	/// <param name="newState">새로 변경할 상태</param>
-	public void ChangeState(MonsterState newState)
+    /// <summary>
+    /// 몬스터의 상태를 변경하는 메서드
+    /// </summary>
+    /// <param name="newState">새로 변경할 상태</param>
+    public void ChangeState(MonsterState newState)
     {
         Debug.Log($"{currentState} -> {newState}");
 
@@ -73,10 +72,10 @@ public class MonsterFSM : MonoBehaviour
         currentState.Loop();
     }
 
-	private void SelectAttack()
-	{
+    private void SelectAttack()
+    {
 
-	}
+    }
 
     private void OnDrawGizmosSelected()
     {

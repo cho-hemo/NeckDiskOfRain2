@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Bullet
+  - Ground
   layers:
   - Default
   - TransparentFX
