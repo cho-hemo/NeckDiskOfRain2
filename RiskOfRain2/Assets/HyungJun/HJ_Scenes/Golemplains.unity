@@ -2409,6 +2409,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1013465487}
+    - target: {fileID: 5335767554850388009, guid: 72db4839fa602c544aadf7f161046418, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335767554850388015, guid: 72db4839fa602c544aadf7f161046418, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5335767554896695857, guid: 72db4839fa602c544aadf7f161046418, type: 3}
       propertyPath: m_Name
       value: PlayerUi_Canvas
@@ -2501,14 +2509,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5335767555176117464, guid: 72db4839fa602c544aadf7f161046418, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5335767555490408816, guid: 72db4839fa602c544aadf7f161046418, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1013465487}
+    - target: {fileID: 5335767555733447811, guid: 72db4839fa602c544aadf7f161046418, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335767555733447836, guid: 72db4839fa602c544aadf7f161046418, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335767555733447836, guid: 72db4839fa602c544aadf7f161046418, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5335767555834888689, guid: 72db4839fa602c544aadf7f161046418, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1013465487}
+    - target: {fileID: 5335767556007795252, guid: 72db4839fa602c544aadf7f161046418, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5335767556021622633, guid: 72db4839fa602c544aadf7f161046418, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -253.89996
