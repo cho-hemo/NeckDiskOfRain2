@@ -6,11 +6,15 @@ TagManager:
   tags:
   - CinemachineTarget
   - Bullet
+<<<<<<< HEAD
   - Weapon
   - Melee
   - Floor
   - Wall
   - Chest
+=======
+  - Ground
+>>>>>>> d4d116452652289d02f1f101ced7cfd345ffe4e6
   layers:
   - Default
   - TransparentFX

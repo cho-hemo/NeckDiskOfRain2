@@ -17,4 +17,5 @@ MonoBehaviour:
   _health: 1000
   _power: 4
   _speed: 8
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: 12b27f90a9d2c9f4c84804e95653e33a, type: 2}
