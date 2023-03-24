@@ -3,28 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - CinemachineTarget
-  - Bullet
-<<<<<<< HEAD
-  - Weapon
-  - Melee
-  - Floor
-  - Wall
-  - Chest
-=======
-  - Ground
->>>>>>> d4d116452652289d02f1f101ced7cfd345ffe4e6
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Enemy
-  - Ground
-  - PostProcessing
+  - 
+  - 
+  - 
   - 
   - 
   - 
