@@ -1,9 +1,11 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Collections;
 public class PlayerAnimationHandler : MonoBehaviour
 {
     [SerializeField]
     private Player _player;
-
     private void Start()
     {
         TryGetComponent(out _player);
@@ -25,4 +27,6 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
 
     }
+
+
 }

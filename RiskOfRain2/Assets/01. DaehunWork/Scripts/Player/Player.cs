@@ -94,7 +94,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     [SerializeField]
     [Tooltip("공격 속도")]
-    protected float _attackDelay;
+    protected float _attackSpeed;
 
     [SerializeField]
     [Tooltip("스킬 쿨타임")]
@@ -105,16 +105,24 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     protected float _healthRegen;
 
     [SerializeField]
-    [Tooltip("기본 이동속도")]
-    protected float _defaultSpeed = 7.0f;
-
-    [SerializeField]
     [Tooltip("현재 이동속도")]
     protected float _currentSpeed = 0f;
 
     [SerializeField]
-    [Tooltip("질주속도")]
-    protected float _sprintSpeed = 8.75f;
+    [Tooltip("기본 걷기 속도")]
+    protected float _defaultWalkSpeed = 7.0f;
+
+    [SerializeField]
+    [Tooltip("현재 걷기 속도")]
+    protected float _currentWalkSpeed = 7.0f;
+
+    [SerializeField]
+    [Tooltip("기본 질주 속도")]
+    protected float _defaultSprintSpeed = 8.75f;
+
+    [SerializeField]
+    [Tooltip("현재 질주 속도")]
+    protected float _currentSprintSpeed = 8.75f;
 
     [SerializeField]
     [Tooltip("최대 점프 카운트")]
@@ -157,7 +165,8 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     [SerializeField]
     [Tooltip("총알이 발사될 위치")]
-    protected Transform _focusPoint;
+    protected List<Transform> _focusPoint;
+
     [SerializeField]
     [Tooltip("플레이어 타입(종류)")]
     protected PlayerType _playerType = PlayerType.NONE;
@@ -212,12 +221,14 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     public float CurrentHp { get { return _currentHp; } protected set { _currentHp = value; } }
     public float Defense { get { return _defense; } protected set { _defense = value; } }
     public float AttackDamage { get { return _attackDamage; } protected set { _attackDamage = value; } }
-    public float AttackDelay { get { return _attackDelay; } protected set { _attackDelay = value; } }
+    public float AttackSpeed { get { return _attackSpeed; } protected set { _attackSpeed = value; } }
     public List<float> SkillCoolTime { get { return _skillCoolTime; } protected set { _skillCoolTime = value; } }
     public float HealthRegen { get { return _healthRegen; } protected set { _healthRegen = value; } }
-    public float DefaultSpeed { get { return _defaultSpeed; } protected set { _defaultSpeed = value; } }
     public float CurrentSpeed { get { return _currentSpeed; } protected set { _currentSpeed = value; } }
-    public float SprintSpeed { get { return _sprintSpeed; } protected set { _sprintSpeed = value; } }
+    public float DefaultWalkSpeed { get { return _defaultWalkSpeed; } protected set { _defaultWalkSpeed = value; } }
+    public float CurrentWalkSpeed { get { return _currentWalkSpeed; } protected set { _currentWalkSpeed = value; } }
+    public float DefaultSprintSpeed { get { return _defaultSprintSpeed; } protected set { _defaultSprintSpeed = value; } }
+    public float CurrentSprintSpeed { get { return _currentSprintSpeed; } protected set { _currentSprintSpeed = value; } }
     public int MaxJumpCount { get { return _maxJumpCount; } protected set { _maxJumpCount = value; } }
     public int CurrentJumpCount { get { return _currentJumpCount; } protected set { _currentJumpCount = value; } }
     public float JumpHeight { get { return _jumpHeight; } protected set { _jumpHeight = value; } }
@@ -230,7 +241,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     #endregion
 
     #region Player Object
-    public Transform FocusPoint { get { return _focusPoint; } protected set { _focusPoint = value; } }
+    public List<Transform> FocusPoint { get { return _focusPoint; } protected set { _focusPoint = value; } }
     public PlayerType PlayerType { get { return _playerType; } protected set { _playerType = value; } }
     public StateMachine StateMachine { get { return _stateMachine; } protected set { _stateMachine = value; } }
     public Animator PlayerAnimator { get { return _playerAnimator; } protected set { _playerAnimator = value; } }
@@ -313,7 +324,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         Osp = false;
     }
 
-    #region StateMachine Warpping
+    #region StateMachine Caching
     public void UpdateState()
     {
         StateMachine.UpdateState();
@@ -340,7 +351,11 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
     }
     #endregion
 
-    #region SetAnimatorParameter Func warpping
+    #region Animator Caching
+    public AnimatorStateInfo GetCurrentAnimatorStateInfo(int layer)
+    {
+        return PlayerAnimator.GetCurrentAnimatorStateInfo(layer);
+    }
     public void SetTrigger(string param)
     {
         PlayerAnimator.SetTrigger(param);
@@ -376,6 +391,12 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
         InputMove = value;
 
+        switch (StateMachine.GetState())
+        {
+            case Player_Commando_RollState:
+                return;
+        }
+
         if (IsGrounded)
         {
             if (IsSprint)
@@ -391,7 +412,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
     public void Move()
     {
-        float targetSpeed = IsSprint ? SprintSpeed : DefaultSpeed;
+        float targetSpeed = IsSprint ? CurrentSprintSpeed : CurrentWalkSpeed;
 
         if (InputMove == Vector2.zero) targetSpeed = 0.0f;
 
@@ -400,11 +421,9 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         float speedOffset = 0.1f;
         float inputMagnitude = KeyInputManager.Instance.analogMovement ? InputMove.magnitude : 1f;
 
-        if (currentHorizontalSpeed < targetSpeed - speedOffset ||
-            currentHorizontalSpeed > targetSpeed + speedOffset)
+        if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            CurrentSpeed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
-                Time.deltaTime * SpeedChangeRate);
+            CurrentSpeed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
 
             CurrentSpeed = Mathf.Round(CurrentSpeed * 1000f) / 1000f;
         }
@@ -413,26 +432,55 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
             CurrentSpeed = targetSpeed;
         }
 
-        Vector3 inputDirection = new Vector3(InputMove.x, 0.0f, InputMove.y).normalized;
-
-        if (InputMove != Vector2.zero)
-        {
-            TargetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                              Camera.main.transform.eulerAngles.y;
-            float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetRotation, ref _rotationVelocity,
-                RotationSmoothTime);
-
-            transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-        }
+        PlayerRotation();
 
         Vector3 targetDirection = Quaternion.Euler(0.0f, TargetRotation, 0.0f) * Vector3.forward;
 
         CharacterController.Move(targetDirection.normalized * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
     }
 
+    public void PlayerRotation()
+    {
+        Vector2 inputDirection_ = InputMove.normalized;
+
+        TargetRotation = Mathf.Atan2(inputDirection_.x, inputDirection_.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+
+        float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetRotation, ref _rotationVelocity, RotationSmoothTime);
+
+        transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+    }
+
     public void Look(Vector2 value)
     {
-        InputLook = value;
+        if (InputLook != value)
+        {
+            InputLook = value;
+            float aimX_ = default;
+            float aimY_ = default;
+
+            float angleX_ = CinemachineCameraTarget.transform.localEulerAngles.x;
+            if (180 <= angleX_)
+            {
+                aimY_ = (angleX_ - 270) / 180f;
+            }
+            else
+            {
+                aimY_ = (angleX_ + 90) / 180f;
+            }
+
+            float angleY_ = CinemachineCameraTarget.transform.localEulerAngles.y;
+            if (180 <= angleY_)
+            {
+                aimX_ = (angleY_ - 270) / 180f;
+            }
+            else
+            {
+                aimX_ = (angleY_ + 90) / 180f;
+            }
+
+            PlayerAnimator.CrossFade("Aim_Horizontal", 0f, 1, aimX_);
+            PlayerAnimator.CrossFade("Aim_Vertical", 0f, 2, aimY_);
+        }
     }
 
     private void CameraRotation()
@@ -482,6 +530,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         if (IsGrounded)
         {
             SetBool("IsGrounded", IsGrounded);
+
             FallTimeoutDelta = FallTimeOut;
             CurrentJumpCount = 0;
             //_animator.SetBool(_animIDFreeFall, false);
@@ -514,29 +563,25 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
         }
         else
         {
-            SetBool("IsGrounded", IsGrounded);
-            // reset the jump timeout timer
+            SetState(new Player_FlightState(this));
+
             JumpTimeoutDelta = JumpTimeOut;
 
-            // fall timeout
             if (FallTimeoutDelta >= 0.0f)
             {
                 FallTimeoutDelta -= Time.deltaTime;
             }
             else
             {
-                // update animator if using character
                 SetFloat("JumpPower", VerticalVelocity);
             }
         }
 
-        // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
         if (VerticalVelocity < 100.0f)
         {
             VerticalVelocity += Gravity * Time.deltaTime;
         }
     }
-
 
     #region IPlayerSkill
     public abstract void PassiveSkill();

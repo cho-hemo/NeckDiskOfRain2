@@ -10,13 +10,10 @@ public class Player_IdleState : IState
 
     public void OnEnter()
     {
-        _player.SetFloat("PosX", 0);
-        _player.SetFloat("PosY", 0);
     }
 
     public void UpdateState()
     {
-
     }
 
     public void OnExit()
@@ -51,7 +48,11 @@ public class Player_WalkState : IState
         // _player.SetFloat("PosY", _player.InputMove.y);
         _player.SetFloat("PosY", 1f);
         _player.SetBool("IsMove", _player.IsMove);
+
+        float speed_ = _player.CurrentWalkSpeed / _player.DefaultWalkSpeed;
+        _player.SetFloat(Global.MOVE_SPEED, speed_);
     }
+
     public void UpdateState()
     {
         if (_player.InputMove == Vector2.zero)
@@ -98,7 +99,11 @@ public class Player_SprintState : IState
     public void OnEnter()
     {
         _player.SetBool("IsSprint", _player.IsSprint);
+
+        float speed_ = _player.CurrentSprintSpeed / _player.DefaultSprintSpeed;
+        _player.SetFloat(Global.MOVE_SPEED, speed_);
     }
+
     public void UpdateState()
     {
         if (_player.InputMove == Vector2.zero)
@@ -133,7 +138,6 @@ public class Player_SprintState : IState
 
 public class Player_JumpState : IState
 {
-
     private Player _player;
     public Player_JumpState(Player player_)
     {
@@ -144,9 +148,53 @@ public class Player_JumpState : IState
     {
         _player.SetTrigger("Jump");
     }
+
     public void UpdateState()
     {
         _player.Move();
+        if (!_player.IsGrounded)
+        {
+            _player.SetState(new Player_FlightState(_player));
+        }
+    }
+
+    public void OnExit()
+    {
+    }
+
+    public void Action()
+    {
+    }
+
+    public void ChangeState()
+    {
+    }
+    public void AnimationChange()
+    {
+
+    }
+}
+
+public class Player_FlightState : IState
+{
+    private Player _player;
+    public Player_FlightState(Player player_)
+    {
+        this._player = player_;
+    }
+
+    public void OnEnter()
+    {
+        _player.SetBool("IsGrounded", _player.IsGrounded);
+    }
+
+    public void UpdateState()
+    {
+        _player.Move();
+        if (_player.IsGrounded)
+        {
+            _player.SetState(new Player_IdleState(_player));
+        }
     }
 
     public void OnExit()
@@ -178,6 +226,7 @@ public class Player_DeadState : IState
     {
         _player.SetBool("IsDead", _player.IsDead);
     }
+
     public void UpdateState()
     {
     }

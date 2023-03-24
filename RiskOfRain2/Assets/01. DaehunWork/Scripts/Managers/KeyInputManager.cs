@@ -114,6 +114,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 		playerUIManager.PlayerSkillActiveIcon(1, 5f);
 	}
 
+<<<<<<< HEAD
 	// Shift skill
 	public void OnUtilitySkill(InputValue value)
 	{
@@ -137,6 +138,31 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 		playerUIManager.PlayerSkillActiveIcon(4, 5f);
 		// } 2023-03-20 / HyungJun / PlayerUIWorks
 	}
+=======
+    public void OnSubSkill(InputValue value)
+    {
+        SubSkillInput(value.isPressed);
+        player.SubSkill(value.isPressed);
+        // { 2023-03-20 / HyungJun / PlayerUIWorks
+        //playerUIManager.PlayerSkillActiveIcon(1, 5f);
+    }
+
+    // Shift skill
+    public void OnUtilitySkill(InputValue value)
+    {
+        UtilitySkillInput(value.isPressed);
+        player.UtilitySkill(value.isPressed);
+        //playerUIManager.PlayerSkillActiveIcon(2, 5f);
+    }
+
+    // R skill
+    public void OnSpecialSkill(InputValue value)
+    {
+        SpecialSkillInput(value.isPressed);
+        player.SpecialSkill(value.isPressed);
+        //playerUIManager.PlayerSkillActiveIcon(3, 5f);
+    }
+>>>>>>> 3a08c919560cdb3b4b4b77afb7887768b2dbee69
 
 	// E KeyInput
 	public void OnInteraction(InputValue value)

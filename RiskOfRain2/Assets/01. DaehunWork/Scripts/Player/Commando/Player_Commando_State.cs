@@ -9,8 +9,16 @@ public class Player_Commando_RollState : IState
 
     public void OnEnter()
     {
-        _player.SetFloat("PosX", _player.InputMove.x);
-        _player.SetFloat("PosY", _player.InputMove.y);
+        if (_player.InputMove == Vector2.zero)
+        {
+            _player.SetFloat("PosX", 0f);
+            _player.SetFloat("PosY", 1f);
+        }
+        else
+        {
+            _player.SetFloat("PosX", _player.InputMove.x);
+            _player.SetFloat("PosY", _player.InputMove.y);
+        }
         _player.SetTrigger(Global.PLAYER_UTILITY_SKILL);
     }
 
