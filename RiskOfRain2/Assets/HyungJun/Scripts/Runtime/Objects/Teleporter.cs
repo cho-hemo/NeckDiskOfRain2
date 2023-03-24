@@ -4,36 +4,44 @@ using UnityEngine;
 
 public class Teleporter : InteractionObjects
 {
-    private bool _isActive = true;
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag.Equals("Player") && _isActive)
-        {
-            UIManager.Instance.PopupUIActive(" 텔레포터 가동..?", true);
-        }
-    }
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.tag.Equals("Player") && _isActive)
+		{
+			_disposable = true;
+			UIManager.Instance.PopupUIActive(" 텔레포터 가동..?", true);
+		}
+	}
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.E) && _disposable)
+		{
+			Interaction();
+		}
+	}
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
-        {
-            _isActive = false;
-            UIManager.Instance.PopupUIActive("", false);
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.tag.Equals("Player"))
+		{
+			_disposable = false;
+			UIManager.Instance.PopupUIActive("", false);
+		}
+	}
 
+	public override void Interaction()
+	{
+		base.Interaction();
+		_isActive = false;
+		_disposable = false;
+		// 목표 UI오브젝트 세팅을 바꿔주는 함수
+		UIManager.Instance.BossMissionComplete();
+		UIManager.Instance.PopupUIActive("", false);
+		GioleFunc.GetRootObj("mdlBeetleQueen (6)").SetActive(true);
+		UIManager.Instance.ActiveBoss("여왕 딱정벌레", "무리의 어미");
 
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag.Equals("Player"))
-        {
-            UIManager.Instance.PopupUIActive("", false);
-        }
-    }
-
-
+	}
 
 
 

@@ -4,37 +4,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Monster : MonoBehaviour, IDamageable // ¸ó½ºÅÍ °øÅë
+public class Monster : MonoBehaviour, IDamageable // ëª¬ìŠ¤í„° ê³µí†µ
 {
-    // ÇÊµå
-    public float maxHp = default; // ÃÖ´ë Ã¼·Â
-    public float hp = default; // ÇöÀç Ã¼·Â
-    public bool dead = default; // »ıÁ¸ È®ÀÎ
-    public event Action OnDeath; // »ç¸Á ½Ã ¹ßµ¿ÇÒ ÀÌº¥Æ®
+    // í•„ë“œ
+    public float maxHp = default; // ìµœëŒ€ ì²´ë ¥
+    public float hp = default; // í˜„ì¬ ì²´ë ¥
+    public bool dead = default; // ìƒì¡´ í™•ì¸
+    public event Action OnDeath; // ì‚¬ë§ ì‹œ ë°œë™í•  ì´ë²¤íŠ¸
 
     //protected Transform enemyObj;
 
 
     protected virtual void OnEnable() 
     {
-        // private == ³»ºÎ¿¡¼­¸¸ Á¢±Ù
-        // protected == ÀÚ½Ä Å¬·¡½º´Â Á¢±Ù °¡´É
+        // private == ë‚´ë¶€ì—ì„œë§Œ ì ‘ê·¼
+        // protected == ìì‹ í´ë˜ìŠ¤ëŠ” ì ‘ê·¼ ê°€ëŠ¥
 
-        // »ç¸ÁÇÏÁö ¾ÊÀº »óÅÂ·Î ½ÃÀÛ
+        // ì‚¬ë§í•˜ì§€ ì•Šì€ ìƒíƒœë¡œ ì‹œì‘
         dead = false;
-        // Ã¼·ÂÀ» ÃÖ´ë Ã¼·ÂÀ¸·Î ÃÊ±âÈ­
+        // ì²´ë ¥ì„ ìµœëŒ€ ì²´ë ¥ìœ¼ë¡œ ì´ˆê¸°í™”
         hp = maxHp;
         
     }
 
-    // µ¥¹ÌÁö¸¦ ÀÔ´Â ±â´É
+    // ë°ë¯¸ì§€ë¥¼ ì…ëŠ” ê¸°ëŠ¥
     public virtual void OnDamage(float damage) 
     {
-        // µ¥¹ÌÁö ¸¸Å­ Ã¼·Â °¨¼Ò
+        // ë°ë¯¸ì§€ ë§Œí¼ ì²´ë ¥ ê°ì†Œ
         maxHp -= damage;
         Debug.Log(transform.name + "take" + damage + "damage");
 
-        // Ã¼·ÂÀÌ 0 ÀÌÇÏ && ¾ÆÁ÷ Á×Áö ¾Ê¾Ò´Ù¸é »ç¸Á Ã³¸®
+        // ì²´ë ¥ì´ 0 ì´í•˜ && ì•„ì§ ì£½ì§€ ì•Šì•˜ë‹¤ë©´ ì‚¬ë§ ì²˜ë¦¬
         if (maxHp <= 0 && !dead) 
         {
             Die();
@@ -43,7 +43,7 @@ public class Monster : MonoBehaviour, IDamageable // ¸ó½ºÅÍ °øÅë
 
     public virtual void Die() 
     {
-        // OnDeath ÀÌº¥Æ®¿¡ µî·ÏµÈ ¸Ş¼­µå°¡ ÀÖ´Ù¸é ½ÇÇà
+        // OnDeath ì´ë²¤íŠ¸ì— ë“±ë¡ëœ ë©”ì„œë“œê°€ ìˆë‹¤ë©´ ì‹¤í–‰
         if (OnDeath != null) 
         {
             OnDeath();
@@ -52,10 +52,10 @@ public class Monster : MonoBehaviour, IDamageable // ¸ó½ºÅÍ °øÅë
         dead = true;
     }
 
-    // È¸º¹
+    // íšŒë³µ
     public virtual void Restore(float maxHp) 
     {
-        if (dead) // Á×À¸¸é È¸º¹ ¾ÈµÊ
+        if (dead) // ì£½ìœ¼ë©´ íšŒë³µ ì•ˆë¨
         {
             return;
         }
@@ -65,12 +65,12 @@ public class Monster : MonoBehaviour, IDamageable // ¸ó½ºÅÍ °øÅë
 
     public virtual void CloseCombat() 
     {
-        Debug.Log("±ÙÁ¢ °ø°İ");
+        Debug.Log("ê·¼ì ‘ ê³µê²©");
     }
 
     public virtual void LongCombat() 
     {
-        Debug.Log("¿ø°Å¸® °ø°İ");
+        Debug.Log("ì›ê±°ë¦¬ ê³µê²©");
     }
 
     //protected enum MonsterState
@@ -86,7 +86,7 @@ public class Monster : MonoBehaviour, IDamageable // ¸ó½ºÅÍ °øÅë
     //    switch (monsterMode)
     //    {
     //        case MonsterState.Attack:
-    //            Debug.Log("±ÙÁ¢ °ø°İ");
+    //            Debug.Log("ê·¼ì ‘ ê³µê²©");
     //            break;
     //        case MonsterState.Move:
                 

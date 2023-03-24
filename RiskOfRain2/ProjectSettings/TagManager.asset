@@ -6,6 +6,11 @@ TagManager:
   tags:
   - CinemachineTarget
   - Bullet
+  - Weapon
+  - Melee
+  - Floor
+  - Wall
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -15,7 +20,7 @@ TagManager:
   - UI
   - Enemy
   - Ground
-  - 
+  - PostProcessing
   - 
   - 
   - 

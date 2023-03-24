@@ -4,33 +4,36 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : MonoBehaviour
+public class Enemy : LivingThings
 {
-    NavMeshAgent pathfinder;
-    Transform target;
+	NavMeshAgent pathfinder; // ��ã�� ����
+	Transform target; // ã�� ��ǥ
 
-    void Start()
-    {
-        pathfinder = GetComponent<NavMeshAgent>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+	protected override void Start() // �� Start() �� ��ħ
+	{
+		base.Start();
+		pathfinder = GetComponent<NavMeshAgent>(); // �Ҵ�
+		target = GameObject.FindGameObjectWithTag("Player").transform;
+		// �÷��̾�� "Player" �±׸� ������ �ִ�
 
-        StartCoroutine(UpdatePath());
-    }
+		StartCoroutine(UpdatePath()); // ���� �ڷ�ƾ ����
+	}
 
-    void Update()
-    {
-        //pathfinder.SetDestination(target.position);
-    }
+	void Update()
+	{
+		//pathfinder.SetDestination(target.position);
+		//// ������ Ÿ�� ��ġ
+	}
 
-    IEnumerator UpdatePath()
-    {
-        float refreshRate = 1f;
+	IEnumerator UpdatePath()
+	{
+		float refreshRate = 1f;
 
-        while (target != null)
-        {
-            Vector3 targetPosition = new Vector3(target.position.x, target.position.z);
-            pathfinder.SetDestination(targetPosition);
-            yield return new WaitForSeconds(refreshRate);
-        }
-    }
+		while (target != null)
+		{
+			Vector3 targetPosition = new Vector3(target.position.x, target.position.z);
+			pathfinder.SetDestination(targetPosition);
+			yield return new WaitForSeconds(refreshRate);
+		}
+	}
 }
