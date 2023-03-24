@@ -5,35 +5,54 @@ using UnityEngine.AI;
 
 public class BeetleMK2 : MonoBehaviour
 {
-    public float lookRange = 20f; // 시야 영역
-    public float attackRange = 4f; // 공격 영역
-    public float speed = default; // 이동속도
+    public float LookRange = 20f; // 시야 영역
+    public float AttackRange = 4f; // 공격 영역
+    public float Speed = default; // 이동속도
 
-	private bool isLook = default;
+	private bool _isLook = default;
 
-    NavMeshAgent pathfinder; // 네비매쉬
-    Transform target; // 목표
-    Animator anime; 
-	public BoxCollider closeCombat;
+    NavMeshAgent Pathfinder; // 네비매쉬
+    Transform Target; // 목표
+    Animator Anime; 
 
+	//public BoxCollider CloseCombat;
     public AnimationClip SpawnAnime;
 
+	private Vector2 _velocity;
+	private Vector2 _smoothDeltaPosition;
 
-    void Start()
+	private void Awake()
+	{
+        Pathfinder = GetComponent<NavMeshAgent>();
+        //Anime = GetComponent<Animator>();
+		Anime = Pathfinder.GetComponent<Animator>();
+
+		Anime.applyRootMotion = true;
+		Pathfinder.updatePosition = false; // 애니메이터가 움직임
+		Pathfinder.updateRotation = true;
+
+	}
+
+	private void OnAnimatorMove()
+	{
+		Vector3 rootPosition = Anime.rootPosition;
+		transform.position = rootPosition;
+		Pathfinder.nextPosition = rootPosition;
+	}
+
+	void Start()
     {
         //SpawnAnime.GetComponent<Animation>().Play();
 
-        pathfinder = GetComponent<NavMeshAgent>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        anime = GetComponent<Animator>();
-        anime.SetBool("isMove", false);
-        anime.SetBool("isAttack", false);
-		anime.SetBool("isDead", false);
+        //Anime.SetBool("isMove", false);
+        Anime.SetBool("isAttack", false);
+		Anime.SetBool("isDead", false);
 
-		closeCombat.enabled = false;
+		//CloseCombat.enabled = false;
 
-		isLook = false;
+		_isLook = false;
 
 		//StartCoroutine(UpdatePath()); // 밑의 코루틴 실행
 		StartCoroutine(AnimeWaiting());
@@ -45,23 +64,38 @@ public class BeetleMK2 : MonoBehaviour
         yield return new WaitForSeconds(SpawnAnime.length);
         
         // 애니메이션 발동 조건 
-        anime.SetBool("SpawnEnd", true);
+        Anime.SetBool("SpawnEnd", true);
     }
 
-    void Update()
+	IEnumerator Term() 
+	{
+		_isLook = true;
+		Pathfinder.SetDestination(transform.position);
+		//Anime.SetBool("isMove", false);
+		Anime.SetBool("isAttack", true);
+		yield return new WaitForSeconds(1.0f);
+		_isLook = false;
+		//Anime.SetBool("isMove", true);
+		Anime.SetBool("isAttack", false);
+	}
+
+
+	void Update()
     {
-        if (anime.GetBool("SpawnEnd"))
+		SynchronizeAnimatorAndAgent();
+
+		if (Anime.GetBool("SpawnEnd"))
         {
             // target and my distance
-            float distance = Vector3.Distance(target.position, transform.position);
+            float distance = Vector3.Distance(Target.position, transform.position);
 
-            if (distance <= lookRange) 
+            if (distance <= LookRange) 
             {
-				isLook = true;
+				_isLook = true;
                 FaceTarget(); // 적을 바라보고
-                pathfinder.SetDestination(target.position); // 적을 향해 간다
+                Pathfinder.SetDestination(Target.position); // 적을 향해 간다
 
-                anime.SetBool("isMove", true); // 이동 애니메이션
+                //Anime.SetBool("isMove", true); // 이동 애니메이션
 
 				//if (distance <= pathfinder.stoppingDistance)
 				//{
@@ -70,26 +104,66 @@ public class BeetleMK2 : MonoBehaviour
 				//}
 			}
 
-            if (distance <= attackRange)
+            if (distance <= AttackRange)
             {
 				//FaceTarget();
 				//pathfinder.SetDestination(transform.position);
-				isLook = false;
-				anime.SetBool("isMove", false);
-				anime.SetBool("isAttack", true);
+				//_isLook = false;
+				//Anime.SetBool("isMove", false);
+				//Anime.SetBool("isAttack", true);
 
-				pathfinder.SetDestination(target.position);
+				StartCoroutine(Term());
+
+				Pathfinder.SetDestination(Target.position);
 				//StartCoroutine(Attack());
 
-				if (distance <= pathfinder.stoppingDistance + attackRange)
-				{
-					pathfinder.SetDestination(transform.position);
-					//anime.SetBool("isMove", false);
-					//anime.SetBool("isAttack", true);
-				}
+				//if (distance <= Pathfinder.stoppingDistance + AttackRange)
+				//{
+				//	Pathfinder.SetDestination(transform.position);
+				//	Anime.SetBool("isMove", false);
+				//	Anime.SetBool("isAttack", true);
+				//}
 			}
         }
     }
+
+	private void SynchronizeAnimatorAndAgent()
+	{
+		Vector3 worldDeltaPosition = Pathfinder.nextPosition - transform.position;
+		worldDeltaPosition.y = 0;
+
+		float dx = Vector3.Dot(transform.right, worldDeltaPosition);
+		float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
+		Vector2 deltaPosition = new Vector2(dx, dy);
+
+		float smooth = Mathf.Min(1, Time.deltaTime / 0.1f);
+		_smoothDeltaPosition = Vector2.Lerp(_smoothDeltaPosition, deltaPosition, smooth);
+
+		_velocity = _smoothDeltaPosition / Time.deltaTime;
+		if (Pathfinder.remainingDistance <= Pathfinder.stoppingDistance)
+		{
+			_velocity = Vector2.Lerp(
+				Vector2.zero,
+				_velocity,
+				Pathfinder.remainingDistance / Pathfinder.stoppingDistance);
+		}
+
+		bool shouldMove = _velocity.magnitude > 0.5f
+			&& Pathfinder.remainingDistance > Pathfinder.stoppingDistance;
+
+		Anime.SetBool("move", shouldMove);
+		Anime.SetFloat("locomotion", _velocity.magnitude);
+
+		float deltaMagnitude = worldDeltaPosition.magnitude;
+		if (deltaMagnitude > Pathfinder.radius / 2f)
+		{
+			transform.position = Vector3.Lerp(
+				Anime.rootPosition,
+				Pathfinder.nextPosition,
+				smooth
+			);
+		}
+	}
 
 	//IEnumerator Attack() 
 	//{
@@ -106,16 +180,16 @@ public class BeetleMK2 : MonoBehaviour
 	//	anime.SetBool("isAttack", false);
 	//}
 
-    void FaceTarget()
+	void FaceTarget()
     {
-		if (isLook)
+		if (_isLook)
 		{
 			// direction to the target
-			Vector3 direction = (target.position - transform.position).normalized;
+			Vector3 direction = (Target.position - transform.position).normalized;
 			// rotation where we point to that target
 			Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 			// update our own rotation to point in this direction
-			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * speed);
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * Speed);
 		}
 	}
 
@@ -137,15 +211,15 @@ public class BeetleMK2 : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, lookRange);
+        Gizmos.DrawWireSphere(transform.position, LookRange);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, AttackRange);
     }
 
 	void DeathCheck()
 	{
-		pathfinder.enabled = false;
-		anime.SetBool("isDead", true);
+		Pathfinder.enabled = false;
+		Anime.SetBool("isDead", true);
 		gameObject.SetActive(false);
 	}
 
