@@ -10,6 +10,7 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	private RectTransform _highLightRect = default;
 
 	private static List<GameObject> _pickUpList = new List<GameObject>();
+	private static List<GameObject> _pickUpInfoList = new List<GameObject>();
 
 	private bool _outMouse = false;
 
@@ -20,14 +21,17 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 		_highLightRect = _highLightBoxObj.GetRect();
 
-		// if (gameObject.FindChildObj("PickImage") == default)
-		// {
-		// 	/* nothing */
-		// }
-		// else
-		// {
-		// 	_pickUpObj = gameObject.FindChildObj("PickImage");
-		// }
+		GameObject pickImage_ = gameObject.FindChildObj("PickImage");
+		GameObject informationObj_ = transform.parent.gameObject.FindChildObj("BtnInfromation");
+		if (pickImage_ == default || informationObj_ == default)
+		{
+			/* nothing */
+		}
+		else if (pickImage_ != default || informationObj_ != default)
+		{
+			pickImage_.SetActive(false);
+			informationObj_.SetActive(false);
+		}
 
 
 		_highLightBoxObj.SetActive(false);
@@ -83,10 +87,16 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 
 	/// <summary>
-	/// 캐릭터를 선택하면 리스트에 해당 오브젝트를 넣고 선택하는 함수
+	/// 캐릭터 선택 함수
 	/// </summary>
 	public void SelectCharacter()
 	{
+		// 캐릭터가 선택되면 정보 창의 버튼 색깔 및 설명을 바꿔주는 함수
+		ChangeInformaion();
+
+
+
+		// 애니메이션 로직
 		foreach (GameObject obj_ in _pickUpList)
 		{
 			obj_.SetActive(false);
@@ -98,7 +108,39 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		pickUpObj_.SetActive(true);
 	}
 
-	// public delegate C123haracterInfo();
+	private void ChangeInformaion()
+	{
+		switch (gameObject.name)
+		{
+			case "Commando":
+				// 정보를 바꿔주는 함수
+
+				break;
+		}
+	}
+
+
+
+	/// <summary>
+	/// 캐릭터 선택창에서의 정보 버튼 클릭 함수
+	/// </summary>
+	public void SelectInformaion()
+	{
+		foreach (GameObject obj_ in _pickUpInfoList)
+		{
+			obj_.SetActive(false);
+		}
+		_pickUpInfoList.Clear();
+
+		GameObject pickUpObj_ = gameObject.FindChildObj("PickImage");
+		GameObject informationObj_ = transform.parent.gameObject.FindChildObj("BtnInfromation");
+
+
+		_pickUpInfoList.Add(informationObj_);
+		_pickUpInfoList.Add(pickUpObj_);
+		pickUpObj_.SetActive(true);
+		informationObj_.SetActive(true);
+	}
 
 
 }
