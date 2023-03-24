@@ -9,6 +9,7 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	private GameObject _highLightImageObj = default;
 	private RectTransform _highLightRect = default;
 
+	private static List<GameObject> _pickUpList = new List<GameObject>();
 
 	private bool _outMouse = false;
 
@@ -18,6 +19,15 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		_highLightImageObj = gameObject.FindChildObj("HighlightImage");
 
 		_highLightRect = _highLightBoxObj.GetRect();
+
+		// if (gameObject.FindChildObj("PickImage") == default)
+		// {
+		// 	/* nothing */
+		// }
+		// else
+		// {
+		// 	_pickUpObj = gameObject.FindChildObj("PickImage");
+		// }
 
 
 		_highLightBoxObj.SetActive(false);
@@ -69,4 +79,26 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		_highLightBoxObj.SetActive(false);
 		_highLightImageObj.SetActive(false);
 	}
+
+
+
+	/// <summary>
+	/// 캐릭터를 선택하면 리스트에 해당 오브젝트를 넣고 선택하는 함수
+	/// </summary>
+	public void SelectCharacter()
+	{
+		foreach (GameObject obj_ in _pickUpList)
+		{
+			obj_.SetActive(false);
+		}
+		_pickUpList.Clear();
+
+		GameObject pickUpObj_ = gameObject.FindChildObj("PickImage");
+		_pickUpList.Add(pickUpObj_);
+		pickUpObj_.SetActive(true);
+	}
+
+	// public delegate C123haracterInfo();
+
+
 }
