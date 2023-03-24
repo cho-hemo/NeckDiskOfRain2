@@ -25,6 +25,6 @@ public class Bullet_Common : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		ObjectPoolManager.Instance.ObjectPoolPush("Bullet", gameObject);
+		ObjectPoolManager.Instance.ObjectPoolPush("NormalBullet", gameObject);
 	}
 }

@@ -26,7 +26,7 @@ public class Player_Commando : Player
 		{
 			IsSprint = false;
 		}
-
+		IsShot = isPressed;
 		SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed);
 		SetFloat(Global.ATTACK_SPEED, AttackSpeed);
 	}
@@ -90,12 +90,11 @@ public class Player_Commando : Player
 			rotation_ = RayShoot(pos_);
 			BulletShoot(pos_, rotation_, AttackDamage);
 		}
-		//RayShoot();
 	}
 
 	public void BulletShoot(Vector3 pos, Quaternion rotation, float damage)
 	{
-		GameObject bullet_ = ObjectPoolManager.Instance.ObjectPoolPop("Bullet");
+		GameObject bullet_ = ObjectPoolManager.Instance.ObjectPoolPop("NormalBullet");
 		bullet_.transform.localPosition = pos;
 		bullet_.transform.rotation = rotation;
 		bullet_.SetActive(true);
@@ -123,8 +122,13 @@ public class Player_Commando : Player
 		for (int i = 0; i < loopCount_; i++)
 		{
 			SetTrigger(Global.PLAYER_SPECIAL_SKILL);
-			yield return new WaitForSeconds(1 / loopCount_);
-
+			yield return new WaitForSeconds((float)1 / loopCount_);
+			AnimatorStateInfo currentState_ = GetCurrentAnimatorStateInfo(Global.PLAYER_ATTACK_LAYER);
+			PlayerAnimator.Play("", Global.PLAYER_ATTACK_LAYER, currentState_.normalizedTime);
+			Debug.Log($"SHOT");
+			if (currentState_.IsName("SpecialSKill"))
+			{
+			}
 		}
 	}
 }

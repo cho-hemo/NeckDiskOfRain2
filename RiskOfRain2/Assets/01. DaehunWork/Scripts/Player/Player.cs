@@ -157,6 +157,10 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 	protected bool _isSprint;
 
 	[SerializeField]
+	[Tooltip("사격 체크")]
+	protected bool _isShot;
+
+	[SerializeField]
 	[Tooltip("바닥 체크")]
 	protected bool _isGrounded = true;
 
@@ -245,6 +249,7 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 	public float Gravity { get { return _gravity; } protected set { _gravity = value; } }
 	public bool IsMove { get { return _isMove; } protected set { _isMove = value; } }
 	public bool IsSprint { get { return _isSprint; } protected set { _isSprint = value; } }
+	public bool IsShot { get { return _isShot; } protected set { _isShot = value; } }
 	public bool IsGrounded { get { return _isGrounded; } protected set { _isGrounded = value; } }
 	public bool IsDead { get { return _isDead; } protected set { _isDead = value; } }
 	public bool Osp { get { return _osp; } protected set { _osp = value; } }
@@ -293,6 +298,10 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 
 	protected void LateUpdate()
 	{
+		if (IsShot)
+		{
+			PlayerShootRotation();
+		}
 		CameraRotation();
 	}
 
@@ -444,11 +453,16 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 			CurrentSpeed = targetSpeed;
 		}
 
-		//PlayerRotation();
+		if (!IsShot)
+		{
+			PlayerRotation();
+		}
 
-		Vector3 targetDirection = Quaternion.Euler(0.0f, TargetRotation, 0.0f) * Vector3.forward;
-
-		CharacterController.Move(targetDirection.normalized * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		//Vector3 targetDirection = Quaternion.Euler(0.0f, TargetRotation, 0.0f) * Vector3.forward;	
+		//CharacterController.Move(targetDirection.normalized * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		Vector3 Input_ = new Vector3(InputMove.x, 0, InputMove.y);
+		Vector3 targetDirection_ = (Quaternion.Euler(0, MainCamera.transform.eulerAngles.y, 0) * Input_).normalized;
+		CharacterController.Move(targetDirection_ * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 	}
 
 	public void PlayerRotation()
@@ -472,7 +486,6 @@ public abstract class Player : MonoBehaviour, IPlayerSkill, ISubject
 	{
 		if (InputLook != value)
 		{
-			PlayerShootRotation();
 			InputLook = value;
 			float aimX_ = default;
 			float aimY_ = default;

@@ -981,6 +981,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 60473859259878514, guid: 4a68858639256ab44a097ff5a96eabb5, type: 3}
+      propertyPath: _rayRange
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 60473859259878514, guid: 4a68858639256ab44a097ff5a96eabb5, type: 3}
       propertyPath: debugObject
       value: 
       objectReference: {fileID: 1147725292}
