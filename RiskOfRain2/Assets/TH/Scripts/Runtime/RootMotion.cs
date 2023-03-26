@@ -4,7 +4,8 @@ using UnityEngine.AI;
 
 public class RootMotion : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
+    public GameObject _player;
+
     [SerializeField] private Transform[] footTargets;
 
     private Animator _animator;
@@ -33,10 +34,16 @@ public class RootMotion : MonoBehaviour
         _agent.updateRotation = true;
     }
 
+	public void InitRotate()
+	{
+		_animator.applyRootMotion = false;
+		_agent.updatePosition = false;
+		_agent.updateRotation = true;
+	}
+
     public void Move()
     {
         _agent.SetDestination(_player.transform.position);
-        SyncRootPosAndAgent();
     }
 
     public void Stop()
@@ -51,62 +58,57 @@ public class RootMotion : MonoBehaviour
         Vector3 worldDeltaPosition = _agent.nextPosition - transform.position;
         worldDeltaPosition.y = 0;
 
-        float dx = Vector3.Dot(transform.right, worldDeltaPosition);
-        float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
-        Vector2 deltaPosition = new Vector2(dx, dy);
 
-        float smooth = Mathf.Min(1, Time.deltaTime / 0.1f);
-        SmoothDeltaPosition = Vector2.Lerp(SmoothDeltaPosition, deltaPosition, smooth);
+		if (worldDeltaPosition == Vector3.zero)
+		{
+			_animator.applyRootMotion = false;
+			_agent.updatePosition = true;
+			_agent.updateRotation = true;
+		}
+		else
+		{
+			InitMove();
+		}
 
-        _velocity = SmoothDeltaPosition / Time.deltaTime;
-        if (_agent.remainingDistance <= _agent.stoppingDistance)
-        {
-            _velocity = Vector2.Lerp(Vector2.zero, _velocity, _agent.remainingDistance / _agent.stoppingDistance);
-        }
+		Debug.Log(_animator.applyRootMotion);
 
-        bool shouldMove = _velocity.magnitude > 0.5f && _agent.remainingDistance > _agent.stoppingDistance;
-        //Debug.Log(shouldMove);
+        //float dx = Vector3.Dot(transform.right, worldDeltaPosition);
+        //float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
+        //Vector2 deltaPosition = new Vector2(dx, dy);
 
-        //_animator.SetBool("isMove", shouldMove);
+        //float smooth = Mathf.Min(1, Time.deltaTime / 0.1f);
+        //SmoothDeltaPosition = Vector2.Lerp(SmoothDeltaPosition, deltaPosition, smooth);
 
-        //_animator.SetFloat("", _velocity.magnitude);
+        //_velocity = SmoothDeltaPosition / Time.deltaTime;
+        //if (_agent.remainingDistance <= _agent.stoppingDistance)
+        //{
+        //    _velocity = Vector2.Lerp(Vector2.zero, _velocity, _agent.remainingDistance / _agent.stoppingDistance);
+        //}
 
-        float deltaMagnitude = worldDeltaPosition.magnitude;
-        if (deltaMagnitude > _agent.radius / 2f)
-        {
-            transform.position = Vector3.Lerp(_animator.rootPosition, _agent.nextPosition, smooth);
-        }
+        //bool shouldMove = _velocity.magnitude > 0.5f && _agent.remainingDistance > _agent.stoppingDistance;
+        ////Debug.Log(shouldMove);
+
+        ////_animator.SetBool("isMove", shouldMove);
+
+        ////_animator.SetFloat("", _velocity.magnitude);
+
+        //float deltaMagnitude = worldDeltaPosition.magnitude;
+        //if (deltaMagnitude > _agent.radius / 2f)
+        //{
+        //    transform.position = Vector3.Lerp(_animator.rootPosition, _agent.nextPosition, smooth);
+        //}
     }
 
     private void OnAnimatorMove()
     {
-        Vector3 nextPos = _animator.rootPosition;
+		if (Functions.GetSqrDistance(_agent.destination, transform.position) <= 1)
+			return;
+
+		Vector3 nextPos = _animator.rootPosition;
         nextPos.y = _agent.nextPosition.y;
 
         transform.position = nextPos;
 
         _agent.nextPosition = transform.position;
-
-
-        //
-        //transform.position += _animator.deltaPosition;
-        //
-
-        ////footsteps
-        //for (int i = 0; i < footTargets.Length; i++)
-        //{
-        //	var foot = footTargets[i];
-        //	var ray = new Ray(foot.transform.position + Vector3.up * 0.5f, Vector3.down);
-        //	var hitInfo = new RaycastHit();
-        //	if (Physics.SphereCast(ray, 0.05f, out hitInfo, 0.50f))
-        //	{
-        //		Vector3 prevPos = foot.position;
-        //		//Debug.Log($"{i}. {hitInfo}");
-        //		foot.position = hitInfo.point + Vector3.up * 0.05f;
-
-        //		if (prevPos != foot.position && i == 0)
-        //			Debug.Log($"{i}. [prev]{prevPos} [curr]{foot.position}");
-        //	}
-        //}
     }
 }
