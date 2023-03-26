@@ -21,7 +21,7 @@ public class NewBehaviourScript : MonoBehaviour
 	private bool _isMove = false;
 	private float _scale;
 
-	private float _cooldownTime = 1.0f;
+	//private float _cooldownTime = 1.0f;
 
 	private void Awake()
 	{
