@@ -1,5 +1,5 @@
-using System.Collections.ObjectModel;
 using UnityEngine;
+using System.Collections.ObjectModel;
 
 public enum MonsterType
 {
@@ -17,10 +17,11 @@ public class Monster1 : MonoBehaviour
     [field:SerializeField] public int Hp { get; private set; }
     [field:SerializeField] public int Power { get; private set; }
     [field:SerializeField] public int Speed { get; private set; }
-    [SerializeField] public ReadOnlyCollection<SkillData> Skills { get; private set; }
+    [field:SerializeField] public int skillCount { get; private set; }
 
     private MonsterData _data;
     private MonsterFSM _fsm;
+    private ReadOnlyCollection<SkillData> _skills;
 
     /// <summary>
     /// 몬스터의 데이터를 설정하는 메서드
@@ -33,19 +34,20 @@ public class Monster1 : MonoBehaviour
         Hp = MaxHp = _data.Health;
         Power = _data.Power;
         Speed = _data.Speed;
-        Skills = _data.Skills;
+        _skills = _data.Skills;
+        skillCount = _data.Skills.Count;
 
-        _fsm.InitializeState(new MonsterSpawn(_fsm));
+        _fsm.Initialize(_skills, new MonsterSpawn(_fsm));
     }
 
-	public void OnSkill()
-	{
-		SkillData skill = SelectSkill();
-		if (skill != null)
-		{
-			skill.OnSkill(this);
-		}
-	}
+    public void OnSkill()
+    {
+        SkillData skill = SelectSkill();
+        if (skill != null)
+        {
+            skill.OnSkill(this);
+        }
+    }
 
     public void OnDamaged(int damage)
     {
@@ -91,21 +93,4 @@ public class Monster1 : MonoBehaviour
     {
         _fsm.ChangeState(new MonsterDeath(_fsm));
     }
-
-
-
-
-	[SerializeField] private GameObject spit;
-	[SerializeField] private Transform spitStartPos;
-	[SerializeField] private int spitCount = 6;
-	[SerializeField] private int degree = 150;
-
-	public void FireSpit()
-	{
-		for (int i = 0; i < spitCount; i++)
-		{
-			GameObject inst = Instantiate(spit, new Vector3 (spitStartPos.position.x, spitStartPos.position.y, spitStartPos.position.z), 
-				Quaternion.Euler(-30, spitStartPos.eulerAngles.y - 210 -(degree / 2) - (degree / 5) * i, 0));
-		}
-	}
 }

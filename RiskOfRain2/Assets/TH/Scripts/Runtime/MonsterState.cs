@@ -47,6 +47,7 @@ public class MonsterIdle : MonsterState
     {
         base.Loop();
 
+        //if (_fsm.SelectSkill)
         if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
         {
             _fsm.ChangeState(new MonsterOnSkill(_fsm));
@@ -60,14 +61,14 @@ public class MonsterIdle : MonsterState
 
 public class MonsterMove : MonsterState
 {
-	private const float COOL_DOWN_TIME = 1f;
+    private const float COOL_DOWN_TIME = 1f;
 
-	private float _timer;
+    private float _timer;
     private RootMotion _rootMotion;
 
     public MonsterMove(MonsterFSM fsm) : base(fsm)
     {
-		_timer = 0f;
+        _timer = 0f;
         _rootMotion = _fsm.GetComponent<RootMotion>();
         _rootMotion.InitMove();
     }
@@ -76,25 +77,27 @@ public class MonsterMove : MonsterState
     {
         base.Enter();
         _anim.SetTrigger(Functions.MONSTER_ANIM_MOVE);
-		//_rootMotion.Move();
-	}
+        //_rootMotion.Move();
+    }
 
     public override void Loop()
     {
         base.Loop();
-		if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
-		{
-			_fsm.ChangeState(new MonsterOnSkill(_fsm));
-		}
-		else
-		{
-			_timer -= Time.deltaTime;
-			if (_timer <= 0f)
-			{
-				_rootMotion.Move();
-				_timer = COOL_DOWN_TIME;
-			}
-		}
+
+        //if (_fsm.SelectSkill)
+        if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
+        {
+            _fsm.ChangeState(new MonsterOnSkill(_fsm));
+        }
+        else
+        {
+            _timer -= Time.deltaTime;
+            if (_timer <= 0f)
+            {
+                _rootMotion.Move();
+                _timer = COOL_DOWN_TIME;
+            }
+        }
     }
 
     public override void Exit()
@@ -114,6 +117,7 @@ public class MonsterOnSkill : MonsterState
     public override void Enter()
     {
         base.Enter();
+        _fsm.LookAtPlayer();
         _anim.SetTrigger(Functions.MONSTER_ANIM_ON_SKILL);
     }
 

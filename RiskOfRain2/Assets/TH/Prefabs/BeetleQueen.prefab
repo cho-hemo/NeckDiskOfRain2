@@ -1265,10 +1265,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2737873278683020752}
   - component: {fileID: 8295293965122578346}
-  - component: {fileID: 4486368840170245859}
   - component: {fileID: 6533443922535162238}
+  - component: {fileID: 4486368840170245859}
   - component: {fileID: 7641472574696431846}
-  - component: {fileID: 2023981708}
+  - component: {fileID: 508132784}
   m_Layer: 0
   m_Name: BeetleQueen
   m_TagString: Untagged
@@ -1314,26 +1314,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4486368840170245859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3365650796130543466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9418ed0cef32976429a4f4b1270f66f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  footTargets:
-  - {fileID: 6936922518362380862}
-  - {fileID: 5392175773117372571}
-  - {fileID: 7692453579110466727}
-  - {fileID: 8122519598504441704}
-  - {fileID: 8779084113509096171}
-  - {fileID: 2595284542092602230}
 --- !u!195 &6533443922535162238
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1356,6 +1336,26 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!114 &4486368840170245859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365650796130543466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9418ed0cef32976429a4f4b1270f66f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  footTargets:
+  - {fileID: 6936922518362380862}
+  - {fileID: 5392175773117372571}
+  - {fileID: 7692453579110466727}
+  - {fileID: 8122519598504441704}
+  - {fileID: 8779084113509096171}
+  - {fileID: 2595284542092602230}
 --- !u!114 &7641472574696431846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b0937489299e4b8a3f8e0c2540766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2023981708
+--- !u!114 &508132784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1377,7 +1377,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3365650796130543466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b4deab826b28c4db0eb139939b473c, type: 3}
+  m_Script: {fileID: 11500000, guid: 29400c2ffd24c74418e52712089e5a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TestData: {fileID: 11400000, guid: 4f2a7377f16f05b45ab0b30938b8f0be, type: 2}
