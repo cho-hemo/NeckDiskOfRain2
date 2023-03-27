@@ -173,6 +173,10 @@ namespace RiskOfRain2.Player
 		protected bool _isDead = false;
 
 		[SerializeField]
+		[Tooltip("스킬 사용 가능 체크")]
+		protected bool _isSkillAvailable;
+
+		[SerializeField]
 		[Tooltip("OSP")]
 		protected bool _osp = false;
 
@@ -256,6 +260,7 @@ namespace RiskOfRain2.Player
 		public bool IsShot { get { return _isShot; } protected set { _isShot = value; } }
 		public bool IsGrounded { get { return _isGrounded; } protected set { _isGrounded = value; } }
 		public bool IsDead { get { return _isDead; } protected set { _isDead = value; } }
+		public bool IsSkillAvailable { get { return _isSkillAvailable; } protected set { _isSkillAvailable = value; } }
 		public bool Osp { get { return _osp; } protected set { _osp = value; } }
 		#endregion
 
@@ -271,6 +276,11 @@ namespace RiskOfRain2.Player
 		#endregion
 
 		#endregion
+
+		public void SetSkillAvailable(bool value)
+		{
+			IsSkillAvailable = value;
+		}
 
 		// #if ENABLE_INPUT_SYSTEM
 		//     protected PlayerInput _playerInput;
@@ -426,7 +436,7 @@ namespace RiskOfRain2.Player
 
 			if (IsGrounded)
 			{
-				if (!IsSprint || InputMove.y <= 0)
+				if (!IsSprint || InputMove.y <= 0 || IsShot)
 				{
 					Debug.Log($"Walk : {InputMove}");
 					IsSprint = false;

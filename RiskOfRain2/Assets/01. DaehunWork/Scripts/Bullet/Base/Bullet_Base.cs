@@ -13,7 +13,7 @@ namespace RiskOfRain2.Bullet
 
 		[SerializeField]
 		[Tooltip("총알 충돌 처리를 위한 RayCast 거리")]
-		protected float _rayDistance = 0.1f;
+		protected float _rayDistance = 0.5f;
 
 		[SerializeField]
 		[Tooltip("총알 Rigidbody")]

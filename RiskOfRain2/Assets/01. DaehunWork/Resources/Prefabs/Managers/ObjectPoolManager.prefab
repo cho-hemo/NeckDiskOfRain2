@@ -47,7 +47,7 @@ MonoBehaviour:
   poolingObjectList:
   - objectName: NormalBullet
     obj: {fileID: 1270646887611103440, guid: 2c1544520bf85f148a5a56930e091529, type: 3}
-    count: 10000
-  - objectName: SubSKillBullet
-    obj: {fileID: 1270646887611103440, guid: 6121e396947897f418a44a2f8ed4b8c8, type: 3}
     count: 1000
+  - objectName: SubSkillBullet
+    obj: {fileID: 1270646887611103440, guid: 6121e396947897f418a44a2f8ed4b8c8, type: 3}
+    count: 100

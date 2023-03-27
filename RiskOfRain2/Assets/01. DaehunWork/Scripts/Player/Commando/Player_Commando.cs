@@ -13,9 +13,10 @@ namespace RiskOfRain2.Player.Commando
 		protected new void Start()
 		{
 			base.Start();
+			IsSkillAvailable = true;
 			PlayerType = PlayerType.COMMANDO;
 			Skills.Add(new DoubleTap());
-			Skills.Add(new PhaseBlast());
+			Skills.Add(new PhaseRound());
 			Skills.Add(new TacticalDive());
 			Skills.Add(new SuppressiveFire());
 			foreach (var skill in Skills)
@@ -29,15 +30,19 @@ namespace RiskOfRain2.Player.Commando
 
 		public override void MainSkill(bool isPressed)
 		{
-			switch (StateMachine.GetState())
+			bool isSkillAvailable_ = Skills[PlayerDefine.PLAYER_MAIN_SKILL_INDEX].SkillAvailableCheck();
+			isSkillAvailable_ &= IsSkillAvailable;
+
+			if (!isSkillAvailable_)
 			{
-				case TacticalDiveState:
-					return;
+				return;
 			}
+
 			if (isPressed)
 			{
 				IsSprint = false;
 			}
+
 			IsShot = isPressed;
 			SetBool(PlayerDefine.PLAYER_IS_MAIN_SKILL, isPressed);
 			SetFloat(PlayerDefine.ATTACK_SPEED, AttackSpeed);
@@ -45,30 +50,45 @@ namespace RiskOfRain2.Player.Commando
 
 		public void MainSkillAction()
 		{
-			Skills[PlayerDefine.PLAYER_MAIN_SKILL_INDEX].Action(true);
+			Skill skill_ = Skills[PlayerDefine.PLAYER_MAIN_SKILL_INDEX];
+			skill_.Action(true);
 		}
 
 		public override void SubSkill(bool isPressed)
 		{
-			switch (StateMachine.GetState())
+			bool isSkillAvailable_ = Skills[PlayerDefine.PLAYER_SUB_SKILL_INDEX].SkillAvailableCheck();
+			isSkillAvailable_ &= IsSkillAvailable;
+
+			if (!isSkillAvailable_)
 			{
-				case TacticalDiveState:
-					return;
+				return;
 			}
+
 			if (isPressed)
 			{
-				SetTrigger(PlayerDefine.PLAYER_SUB_SKILL);
 				IsSprint = false;
+				SubSKillAction(isPressed);
+				SetTrigger(PlayerDefine.PLAYER_SUB_SKILL);
 			}
+		}
+
+		public void SubSKillAction(bool isPressed)
+		{
+			Skill skill_ = Skills[PlayerDefine.PLAYER_SUB_SKILL_INDEX];
+			skill_.Action(isPressed);
+			StartCoroutine(skill_.SkillCoolTimeRunning());
 		}
 
 		public override void UtilitySkill(bool isPressed)
 		{
-			switch (StateMachine.GetState())
+			bool isSkillAvailable_ = Skills[PlayerDefine.PLAYER_UTILITY_SKILL_INDEX].SkillAvailableCheck();
+			isSkillAvailable_ |= IsSkillAvailable;
+
+			if (!isSkillAvailable_)
 			{
-				case TacticalDiveState:
-					return;
+				return;
 			}
+
 			if (isPressed)
 			{
 				IsSprint = false;
@@ -79,19 +99,20 @@ namespace RiskOfRain2.Player.Commando
 
 		public override void SpecialSkill(bool isPressed)
 		{
-			switch (StateMachine.GetState())
+			bool isSkillAvailable_ = Skills[PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX].SkillAvailableCheck();
+			isSkillAvailable_ |= IsSkillAvailable;
+
+			if (!isSkillAvailable_)
 			{
-				case TacticalDiveState:
-					return;
+				return;
 			}
+
 			if (isPressed)
 			{
 				StartCoroutine(SpecialSkillCoroutine(isPressed));
 				IsSprint = false;
 			}
 		}
-
-
 
 		IEnumerator SpecialSkillCoroutine(bool isPressed)
 		{

@@ -3230,11 +3230,7 @@ MonoBehaviour:
   _defense: 0
   _attackDamage: 12
   _attackSpeed: 1
-  _skillCoolTime:
-  - 0
-  - 3
-  - 4
-  - 9
+  _skills: []
   _healthRegen: 1
   _currentSpeed: 0
   _defaultWalkSpeed: 7
@@ -3254,6 +3250,7 @@ MonoBehaviour:
   _focusPoint:
   - {fileID: 283358522542271077}
   - {fileID: 2035722070997728184}
+  - {fileID: 3386476320399352337}
   _playerType: 1
   _playerAnimator: {fileID: 0}
   _characterController: {fileID: 0}

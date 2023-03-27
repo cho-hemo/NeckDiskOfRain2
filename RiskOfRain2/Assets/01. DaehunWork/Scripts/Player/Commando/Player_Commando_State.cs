@@ -13,6 +13,7 @@ namespace RiskOfRain2.Player.Commando
 
 		public void OnEnter()
 		{
+			_player.SetSkillAvailable(false);
 			if (_player.InputMove == Vector2.zero)
 			{
 				_player.SetFloat("PosX", 0f);
@@ -37,7 +38,7 @@ namespace RiskOfRain2.Player.Commando
 
 		public void OnExit()
 		{
-
+			_player.SetSkillAvailable(true);
 		}
 
 		public void Action()

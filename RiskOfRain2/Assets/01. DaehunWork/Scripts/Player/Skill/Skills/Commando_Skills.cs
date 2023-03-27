@@ -8,8 +8,6 @@ namespace RiskOfRain2.Player.Commando
 {
 	public class DoubleTap : Skill
 	{
-		private bool _isPressed = false;
-
 		public override void Init(PlayerBase player)
 		{
 			base.Init(player);
@@ -20,10 +18,10 @@ namespace RiskOfRain2.Player.Commando
 			Multiplier = 1f;
 			ActivationFactor = 1f;
 		}
+
 		public override void Action(bool isPressed)
 		{
-			_isPressed = isPressed;
-			if (_isPressed && 0 < SkillStack)
+			if (isPressed && 0 < SkillStack)
 			{
 				MainSkillShot();
 			}
@@ -59,13 +57,17 @@ namespace RiskOfRain2.Player.Commando
 			}
 			else
 			{
-				return Quaternion.identity;
+				return _player.transform.rotation;
 			}
 		}
 
 		public void BulletShoot(Vector3 pos, Quaternion rotation)
 		{
 			GameObject bullet_ = ObjectPoolManager.Instance.ObjectPoolPop("NormalBullet");
+			if (bullet_.Equals(null) || bullet_.Equals(default))
+			{
+				return;
+			}
 			bullet_.transform.localPosition = pos;
 			bullet_.transform.rotation = rotation;
 			bullet_.SetActive(true);
@@ -87,10 +89,57 @@ namespace RiskOfRain2.Player.Commando
 
 		public override void Action(bool isPressed)
 		{
-			if (isPressed && 0 < SkillStack)
+			if (isPressed && (0 <= SkillStack || IsSkillCoolTime))
 			{
-
+				SubSkillShot();
+				_player.StartCoroutine(SkillCoolTimeRunning());
 			}
+		}
+
+		public void SubSkillShot()
+		{
+			if (SkillStack - 1 <= 0)
+			{
+				SkillStack = 0;
+			}
+			else
+			{
+				SkillStack -= 1;
+			}
+
+			Vector3 pos_ = default;
+			Quaternion rotation_ = default;
+			AnimatorStateInfo currentStateInfo_ = _player.PlayerAnimator.GetCurrentAnimatorStateInfo(PlayerDefine.PLAYER_ATTACK_LAYER);
+			pos_ = _player.FocusPoint[2].position;
+			rotation_ = RayShoot(pos_);
+			BulletShoot(pos_, rotation_);
+		}
+
+		public Quaternion RayShoot(Vector3 start)
+		{
+			Vector2 screenCenterPoint_ = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+			Ray ray_ = _player.MainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+			if (Physics.Raycast(ray_, out RaycastHit rayCastHit_, _player.RayRange))
+			{
+				Vector3 direction = rayCastHit_.point - start;
+				return Quaternion.LookRotation(direction);
+			}
+			else
+			{
+				return _player.transform.rotation;
+			}
+		}
+
+		public void BulletShoot(Vector3 pos, Quaternion rotation)
+		{
+			GameObject bullet_ = ObjectPoolManager.Instance.ObjectPoolPop("SubSkillBullet");
+			if (bullet_.Equals(null) || bullet_.Equals(default))
+			{
+				return;
+			}
+			bullet_.transform.localPosition = pos;
+			bullet_.transform.rotation = rotation;
+			bullet_.SetActive(true);
 		}
 	}
 
