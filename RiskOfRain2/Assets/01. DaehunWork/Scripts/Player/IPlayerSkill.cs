@@ -1,8 +1,11 @@
-public interface IPlayerSkill
+namespace RiskOfRain2.Player
 {
-    public void PassiveSkill();
-    public void MainSkill(bool isPressed_);
-    public void SubSkill(bool isPressed_);
-    public void UtilitySkill(bool isPressed_);
-    public void SpecialSkill(bool isPressed_);
+	public interface IPlayerSkill
+	{
+		public void PassiveSkill();
+		public void MainSkill(bool isPressed_);
+		public void SubSkill(bool isPressed_);
+		public void UtilitySkill(bool isPressed_);
+		public void SpecialSkill(bool isPressed_);
+	}
 }

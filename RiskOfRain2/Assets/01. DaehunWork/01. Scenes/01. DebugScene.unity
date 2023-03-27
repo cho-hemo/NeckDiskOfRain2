@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077541345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 30}
   m_LocalScale: {x: 20, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -910,6 +910,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[0].count
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[1].count
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376372, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_Name
       value: ObjectPoolManager
@@ -980,14 +988,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 60473859259878514, guid: 4a68858639256ab44a097ff5a96eabb5, type: 3}
-      propertyPath: _rayRange
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 60473859259878514, guid: 4a68858639256ab44a097ff5a96eabb5, type: 3}
-      propertyPath: debugObject
-      value: 
-      objectReference: {fileID: 1147725292}
     - target: {fileID: 6212421511133533710, guid: 4a68858639256ab44a097ff5a96eabb5, type: 3}
       propertyPath: m_RootOrder
       value: 5

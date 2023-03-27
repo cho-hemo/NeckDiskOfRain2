@@ -3206,7 +3206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _rayRange: 10000
+  _rayRange: 3.402823e+38
   _topClamp: 90
   _bottomClamp: -70
   _inputMove: {x: 0, y: 0}
@@ -3247,6 +3247,7 @@ MonoBehaviour:
   _gravity: -9.81
   _isMove: 0
   _isSprint: 0
+  _isShot: 0
   _isGrounded: 1
   _isDead: 0
   _osp: 0
@@ -3259,7 +3260,6 @@ MonoBehaviour:
   _cinemachineCameraTarget: {fileID: 1408289584342218223}
   _cinemachineTargetYaw: 0
   _cinemachineTargetPitch: 0
-  debugObject: {fileID: 0}
 --- !u!114 &60473859259878513
 MonoBehaviour:
   m_ObjectHideFlags: 0
