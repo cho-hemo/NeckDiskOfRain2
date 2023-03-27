@@ -105,7 +105,7 @@ public class Monster1 : MonoBehaviour
 		for (int i = 0; i < spitCount; i++)
 		{
 			GameObject inst = Instantiate(spit, new Vector3 (spitStartPos.position.x, spitStartPos.position.y, spitStartPos.position.z), 
-				Quaternion.Euler(-30, -(degree / 2) - (degree / 5) * i, 0));
+				Quaternion.Euler(-30, spitStartPos.eulerAngles.y - 210 -(degree / 2) - (degree / 5) * i, 0));
 		}
 	}
 }
