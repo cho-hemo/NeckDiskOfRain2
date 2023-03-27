@@ -70,6 +70,8 @@ public partial class PlayerUiManager : MonoBehaviour
 
 	private List<GameObject> _skillList = new List<GameObject>();
 	private List<bool> _isSkillActivation = new List<bool>();
+	private List<int> _skillStackList = new List<int>();
+
 
 
 
@@ -86,7 +88,7 @@ public partial class PlayerUiManager : MonoBehaviour
 	private int _playerMaxExp = 0;
 
 	// 난이도 바의 움직이는 속도
-	private float _barMoveSpeed = 0.3f;
+	// private float _barMoveSpeed = 0.3f;
 	private int _levelBarMoveValue = 1;
 
 
@@ -118,7 +120,6 @@ public partial class PlayerUiManager : MonoBehaviour
 		// { DebugMode
 		// Time.timeScale = 10f;
 		// } DebugMode
-
 
 		GameObject uiObj_ = GioleFunc.GetRootObj(GioleData.PLAYER_UI_CANVAS_OBJ_NAME);
 
@@ -152,6 +153,7 @@ public partial class PlayerUiManager : MonoBehaviour
 		_crossHair = uiObj_.FindChildObj("CrossHair");
 
 		_missionUiObj = uiObj_.FindChildObj("MissionUI");
+
 
 
 		StageLevel = 1;
@@ -192,7 +194,14 @@ public partial class PlayerUiManager : MonoBehaviour
 			skillObj_.FindChildObj("CoolDown").SetActive(false);
 		}
 
-
+		int skillCount_ = 2;
+		// 스킬 스택을 초기화 하는 로직
+		for (int i = 0; i < 5; i++)
+		{
+			_skillStackList.Add(skillCount_);
+			_skillList[i].FindChildObj("SkillCostTxt").SetTmpText($"{skillCount_}");
+		}
+		uiObj_.FindChildObj("Skill" + "0").FindChildObj("SkillCostTxt").SetActive(false);
 
 		// 게임의 난이도에 따라서 아이콘을 변경하는 로직
 		switch (InGameDifficulty)
@@ -338,17 +347,10 @@ public partial class PlayerUiManager : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+	/// <summary>
+	/// 탭 키를 누를경우 나오는 점수화면 호출하는 함수
+	/// </summary>
+	/// <param name="popupCheck">true : 켜주기 false : 꺼주기</param>
 	public void ScoreBoardPopup(bool popupCheck)
 	{
 		_scoreBoardObj.SetActive(popupCheck);

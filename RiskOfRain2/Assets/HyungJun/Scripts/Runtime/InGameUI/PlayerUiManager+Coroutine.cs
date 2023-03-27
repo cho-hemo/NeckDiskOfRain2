@@ -25,19 +25,26 @@ public partial class PlayerUiManager : MonoBehaviour
 	}
 
 
-
+	// 스킬 발동하는 함수
 	private IEnumerator SkillActive(int num, float coolTime_)
 	{
-		if (!_isSkillActivation[num]) { yield break; }
+		if (_skillStackList[num] <= 0)
+		{
+			yield break;
+		}
 
 		// 스킬 비 활성화
 		_isSkillActivation[num] = false;
+		_skillStackList[num]--;
+		GameObject _skillCount = _skillList[num].FindChildObj("SkillCostTxt");
 		GameObject icon_ = _skillList[num].FindChildObj("Icon");
 		GameObject coolDownObj_ = _skillList[num].FindChildObj("CoolDown");
 		GameObject outLineBox_ = _skillList[num].FindChildObj("OutLineBox");
+
 		coolDownObj_.SetActive(true);
 		outLineBox_.SetActive(false);
 		icon_.SetImageColor(0.5f, 0.5f, 0.5f);
+		_skillCount.SetTmpText($"{_skillStackList[num]}");
 
 		// 스킬 쿨타임 로직
 		int currentCoolTime_ = (int)coolTime_;
@@ -49,9 +56,11 @@ public partial class PlayerUiManager : MonoBehaviour
 
 		// 스킬 재 활성화
 		_isSkillActivation[num] = true;
+		_skillStackList[num]++;
 		coolDownObj_.SetActive(false);
 		outLineBox_.SetActive(true);
 		icon_.SetImageColor(1f, 1f, 1f);
+		_skillCount.SetTmpText($"{_skillStackList[num]}");
 	}
 
 

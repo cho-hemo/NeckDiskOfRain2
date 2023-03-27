@@ -11,8 +11,13 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 	private static List<GameObject> _pickUpList = new List<GameObject>();
 	private static List<GameObject> _pickUpInfoList = new List<GameObject>();
+	private static List<GameObject> _selectDifficultyList = new List<GameObject>();
+
 
 	private bool _outMouse = false;
+
+	private static bool _objMoving = false;
+
 
 	private void Awake()
 	{
@@ -23,20 +28,23 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 		GameObject pickImage_ = gameObject.FindChildObj("PickImage");
 		GameObject informationObj_ = transform.parent.gameObject.FindChildObj("BtnInfromation");
-		if (pickImage_ == default || informationObj_ == default)
+		if (pickImage_ != default) { pickImage_.SetActive(false); }
+		else if (informationObj_ != default) { informationObj_.SetActive(false); }
+		else if (pickImage_ == default || informationObj_ == default)
 		{
 			/* nothing */
-		}
-		else if (pickImage_ != default || informationObj_ != default)
-		{
-			pickImage_.SetActive(false);
-			informationObj_.SetActive(false);
 		}
 
 
 		_highLightBoxObj.SetActive(false);
 		_highLightImageObj.SetActive(false);
 	}
+
+
+	/// <summary>
+	/// 마우스가 들어왔을때
+	/// </summary>
+	/// <param name="eventData"></param>
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		_highLightBoxObj.SetActive(true);
@@ -46,6 +54,10 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		StartCoroutine(HighLightBoxZoomOut());
 	}
 
+	/// <summary>
+	/// 마우스가 나갈 때
+	/// </summary>
+	/// <param name="eventData"></param>
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		_highLightBoxObj.SetActive(false);
@@ -108,6 +120,10 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		pickUpObj_.SetActive(true);
 	}
 
+
+	/// <summary>
+	/// 캐릭터의 정보를 바꿔주는 함수
+	/// </summary>
 	private void ChangeInformaion()
 	{
 		switch (gameObject.name)
@@ -140,6 +156,108 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		_pickUpInfoList.Add(pickUpObj_);
 		pickUpObj_.SetActive(true);
 		informationObj_.SetActive(true);
+	}       // SelectInformaion()
+
+	/// <summary>
+	/// 게임의 난이도를 조정하는 함수	
+	/// </summary>
+	/// <param name="num"></param>
+	public void SelectDifficulty(int num)
+	{
+		if (_objMoving) { return; }
+		_objMoving = true;
+		foreach (GameObject obj_ in _selectDifficultyList)
+		{
+			obj_.SetActive(false);
+		}
+		_selectDifficultyList.Clear();
+
+
+
+
+		GameObject pickUpObj_ = gameObject.FindChildObj("PickImage");
+		_selectDifficultyList.Add(pickUpObj_);
+		pickUpObj_.SetActive(true);
+
+
+		RectTransform iconListObj_ = transform.parent.gameObject.GetRect();
+
+		switch (num)
+		{
+			case 1:     // 쉬움
+				StartCoroutine(MoveObject(70f, iconListObj_));
+				break;
+			case 2:     // 중간
+				StartCoroutine(MoveObject(0f, iconListObj_));
+				break;
+			case 3:     // 어려움
+				StartCoroutine(MoveObject(-70f, iconListObj_));
+				break;
+		}
+
+	}       // SelectDifficulty()
+
+	/// <summary>
+	/// 수평선으로 오브젝트를 움직이는 함수
+	/// </summary>
+	/// <param name="moveValue_"></param>
+	/// <param name="obj_"></param>
+	/// <returns></returns>
+	private IEnumerator MoveObject(float moveValue_, RectTransform obj_)
+	{
+		float controlValue_ = 0f;
+		float time_ = 0f;
+		int correction = 0;
+
+		if (moveValue_ < 0)
+		{
+			controlValue_ = -1f;
+			correction--;
+		}
+		if (moveValue_ > 0)
+		{
+			controlValue_ = 1f;
+			correction++;
+		}
+		if (moveValue_ == 0)
+		{
+			// 난이도가 Easy 일때
+			if (obj_.anchoredPosition.x == 0f)
+			{
+				/* Do nothing */
+			}
+			else if (0f < obj_.anchoredPosition.x)
+			{
+				controlValue_ = -1f;
+			}
+			else if (obj_.anchoredPosition.x < 0f)
+			{
+				controlValue_ = 1f;
+			}
+		}
+
+		while (true)
+		{
+			yield return new WaitForSeconds(0.01f);
+			time_ += 0.01f;
+
+			controlValue_ = EaseOutExpo(obj_.anchoredPosition.x, moveValue_ + correction, time_);
+			obj_.anchoredPosition = new Vector2(controlValue_, 0f);
+
+			// obj_.localPosition = new Vector3(movingValue_, 0f, 0f);
+
+			if ((int)moveValue_ == (int)obj_.anchoredPosition.x)
+			{
+				_objMoving = false;
+				yield break;
+			}
+		}       // While()
+	}       // MoveObject()
+
+	private float EaseOutExpo(float start, float end, float value)
+	{
+		end -= start;
+		return end * (-Mathf.Pow(2, -10 * value) + 1) + start;
 	}
 
 

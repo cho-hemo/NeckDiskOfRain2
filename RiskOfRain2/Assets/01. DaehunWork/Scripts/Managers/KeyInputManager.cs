@@ -104,27 +104,27 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 	{
 		player.SubSkill(value.isPressed);
 		// { 2023-03-20 / HyungJun / PlayerUIWorks
-		//playerUIManager.PlayerSkillActiveIcon(1, 5f);
+		playerUIManager.PlayerSkillActiveIcon(1, 5f);
 	}
 
 	// Shift skill
 	public void OnUtilitySkill(InputValue value)
 	{
 		player.UtilitySkill(value.isPressed);
-		//playerUIManager.PlayerSkillActiveIcon(2, 5f);
+		playerUIManager.PlayerSkillActiveIcon(2, 5f);
 	}
 
 	// R skill
 	public void OnSpecialSkill(InputValue value)
 	{
 		player.SpecialSkill(value.isPressed);
-		//playerUIManager.PlayerSkillActiveIcon(3, 5f);
+		playerUIManager.PlayerSkillActiveIcon(3, 5f);
 	}
 
 	// Q KeyInput
 	public void OnUseEquipment(InputValue value)
 	{
-		//playerUIManager.PlayerSkillActiveIcon(4, 5f);
+		playerUIManager.PlayerSkillActiveIcon(4, 5f);
 		// } 2023-03-20 / HyungJun / PlayerUIWorks
 	}
 
@@ -169,7 +169,7 @@ public class KeyInputManager : SingletonBase<KeyInputManager>
 		GameObject.Find("Player").TryGetComponent(out player);
 		SetCursorState(cursorLocked);
 		//GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
-		//GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
+		GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
 	}
 	///<summary>화면 밖으로 마우스가 못 나가게 하는 함수</summary>
 	///<param name = "newState">true가 들어오면 화면 밖으로 마우스가 나가지 않고 false가 들어오면 밖으로 나갈 수 있음</param>
