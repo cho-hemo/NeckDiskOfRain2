@@ -15,9 +15,9 @@ public class BeetleMK2ver2 : MonoBehaviour
 
 	public float LookRange = 20f; // 시야 영역
 	public float AttackRange = 4f; // 공격 영역
-	public float Speed = default; // 속도
-	NavMeshAgent Pathfinder; // 네비매쉬
 	Transform Target; // 목표
+	NavMeshAgent Pathfinder; // 네비매쉬
+	public float Speed = default; // 속도
 	Animator Anime;
 	public AnimationClip SpawnAnime;
 	public AnimationClip AttackAnime;
@@ -38,9 +38,9 @@ public class BeetleMK2ver2 : MonoBehaviour
 		Target = GameObject.FindGameObjectWithTag("Player").transform;
 
 		Anime.SetBool("isMove", false);
-		Anime.SetBool("isReco", false);
 		Anime.SetBool("isAttack", false);
 		Anime.SetBool("isDead", false);
+		Anime.SetBool("isReco", false);
 
 		StartCoroutine(AnimeWaiting());
 

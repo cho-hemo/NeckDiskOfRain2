@@ -996,7 +996,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668249198}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dcbdb459ac9bdb4688f6e3ac3293e8b, type: 3}
   m_Name: 
@@ -1006,6 +1006,24 @@ MonoBehaviour:
   Speed: 2
   SpawnAnime: {fileID: -3247251495056633262, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
   AttackAnime: {fileID: 7570010672536006877, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
+--- !u!114 &668249212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668249198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac85da70f82001f42800d8b6a6260bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 1305616416}
+  LookRange: 20
+  AttackRange: 4
+  Speed: 2
+  atkCooltime: 4
+  atkDelay: 0
 --- !u!1 &695991686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1948,6 +1966,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1155711852, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 430e852a3852d304fb042c589ea5e766, type: 2}
     - target: {fileID: 1559526519, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
       propertyPath: m_LocalPosition.z
       value: 3
