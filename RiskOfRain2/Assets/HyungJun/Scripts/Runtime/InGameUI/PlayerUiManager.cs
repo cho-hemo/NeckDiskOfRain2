@@ -201,10 +201,26 @@ public partial class PlayerUiManager : MonoBehaviour
 			_skillStackList.Add(skillCount_);
 			_skillList[i].FindChildObj("SkillCostTxt").SetTmpText($"{skillCount_}");
 		}
+		_skillStackList[2] = 1;
+		_skillList[2].FindChildObj("SkillCostTxt").SetTmpText($"{_skillStackList[2]}");
+
 		uiObj_.FindChildObj("Skill" + "0").FindChildObj("SkillCostTxt").SetActive(false);
 
+		// for (int i = 0; i < 5; i++)
+		// {
+		// 	if (_skillStackList[i] == 1)
+		// 	{
+
+		// 	}
+		// }
+
+
+
+
+
+
 		// 게임의 난이도에 따라서 아이콘을 변경하는 로직
-		switch (InGameDifficulty)
+		switch (GameManager.Instance.GameDiffi)
 		{
 			case Difficulty.NONE:
 				Debug.Log("[PlayerUiManager] Awake : Not Setting Difficulty -> Change to Normal");

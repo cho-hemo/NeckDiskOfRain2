@@ -65,6 +65,10 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		_outMouse = true;
 	}
 
+	/// <summary>
+	/// 하이라이트 애니메이션을 재생하는 코루틴 함수
+	/// </summary>
+	/// <returns></returns>
 	protected IEnumerator HighLightBoxZoomOut()
 	{
 		float time_ = 0f;
@@ -75,7 +79,7 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			if (1f <= time_) yield break;
 			yield return new WaitForSecondsRealtime(0.01f);
 			time_ += 0.2f;
-			scale_ = EaseInBack(1.2f, 1f, time_);
+			scale_ = EaseInBack(1.1f, 1f, time_);
 			_highLightRect.localScale = new Vector3(scale_, scale_, 1);
 		}
 	}
@@ -185,12 +189,15 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		switch (num)
 		{
 			case 1:     // 쉬움
+				GameManager.Instance.GameDiffi = Difficulty.EASY;
 				StartCoroutine(MoveObject(70f, iconListObj_));
 				break;
 			case 2:     // 중간
+				GameManager.Instance.GameDiffi = Difficulty.NORMAL;
 				StartCoroutine(MoveObject(0f, iconListObj_));
 				break;
 			case 3:     // 어려움
+				GameManager.Instance.GameDiffi = Difficulty.HARD;
 				StartCoroutine(MoveObject(-70f, iconListObj_));
 				break;
 		}
