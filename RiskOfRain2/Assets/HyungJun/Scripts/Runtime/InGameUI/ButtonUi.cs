@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using RiskOfRain2.Manager;
+using RiskOfRain2.Player;
 
 public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -12,6 +14,8 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	private static List<GameObject> _pickUpList = new List<GameObject>();
 	private static List<GameObject> _pickUpInfoList = new List<GameObject>();
 	private static List<GameObject> _selectDifficultyList = new List<GameObject>();
+
+	private static PlayerBase _selectPlayer = default;
 
 
 	private bool _outMouse = false;
@@ -110,7 +114,9 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		// 캐릭터가 선택되면 정보 창의 버튼 색깔 및 설명을 바꿔주는 함수
 		ChangeInformaion();
 
-
+		// Debug.Log(_selectPlayer);
+		// _selectPlayer = GetComponent<PlayerBase>();
+		// Debug.Log(_selectPlayer);
 
 		// 애니메이션 로직
 		foreach (GameObject obj_ in _pickUpList)
@@ -130,13 +136,16 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	/// </summary>
 	private void ChangeInformaion()
 	{
-		switch (gameObject.name)
-		{
-			case "Commando":
-				// 정보를 바꿔주는 함수
+		// Skill playerSkills_ =
+		// PlayerBase
 
-				break;
-		}
+		// switch (gameObject.name)
+		// {
+		// 	case "Commando":
+		// 		// 정보를 바꿔주는 함수
+
+		// 		break;
+		// }
 	}
 
 

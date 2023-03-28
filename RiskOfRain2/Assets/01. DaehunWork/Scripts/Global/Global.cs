@@ -1,4 +1,7 @@
-public static partial class Global
+namespace RiskOfRain2
 {
+	public static partial class Global
+	{
 
+	}
 }

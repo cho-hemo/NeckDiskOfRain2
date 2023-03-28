@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using RiskOfRain2.Manager;
+using RiskOfRain2.Player;
+
 
 public partial class PlayerUiManager : MonoBehaviour
 {
@@ -65,7 +68,7 @@ public partial class PlayerUiManager : MonoBehaviour
 
 	#endregion 게임오브젝트
 
-
+	private PlayerBase _playerInfo = default;
 
 
 	private List<GameObject> _skillList = new List<GameObject>();
@@ -155,6 +158,7 @@ public partial class PlayerUiManager : MonoBehaviour
 		_missionUiObj = uiObj_.FindChildObj("MissionUI");
 
 
+		_playerInfo = GameManager.Instance.Player;
 
 		StageLevel = 1;
 
@@ -184,27 +188,18 @@ public partial class PlayerUiManager : MonoBehaviour
 		}
 
 
-		// 스킬 리스트에 스킬 담는 로직
-		for (int i = 0; i < 5; i++)
-		{
-			GameObject skillObj_ = default;
-			skillObj_ = uiObj_.FindChildObj($"Skill{i}");
-			_skillList.Add(skillObj_);
-			_isSkillActivation.Add(true);
-			skillObj_.FindChildObj("CoolDown").SetActive(false);
-		}
 
-		int skillCount_ = 2;
-		// 스킬 스택을 초기화 하는 로직
-		for (int i = 0; i < 5; i++)
-		{
-			_skillStackList.Add(skillCount_);
-			_skillList[i].FindChildObj("SkillCostTxt").SetTmpText($"{skillCount_}");
-		}
-		_skillStackList[2] = 1;
-		_skillList[2].FindChildObj("SkillCostTxt").SetTmpText($"{_skillStackList[2]}");
+		// int skillCount_ = 2;
+		// // 스킬 스택을 초기화 하는 로직
+		// for (int i = 0; i < 5; i++)
+		// {
+		// 	_skillStackList.Add(skillCount_);
+		// 	_skillList[i].FindChildObj("SkillCostTxt").SetTmpText($"{skillCount_}");
+		// }
+		// _skillStackList[2] = 1;
+		// _skillList[2].FindChildObj("SkillCostTxt").SetTmpText($"{_skillStackList[2]}");
 
-		uiObj_.FindChildObj("Skill" + "0").FindChildObj("SkillCostTxt").SetActive(false);
+		// uiObj_.FindChildObj("Skill" + "0").FindChildObj("SkillCostTxt").SetActive(false);
 
 		// for (int i = 0; i < 5; i++)
 		// {
@@ -214,6 +209,33 @@ public partial class PlayerUiManager : MonoBehaviour
 		// 	}
 		// }
 
+
+
+		GameObject skillObj_ = default;
+		GameObject skillCount_ = default;
+		// 스킬 리스트에 스킬 담는 로직
+		for (int i = 0; i < 5; i++)
+		{
+			skillObj_ = uiObj_.FindChildObj($"Skill{i}");
+			_skillList.Add(skillObj_);
+			skillObj_.FindChildObj("CoolDown").SetActive(false);
+		}
+
+		// 스킬 스택을 초기화하는 로직
+		int index = 0;
+		foreach (var value_ in _playerInfo.Skills)
+		{
+			skillCount_ = uiObj_.FindChildObj($"Skill{index}").FindChildObj("SkillCostTxt");
+			if (value_.SkillMaxStack == 1)
+			{
+				skillCount_.SetActive(false);
+			}
+			index++;
+		}
+		// if (_playerInfo.Skills[i].SkillMaxStack == 1)
+		// {
+		// 	skillCount_.SetActive(false);
+		// }
 
 
 

@@ -5,6 +5,8 @@ using UnityEngine;
 public class mdlChest2 : InteractionObjects
 {
 	private GameObject _neededMoneyObj = default;
+	private GameObject _itemEffectObj = default;
+
 	private Animator _chestAni = default;
 	private bool _inArea = true;
 	private bool _isLook = false;
@@ -21,6 +23,8 @@ public class mdlChest2 : InteractionObjects
 		// Instance Init
 		_neededMoneyObj = gameObject.FindChildObj("NeededMoney");
 		_chestAni = GetComponent<Animator>();
+		_itemEffectObj = transform.GetChild(0).gameObject;
+
 
 		// 상자의 가격을 설정하는 함수
 		_neededMoneyObj.FindChildObj("Txt").SetTmpText($"${NeededMoney}");
@@ -74,6 +78,7 @@ public class mdlChest2 : InteractionObjects
 					Debug.Log("[mdlChest2] OntriggerStay : 상자 오픈!");
 					_neededMoneyObj.SetActive(false);
 					UIManager.Instance.PopupUIActive("", false);
+					_itemEffectObj.SetActive(true);
 				}
 			}
 			// 거리를 벗어나면 팝업 메뉴 끄기
@@ -87,6 +92,14 @@ public class mdlChest2 : InteractionObjects
 			_neededMoneyObj.transform.LookAt(_playerObj.transform);
 		}
 	}
+
+	// private IEnumerator ItemSpawn()
+	// {
+	// 	yield return null;
+
+
+	// }
+
 
 	// private void OnTriggerStay(Collider other)
 	// {

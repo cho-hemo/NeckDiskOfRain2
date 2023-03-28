@@ -3206,7 +3206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _rayRange: 10000
+  _rayRange: 3.402823e+38
   _topClamp: 90
   _bottomClamp: -70
   _inputMove: {x: 0, y: 0}
@@ -3230,11 +3230,7 @@ MonoBehaviour:
   _defense: 0
   _attackDamage: 12
   _attackSpeed: 1
-  _skillCoolTime:
-  - 0
-  - 3
-  - 4
-  - 9
+  _skills: []
   _healthRegen: 1
   _currentSpeed: 0
   _defaultWalkSpeed: 7
@@ -3247,19 +3243,20 @@ MonoBehaviour:
   _gravity: -9.81
   _isMove: 0
   _isSprint: 0
+  _isShot: 0
   _isGrounded: 1
   _isDead: 0
   _osp: 0
   _focusPoint:
   - {fileID: 283358522542271077}
   - {fileID: 2035722070997728184}
+  - {fileID: 3386476320399352337}
   _playerType: 1
   _playerAnimator: {fileID: 0}
   _characterController: {fileID: 0}
   _cinemachineCameraTarget: {fileID: 1408289584342218223}
   _cinemachineTargetYaw: 0
   _cinemachineTargetPitch: 0
-  debugObject: {fileID: 0}
 --- !u!114 &60473859259878513
 MonoBehaviour:
   m_ObjectHideFlags: 0

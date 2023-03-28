@@ -2963,7 +2963,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "{\uCF54\uB9CC\uB3C4}"
+  m_text: "<!>\uC81C\uC555 \uC0AC\uACA9\uC740 \uD558\uB098\uC758 \uC801\uC5D0\uAC8C
+    \uBC18\uBCF5\uD558\uC5EC \uB9C8\uBE44\uB97C \uAC78\uAC70\uB098 \uC5EC\uB7EC \uC801\n\uC744
+    \uB9C8\uBE44\uC2DC\uD0A4\uB294 \uB370 \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -5032,7 +5034,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{Skill Information}'
+  m_text: "<#BFAE60>\uCD1D\uACA9</color>. \uC5F0\uC18D \uC0AC\uACA9\uD558\uC5EC \uD0C4\uD658\uB2F9
+    <#BFAE60>100% \uD53C\uD574</color>\uB97C \uC90D\uB2C8\uB2E4. \uACF5\uACA9\uC18D\uB3C4\uC5D0
+    \uB530\uB77C \uBC1C\uC0AC \uD69F\uC218\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -5041,8 +5045,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290756543
+  m_fontColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5826,7 +5830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{SkillName}'
+  m_text: "\uC81C\uC555 \uC0AC\uACA9"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -6570,7 +6574,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "{\uCF54\uB9CC\uB3C4}"
+  m_text: "<!>\uC704\uC0C1\uC870\uC815\uD0C4\uC740 \uBCBD\uC744 \uD1B5\uACFC\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC798 \uC774\uC6A9\uD558\uC138\uC694!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -7249,10 +7254,10 @@ RectTransform:
   m_Father: {fileID: 3942535462663665152}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -234}
+  m_SizeDelta: {x: 100, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2321405227957266878
 GameObject:
@@ -10006,7 +10011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3942535462663665152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11387,10 +11392,10 @@ RectTransform:
   m_Father: {fileID: 3942535462663665152}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -170}
+  m_SizeDelta: {x: 100, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3947253362715169989
 GameObject:
@@ -11783,7 +11788,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{Skill Information}'
+  m_text: "\uC9E7\uC740 \uAC70\uB9AC\uB97C \uBBF8\uB044\uB7EC\uC838 \uB098\uC544\uAC11\uB2C8\uB2E4.
+    \uC2AC\uB77C\uC774\uB529\uD558\uB294 \uB3D9\uC548 <#BFAE60>\uC0AC\uACA9\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4.</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -11792,8 +11799,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290756543
+  m_fontColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12942,10 +12949,10 @@ RectTransform:
   m_Father: {fileID: 3942535462663665152}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -106}
+  m_SizeDelta: {x: 100, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4447102010584465048
 GameObject:
@@ -13573,7 +13580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{SkillName}'
+  m_text: "\uC804\uC220\uC2AC\uB77C\uC774\uB529"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -15515,7 +15522,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "{\uCF54\uB9CC\uB3C4}"
+  m_text: "\uCF54\uB9CC\uB3C4\uB294 \uC5B4\uB5A4 \uC0C1\uD669\uC5D0\uC11C\uB098 \uBBFF\uC744
+    \uC218 \uC788\uB294 \uB9CC\uB2A5 \uCE90\uB9AD\uD130\uC785\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -15764,7 +15772,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{Skill Information}'
+  m_text: "<#BFAE60>\uAD00\uD1B5\uB825\uC774 \uC788\uB294</color> \uCD1D\uC54C\uC744
+    \uBC1C\uC0AC\uD558\uC5EC <#BFAE60>300% \uD53C\uD574</color>\uB97C \uC785\uD799\uB2C8\uB2E4.
+    \uC801\uC744 \uAD00\uD1B5 \uD560 \uB54C\uB9C8\uB2E4 \uD53C\uD574\uAC00 <#BFAE60>40%</color>
+    \uC99D\uAC00\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -15773,8 +15784,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290756543
+  m_fontColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17417,6 +17428,7 @@ GameObject:
   - component: {fileID: 2053563019669368354}
   - component: {fileID: 8205353821568986438}
   - component: {fileID: 8906038798712316491}
+  - component: {fileID: 5548703682013450434}
   m_Layer: 0
   m_Name: SummaryBtn
   m_TagString: Untagged
@@ -17516,6 +17528,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5548703682013450434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940642697933189820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18767e3d546364645b675b306422b172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5970578491225398087
 GameObject:
   m_ObjectHideFlags: 0
@@ -17700,10 +17724,10 @@ RectTransform:
   m_Father: {fileID: 3942535462663665152}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -42}
+  m_SizeDelta: {x: 100, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6030947843066233400
 GameObject:
@@ -18005,10 +18029,10 @@ RectTransform:
   m_Father: {fileID: 3942535462663665152}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -298}
+  m_SizeDelta: {x: 100, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6114672371469031042
 GameObject:
@@ -18175,6 +18199,7 @@ GameObject:
   - component: {fileID: 7938341593423641858}
   - component: {fileID: 640362107110564172}
   - component: {fileID: 8288872683300973432}
+  - component: {fileID: 8166874524266384583}
   m_Layer: 5
   m_Name: Normal
   m_TagString: Untagged
@@ -18282,6 +18307,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d41ce524c35b5a498562a8c4aba5853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8166874524266384583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182611680971646926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18767e3d546364645b675b306422b172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6228425281138951006
@@ -19080,7 +19117,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{SkillName}'
+  m_text: "2\uC5F0\uC0AC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -20950,7 +20987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{SkillName}'
+  m_text: "\uC704\uC0C1\uC870\uC815\uD0C4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -23393,6 +23430,7 @@ GameObject:
   - component: {fileID: 7398406879635341394}
   - component: {fileID: 4784067222624917134}
   - component: {fileID: 3980129634632526073}
+  - component: {fileID: 3539762245663604780}
   m_Layer: 5
   m_Name: Commando
   m_TagString: Untagged
@@ -23501,6 +23539,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d41ce524c35b5a498562a8c4aba5853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3539762245663604780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398406879635341393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18767e3d546364645b675b306422b172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7398406879722029917
@@ -26625,7 +26675,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{Skill Information}'
+  m_text: "\uC801 \uD558\uB098\uB97C \uBE60\uB974\uAC8C \uC3D8\uC544 <#BFAE60>100%\uC758
+    \uD53C\uD574</color>\uB97C \uC785\uD799\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -26634,8 +26685,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290756543
+  m_fontColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -29499,7 +29550,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "{\uCF54\uB9CC\uB3C4}"
+  m_text: "<!>\uC804\uC220 \uAD6C\uB974\uAE30\uB97C \uD6A8\uC728\uC801\uC73C\uB85C
+    \uC0AC\uC6A9\uD558\uBA74 \uC608\uACE0\uB41C \uACF5\uACA9\uC744 \uD53C\uD560 \uC218\n\uC788\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
@@ -30413,7 +30465,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "{\uCF54\uB9CC\uB3C4}"
+  m_text: "<!>2\uC5F0\uC0AC\uB294 \uB2E8\uAC70\uB9AC\uC5D0\uC11C\uB098 \uC7A5\uAC70\uB9AC\uC5D0\uC11C\uB098
+    \uAC15\uB825\uD558\uBA70, \uC0AC\uACA9 \uC18D\uB3C4\uAC00\n\uBE60\uB974\uACE0
+    \uB2E4\uC591\uD55C \uC544\uC774\uD15C \uD6A8\uACFC\uB97C \uBC1C\uB3D9\uD560 \uC218
+    \uC788\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
   m_sharedMaterial: {fileID: -2519955858023314757, guid: 56db25ae20f2e9d4e8a923e3f99520f7, type: 2}
