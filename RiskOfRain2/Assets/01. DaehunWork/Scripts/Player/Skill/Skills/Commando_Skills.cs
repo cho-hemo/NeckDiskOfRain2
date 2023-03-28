@@ -13,7 +13,8 @@ namespace RiskOfRain2.Player.Commando
 			base.Init(player);
 			SkillName = "DoubleTap";
 			SkillInfo = "적 하나를 빠르게 쏘아 100%의 피해를 입힙니다.";
-			SkillStack = 1;
+			SkillMaxStack = 1;
+			SkillStack = SkillMaxStack;
 			SkillCooltime = 0f;
 			Multiplier = 1f;
 			ActivationFactor = 1f;
@@ -21,7 +22,7 @@ namespace RiskOfRain2.Player.Commando
 
 		public override void Action(bool isPressed)
 		{
-			if (isPressed && 0 < SkillStack)
+			if (isPressed && SkillAvailableCheck())
 			{
 				MainSkillShot();
 			}
@@ -81,7 +82,8 @@ namespace RiskOfRain2.Player.Commando
 			base.Init(player);
 			SkillName = "PhaseRound";
 			SkillInfo = "관통력이 있는 총알을 발사하여 300% 피해를 입힙니다. 적을 관통할 때마다 피해가 40% 증가합니다.";
-			SkillStack = 1;
+			SkillMaxStack = 1;
+			SkillStack = SkillMaxStack;
 			SkillCooltime = 3f;
 			Multiplier = 3f;
 			ActivationFactor = 1f;
@@ -89,24 +91,14 @@ namespace RiskOfRain2.Player.Commando
 
 		public override void Action(bool isPressed)
 		{
-			if (isPressed && (0 <= SkillStack || IsSkillCoolTime))
+			if (isPressed && SkillAvailableCheck())
 			{
 				SubSkillShot();
-				_player.StartCoroutine(SkillCoolTimeRunning());
 			}
 		}
 
 		public void SubSkillShot()
 		{
-			if (SkillStack - 1 <= 0)
-			{
-				SkillStack = 0;
-			}
-			else
-			{
-				SkillStack -= 1;
-			}
-
 			Vector3 pos_ = default;
 			Quaternion rotation_ = default;
 			AnimatorStateInfo currentStateInfo_ = _player.PlayerAnimator.GetCurrentAnimatorStateInfo(PlayerDefine.PLAYER_ATTACK_LAYER);
@@ -150,7 +142,25 @@ namespace RiskOfRain2.Player.Commando
 
 	public class TacticalDive : Skill
 	{
+		public override void Init(PlayerBase player)
+		{
+			base.Init(player);
+			SkillName = "TacticalDive";
+			SkillInfo = "짧은 거리를 몸을 굴려 이동합니다.";
+			SkillMaxStack = 1;
+			SkillStack = SkillMaxStack;
+			SkillCooltime = 4f;
+			Multiplier = 0f;
+			ActivationFactor = 0f;
+		}
 
+		public override void Action(bool isPressed)
+		{
+			if (isPressed && SkillAvailableCheck())
+			{
+				_player.SetState(new TacticalDiveState(_player as Player_Commando));
+			}
+		}
 	}
 
 	public class TacticalSlide : Skill

@@ -30,8 +30,7 @@ namespace RiskOfRain2.Player.Commando
 
 		public override void MainSkill(bool isPressed)
 		{
-			bool isSkillAvailable_ = Skills[PlayerDefine.PLAYER_MAIN_SKILL_INDEX].SkillAvailableCheck();
-			isSkillAvailable_ &= IsSkillAvailable;
+			bool isSkillAvailable_ = SkillAvailableCheck(PlayerDefine.PLAYER_MAIN_SKILL_INDEX);
 
 			if (!isSkillAvailable_)
 			{
@@ -56,9 +55,7 @@ namespace RiskOfRain2.Player.Commando
 
 		public override void SubSkill(bool isPressed)
 		{
-			bool isSkillAvailable_ = Skills[PlayerDefine.PLAYER_SUB_SKILL_INDEX].SkillAvailableCheck();
-			isSkillAvailable_ &= IsSkillAvailable;
-
+			bool isSkillAvailable_ = SkillAvailableCheck(PlayerDefine.PLAYER_SUB_SKILL_INDEX);
 			if (!isSkillAvailable_)
 			{
 				return;
@@ -66,11 +63,13 @@ namespace RiskOfRain2.Player.Commando
 
 			if (isPressed)
 			{
-				IsSprint = false;
-				SubSKillAction(isPressed);
+				SkillAction(PlayerDefine.PLAYER_SUB_SKILL_INDEX, isPressed);
 				SetTrigger(PlayerDefine.PLAYER_SUB_SKILL);
 			}
 		}
+
+
+
 
 		public void SubSKillAction(bool isPressed)
 		{
@@ -81,8 +80,7 @@ namespace RiskOfRain2.Player.Commando
 
 		public override void UtilitySkill(bool isPressed)
 		{
-			bool isSkillAvailable_ = Skills[PlayerDefine.PLAYER_UTILITY_SKILL_INDEX].SkillAvailableCheck();
-			isSkillAvailable_ |= IsSkillAvailable;
+			bool isSkillAvailable_ = SkillAvailableCheck(PlayerDefine.PLAYER_UTILITY_SKILL_INDEX);
 
 			if (!isSkillAvailable_)
 			{
@@ -91,16 +89,14 @@ namespace RiskOfRain2.Player.Commando
 
 			if (isPressed)
 			{
-				IsSprint = false;
 				_rollDirection = InputMove;
-				SetState(new TacticalDiveState(this));
+				SkillAction(PlayerDefine.PLAYER_UTILITY_SKILL_INDEX, isPressed);
 			}
 		}
 
 		public override void SpecialSkill(bool isPressed)
 		{
-			bool isSkillAvailable_ = Skills[PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX].SkillAvailableCheck();
-			isSkillAvailable_ |= IsSkillAvailable;
+			bool isSkillAvailable_ = SkillAvailableCheck(PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX);
 
 			if (!isSkillAvailable_)
 			{
@@ -112,6 +108,13 @@ namespace RiskOfRain2.Player.Commando
 				StartCoroutine(SpecialSkillCoroutine(isPressed));
 				IsSprint = false;
 			}
+		}
+
+		public void SkillAction(int index, bool isPressed)
+		{
+			Skill skill_ = Skills[index];
+			skill_.Action(isPressed);
+			StartCoroutine(skill_.SkillCoolTimeRunning());
 		}
 
 		IEnumerator SpecialSkillCoroutine(bool isPressed)

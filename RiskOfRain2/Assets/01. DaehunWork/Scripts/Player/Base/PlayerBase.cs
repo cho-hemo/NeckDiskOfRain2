@@ -282,6 +282,11 @@ namespace RiskOfRain2.Player
 			IsSkillAvailable = value;
 		}
 
+		public void SetIsSprint(bool value)
+		{
+			IsSprint = value;
+		}
+
 		// #if ENABLE_INPUT_SYSTEM
 		//     protected PlayerInput _playerInput;
 		//     protected PlayerKeyInput _input;
@@ -350,6 +355,11 @@ namespace RiskOfRain2.Player
 					CurrentHp -= damage_;
 				}
 			}
+		}
+
+		protected bool SkillAvailableCheck(int index)
+		{
+			return Skills[index].SkillAvailableCheck() & IsSkillAvailable;
 		}
 
 		protected IEnumerator OneShotProtection()

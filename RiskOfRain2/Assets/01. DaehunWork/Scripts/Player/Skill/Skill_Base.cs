@@ -113,6 +113,7 @@ namespace RiskOfRain2.Player
 
 		public virtual bool SkillAvailableCheck()
 		{
+			Debug.Log($"SkillAvailableCheck IsSkillCoolTime : {IsSkillCoolTime} / SkillStack : {SkillStack} ");
 			if (IsSkillCoolTime || SkillStack <= 0)
 			{
 				return false;
