@@ -89,6 +89,13 @@ namespace RiskOfRain2.Player
 		[Header("Player Stat")]
 
 		[SerializeField]
+		[Tooltip("Player 이름")]
+		protected string _playerName;
+		[SerializeField]
+		[Tooltip("Player 정보")]
+		protected string _playerInfo;
+
+		[SerializeField]
 		[Tooltip("최대 체력")]
 		protected float _maxHp;
 
@@ -239,6 +246,8 @@ namespace RiskOfRain2.Player
 		#endregion
 
 		#region Player Stat
+		public string PlayerName { get { return _playerName; } protected set { _playerName = value; } }
+		public string PlayerInfo { get { return _playerInfo; } protected set { _playerInfo = value; } }
 		public float MaxHp { get { return _maxHp; } protected set { _maxHp = value; } }
 		public float CurrentHp { get { return _currentHp; } protected set { _currentHp = value; } }
 		public float Defense { get { return _defense; } protected set { _defense = value; } }
@@ -357,6 +366,13 @@ namespace RiskOfRain2.Player
 			}
 		}
 
+		protected void SkillAction(int index, bool isPressed)
+		{
+			Skill skill_ = Skills[index];
+			skill_.Action(isPressed);
+			StartCoroutine(skill_.SkillCoolTimeRunning());
+		}
+
 		protected bool SkillAvailableCheck(int index)
 		{
 			return Skills[index].SkillAvailableCheck() & IsSkillAvailable;
@@ -372,6 +388,7 @@ namespace RiskOfRain2.Player
 		#region StateMachine Caching
 		public void UpdateState()
 		{
+			Debug.Log($"Current State : {StateMachine.GetState().ToString()}");
 			StateMachine.UpdateState();
 		}
 		public void SetState(IState state)
@@ -448,13 +465,13 @@ namespace RiskOfRain2.Player
 			{
 				if (!IsSprint || InputMove.y <= 0 || IsShot)
 				{
-					Debug.Log($"Walk : {InputMove}");
+					//Debug.Log($"Walk : {InputMove}");
 					IsSprint = false;
 					SetState(new Player_WalkState(this));
 				}
 				else
 				{
-					Debug.Log($"Sprint : {InputMove}");
+					//Debug.Log($"Sprint : {InputMove}");
 					SetState(new Player_SprintState(this));
 				}
 			}
@@ -491,7 +508,7 @@ namespace RiskOfRain2.Player
 			//CharacterController.Move(targetDirection.normalized * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 			Vector3 Input_ = new Vector3(InputMove.x, 0, InputMove.y);
 			Vector3 targetDirection_ = (Quaternion.Euler(0, MainCamera.transform.eulerAngles.y, 0) * Input_).normalized;
-			CharacterController.Move(targetDirection_ * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			CharacterController.Move(targetDirection_ * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, VerticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		public void PlayerRotation()

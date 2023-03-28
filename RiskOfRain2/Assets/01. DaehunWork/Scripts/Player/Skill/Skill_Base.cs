@@ -75,7 +75,7 @@ namespace RiskOfRain2.Player
 			{
 				SkillStack -= 1;
 			}
-			Debug.Log($"Skill Cool Time Running Start");
+			//Debug.Log($"Skill Cool Time Running Start");
 			yield return new WaitForSeconds(SkillCooltime);
 			IsSkillCoolTime = false;
 			if (SkillMaxStack <= SkillStack + 1)
@@ -86,7 +86,7 @@ namespace RiskOfRain2.Player
 			{
 				SkillStack += 1;
 			}
-			Debug.Log($"Skill Cool Time Running Stop");
+			//Debug.Log($"Skill Cool Time Running Stop");
 		}
 
 		public virtual void MultiplierChanged(float value)
@@ -113,7 +113,7 @@ namespace RiskOfRain2.Player
 
 		public virtual bool SkillAvailableCheck()
 		{
-			Debug.Log($"SkillAvailableCheck IsSkillCoolTime : {IsSkillCoolTime} / SkillStack : {SkillStack} ");
+			//Debug.Log($"SkillAvailableCheck IsSkillCoolTime : {IsSkillCoolTime} / SkillStack : {SkillStack} ");
 			if (IsSkillCoolTime || SkillStack <= 0)
 			{
 				return false;

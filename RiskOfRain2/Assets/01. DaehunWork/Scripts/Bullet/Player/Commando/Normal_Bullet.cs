@@ -1,14 +1,8 @@
-namespace RiskOfRain2
+namespace RiskOfRain2.Player.Commando
 {
-	namespace PlayerBase
+	using Bullet;
+	public class Normal_Bullet : Bullet_Base
 	{
-		namespace Commando
-		{
-			using Bullet;
-			public class Normal_Bullet : Bullet_Base
-			{
 
-			}
-		}
 	}
 }

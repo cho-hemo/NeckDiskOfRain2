@@ -16,6 +16,10 @@ namespace RiskOfRain2.Player
 
 		public void UpdateState()
 		{
+			if (_player.InputMove != Vector2.zero)
+			{
+				ChangeState();
+			}
 		}
 
 		public void OnExit()
@@ -28,6 +32,17 @@ namespace RiskOfRain2.Player
 
 		public void ChangeState()
 		{
+			if (_player.IsGrounded && (_player.InputMove != Vector2.zero))
+			{
+				if (_player.IsSprint || _player.InputMove.y <= 0 || _player.IsShot)
+				{
+					_player.SetState(new Player_WalkState(_player));
+				}
+				else
+				{
+					_player.SetState(new Player_SprintState(_player));
+				}
+			}
 		}
 
 		public void AnimationChange()
@@ -50,7 +65,7 @@ namespace RiskOfRain2.Player
 			// _player.SetFloat("PosY", _player.InputMove.y);
 			_player.SetFloat("PosY", 1f);
 			_player.SetBool("IsMove", _player.IsMove);
-
+			Debug.Log("move");
 			float speed_ = _player.CurrentWalkSpeed / _player.DefaultWalkSpeed;
 			_player.SetFloat(PlayerDefine.MOVE_SPEED, speed_);
 		}
