@@ -9,6 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Skill_BeetleQueen
+  m_Script: {fileID: 11500000, guid: 6c5dc3484a995a94abad2ef9af670098, type: 3}
+  m_Name: BeetleQueen_SummonBeetle
   m_EditorClassIdentifier: 
+  _name: SummonBeetle
+  _power: 5
+  _sqrRange: 10000
+  _coolDownTime: 10
+  _rangeCollider: {fileID: 0}

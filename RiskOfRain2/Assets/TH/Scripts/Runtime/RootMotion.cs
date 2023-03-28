@@ -8,6 +8,8 @@ public class RootMotion : MonoBehaviour
 
     [SerializeField] private Transform[] footTargets;
 
+	private MonsterBase _monster;
+	private MonsterFSM _fsm;
     private Animator _animator;
     private NavMeshAgent _agent;
 
@@ -16,6 +18,7 @@ public class RootMotion : MonoBehaviour
 
     private void Awake()
     {
+		_monster= GetComponent<MonsterBase>();
         _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
     }
@@ -48,62 +51,17 @@ public class RootMotion : MonoBehaviour
 
     public void Stop()
     {
-        // Debug.Log("Stop");
         _animator.applyRootMotion = false;
         _agent.updatePosition = false;
         _agent.updateRotation = false;
     }
 
-    private void SyncRootPosAndAgent()
-    {
-        Vector3 worldDeltaPosition = _agent.nextPosition - transform.position;
-        worldDeltaPosition.y = 0;
-
-
-        if (worldDeltaPosition == Vector3.zero)
-        {
-            _animator.applyRootMotion = false;
-            _agent.updatePosition = true;
-            _agent.updateRotation = true;
-        }
-        else
-        {
-            InitMove();
-        }
-
-        Debug.Log(_animator.applyRootMotion);
-
-        //float dx = Vector3.Dot(transform.right, worldDeltaPosition);
-        //float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
-        //Vector2 deltaPosition = new Vector2(dx, dy);
-
-        //float smooth = Mathf.Min(1, Time.deltaTime / 0.1f);
-        //SmoothDeltaPosition = Vector2.Lerp(SmoothDeltaPosition, deltaPosition, smooth);
-
-        //_velocity = SmoothDeltaPosition / Time.deltaTime;
-        //if (_agent.remainingDistance <= _agent.stoppingDistance)
-        //{
-        //    _velocity = Vector2.Lerp(Vector2.zero, _velocity, _agent.remainingDistance / _agent.stoppingDistance);
-        //}
-
-        //bool shouldMove = _velocity.magnitude > 0.5f && _agent.remainingDistance > _agent.stoppingDistance;
-        ////Debug.Log(shouldMove);
-
-        ////_animator.SetBool("isMove", shouldMove);
-
-        ////_animator.SetFloat("", _velocity.magnitude);
-
-        //float deltaMagnitude = worldDeltaPosition.magnitude;
-        //if (deltaMagnitude > _agent.radius / 2f)
-        //{
-        //    transform.position = Vector3.Lerp(_animator.rootPosition, _agent.nextPosition, smooth);
-        //}
-    }
-
     private void OnAnimatorMove()
     {
-        if (Functions.GetSqrDistance(_agent.destination, transform.position) <= 1)
-            return;
+		if (Functions.GetSqrDistance(_agent.destination, transform.position) < _monster.MinSqrDetectRange)
+		{
+			return;
+		}
 
         Vector3 nextPos = _animator.rootPosition;
         nextPos.y = _agent.nextPosition.y;

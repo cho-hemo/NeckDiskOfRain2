@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 924905823553eec438be1d302dc8bcd9, type: 3}
-  m_Name: BeetlQueenData
+  m_Name: BeetleQueen
   m_EditorClassIdentifier: 
   _name: BeetleQueen
   _type: 1
   _health: 1000
   _power: 4
   _speed: 8
+  _minSqrDetectRange: 250
+  _maxSqrDetectRange: 22500
   skills:
-  - {fileID: 11400000, guid: 12b27f90a9d2c9f4c84804e95653e33a, type: 2}
+  - {fileID: 11400000, guid: b728331a41c876944a9535840b30ddd6, type: 2}
+  - {fileID: 11400000, guid: e6d05bf9cc135084b8a48022bdd4ef31, type: 2}
+  - {fileID: 11400000, guid: b1a7ebf0d100dee41add51a26595ca4e, type: 2}

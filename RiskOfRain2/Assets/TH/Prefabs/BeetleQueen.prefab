@@ -1266,6 +1266,7 @@ GameObject:
   - component: {fileID: 2737873278683020752}
   - component: {fileID: 8295293965122578346}
   - component: {fileID: 6533443922535162238}
+  - component: {fileID: 4414413507585953312}
   - component: {fileID: 4486368840170245859}
   - component: {fileID: 7641472574696431846}
   - component: {fileID: 508132784}
@@ -1290,6 +1291,7 @@ Transform:
   m_Children:
   - {fileID: 3090764554283567449}
   - {fileID: 1332452198}
+  - {fileID: 2959241879262912179}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -157.559, z: 0}
@@ -1323,7 +1325,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3365650796130543466}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.075
+  m_Radius: 0.05
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1336,6 +1338,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!65 &4414413507585953312
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365650796130543466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08, y: 0.07, z: 0.12}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!114 &4486368840170245859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,10 +1401,15 @@ MonoBehaviour:
   <Hp>k__BackingField: 0
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 0
-  spit: {fileID: 6073727914562010354, guid: 0118307fc7ccb154b837ef6efbaa9400, type: 3}
-  spitStartPos: {fileID: 1332452198}
-  spitCount: 6
-  degree: 150
+  <skillCount>k__BackingField: 0
+  <SkillNum>k__BackingField: -1
+  _spit: {fileID: 6073727914562010354, guid: 0118307fc7ccb154b837ef6efbaa9400, type: 3}
+  _spitStartPos: {fileID: 1332452198}
+  _beetleGrub: {fileID: 0}
+  _beetleGrubSpawnPos: {fileID: 0}
+  _beetle: {fileID: 0}
+  _coolDownTimes: []
+  _availableSkills: 
 --- !u!1 &3398183235641808552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1756,37 @@ Transform:
   m_Father: {fileID: 9213914018916209047}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -75.59806, y: 179.9999, z: 0.000089799614}
+--- !u!1 &4126996666336352780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2959241879262912179}
+  m_Layer: 0
+  m_Name: GrubSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2959241879262912179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126996666336352780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.107, z: -0.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2737873278683020752}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4136325973825395945
 GameObject:
   m_ObjectHideFlags: 0
