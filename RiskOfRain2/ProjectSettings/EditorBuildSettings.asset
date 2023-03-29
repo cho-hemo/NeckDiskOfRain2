@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/HyungJun/HJ_Scenes/SelectCharacter.unity
     guid: cc6c9236712f96148836357b6cfc10bf
   - enabled: 1
-    path: Assets/HyungJun/HJ_Scenes/Golemplains.unity
+    path: Assets/HyungJun/HJ_Scenes/2.unity
     guid: 55031ae3508909741afcb9092355ed97
   - enabled: 1
     path: Assets/HyungJun/HJ_Scenes/Title.unity
