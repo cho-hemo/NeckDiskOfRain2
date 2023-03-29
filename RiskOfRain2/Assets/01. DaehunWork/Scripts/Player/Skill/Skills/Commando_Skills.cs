@@ -124,7 +124,7 @@ namespace RiskOfRain2.Player.Commando
 
 		public void BulletShoot(Vector3 pos, Quaternion rotation)
 		{
-			GameObject bullet_ = ObjectPoolManager.Instance.ObjectPoolPop("SubSkillBullet");
+			GameObject bullet_ = ObjectPoolManager.Instance.ObjectPoolPop("Phase_Round_Bullet");
 			if (bullet_.Equals(null) || bullet_.Equals(default))
 			{
 				return;
@@ -221,12 +221,16 @@ namespace RiskOfRain2.Player.Commando
 		public IEnumerator SuppressiveFireShoot()
 		{
 			int count_ = Mathf.RoundToInt(_player.AttackSpeed * 6);
+			float delay = (float)1 / count_;
 			for (int i = 0; i < count_; i++)
 			{
+				Debug.Log($"Special Skill Shoot / Delay : {delay}");
 				SkillShot();
-				_player.PlayerAnimator.Play("SpecialSkill", 3);
-				yield return new WaitForSeconds(1 / count_);
+				_player.PlayerAnimator.Play("SpecialSkill", PlayerDefine.PLAYER_ATTACK_LAYER);
+				_player.SetFloat("AttackSpeed", count_);
+				yield return new WaitForSeconds(delay);
 			}
+			_player.SetFloat("AttackSpeed", _player.AttackSpeed);
 			_player.PlayerAnimator.StopPlayback();
 		}
 

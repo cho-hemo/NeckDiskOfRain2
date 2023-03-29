@@ -107,11 +107,11 @@ namespace RiskOfRain2.Manager
 
 		public void OnSubSkill(InputValue value)
 		{
-			//player.SubSkill(value.isPressed);
+			player.SubSkill(value.isPressed);
 			// { 2023-03-20 / HyungJun / PlayerUIWorks
 			int index_ = PlayerDefine.PLAYER_SUB_SKILL_INDEX;
 			Debug.Log($"cooltime : {skillCooltimes[index_]}");
-			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+			//playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
 		}
 
 		// Shift skill
@@ -127,7 +127,7 @@ namespace RiskOfRain2.Manager
 		{
 			player.SpecialSkill(value.isPressed);
 			int index_ = PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX;
-			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+			//playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
 		}
 
 		// Q KeyInput
@@ -177,7 +177,7 @@ namespace RiskOfRain2.Manager
 			GameObject.Find("Player").TryGetComponent(out player);
 			SetCursorState(cursorLocked);
 			//GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
-			GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
+			//GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
 			skillCooltimes = new List<float>();
 			for (int i = 0; i < player.Skills.Count; i++)
 			{

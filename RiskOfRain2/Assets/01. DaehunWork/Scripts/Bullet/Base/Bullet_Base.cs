@@ -58,10 +58,25 @@ namespace RiskOfRain2.Bullet
 
 		protected void Update()
 		{
-			if (0f < (_target - transform.localPosition).magnitude && (_target - transform.localPosition).magnitude < 5f)
+			CollisionCheck();
+		}
+
+		protected virtual bool CollisionCheck()
+		{
+			if (0f < (_target - transform.localPosition).magnitude && (_target - transform.localPosition).magnitude < 1f)
 			{
-				ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+				OnCollision();
+				return true;
 			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public virtual void OnCollision()
+		{
+			ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
 		}
 	}
 }
