@@ -59,6 +59,7 @@ public class MonsterIdle : MonsterState
         else if (_fsm.GetSqrDistanceToPlayer() <= _monster.MaxSqrDetectRange && 
 			_fsm.GetSqrDistanceToPlayer() > _monster.MinSqrDetectRange)
         {
+			Debug.Log(_fsm.GetSqrDistanceToPlayer());
             _fsm.ChangeState(_monster.MoveState);
         }
     }

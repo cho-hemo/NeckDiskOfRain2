@@ -627,7 +627,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.16557737
+      - time: 0.11048095
         functionName: FireBeetle
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 74b4deab826b28c4db0eb139939b473c, type: 3}

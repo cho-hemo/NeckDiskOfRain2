@@ -71,7 +71,11 @@ public class MonsterBase : MonoBehaviour
         }
     }
 
-    public virtual bool TrySelectSkill()
+	/// <summary>
+	/// 사용 가능한 스킬을 선택하는 메서드
+	/// </summary>
+	/// <returns>스킬 사용 가능 여부</returns>
+	public virtual bool TrySelectSkill()
     {
         return false;
     }

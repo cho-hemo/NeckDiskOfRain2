@@ -8,8 +8,8 @@ public class RootMotion : MonoBehaviour
 
     [SerializeField] private Transform[] footTargets;
 
-	private MonsterBase _monster;
-	private MonsterFSM _fsm;
+    private MonsterBase _monster;
+    private MonsterFSM _fsm;
     private Animator _animator;
     private NavMeshAgent _agent;
 
@@ -18,7 +18,7 @@ public class RootMotion : MonoBehaviour
 
     private void Awake()
     {
-		_monster= GetComponent<MonsterBase>();
+        _monster= GetComponent<MonsterBase>();
         _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
     }
@@ -47,21 +47,29 @@ public class RootMotion : MonoBehaviour
     public void Move()
     {
         _agent.SetDestination(_player.transform.position);
+        //SyncRootPosAndAgent();
     }
 
     public void Stop()
     {
         _animator.applyRootMotion = false;
         _agent.updatePosition = false;
-        _agent.updateRotation = false;
+        _agent.updateRotation = true;
     }
 
-    private void OnAnimatorMove()
+    private void SyncRootPosAndAgent()
     {
-		if (Functions.GetSqrDistance(_agent.destination, transform.position) < _monster.MinSqrDetectRange)
-		{
-			return;
-		}
+		//_agent.velocity = _animator.deltaPosition / Time.deltaTime;
+		//_animator.SetFloat("MoveSpeed", _agent.velocity.magnitude);
+	}
+
+	private void OnAnimatorMove()
+    {
+        if (Functions.GetSqrDistance(_agent.destination, transform.position) < _monster.MinSqrDetectRange)
+        {
+            _agent.ResetPath();
+            return;
+        }
 
         Vector3 nextPos = _animator.rootPosition;
         nextPos.y = _agent.nextPosition.y;

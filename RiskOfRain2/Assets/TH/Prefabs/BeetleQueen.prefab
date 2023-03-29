@@ -1401,12 +1401,14 @@ MonoBehaviour:
   <Hp>k__BackingField: 0
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 0
+  <MaxSqrDetectRange>k__BackingField: 0
+  <MinSqrDetectRange>k__BackingField: 0
   <skillCount>k__BackingField: 0
   <SkillNum>k__BackingField: -1
   _spit: {fileID: 6073727914562010354, guid: 0118307fc7ccb154b837ef6efbaa9400, type: 3}
   _spitStartPos: {fileID: 1332452198}
-  _beetleGrub: {fileID: 0}
-  _beetleGrubSpawnPos: {fileID: 0}
+  _beetleGrub: {fileID: 656515126719600877, guid: 908855bcad8eeab4cbb564b933001ff6, type: 3}
+  _beetleGrubSpawnPos: {fileID: 2959241879262912179}
   _beetle: {fileID: 0}
   _coolDownTimes: []
   _availableSkills: 
@@ -1780,7 +1782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4126996666336352780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.107, z: -0.06}
+  m_LocalPosition: {x: 0, y: 0.1374, z: -0.0029}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

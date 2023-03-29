@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class BeetleQueen : MonsterBase
 {
@@ -14,16 +12,15 @@ public class BeetleQueen : MonsterBase
 
     [SerializeField] private GameObject _beetle;
 
-    //[SerializeField] private Dictionary<string, int> skillIndices = new Dictionary<string, int>();
     [SerializeField] private List<float> _coolDownTimes = new List<float>();
     [SerializeField] private int[] _availableSkills;
 
-    //private enum Skill
-    //{
-    //    FIRE_SPIT = 0,
-    //    FIRE_BEETLE,
-    //    SUMMON_BEETLE
-    //}
+    private enum Skill
+    {
+        FIRE_SPIT = 0,
+        FIRE_BEETLE,
+        SUMMON_BEETLE
+    }
 
     public override void Initialize(MonsterData data)
     {
@@ -31,9 +28,6 @@ public class BeetleQueen : MonsterBase
         for (int i = 0; i < _skills.Count; i++)
         {
             _coolDownTimes.Add(_skills[i].CoolDownTime);
-
-            Debug.Log(_skills[i].Name);
-            //skillIndices.Add(_skills[i].Name, i);
         }
         _availableSkills = new int[_skills.Count];
     }
@@ -42,19 +36,19 @@ public class BeetleQueen : MonsterBase
     {
         int currentIndex = 0;
 
-        if (_coolDownTimes[0] <= 0 && _fsm.GetSqrDistanceToPlayer() <= _skills[0].SqrRange)
+        if (_coolDownTimes[(int)Skill.FIRE_SPIT] <= 0 && _fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.FIRE_SPIT].SqrRange)
         {
-            _availableSkills[currentIndex] = 0;
+            _availableSkills[currentIndex] = (int)Skill.FIRE_SPIT;
             ++currentIndex;
         }
-        if (_coolDownTimes[1] <= 0 && Hp <= MaxHp / 2 && _fsm.GetSqrDistanceToPlayer() <= _skills[1].SqrRange)
-        {
-            _availableSkills[currentIndex] = 1;
+        if (_coolDownTimes[(int)Skill.FIRE_BEETLE] <= 0 && _fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.FIRE_BEETLE].SqrRange)// && Hp <= MaxHp / 2)
+		{
+            _availableSkills[currentIndex] = (int)Skill.FIRE_BEETLE;
             ++currentIndex;
         }
-        if (_coolDownTimes[2] <= 0 && _fsm.GetSqrDistanceToPlayer() <= _skills[2].SqrRange)
+        if (_coolDownTimes[(int)Skill.SUMMON_BEETLE] <= 0 && _fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.SUMMON_BEETLE].SqrRange)
         {
-            _availableSkills[currentIndex] = 2;
+            _availableSkills[currentIndex] = (int)Skill.SUMMON_BEETLE;
             ++currentIndex;
         }
 
@@ -100,13 +94,11 @@ public class BeetleQueen : MonsterBase
     /// </summary>
     public void FireBeetle()
     {
-        Debug.Log("SkillNum1");
-
-        //GameObject inst1 = Instantiate(
-        //    _beetleGrub,
-        //    _beetleGrubSpawnPos.position,
-        //    transform.rotation);
-    }
+		GameObject inst = Instantiate(
+			_beetleGrub,
+			_beetleGrubSpawnPos.position,
+			transform.rotation);
+	}
 
     /// <summary>
     /// 딱정벌레 소환 스킬 애니메이션 이벤트

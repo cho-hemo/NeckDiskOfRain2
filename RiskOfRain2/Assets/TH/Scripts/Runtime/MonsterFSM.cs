@@ -15,7 +15,6 @@ public class MonsterFSM : MonoBehaviour
 
     //private float _detectRange = 200;
     //private float _maxAttackRange = 50;
-    private ReadOnlyCollection<SkillData> _skills;
 
     /// <summary>
     /// 클래스를 초기화하는 메서드
@@ -24,12 +23,6 @@ public class MonsterFSM : MonoBehaviour
     /// <param name="initState">초기 상태</param>
     public void Initialize(ReadOnlyCollection<SkillData> skillList, MonsterState initState)
     {
-        _skills = skillList;
-
-        //스킬 쿨타임 가져오기
-
-
-
         InitializeState(initState);
     }
 
@@ -55,26 +48,6 @@ public class MonsterFSM : MonoBehaviour
     public float GetSqrDistanceToPlayer()
     {
         return Functions.GetSqrDistance(transform.position, _player.transform.position);
-    }
-
-    /// <summary>
-    /// 사용 가능한 스킬을 선택하는 메서드
-    /// </summary>
-    /// <returns>스킬 사용 가능 여부</returns>
-    public bool TrySelectSkill(out int skillNum)
-    {
-        bool isSelected = false;
-        skillNum = 0;
-
-        foreach (SkillData skill in _skills)
-        {
-            //if (skill.CoolDownTime)
-            //{
-            //    //
-            //}
-        }
-
-        return isSelected;
     }
 
     /// <summary>
