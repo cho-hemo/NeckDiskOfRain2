@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Animator Override Controller
+  m_Name: Lemurian Animator
   m_Controller: {fileID: 9100000, guid: b568350197fcca64c8313f7219dd6a93, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: -554013499401965721, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
