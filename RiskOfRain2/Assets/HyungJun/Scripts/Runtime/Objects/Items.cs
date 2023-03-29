@@ -43,10 +43,22 @@ public class Items : MonoBehaviour
 		}
 	}       // SpineObject()
 
+
+
 	private void OnTriggerEnter(Collider other)
 	{
+		// 플레이어가 콜라이더 안에 들어왔을때 실행
 		if (other.tag == "Player")
 		{
+			// 여기다가 플레이어의 인벤토리에 이미지를 넣는 로직 추가
+			// { Dev
+			SpriteRenderer sprite_ = transform.GetChild(0).GetComponent<SpriteRenderer>();
+			GameObject resultObj_ = GioleFunc.SpriteToImage(sprite_.sprite);
+			resultObj_.name = gameObject.name;
+			UIManager.Instance.AddItemList(resultObj_);
+			// } Dev
+
+
 			gameObject.SetActive(false);
 		}
 	}

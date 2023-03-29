@@ -71,6 +71,13 @@ public partial class PlayerUiManager : MonoBehaviour
 	private PlayerBase _playerInfo = default;
 
 
+	// 플레이어의 스코어보드의 아이템 리스트
+	public List<GameObject> ItemList = new List<GameObject>();
+	private GameObject _ItemListObj = default;
+
+
+
+
 	private List<GameObject> _skillList = new List<GameObject>();
 	private List<bool> _isSkillActivation = new List<bool>();
 	private List<int> _skillStackList = new List<int>();
@@ -156,6 +163,7 @@ public partial class PlayerUiManager : MonoBehaviour
 		_crossHair = uiObj_.FindChildObj("CrossHair");
 
 		_missionUiObj = uiObj_.FindChildObj("MissionUI");
+		_ItemListObj = uiObj_.FindChildObj("ItemListPanel");
 
 
 		_playerInfo = GameManager.Instance.Player;
@@ -558,6 +566,14 @@ public partial class PlayerUiManager : MonoBehaviour
 		{
 			_bossUiObj.SetActive(false);
 		}
+	}       // BossHpControl()
+
+	// 아이템 리스트에 아이템을 추가하고 스코어보드의 아이템에 아이템 이미지를 추가하는 함수
+	public void AddItemList(GameObject obj_)
+	{
+		ItemList.Add(obj_);
+		Instantiate(obj_, _ItemListObj.transform);
+
 	}
 
 

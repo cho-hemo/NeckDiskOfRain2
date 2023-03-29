@@ -91,5 +91,20 @@ public static partial class GioleFunc
 	}       // ImageColorControll()
 
 
+	/// <summary>
+	/// 스프라이트를 넣으면 이미지 오브젝트가 붙어있는 게임 오브젝트로 반환하는 함수
+	/// </summary>
+	/// <param name="sprite_"></param>
+	/// <returns></returns>
+	public static GameObject SpriteToImage(Sprite sprite_)
+	{
+		GameObject resultObj_ = new GameObject();
+		resultObj_.AddComponent<Image>();
+		Image image_ = resultObj_.GetComponent<Image>();
+		image_.sprite = sprite_;
+
+		return resultObj_;
+	}
+
 
 }

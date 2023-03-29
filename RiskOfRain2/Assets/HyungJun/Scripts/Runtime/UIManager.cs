@@ -103,6 +103,15 @@ public class UIManager : GioleSingletone<UIManager>
 			yield break;
 		}
 		GioleFunc.LoadScene(loadSceneName);
+	}       // FadeWindow()
+
+	/// <summary>
+	/// 아이템을 획득하면 해당 아이템에서 스프라이트 랜더러의 이미지를 스코어 보드의 이미지에 추가하는 함수
+	/// </summary>
+	/// <param name="obj_"></param>
+	public void AddItemList(GameObject obj_)
+	{
+		_playerUiManagerCs.AddItemList(obj_);
 	}
 
 
