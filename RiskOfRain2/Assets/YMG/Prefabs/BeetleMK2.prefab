@@ -58,9 +58,6 @@ GameObject:
   - component: {fileID: 3806698491185135601}
   - component: {fileID: 3806698491185135607}
   - component: {fileID: 1155711852}
-  - component: {fileID: 3806698491185135605}
-  - component: {fileID: 1155711853}
-  - component: {fileID: 2064743561}
   m_Layer: 0
   m_Name: BeetleMK2
   m_TagString: Untagged
@@ -158,47 +155,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3806698491185135605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3806698491185135604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d0d73f80f0916418b4b2cad7effc27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LookRange: 20
-  AttackRange: 4
-  Speed: 0
-  SpawnAnime: {fileID: -3247251495056633262, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
---- !u!114 &1155711853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3806698491185135604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75971d1fc845acc4991e616ebb1b60bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closeCombat: {fileID: 1559526520}
---- !u!114 &2064743561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3806698491185135604}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55b8e50135b63a0428e7976130bcc38e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3806698490500524927
 PrefabInstance:
   m_ObjectHideFlags: 0
