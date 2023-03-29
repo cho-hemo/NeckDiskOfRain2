@@ -3129,6 +3129,7 @@ GameObject:
   - component: {fileID: 60473859259878516}
   - component: {fileID: 6736581160172539070}
   - component: {fileID: 60473859259878514}
+  - component: {fileID: 6334408844475184082}
   - component: {fileID: 60473859259878513}
   m_Layer: 3
   m_Name: Player
@@ -3225,6 +3226,8 @@ MonoBehaviour:
   _jumpTimeout: 0.1
   _fallTimeoutDelta: 0
   _jumpTimeoutDelta: 0
+  _playerName: 
+  _playerInfo: 
   _maxHp: 110
   _currentHp: 110
   _defense: 0
@@ -3246,6 +3249,7 @@ MonoBehaviour:
   _isShot: 0
   _isGrounded: 1
   _isDead: 0
+  _isSkillAvailable: 0
   _osp: 0
   _focusPoint:
   - {fileID: 283358522542271077}
@@ -3257,6 +3261,18 @@ MonoBehaviour:
   _cinemachineCameraTarget: {fileID: 1408289584342218223}
   _cinemachineTargetYaw: 0
   _cinemachineTargetPitch: 0
+--- !u!114 &6334408844475184082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736581160172539060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2dca41def765d4f8da962a9c176683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &60473859259878513
 MonoBehaviour:
   m_ObjectHideFlags: 0

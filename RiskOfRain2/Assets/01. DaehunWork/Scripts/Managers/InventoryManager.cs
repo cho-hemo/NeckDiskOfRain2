@@ -8,7 +8,6 @@ namespace RiskOfRain2.Manager
 	{
 		public List<ItemBase> items = new List<ItemBase>();
 
-
 		private new void Awake()
 		{
 			base.Awake();
