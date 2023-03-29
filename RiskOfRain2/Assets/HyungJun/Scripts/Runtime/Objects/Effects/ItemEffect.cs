@@ -12,7 +12,8 @@ public class ItemEffect : MonoBehaviour
 	{
 		// StartCoroutine(SpawnItem());
 		// Debug.Log("짜잔");
-		GetComponent<Rigidbody>().velocity += new Vector3(1f, 5f, 1f);
+
+		GetComponent<Rigidbody>().velocity += new Vector3(Random.Range(-2.0f, 2.0f), 5f, Random.Range(-2.0f, 2.0f));
 	}
 
 	// private IEnumerator SpawnItem(Rigidbody rigid_)

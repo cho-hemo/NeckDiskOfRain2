@@ -75,10 +75,8 @@ public class mdlChest2 : InteractionObjects
 				else if (Input.GetKeyDown(KeyCode.E) && UIManager.Instance.IsHaveMoney(-NeededMoney))
 				{
 					_chestAni.SetBool("Open", true);
-					Debug.Log("[mdlChest2] OntriggerStay : 상자 오픈!");
 					_neededMoneyObj.SetActive(false);
 					UIManager.Instance.PopupUIActive("", false);
-					_itemEffectObj.SetActive(true);
 				}
 			}
 			// 거리를 벗어나면 팝업 메뉴 끄기
@@ -93,6 +91,11 @@ public class mdlChest2 : InteractionObjects
 		}
 	}
 
+	private void ActiveItem()
+	{
+		_itemEffectObj.SetActive(true);
+
+	}
 	// private IEnumerator ItemSpawn()
 	// {
 	// 	yield return null;
