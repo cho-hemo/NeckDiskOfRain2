@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UIManager : SingletonBase<UIManager>
+public class UIManager : GioleSingletone<UIManager>
 {
 	public UnityEvent interactionEvent = new UnityEvent();
 	private PlayerUiManager _playerUiManagerCs = default;
@@ -12,7 +12,8 @@ public class UIManager : SingletonBase<UIManager>
 	public new void Awake()
 	{
 		base.Awake();
-		_playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
+		if (GioleFunc.GetRootObj("PlayerUiManager") == null) { /* Do nothing */ }
+		else { _playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>(); }
 	}
 
 	/// <summary>
@@ -61,6 +62,47 @@ public class UIManager : SingletonBase<UIManager>
 	public void BossHpControl(int value_)
 	{
 		_playerUiManagerCs.BossHpControl(value_);
+	}
+
+
+	/// <summary>
+	/// 페이드 아웃, 인 을 연출 할 수 있는 함수
+	/// </summary>
+	/// <param name="_fadeObj">화면을 가리는 페이드 이미지 오브젝트</param>
+	/// <param name="loadSceneName">이동할 씬 이름, Nothing 입력시 씬 이동 X</param>
+	/// <param name="selectFade">true : 페이드 아웃, false : 페이드 인</param>
+	/// <returns></returns>
+	public IEnumerator FadeWindow(GameObject _fadeObj, string loadSceneName, bool selectFade)
+	{
+		bool roop_ = true;
+		float value_ = (selectFade) ? 0f : 1f;
+		float changedValue_ = (selectFade) ? 0.02f : -0.02f;
+		float maxValue = (selectFade) ? 1f : 0f;
+
+		_fadeObj.SetImageColor(0f, 0f, 0f, value_);
+		_fadeObj.SetActive(true);
+		while (roop_)
+		{
+			yield return new WaitForSeconds(0.01f);
+			value_ += changedValue_;
+			_fadeObj.SetImageColor(0f, 0f, 0f, value_);
+			switch (selectFade)
+			{
+				case true:
+					if (maxValue < value_) { roop_ = false; }
+					break;
+				case false:
+					if (maxValue > value_) { roop_ = false; }
+					break;
+			}
+		}
+
+		if (loadSceneName == "Nothing")
+		{
+			_fadeObj.SetActive(false);
+			yield break;
+		}
+		GioleFunc.LoadScene(loadSceneName);
 	}
 
 

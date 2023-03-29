@@ -66,13 +66,28 @@ public static partial class GioleFunc
 	/// 이미지의 색상을 설정하는 함수
 	/// </summary>
 	/// <param name="imageObj_">해당 이미지 게임오브젝트</param>
-	/// <param name="r">0 ~ 1의 값</param>
-	/// <param name="g">0 ~ 1의 값</param>
-	/// <param name="b">0 ~ 1의 값</param>
+	/// <param name="r">0 ~ 1의 레드값</param>
+	/// <param name="g">0 ~ 1의 그린값</param>
+	/// <param name="b">0 ~ 1의 블루값</param>
 	public static void SetImageColor(this GameObject imageObj_, float r, float g, float b)
 	{
 		Image targetImage = imageObj_.GetComponentMust<Image>();
 		targetImage.color = new Color(r, g, b);
+	}       // ImageColorControll()
+
+
+	/// <summary>
+	/// 이미지의 색상을 설정하는 함수
+	/// </summary>
+	/// <param name="imageObj_">해당 이미지 게임오브젝트</param>
+	/// <param name="r">0 ~ 1의 레드값</param>
+	/// <param name="g">0 ~ 1의 그린값</param>
+	/// <param name="b">0 ~ 1의 블루값</param>
+	/// <param name="a">0 ~ 1의 알파값</param>
+	public static void SetImageColor(this GameObject imageObj_, float r, float g, float b, float a)
+	{
+		Image targetImage = imageObj_.GetComponentMust<Image>();
+		targetImage.color = new Color(r, g, b, a);
 	}       // ImageColorControll()
 
 

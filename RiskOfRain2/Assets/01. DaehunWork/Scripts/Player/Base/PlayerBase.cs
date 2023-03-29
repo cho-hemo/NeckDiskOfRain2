@@ -465,13 +465,13 @@ namespace RiskOfRain2.Player
 			{
 				if (!IsSprint || InputMove.y <= 0 || IsShot)
 				{
-					//Debug.Log($"Walk : {InputMove}");
+					// Debug.Log($"Walk : {InputMove}");
 					IsSprint = false;
 					SetState(new Player_WalkState(this));
 				}
 				else
 				{
-					//Debug.Log($"Sprint : {InputMove}");
+					// Debug.Log($"Sprint : {InputMove}");
 					SetState(new Player_SprintState(this));
 				}
 			}

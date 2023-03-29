@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using RiskOfRain2.Manager;
+using RiskOfRain2.Player;
+
 
 public partial class PlayerUiManager : MonoBehaviour
 {
@@ -65,11 +68,13 @@ public partial class PlayerUiManager : MonoBehaviour
 
 	#endregion 게임오브젝트
 
-
+	private PlayerBase _playerInfo = default;
 
 
 	private List<GameObject> _skillList = new List<GameObject>();
 	private List<bool> _isSkillActivation = new List<bool>();
+	private List<int> _skillStackList = new List<int>();
+
 
 
 
@@ -86,7 +91,7 @@ public partial class PlayerUiManager : MonoBehaviour
 	private int _playerMaxExp = 0;
 
 	// 난이도 바의 움직이는 속도
-	private float _barMoveSpeed = 0.3f;
+	// private float _barMoveSpeed = 0.3f;
 	private int _levelBarMoveValue = 1;
 
 
@@ -118,7 +123,6 @@ public partial class PlayerUiManager : MonoBehaviour
 		// { DebugMode
 		// Time.timeScale = 10f;
 		// } DebugMode
-
 
 		GameObject uiObj_ = GioleFunc.GetRootObj(GioleData.PLAYER_UI_CANVAS_OBJ_NAME);
 
@@ -154,6 +158,8 @@ public partial class PlayerUiManager : MonoBehaviour
 		_missionUiObj = uiObj_.FindChildObj("MissionUI");
 
 
+		_playerInfo = GameManager.Instance.Player;
+
 		StageLevel = 1;
 
 		// 플레이어 최대 경험치 설정
@@ -182,20 +188,61 @@ public partial class PlayerUiManager : MonoBehaviour
 		}
 
 
+
+		// int skillCount_ = 2;
+		// // 스킬 스택을 초기화 하는 로직
+		// for (int i = 0; i < 5; i++)
+		// {
+		// 	_skillStackList.Add(skillCount_);
+		// 	_skillList[i].FindChildObj("SkillCostTxt").SetTmpText($"{skillCount_}");
+		// }
+		// _skillStackList[2] = 1;
+		// _skillList[2].FindChildObj("SkillCostTxt").SetTmpText($"{_skillStackList[2]}");
+
+		// uiObj_.FindChildObj("Skill" + "0").FindChildObj("SkillCostTxt").SetActive(false);
+
+		// for (int i = 0; i < 5; i++)
+		// {
+		// 	if (_skillStackList[i] == 1)
+		// 	{
+
+		// 	}
+		// }
+
+
+
+		GameObject skillObj_ = default;
+		GameObject skillCount_ = default;
 		// 스킬 리스트에 스킬 담는 로직
 		for (int i = 0; i < 5; i++)
 		{
-			GameObject skillObj_ = default;
 			skillObj_ = uiObj_.FindChildObj($"Skill{i}");
 			_skillList.Add(skillObj_);
-			_isSkillActivation.Add(true);
 			skillObj_.FindChildObj("CoolDown").SetActive(false);
 		}
+
+		// 스킬 스택을 초기화하는 로직
+		int index = 0;
+		foreach (var value_ in _playerInfo.Skills)
+		{
+			skillCount_ = uiObj_.FindChildObj($"Skill{index}").FindChildObj("SkillCostTxt");
+			if (value_.SkillMaxStack == 1)
+			{
+				skillCount_.SetActive(false);
+			}
+			index++;
+		}
+		// if (_playerInfo.Skills[i].SkillMaxStack == 1)
+		// {
+		// 	skillCount_.SetActive(false);
+		// }
+
+
 
 
 
 		// 게임의 난이도에 따라서 아이콘을 변경하는 로직
-		switch (InGameDifficulty)
+		switch (GameManager.Instance.GameDiffi)
 		{
 			case Difficulty.NONE:
 				Debug.Log("[PlayerUiManager] Awake : Not Setting Difficulty -> Change to Normal");
@@ -338,17 +385,10 @@ public partial class PlayerUiManager : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+	/// <summary>
+	/// 탭 키를 누를경우 나오는 점수화면 호출하는 함수
+	/// </summary>
+	/// <param name="popupCheck">true : 켜주기 false : 꺼주기</param>
 	public void ScoreBoardPopup(bool popupCheck)
 	{
 		_scoreBoardObj.SetActive(popupCheck);

@@ -10,9 +10,9 @@ namespace RiskOfRain2.Player.Commando
 	{
 		private Vector2 _rollDirection = default;
 		private float _mainCameraYRotation = default;
-		protected new void Start()
+
+		protected void Awake()
 		{
-			base.Start();
 			IsSkillAvailable = true;
 			PlayerType = PlayerType.COMMANDO;
 			Skills.Add(new DoubleTap());
@@ -23,6 +23,12 @@ namespace RiskOfRain2.Player.Commando
 			{
 				skill.Init(this);
 			}
+
+		}
+
+		protected new void Start()
+		{
+			base.Start();
 		}
 		public override void PassiveSkill()
 		{

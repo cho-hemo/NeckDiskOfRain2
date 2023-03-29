@@ -64,6 +64,10 @@ namespace RiskOfRain2.Player
 
 		public virtual void Action(bool isPressed) { }
 
+		/// <summary>
+		/// 플레이어가 자동으로 실행해주는 쿨타임 진행 함수
+		/// </summary>
+		/// <returns></returns>
 		public IEnumerator SkillCoolTimeRunning()
 		{
 			IsSkillCoolTime = true;
@@ -111,9 +115,13 @@ namespace RiskOfRain2.Player
 			}
 		}
 
+		/// <summary>
+		/// 스킬 사용 가능 체크 함수
+		/// </summary>
+		/// <returns>true: 사용 가능 false: 사용 불가능</returns>
 		public virtual bool SkillAvailableCheck()
 		{
-			//Debug.Log($"SkillAvailableCheck IsSkillCoolTime : {IsSkillCoolTime} / SkillStack : {SkillStack} ");
+			// Debug.Log($"SkillAvailableCheck IsSkillCoolTime : {IsSkillCoolTime} / SkillStack : {SkillStack} ");
 			if (IsSkillCoolTime || SkillStack <= 0)
 			{
 				return false;

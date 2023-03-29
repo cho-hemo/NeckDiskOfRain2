@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using RiskOfRain2.Player;
 namespace RiskOfRain2.Manager
 {
 	public class KeyInputManager : SingletonBase<KeyInputManager>
@@ -54,7 +55,9 @@ namespace RiskOfRain2.Manager
 
 		[Space(5)]
 		[Header("플레이어")]
-		public RiskOfRain2.Player.PlayerBase player = default;
+		public PlayerBase player = default;
+
+		public List<float> skillCooltimes = default;
 
 		[Space(5)]
 		[Header("플레이어 UI Manager")]
@@ -104,32 +107,35 @@ namespace RiskOfRain2.Manager
 
 		public void OnSubSkill(InputValue value)
 		{
-			player.SubSkill(value.isPressed);
+			//player.SubSkill(value.isPressed);
 			// { 2023-03-20 / HyungJun / PlayerUIWorks
-			//playerUIManager.PlayerSkillActiveIcon(1, 5f);
+			int index_ = PlayerDefine.PLAYER_SUB_SKILL_INDEX;
+			Debug.Log($"cooltime : {skillCooltimes[index_]}");
+			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
 		}
 
 		// Shift skill
 		public void OnUtilitySkill(InputValue value)
 		{
 			player.UtilitySkill(value.isPressed);
-			//playerUIManager.PlayerSkillActiveIcon(2, 5f);
+			int index_ = PlayerDefine.PLAYER_UTILITY_SKILL_INDEX;
+			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
 		}
 
 		// R skill
 		public void OnSpecialSkill(InputValue value)
 		{
 			player.SpecialSkill(value.isPressed);
-			//playerUIManager.PlayerSkillActiveIcon(3, 5f);
+			int index_ = PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX;
+			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
 		}
 
 		// Q KeyInput
 		public void OnUseEquipment(InputValue value)
 		{
-			//playerUIManager.PlayerSkillActiveIcon(4, 5f);
+			// playerUIManager.PlayerSkillActiveIcon(4, 5f);
 			// } 2023-03-20 / HyungJun / PlayerUIWorks
 		}
-
 		// E KeyInput
 		public void OnInteraction(InputValue value)
 		{
@@ -171,8 +177,19 @@ namespace RiskOfRain2.Manager
 			GameObject.Find("Player").TryGetComponent(out player);
 			SetCursorState(cursorLocked);
 			//GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
-			//GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
+			GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
+			skillCooltimes = new List<float>();
+			for (int i = 0; i < player.Skills.Count; i++)
+			{
+				skillCooltimes.Add(player.Skills[i].SkillCooltime);
+			}
 		}
+
+		public void SkillChanged(int index)
+		{
+			skillCooltimes[index] = player.Skills[index].SkillCooltime;
+		}
+
 		///<summary>화면 밖으로 마우스가 못 나가게 하는 함수</summary>
 		///<param name = "newState">true가 들어오면 화면 밖으로 마우스가 나가지 않고 false가 들어오면 밖으로 나갈 수 있음</param>
 		public void SetCursorState(bool newState)
