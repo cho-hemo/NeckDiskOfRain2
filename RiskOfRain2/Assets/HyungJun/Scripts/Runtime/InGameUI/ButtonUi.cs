@@ -15,7 +15,7 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	private static List<GameObject> _pickUpInfoList = new List<GameObject>();
 	private static List<GameObject> _selectDifficultyList = new List<GameObject>();
 
-	private static PlayerBase _selectPlayer = default;
+	// private static PlayerBase _selectPlayer = default;		// 2023-03-29 / HyungJun / 나중에 캐릭터 추가 할 경우 사용할 변수
 
 
 	private bool _outMouse = false;

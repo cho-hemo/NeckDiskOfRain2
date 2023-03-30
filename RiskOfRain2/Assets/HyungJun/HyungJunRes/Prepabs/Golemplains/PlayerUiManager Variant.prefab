@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e28a9e0f13b374ebf03de1816d0b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemList: []
   _playerCurrentHp: 0
   _playerCurrentExp: 0
   InGameDifficulty: -1
