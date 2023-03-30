@@ -28,8 +28,9 @@ namespace RiskOfRain2.Manager
 		{
 			base.Awake();
 			Global.AddOnSceneLoaded(OnSceneLoaded);
-			PlayerTransform = Global.FindRootObject("Player").transform;
-			Player = PlayerTransform.GetComponent<PlayerBase>();
+
+			// PlayerTransform = Global.FindRootObject("Player").transform;
+			// Player = PlayerTransform.GetComponent<PlayerBase>();
 		}
 		private void Start()
 		{
