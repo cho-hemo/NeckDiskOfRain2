@@ -11,13 +11,16 @@ namespace RiskOfRain2.Manager
 		[SerializeField]
 		[Tooltip("플레이어의 Transform")]
 		private Transform _playerTransform = default;
-		private PlayerBase _player = default;
-		private List<Skill> _skills = default;
+		public GameObject playerPrefab = default;
 		#endregion
+		private PlayerBase _player = default;
+		private PlayerController _playerController = default;
+		private List<Skill> _skills = default;
 
 		#region Property
 		public Transform PlayerTransform { get { return _playerTransform; } private set { _playerTransform = value; } }
 		public PlayerBase Player { get { return _player; } private set { _player = value; } }
+		public PlayerController PlayerController { get { return _playerController; } private set { _playerController = value; } }
 		public List<Skill> Skills { get { return _skills; } private set { _skills = value; } }
 		#endregion
 
@@ -30,8 +33,6 @@ namespace RiskOfRain2.Manager
 		{
 			base.Awake();
 			Global.AddOnSceneLoaded(OnSceneLoaded);
-			PlayerTransform = Global.FindRootObject("Player").transform;
-			Player = PlayerTransform.GetComponent<PlayerBase>();
 		}
 		private void Start()
 		{
@@ -42,11 +43,26 @@ namespace RiskOfRain2.Manager
 		{
 			switch (scene.name)
 			{
-				case "":
+				case Global.INIT_SCENE_NAME:
+					break;
+				case Global.PLAY_SCENE_NAME:
+					PlayerInit();
 					break;
 				default:
 					break;
 			}
+		}
+
+		private void PlayerInit()
+		{
+			PlayerTransform = Global.FindRootObject("Player").transform;
+			Player = PlayerTransform.GetComponent<PlayerBase>();
+		}
+
+		private void PlayerCreate()
+		{
+			Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+			PlayerInit();
 		}
 	}
 }

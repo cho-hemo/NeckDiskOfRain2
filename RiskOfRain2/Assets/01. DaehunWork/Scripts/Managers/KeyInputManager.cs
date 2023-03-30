@@ -133,7 +133,6 @@ namespace RiskOfRain2.Manager
 
 		public void Start()
 		{
-			GameObject.Find("Player").TryGetComponent(out playerController);
 			SetCursorState(cursorLocked);
 			//GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
 			//GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
