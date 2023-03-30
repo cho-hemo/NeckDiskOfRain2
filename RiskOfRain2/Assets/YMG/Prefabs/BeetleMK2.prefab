@@ -58,8 +58,6 @@ GameObject:
   - component: {fileID: 3806698491185135607}
   - component: {fileID: 1155711852}
   - component: {fileID: 668249204}
-  - component: {fileID: 668249211}
-  - component: {fileID: 668249212}
   - component: {fileID: 668249213}
   m_Layer: 0
   m_Name: BeetleMK2
@@ -155,41 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeCombat: {fileID: 1559526520}
---- !u!114 &668249211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3806698491185135604}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dcbdb459ac9bdb4688f6e3ac3293e8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LookRange: 20
-  AttackRange: 4
-  Speed: 2
-  SpawnAnime: {fileID: -3247251495056633262, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
-  AttackAnime: {fileID: 7570010672536006877, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
---- !u!114 &668249212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3806698491185135604}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac85da70f82001f42800d8b6a6260bdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  LookRange: 20
-  AttackRange: 4
-  Speed: 2
-  atkCooltime: 4
-  atkDelay: 0
+  beetle: {fileID: 668249213}
 --- !u!114 &668249213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,9 +167,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnAnime: {fileID: -3247251495056633262, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
+  AttackAnime: {fileID: 7570010672536006877, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
   LookRange: 20
   AttackRange: 4
   MonsterSpeed: 5
+  headAttack: 0
+  isDelay: 0
+  delayTime: 2
+  shot: 0
 --- !u!1001 &3806698490500524927
 PrefabInstance:
   m_ObjectHideFlags: 0

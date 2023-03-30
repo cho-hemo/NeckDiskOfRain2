@@ -976,17 +976,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526991348}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &668249213 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 668249213, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-  m_PrefabInstance: {fileID: 1925643775}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6ec12dbed0c8ac44a4ca5bce2abf457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &695991686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,18 +2569,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 668249204, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-      propertyPath: beetle
-      value: 
-      objectReference: {fileID: 668249213}
-    - target: {fileID: 668249212, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+    - target: {fileID: 0}
       propertyPath: Target
       value: 
       objectReference: {fileID: 1305616416}
-    - target: {fileID: 668249213, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-      propertyPath: AttackAnime
-      value: 
-      objectReference: {fileID: 7570010672536006877, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
     - target: {fileID: 3806698491185135600, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
       propertyPath: m_RootOrder
       value: 18
