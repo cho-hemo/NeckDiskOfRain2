@@ -4,8 +4,7 @@ using UnityEngine.AI;
 
 public class RootMotion : MonoBehaviour
 {
-    public GameObject _player;
-
+    [SerializeField] private GameObject _player;
     [SerializeField] private Transform[] footTargets;
 
     private MonsterBase _monster;
@@ -30,7 +29,12 @@ public class RootMotion : MonoBehaviour
         //SyncRootPosAndAgent();
     }
 
-    public void InitMove()
+	public void Init()
+	{
+		_player = Global.FindRootObject("Player");
+	}
+
+	public void InitMove()
     {
         _animator.applyRootMotion = true;
         _agent.updatePosition = false;

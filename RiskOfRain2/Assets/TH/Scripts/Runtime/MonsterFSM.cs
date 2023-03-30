@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.ObjectModel;
 using System.Collections;
-using System.Threading;
 
 public class MonsterFSM : MonoBehaviour
 {
