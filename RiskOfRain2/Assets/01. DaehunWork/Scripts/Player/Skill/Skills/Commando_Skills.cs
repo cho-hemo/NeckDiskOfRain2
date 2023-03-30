@@ -224,7 +224,7 @@ namespace RiskOfRain2.Player.Commando
 			float delay = (float)1 / count_;
 			for (int i = 0; i < count_; i++)
 			{
-				Debug.Log($"Special Skill Shoot / Delay : {delay}");
+				// Debug.Log($"Special Skill Shoot / Delay : {delay}");
 				SkillShot();
 				_player.PlayerAnimator.Play("SpecialSkill", PlayerDefine.PLAYER_ATTACK_LAYER);
 				_player.SetFloat("AttackSpeed", count_);

@@ -32,7 +32,7 @@ namespace RiskOfRain2.Player.Commando
 
 		public void UpdateState()
 		{
-			Debug.Log(_player.GetCurrentAnimatorStateInfo(0).normalizedTime);
+			// Debug.Log(_player.GetCurrentAnimatorStateInfo(0).normalizedTime);
 			_player.Roll();
 			if (1f <= _player.GetCurrentAnimatorStateInfo(0).normalizedTime && !_player.GetCurrentAnimatorStateInfo(0).loop)
 			{

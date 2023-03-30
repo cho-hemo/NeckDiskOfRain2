@@ -69,17 +69,17 @@ ModelImporter:
       lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -0.005
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -214,32 +214,32 @@ ModelImporter:
       lastFrame: 131
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -0.005
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.2515528
-        functionName: On
+      - time: 0.10869564
+        functionName: HeadAttackOn
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 75971d1fc845acc4991e616ebb1b60bf, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.71041656
-        functionName: Off
+      - time: 0.58619297
+        functionName: HeadAttackOff
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 75971d1fc845acc4991e616ebb1b60bf, type: 3}
         floatParameter: 0
@@ -576,15 +576,15 @@ ModelImporter:
       lastFrame: 250
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -0.005
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 0
+      hasAdditiveReferencePose: 1
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
@@ -989,7 +989,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: BeetleArmature
+    rootMotionBoneName: ROOT
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

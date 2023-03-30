@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using RiskOfRain2.Player;
+
 namespace RiskOfRain2.Manager
 {
 	public class KeyInputManager : SingletonBase<KeyInputManager>
@@ -72,29 +73,29 @@ namespace RiskOfRain2.Manager
 		public void OnSubSkill(InputValue value)
 		{
 			if (!IsValidCheck()) return;
-			playerController.SubSkillInput(value.isPressed);
 			// { 2023-03-20 / HyungJun / PlayerUIWorks
 			int index_ = PlayerDefine.PLAYER_SUB_SKILL_INDEX;
-			Debug.Log($"cooltime : {skillCooltimes[index_]}");
-			//playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+			// Debug.Log($"cooltime : {skillCooltimes[index_]}");
+			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);      // 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
+			playerController.SubSkillInput(value.isPressed);
 		}
 
 		// Shift skill
 		public void OnUtilitySkill(InputValue value)
 		{
 			if (!IsValidCheck()) return;
-			playerController.UtilitySkillInput(value.isPressed);
 			int index_ = PlayerDefine.PLAYER_UTILITY_SKILL_INDEX;
-			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);      // 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
+			playerController.UtilitySkillInput(value.isPressed);
 		}
 
 		// R skill
 		public void OnSpecialSkill(InputValue value)
 		{
 			if (!IsValidCheck()) return;
-			playerController.SpecialSkillInput(value.isPressed);
 			int index_ = PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX;
-			//playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);      // 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
+			playerController.SpecialSkillInput(value.isPressed);
 		}
 
 		// Q KeyInput
@@ -144,16 +145,11 @@ namespace RiskOfRain2.Manager
 
 		public void Start()
 		{
+			Global.AddOnSceneLoaded(OnSceneLoaded);
+
+
 			//SetCursorState(cursorLocked);
 			//GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
-			//GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
-			// skillCooltimes = new List<float>();
-			// int count_ = GameManager.Instance.Skills.Count;
-			// for (int i = 0; i < count_; i++)
-			// {
-			// 	skillCooltimes.Add(GameManager.Instance.Skills[i].SkillCooltime);
-			// }
-			Global.AddOnSceneLoaded(OnSceneLoaded);
 		}
 
 		public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
@@ -162,6 +158,9 @@ namespace RiskOfRain2.Manager
 			{
 				case Global.PLAY_SCENE_NAME:
 					SetCursorState(cursorLocked);
+					// { 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
+					SkillInit();
+					// { 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
 					break;
 				default:
 					break;
@@ -171,6 +170,15 @@ namespace RiskOfRain2.Manager
 		public void SetPlayerController(PlayerController playerController)
 		{
 			this.playerController = playerController;
+		}
+
+
+		public void SkillInit()
+		{
+			skillCooltimes = new List<float>();
+			int count_ = GameManager.Instance.Skills.Count;
+			for (int i = 0; i < count_; i++) { skillCooltimes.Add(GameManager.Instance.Skills[i].SkillCooltime); }
+			GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);
 		}
 
 		public void SkillChanged(int index)

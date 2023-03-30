@@ -36,7 +36,7 @@ namespace RiskOfRain2.Manager
 		}
 		private void Start()
 		{
-			//Skills = Player.Skills;
+
 		}
 
 		public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
@@ -64,8 +64,9 @@ namespace RiskOfRain2.Manager
 
 		private void PlayerCreate()
 		{
-			Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).name = playerPrefab.name;
+			Instantiate(playerPrefab, new Vector3(-57.3330002f, -155.675003f, -117.514f), Quaternion.identity).name = playerPrefab.name;
 			PlayerInit();
+			Skills = Player.Skills;
 		}
 	}
 }

@@ -4,15 +4,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(TestPlayerController))]
 [RequireComponent(typeof(GunController))]
-public class TestPlayer : LivingThings // ÀÌ³à¼®ÀÌ ÀÌ¹Ì ¸ğ³ë¿Í ¾ÆÀÌµ© °¡Áö°í ÀÖÀ½
+public class TestPlayer : LivingThings // ì´ë…€ì„ì´ ì´ë¯¸ ëª¨ë…¸ì™€ ì•„ì´ë€ ê°€ì§€ê³  ìˆìŒ
 {
     public float moveSpeed = 5f;
 
     Camera viewCamera;
     TestPlayerController controller;
     GunController gunController;
-
-    
 
     protected override void Start()
     {
@@ -42,9 +40,8 @@ public class TestPlayer : LivingThings // ÀÌ³à¼®ÀÌ ÀÌ¹Ì ¸ğ³ë¿Í ¾ÆÀÌµ© °¡Áö°í ÀÖÀ
             controller.LookAt(point);
         }
 
-
         // Weapo input
-        if (Input.GetMouseButton(0)) // 0 == ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°
+        if (Input.GetMouseButton(0)) // 0 == ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼
         {
             gunController.Shoot();
         }

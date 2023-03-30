@@ -2,18 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using RiskOfRain2;
 public class UIManager : GioleSingletone<UIManager>
 {
 	public UnityEvent interactionEvent = new UnityEvent();
 	private PlayerUiManager _playerUiManagerCs = default;
+	private Hp_Bar _hpBarCs = default;
 
 
 	public new void Awake()
 	{
 		base.Awake();
-		if (GioleFunc.GetRootObj("PlayerUiManager") == null) { /* Do nothing */ }
-		else { _playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>(); }
+		// if (GioleFunc.GetRootObj("PlayerUiManager") == null) { /* Do nothing */ }
+		// else { _playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>(); }
+
+		// if (GioleFunc.GetRootObj("Hp_bar_Canvas") == null) { /* Do nothing */}
+		// else { _hpBarCs = GioleFunc.GetRootObj("Hp_bar_Canvas").GetComponent<Hp_Bar>(); }
+
+		Global.AddOnSceneLoaded(OnSceneLoaded);
+
+	}
+
+	public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+	{
+		switch (scene.name)
+		{
+			case Global.PLAY_SCENE_NAME:
+				_playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
+				_hpBarCs = GioleFunc.GetRootObj("Hp_bar_Canvas").GetComponent<Hp_Bar>();
+				break;
+			default:
+				break;
+		}
+	}
+
+	public void MonsterHpBarControl(string monsterName_, int maxHp_, int currentHp_)
+	{
+		_hpBarCs.MonsterHpGaugeDown(monsterName_, maxHp_, currentHp_);
 	}
 
 	/// <summary>

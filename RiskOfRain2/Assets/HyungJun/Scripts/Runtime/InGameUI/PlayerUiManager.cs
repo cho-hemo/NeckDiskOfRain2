@@ -24,6 +24,10 @@ public partial class PlayerUiManager : MonoBehaviour
 	{
 		PlayerSkillActiveIcon(num_, 4);
 	}
+	public void Debug_MonsterHpBtn()
+	{
+		UIManager.Instance.MonsterHpBarControl("Cube", 40, 10);
+	}
 	// } Debug Mode
 
 	#region 게임오브젝트
@@ -166,7 +170,6 @@ public partial class PlayerUiManager : MonoBehaviour
 		_ItemListObj = uiObj_.FindChildObj("ItemListPanel");
 
 
-		_playerInfo = GameManager.Instance.Player;
 
 		StageLevel = 1;
 
@@ -219,27 +222,27 @@ public partial class PlayerUiManager : MonoBehaviour
 
 
 
-		GameObject skillObj_ = default;
-		GameObject skillCount_ = default;
-		// 스킬 리스트에 스킬 담는 로직
-		for (int i = 0; i < 5; i++)
-		{
-			skillObj_ = uiObj_.FindChildObj($"Skill{i}");
-			_skillList.Add(skillObj_);
-			skillObj_.FindChildObj("CoolDown").SetActive(false);
-		}
+		// GameObject skillObj_ = default;
+		// GameObject skillCount_ = default;
+		// // 스킬 리스트에 스킬 담는 로직
+		// for (int i = 0; i < 5; i++)
+		// {
+		// 	skillObj_ = uiObj_.FindChildObj($"Skill{i}");
+		// 	_skillList.Add(skillObj_);
+		// 	skillObj_.FindChildObj("CoolDown").SetActive(false);
+		// }
 
-		// 스킬 스택을 초기화하는 로직
-		int index = 0;
-		foreach (var value_ in _playerInfo.Skills)
-		{
-			skillCount_ = uiObj_.FindChildObj($"Skill{index}").FindChildObj("SkillCostTxt");
-			if (value_.SkillMaxStack == 1)
-			{
-				skillCount_.SetActive(false);
-			}
-			index++;
-		}
+		// // 스킬 스택을 초기화하는 로직
+		// int index = 0;
+		// foreach (var value_ in _playerInfo.Skills)
+		// {
+		// 	skillCount_ = uiObj_.FindChildObj($"Skill{index}").FindChildObj("SkillCostTxt");
+		// 	if (value_.SkillMaxStack == 1)
+		// 	{
+		// 		skillCount_.SetActive(false);
+		// 	}
+		// 	index++;
+		// }
 		// if (_playerInfo.Skills[i].SkillMaxStack == 1)
 		// {
 		// 	skillCount_.SetActive(false);
@@ -277,6 +280,35 @@ public partial class PlayerUiManager : MonoBehaviour
 		StartCoroutine(LevelBarController());
 		// StartCoroutine(LevelBarMove());
 
+	}
+
+	private void Start()
+	{
+		_playerInfo = GameManager.Instance.Player;
+
+		GameObject uiObj_ = GioleFunc.GetRootObj(GioleData.PLAYER_UI_CANVAS_OBJ_NAME);
+
+		GameObject skillObj_ = default;
+		GameObject skillCount_ = default;
+		// 스킬 리스트에 스킬 담는 로직
+		for (int i = 0; i < 5; i++)
+		{
+			skillObj_ = uiObj_.FindChildObj("SkillUI").FindChildObj($"Skill{i}");
+			_skillList.Add(skillObj_);
+			skillObj_.FindChildObj("CoolDown").SetActive(false);
+		}
+
+		// 스킬 스택을 초기화하는 로직
+		int index = 0;
+		foreach (var value_ in _playerInfo.Skills)
+		{
+			skillCount_ = uiObj_.FindChildObj($"Skill{index}").FindChildObj("SkillCostTxt");
+			if (value_.SkillMaxStack == 1)
+			{
+				skillCount_.SetActive(false);
+			}
+			index++;
+		}
 	}
 
 
