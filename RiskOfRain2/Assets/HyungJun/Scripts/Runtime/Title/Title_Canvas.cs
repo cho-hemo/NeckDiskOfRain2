@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using RiskOfRain2;
 
 
 public class Title_Canvas : MonoBehaviour
@@ -15,7 +15,7 @@ public class Title_Canvas : MonoBehaviour
 
 	public void StartGame_SingleBtnClick()
 	{
-		StartCoroutine(UIManager.Instance.FadeWindow(_fadeObj, GioleData.SELECT_CHARACTER_SCENE_NAME, true));
+		StartCoroutine(UIManager.Instance.FadeWindow(_fadeObj, Global.CHARACTER_SELECTED_SCENE_NAME, true));
 	}
 
 	public void ExitGameBtnClick()

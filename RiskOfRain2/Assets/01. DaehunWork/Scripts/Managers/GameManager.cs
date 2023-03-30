@@ -36,7 +36,7 @@ namespace RiskOfRain2.Manager
 		}
 		private void Start()
 		{
-			Skills = Player.Skills;
+			//Skills = Player.Skills;
 		}
 
 		public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
@@ -44,9 +44,10 @@ namespace RiskOfRain2.Manager
 			switch (scene.name)
 			{
 				case Global.INIT_SCENE_NAME:
+					Global.LoadScene(Global.TITLE_SCENE_NAME);
 					break;
 				case Global.PLAY_SCENE_NAME:
-					PlayerInit();
+					PlayerCreate();
 					break;
 				default:
 					break;
