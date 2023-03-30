@@ -44,7 +44,7 @@ public partial class PlayerUiManager : MonoBehaviour
 
 		// 스킬 비 활성화
 		// 스킬 스택 오브젝트
-		GameObject _skillCount = _skillList[num].FindChildObj("SkillCostTxt");
+		GameObject skillCount_ = _skillList[num].FindChildObj("SkillCostTxt");
 		GameObject icon_ = _skillList[num].FindChildObj("Icon");
 		GameObject coolDownObj_ = _skillList[num].FindChildObj("CoolDown");
 		GameObject outLineBox_ = _skillList[num].FindChildObj("OutLineBox");
@@ -56,11 +56,11 @@ public partial class PlayerUiManager : MonoBehaviour
 		// 스킬 스택이 1이 아닌경우 표시해주고 1인 경우 꺼버린다.
 		if (_playerInfo.Skills[num].SkillMaxStack != 1)
 		{
-			_skillCount.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
 		}
 		else if (_playerInfo.Skills[num].SkillMaxStack == 1)
 		{
-			_skillCount.SetActive(false);
+			skillCount_.SetActive(false);
 		}
 
 		// 스킬 쿨타임 로직
@@ -76,7 +76,7 @@ public partial class PlayerUiManager : MonoBehaviour
 		icon_.SetImageColor(1f, 1f, 1f);
 		if (_playerInfo.Skills[num].SkillMaxStack != 1)
 		{
-			_skillCount.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
 		}
 	}
 

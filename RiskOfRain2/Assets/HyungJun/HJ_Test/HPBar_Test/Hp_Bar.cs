@@ -21,6 +21,7 @@ public class Hp_Bar : MonoBehaviour
 		{
 			_objectList.Add(objects_[i].transform);
 			GameObject hpBar_ = Instantiate(_goPrefab, objects_[i].transform.position, Quaternion.identity, transform);
+			hpBar_.name = objects_[i].name;
 			_hpBarList.Add(hpBar_);
 		}
 	}
@@ -30,7 +31,21 @@ public class Hp_Bar : MonoBehaviour
 	{
 		for (int i = 0; i < _objectList.Count; i++)
 		{
-			_hpBarList[i].transform.position = _cam.WorldToScreenPoint(_objectList[i].position + new Vector3(0, 1.15f, 0f));
+			_hpBarList[i].transform.position = _cam.WorldToScreenPoint(_objectList[i].position + new Vector3(0, 1f, 0f));
 		}
+	}
+
+	/// <summary>
+	/// 몬스터의 체력 표시 바의 상태를 바꾸는 함수
+	/// </summary>
+	/// <param name="monsterName_">몬스터 오브젝트의 이름</param>
+	/// <param name="monsterMaxHp_">몬스터의 최대 체력</param>
+	/// <param name="monsterCurrentHp_">몬스터의 현재 체력</param>
+	public void MonsterHpGaugeDown(string monsterName_, float monsterMaxHp_, float monsterCurrentHp_)
+	{
+		GameObject hpBar_ = gameObject.FindChildObj(monsterName_).FindChildObj("HpBar");
+		Debug.Log(monsterName_);
+
+		hpBar_.FilledImageControll(monsterCurrentHp_ / monsterMaxHp_);
 	}
 }

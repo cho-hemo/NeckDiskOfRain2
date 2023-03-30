@@ -111,7 +111,7 @@ namespace RiskOfRain2.Manager
 			// { 2023-03-20 / HyungJun / PlayerUIWorks
 			int index_ = PlayerDefine.PLAYER_SUB_SKILL_INDEX;
 			Debug.Log($"cooltime : {skillCooltimes[index_]}");
-			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+			// playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);		// 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
 		}
 
 		// Shift skill
@@ -119,7 +119,7 @@ namespace RiskOfRain2.Manager
 		{
 			player.UtilitySkill(value.isPressed);
 			int index_ = PlayerDefine.PLAYER_UTILITY_SKILL_INDEX;
-			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+			// playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);		// 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
 		}
 
 		// R skill
@@ -127,7 +127,7 @@ namespace RiskOfRain2.Manager
 		{
 			player.SpecialSkill(value.isPressed);
 			int index_ = PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX;
-			playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+			// playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);		// 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
 		}
 
 		// Q KeyInput

@@ -372,7 +372,7 @@ namespace RiskOfRain2.Player
 		#region StateMachine Caching
 		public void UpdateState()
 		{
-			StateMachine.UpdateState();
+			// StateMachine.UpdateState();
 		}
 		public void SetState(IState state)
 		{

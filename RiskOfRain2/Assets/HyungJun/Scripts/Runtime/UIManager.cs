@@ -7,6 +7,7 @@ public class UIManager : GioleSingletone<UIManager>
 {
 	public UnityEvent interactionEvent = new UnityEvent();
 	private PlayerUiManager _playerUiManagerCs = default;
+	private Hp_Bar _hpBarCs = default;
 
 
 	public new void Awake()
@@ -14,6 +15,14 @@ public class UIManager : GioleSingletone<UIManager>
 		base.Awake();
 		if (GioleFunc.GetRootObj("PlayerUiManager") == null) { /* Do nothing */ }
 		else { _playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>(); }
+
+		if (GioleFunc.GetRootObj("Hp_bar_Canvas") == null) { /* Do nothing */}
+		else { _hpBarCs = GioleFunc.GetRootObj("Hp_bar_Canvas").GetComponent<Hp_Bar>(); }
+	}
+
+	public void MonsterHpBarControl(string monsterName_, int maxHp_, int currentHp_)
+	{
+		_hpBarCs.MonsterHpGaugeDown(monsterName_, maxHp_, currentHp_);
 	}
 
 	/// <summary>

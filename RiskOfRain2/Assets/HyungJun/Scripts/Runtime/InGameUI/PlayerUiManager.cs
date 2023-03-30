@@ -24,6 +24,10 @@ public partial class PlayerUiManager : MonoBehaviour
 	{
 		PlayerSkillActiveIcon(num_, 4);
 	}
+	public void Debug_MonsterHpBtn()
+	{
+		UIManager.Instance.MonsterHpBarControl("Cube", 40, 10);
+	}
 	// } Debug Mode
 
 	#region 게임오브젝트
