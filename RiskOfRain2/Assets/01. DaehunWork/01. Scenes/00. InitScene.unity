@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -344,22 +344,6 @@ PrefabInstance:
     - target: {fileID: 4340443341294376370, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[4].obj
-      value: 
-      objectReference: {fileID: 4861130222573197198, guid: 87d1f844bf468e34899039613d8fc207, type: 3}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[4].count
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[4].objectName
-      value: ExpEffect
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376372, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_Name

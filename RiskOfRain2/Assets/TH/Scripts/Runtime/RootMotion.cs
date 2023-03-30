@@ -5,8 +5,8 @@ using RiskOfRain2;
 
 public class RootMotion : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
-    [SerializeField] private Transform[] footTargets;
+	[SerializeField] private GameObject _player;
+	[SerializeField] private Transform[] footTargets;
 
 	private MonsterBase _monster;
 	private MonsterFSM _fsm;
@@ -30,29 +30,17 @@ public class RootMotion : MonoBehaviour
 	}
 
 	public void InitMove()
-    {
-        _animator.applyRootMotion = true;
-        _agent.updatePosition = false;
-        _agent.updateRotation = true;
-    }
+	{
+		_animator.applyRootMotion = true;
+		_agent.updatePosition = false;
+		_agent.updateRotation = true;
+	}
 
 	private void Start()
 	{
 		//transform.GetChild(0).transform.localPosition = Vector3.zero;
 		//_agent.SetDestination(_player.transform.position);
 		//SyncRootPosAndAgent();
-	}
-
-	public void Init()
-	{
-		_player = Global.FindRootObject("Player");
-	}
-
-	public void InitMove()
-	{
-		_animator.applyRootMotion = true;
-		_agent.updatePosition = false;
-		_agent.updateRotation = true;
 	}
 
 	public void InitRotate()

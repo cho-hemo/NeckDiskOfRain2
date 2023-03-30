@@ -9,35 +9,35 @@ namespace RiskOfRain2.Bullet
 	public class Bullet_Base : MonoBehaviour
 	{
 		[Tooltip("총알의 충돌 처리를 위한 RayCastHit")]
-		protected RaycastHit _rayHit = default;
+		protected RaycastHit rayHit = default;
 
 		[SerializeField]
 		[Tooltip("총알 충돌 처리를 위한 RayCast 거리")]
-		protected float _rayDistance = 0.5f;
+		protected float rayDistance = 0.5f;
 
 		[SerializeField]
 		[Tooltip("총알 Rigidbody")]
-		protected Rigidbody _bulletRigidbody = default;
+		protected Rigidbody bulletRigidbody = default;
 
 		[SerializeField]
 		[Tooltip("총알 속도")]
-		protected float _speed = 100f;
+		protected float speed = 100f;
 
 		[SerializeField]
 		[Tooltip("충돌 오브젝트의 위치")]
-		protected Vector3 _target;
+		protected Vector3 target;
 
 		protected void Start()
 		{
-			TryGetComponent(out _bulletRigidbody);
+			TryGetComponent(out bulletRigidbody);
 		}
 
 		protected void OnEnable()
 		{
 			float maxDistance_ = float.MaxValue;
-			if (Physics.Raycast(transform.localPosition, transform.forward, out _rayHit, maxDistance_))
+			if (Physics.Raycast(transform.localPosition, transform.forward, out rayHit, maxDistance_))
 			{
-				_target = _rayHit.point;
+				target = rayHit.point;
 			}
 			else
 			{
@@ -53,7 +53,7 @@ namespace RiskOfRain2.Bullet
 
 		protected void FixedUpdate()
 		{
-			_bulletRigidbody.velocity = transform.forward * _speed;
+			bulletRigidbody.velocity = transform.forward * speed;
 		}
 
 		protected void Update()
@@ -61,9 +61,13 @@ namespace RiskOfRain2.Bullet
 			CollisionCheck();
 		}
 
+		/// <summary>
+		/// 충돌 체크 함수
+		/// </summary>
+		/// <returns></returns>
 		protected virtual bool CollisionCheck()
 		{
-			if (0f < (_target - transform.localPosition).magnitude && (_target - transform.localPosition).magnitude < 1f)
+			if (0f < (target - transform.localPosition).magnitude && (target - transform.localPosition).magnitude < 2f)
 			{
 				OnCollision();
 				return true;
@@ -74,9 +78,16 @@ namespace RiskOfRain2.Bullet
 			}
 		}
 
+		/// <summary>
+		/// 충돌 시 호출되는 함수
+		/// </summary>
 		public virtual void OnCollision()
 		{
 			ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+			if (rayHit.collider.tag == "")
+			{
+
+			}
 		}
 	}
 }

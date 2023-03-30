@@ -39,6 +39,11 @@ namespace RiskOfRain2.Manager
 
 		}
 
+		/// <summary>
+		/// Scene이 로드 되었을 때 호출되는 함수
+		/// </summary>
+		/// <param name="scene"></param>
+		/// <param name="mode"></param>
 		public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
 		{
 			switch (scene.name)
@@ -54,19 +59,33 @@ namespace RiskOfRain2.Manager
 			}
 		}
 
+		/// <summary>
+		/// 플레이어 생성
+		/// </summary>
+		private void PlayerCreate()
+		{
+			Instantiate(playerPrefab, new Vector3(-60f, -160f, -120f), Quaternion.identity).name = playerPrefab.name;
+			PlayerInit();
+		}
+
+		/// <summary>
+		/// 플레이어 초기화
+		/// </summary>
 		private void PlayerInit()
 		{
 			PlayerTransform = Global.FindRootObject("Player").transform;
 			PlayerTransform.TryGetComponent<PlayerBase>(out _player);
 			PlayerTransform.TryGetComponent<PlayerController>(out _playerController);
 			KeyInputManager.Instance.SetPlayerController(_playerController);
+			Skills = Player.Skills;
 		}
 
-		private void PlayerCreate()
+		/// <summary>
+		/// 총알 타격시 호출되는 함수
+		/// </summary>
+		public void BulletHit(GameObject obj)
 		{
-			Instantiate(playerPrefab, new Vector3(-57.3330002f, -155.675003f, -117.514f), Quaternion.identity).name = playerPrefab.name;
-			PlayerInit();
-			Skills = Player.Skills;
+
 		}
 	}
 }
