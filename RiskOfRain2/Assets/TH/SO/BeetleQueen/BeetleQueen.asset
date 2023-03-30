@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924905823553eec438be1d302dc8bcd9, type: 3}
+  m_Name: BeetleQueen
+  m_EditorClassIdentifier: 
+  _name: BeetleQueen
+  _type: 1
+  _health: 1000
+  _power: 4
+  _speed: 8
+  _minSqrDetectRange: 250
+  _maxSqrDetectRange: 22500
+  skills:
+  - {fileID: 11400000, guid: b728331a41c876944a9535840b30ddd6, type: 2}
+  - {fileID: 11400000, guid: e6d05bf9cc135084b8a48022bdd4ef31, type: 2}
+  - {fileID: 11400000, guid: b1a7ebf0d100dee41add51a26595ca4e, type: 2}

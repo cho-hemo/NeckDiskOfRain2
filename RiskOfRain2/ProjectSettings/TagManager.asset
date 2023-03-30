@@ -3,6 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags:
 <<<<<<< HEAD
   - CinemachineTarget
@@ -17,6 +18,9 @@ TagManager:
   - Melee
   - Checkpoint
 >>>>>>> 72018c23ed0eb4ec8948b318ab07c1691afe887d
+=======
+  tags: []
+>>>>>>> b0dbee343e2c20767d82fc809b23b008b76b22d7
   layers:
   - Default
   - TransparentFX
@@ -27,10 +31,14 @@ TagManager:
   - 
   - 
 <<<<<<< HEAD
+<<<<<<< HEAD
   - Post  Processing
 =======
   - 
 >>>>>>> 72018c23ed0eb4ec8948b318ab07c1691afe887d
+=======
+  - 
+>>>>>>> b0dbee343e2c20767d82fc809b23b008b76b22d7
   - 
   - 
   - 

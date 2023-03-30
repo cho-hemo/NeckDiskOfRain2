@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6073727914562010355}
   - component: {fileID: 9196734074962933099}
   - component: {fileID: 2117298162849360843}
-  - component: {fileID: -5489575872961914780}
   m_Layer: 0
   m_Name: Spit
   m_TagString: Untagged
@@ -32,7 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.40382, y: -133.60915, z: -97.72159}
   m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,7 +95,7 @@ SphereCollider:
   m_GameObject: {fileID: 6073727914562010354}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -128,17 +127,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55c0f33c030fd34d80361e12ed8e9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!64 &-5489575872961914780
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6073727914562010354}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
