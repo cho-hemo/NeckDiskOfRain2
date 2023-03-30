@@ -8,6 +8,7 @@ TagManager:
   - Chest
   - Bullet
   - Ground
+  - Monster
   layers:
   - Default
   - TransparentFX

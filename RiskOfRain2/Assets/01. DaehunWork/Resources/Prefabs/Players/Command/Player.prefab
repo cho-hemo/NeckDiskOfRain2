@@ -3246,6 +3246,7 @@ MonoBehaviour:
   _isShot: 0
   _isGrounded: 1
   _isDead: 0
+  _isSkillAvailable: 0
   _osp: 0
   _focusPoint:
   - {fileID: 283358522542271077}

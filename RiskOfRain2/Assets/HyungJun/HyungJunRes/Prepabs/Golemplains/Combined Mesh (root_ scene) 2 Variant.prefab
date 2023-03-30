@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3886255408582417727, guid: 4f80744dee8daa841bdbe2dbd2a6c09a, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4191987057203085840, guid: 4f80744dee8daa841bdbe2dbd2a6c09a, type: 3}
       propertyPath: m_Name
       value: Combined Mesh (root_ scene) 2
