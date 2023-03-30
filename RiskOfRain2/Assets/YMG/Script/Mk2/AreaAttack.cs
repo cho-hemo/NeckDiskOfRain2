@@ -13,13 +13,13 @@ public class AreaAttack : MonoBehaviour
 
 	private void On()
 	{
-		Debug.Log("On");
+		//Debug.Log("On");
 		areaAttack.enabled = true;
 	}
 
 	private void Off()
 	{
-		Debug.Log("Off");
+		//Debug.Log("Off");
 		areaAttack.enabled = false;
 	}
 
