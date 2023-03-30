@@ -6,47 +6,6 @@ namespace RiskOfRain2.Manager
 {
 	public class KeyInputManager : SingletonBase<KeyInputManager>
 	{
-		[Header("캐릭터 입력 값")]
-
-		[Tooltip("WASD,방향키,조이스틱 등 플레이어에 움직임을 입력 받을 Vector2값")]
-		public Vector2 move;
-
-		[Tooltip("마우스 커서,조이스틱 등 카메라가 바라볼 위치를 입력 받을 Vector2값")]
-		public Vector2 look;
-
-		[Tooltip("Player에 점프 키 입력 받을 Bool값")]
-		public bool jump;
-
-		[Tooltip("Player에 달리기 토글 키 입력 받을 Bool값")]
-		public bool sprint;
-
-		[Tooltip("Player에 마우스 좌클릭, 게임패드 트리거 키 입력을 받을 Bool값")]
-		public bool shoot;
-
-		[Tooltip("메인 스킬 입력을 받을 bool값")]
-		public bool mainSkill;
-
-		[Tooltip("서브 스킬 입력을 받을 bool값")]
-		public bool SubSkill;
-
-		[Tooltip("유틸리티 스킬 입력을 받을 bool값")]
-		public bool utilitySkill;
-
-		[Tooltip("특수 스킬 입력을 받을 bool값")]
-		public bool specialSkill;
-
-		[Tooltip("장비 사용 입력을 받을 bool값")]
-		public bool useEquipment;
-
-		[Tooltip("상호작용 입력을 받을 bool값")]
-		public bool interaction;
-
-		[Tooltip("정보화면 입력을 받을 bool값")]
-		public bool informationScreen;
-
-		[Tooltip("핑 입력을 받을 bool값")]
-		public bool sendPing;
-
 		[Tooltip("아날로그 움직임 설정")]
 		public bool analogMovement;
 
@@ -55,7 +14,7 @@ namespace RiskOfRain2.Manager
 
 		[Space(5)]
 		[Header("플레이어")]
-		public PlayerBase player = default;
+		public PlayerController playerController = default;
 
 		public List<float> skillCooltimes = default;
 
@@ -70,20 +29,22 @@ namespace RiskOfRain2.Manager
 		///<param name = "value">Vector2 값을 받음</param>
 		public void OnMove(InputValue value)
 		{
-			player.Move(value.Get<Vector2>());
+			if (!IsValidCheck()) return;
+			playerController.MoveInput(value.Get<Vector2>());
 		}
 
 		///<summary>마우스 이동, Right Stick 입력 할 시 호출되는 함수</summary>
 		///<param name = "value">Vector2 값을 받음</param>
 		public void OnLook(InputValue value)
 		{
+			if (!IsValidCheck()) return;
 			if (cursorLocked)
 			{
-				player.Look(value.Get<Vector2>());
+				playerController.LookInput(value.Get<Vector2>());
 			}
 			else
 			{
-				player.Look(Vector2.zero);
+				playerController.LookInput(Vector2.zero);
 			}
 		}
 
@@ -91,33 +52,42 @@ namespace RiskOfRain2.Manager
 		///<param name = "value">Bool 값을 받음</param>
 		public void OnJump(InputValue value)
 		{
-			player.Jump(value.isPressed);
+			if (!IsValidCheck()) return;
+			playerController.JumpInput(value.isPressed);
 		}
 		///<summary>Ctrl, 게임패드에 Left Stick Press키를 입력 할 시 호출되는 함수</summary>
 		///<param name = "value">Bool 값을 받음</param>
 		public void OnSprint(InputValue value)
 		{
-			player.Sprint();
+			if (!IsValidCheck()) return;
+			playerController.SprintInput();
 		}
 
 		public void OnMainSkill(InputValue value)
 		{
-			player.MainSkill(value.isPressed);
+			if (!IsValidCheck()) return;
+			playerController.MainSkillInput(value.isPressed);
 		}
 
 		public void OnSubSkill(InputValue value)
 		{
-			//player.SubSkill(value.isPressed);
+			if (!IsValidCheck()) return;
+			playerController.SubSkillInput(value.isPressed);
 			// { 2023-03-20 / HyungJun / PlayerUIWorks
 			int index_ = PlayerDefine.PLAYER_SUB_SKILL_INDEX;
 			Debug.Log($"cooltime : {skillCooltimes[index_]}");
+<<<<<<< HEAD
 			// playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);		// 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
+=======
+			//playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+>>>>>>> 078ca4d0ab069bf1106702c689bf1009e722942a
 		}
 
 		// Shift skill
 		public void OnUtilitySkill(InputValue value)
 		{
-			player.UtilitySkill(value.isPressed);
+			if (!IsValidCheck()) return;
+			playerController.UtilitySkillInput(value.isPressed);
 			int index_ = PlayerDefine.PLAYER_UTILITY_SKILL_INDEX;
 			// playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);		// 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
 		}
@@ -125,26 +95,33 @@ namespace RiskOfRain2.Manager
 		// R skill
 		public void OnSpecialSkill(InputValue value)
 		{
-			player.SpecialSkill(value.isPressed);
+			if (!IsValidCheck()) return;
+			playerController.SpecialSkillInput(value.isPressed);
 			int index_ = PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX;
+<<<<<<< HEAD
 			// playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);		// 2023-03-30 / HyungJun / 릴리즈 버전 주석 해제 필요
+=======
+			//playerUIManager.PlayerSkillActiveIcon(index_, skillCooltimes[index_]);
+>>>>>>> 078ca4d0ab069bf1106702c689bf1009e722942a
 		}
 
 		// Q KeyInput
 		public void OnUseEquipment(InputValue value)
 		{
+			if (!IsValidCheck()) return;
 			// playerUIManager.PlayerSkillActiveIcon(4, 5f);
 			// } 2023-03-20 / HyungJun / PlayerUIWorks
 		}
 		// E KeyInput
 		public void OnInteraction(InputValue value)
 		{
-
+			if (!IsValidCheck()) return;
 		}
 
 		// Tap KeyInput
 		public void OnInformationScreen(InputValue value)
 		{
+			if (!IsValidCheck()) return;
 			//  { 2023-03-22 / Daehun / KeyInput Works
 			if (value.isPressed)
 			{
@@ -159,12 +136,13 @@ namespace RiskOfRain2.Manager
 
 		public void OnSendPing(InputValue value)
 		{
-
+			if (!IsValidCheck()) return;
 		}
 
 		//  { 2023-03-22 / Daehun / KeyInput Works
 		public void OnEsc(InputValue value)
 		{
+			if (!IsValidCheck()) return;
 			cursorLocked = !cursorLocked;
 			SetCursorState(cursorLocked);
 		}
@@ -174,20 +152,38 @@ namespace RiskOfRain2.Manager
 
 		public void Start()
 		{
-			GameObject.Find("Player").TryGetComponent(out player);
-			SetCursorState(cursorLocked);
+			//SetCursorState(cursorLocked);
 			//GameObject.Find("PlayerUIManager").TryGetComponent(out playerUIManager);
-			GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
-			skillCooltimes = new List<float>();
-			for (int i = 0; i < player.Skills.Count; i++)
+			//GioleFunc.GetRootObj("PlayerUiManager").TryGetComponent(out playerUIManager);       // 2023-03-21 / HyungJun / 릴리즈 버전에서 주석 해제 필요
+			// skillCooltimes = new List<float>();
+			// int count_ = GameManager.Instance.Skills.Count;
+			// for (int i = 0; i < count_; i++)
+			// {
+			// 	skillCooltimes.Add(GameManager.Instance.Skills[i].SkillCooltime);
+			// }
+			Global.AddOnSceneLoaded(OnSceneLoaded);
+		}
+
+		public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+		{
+			switch (scene.name)
 			{
-				skillCooltimes.Add(player.Skills[i].SkillCooltime);
+				case Global.PLAY_SCENE_NAME:
+					SetCursorState(cursorLocked);
+					break;
+				default:
+					break;
 			}
+		}
+
+		public void SetPlayerController(PlayerController playerController)
+		{
+			this.playerController = playerController;
 		}
 
 		public void SkillChanged(int index)
 		{
-			skillCooltimes[index] = player.Skills[index].SkillCooltime;
+			skillCooltimes[index] = GameManager.Instance.Skills[index].SkillCooltime;
 		}
 
 		///<summary>화면 밖으로 마우스가 못 나가게 하는 함수</summary>
@@ -196,6 +192,18 @@ namespace RiskOfRain2.Manager
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 			cursorLocked = newState;
+		}
+
+		public bool IsValidCheck()
+		{
+			if (playerController == default || playerController == null)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
 		}
 	}
 }

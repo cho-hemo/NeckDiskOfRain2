@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RiskOfRain2;
 
 public class SelectCharacter_Canvas : MonoBehaviour
 {
@@ -26,11 +27,11 @@ public class SelectCharacter_Canvas : MonoBehaviour
 
 	public void ReadyBtnClick()
 	{
-		StartCoroutine(UIManager.Instance.FadeWindow(_fadeWindow, GioleData.GOLEM_PLAINS_SCENE_NAME, true));
+		StartCoroutine(UIManager.Instance.FadeWindow(_fadeWindow, Global.PLAY_SCENE_NAME, true));
 	}
 
 	public void BackBtnClick()
 	{
-		StartCoroutine(UIManager.Instance.FadeWindow(_fadeWindow, GioleData.TITLE_SCENE_NAME, true));
+		StartCoroutine(UIManager.Instance.FadeWindow(_fadeWindow, Global.TITLE_SCENE_NAME, true));
 	}
 }

@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/01. DaehunWork/01. Scenes/01. DebugScene.unity
-    guid: a1776fcb78644cf44be88472a976ebee
+    path: Assets/01. DaehunWork/01. Scenes/00. InitScene.unity
+    guid: 24b9f00b41de1f04380c698bd8b1d900
   - enabled: 1
-    path: Assets/HyungJun/HJ_Scenes/SelectCharacter.unity
-    guid: cc6c9236712f96148836357b6cfc10bf
+    path: Assets/01. DaehunWork/01. Scenes/01. TitleScene.unity
+    guid: b33f5b4d7bc00e14191174e121b880f4
   - enabled: 1
-    path: Assets/HyungJun/HJ_Scenes/Title.unity
-    guid: 3e9799b8823229f4fb1e351eaa83bc3c
+    path: Assets/01. DaehunWork/01. Scenes/02. CharacterSelectedScene.unity
+    guid: e8d156e025ab4d2468bb7cfd049c9ce2
   - enabled: 1
-    path: Assets/HyungJun/HJ_Scenes/Golemplains.unity
-    guid: 55031ae3508909741afcb9092355ed97
+    path: Assets/01. DaehunWork/01. Scenes/03. PlayScene.unity
+    guid: 00ae546272806e74190ef829992049fa
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

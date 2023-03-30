@@ -5,6 +5,11 @@ namespace RiskOfRain2
 {
 	public static partial class Global
 	{
+		public static void LoadScene(string name)
+		{
+			SceneManager.LoadScene(name);
+		}
+
 		public static void AddOnSceneLoaded(UnityAction<Scene, LoadSceneMode> sceneLoaded)
 		{
 			SceneManager.sceneLoaded += sceneLoaded;
@@ -27,5 +32,7 @@ namespace RiskOfRain2
 			Scene resultScene_ = SceneManager.GetSceneAt(index);
 			return resultScene_;
 		}
+
+
 	}
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 #endif
 using RiskOfRain2.Manager;
+using Cinemachine;
 
 namespace RiskOfRain2.Player
 {
@@ -87,6 +88,13 @@ namespace RiskOfRain2.Player
 
 		[Space(5)]
 		[Header("Player Stat")]
+
+		[SerializeField]
+		[Tooltip("Player 이름")]
+		protected string _playerName;
+		[SerializeField]
+		[Tooltip("Player 정보")]
+		protected string _playerInfo;
 
 		[SerializeField]
 		[Tooltip("최대 체력")]
@@ -207,7 +215,7 @@ namespace RiskOfRain2.Player
 		[Header("CineMachine")]
 		[SerializeField]
 		[Tooltip("CameraTarget")]
-		protected GameObject _cinemachineCameraTarget;
+		protected Transform _cinemachineCameraTarget;
 		[SerializeField]
 		protected float _cinemachineTargetYaw;
 		[SerializeField]
@@ -239,6 +247,8 @@ namespace RiskOfRain2.Player
 		#endregion
 
 		#region Player Stat
+		public string PlayerName { get { return _playerName; } protected set { _playerName = value; } }
+		public string PlayerInfo { get { return _playerInfo; } protected set { _playerInfo = value; } }
 		public float MaxHp { get { return _maxHp; } protected set { _maxHp = value; } }
 		public float CurrentHp { get { return _currentHp; } protected set { _currentHp = value; } }
 		public float Defense { get { return _defense; } protected set { _defense = value; } }
@@ -270,7 +280,7 @@ namespace RiskOfRain2.Player
 		public StateMachine StateMachine { get { return _stateMachine; } protected set { _stateMachine = value; } }
 		public Animator PlayerAnimator { get { return _playerAnimator; } protected set { _playerAnimator = value; } }
 		public CharacterController CharacterController { get { return _characterController; } protected set { _characterController = value; } }
-		public GameObject CinemachineCameraTarget { get { return _cinemachineCameraTarget; } protected set { _cinemachineCameraTarget = value; } }
+		public Transform CinemachineCameraTarget { get { return _cinemachineCameraTarget; } protected set { _cinemachineCameraTarget = value; } }
 		public float CinemachineTargetYaw { get { return _cinemachineTargetYaw; } protected set { _cinemachineTargetYaw = value; } }
 		public float CinemachineTargetPitch { get { return _cinemachineTargetPitch; } protected set { _cinemachineTargetPitch = value; } }
 		#endregion
@@ -297,10 +307,11 @@ namespace RiskOfRain2.Player
 
 		protected void Start()
 		{
+			Global.FindRootObject("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow = CinemachineCameraTarget.transform;
 			TryGetComponent(out _playerAnimator);
 			PlayerAnimator.SetBool("IsGrounded", IsGrounded);
 			TryGetComponent(out _characterController);
-			CinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+			CinemachineTargetYaw = CinemachineCameraTarget.rotation.eulerAngles.y;
 
 			StateMachine = new StateMachine();
 			SetState(new Player_IdleState(this));
@@ -357,6 +368,13 @@ namespace RiskOfRain2.Player
 			}
 		}
 
+		protected void SkillAction(int index, bool isPressed)
+		{
+			Skill skill_ = Skills[index];
+			skill_.Action(isPressed);
+			StartCoroutine(skill_.SkillCoolTimeRunning());
+		}
+
 		protected bool SkillAvailableCheck(int index)
 		{
 			return Skills[index].SkillAvailableCheck() & IsSkillAvailable;
@@ -372,7 +390,12 @@ namespace RiskOfRain2.Player
 		#region StateMachine Caching
 		public void UpdateState()
 		{
+<<<<<<< HEAD
 			// StateMachine.UpdateState();
+=======
+			Debug.Log($"Current State : {StateMachine.GetState().ToString()}");
+			StateMachine.UpdateState();
+>>>>>>> 078ca4d0ab069bf1106702c689bf1009e722942a
 		}
 		public void SetState(IState state)
 		{
@@ -491,7 +514,7 @@ namespace RiskOfRain2.Player
 			//CharacterController.Move(targetDirection.normalized * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 			Vector3 Input_ = new Vector3(InputMove.x, 0, InputMove.y);
 			Vector3 targetDirection_ = (Quaternion.Euler(0, MainCamera.transform.eulerAngles.y, 0) * Input_).normalized;
-			CharacterController.Move(targetDirection_ * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			CharacterController.Move(targetDirection_ * (CurrentSpeed * Time.deltaTime) + new Vector3(0.0f, VerticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		public void PlayerRotation()
@@ -519,7 +542,7 @@ namespace RiskOfRain2.Player
 				float aimX_ = default;
 				float aimY_ = default;
 
-				float angleX_ = CinemachineCameraTarget.transform.localEulerAngles.x;
+				float angleX_ = CinemachineCameraTarget.localEulerAngles.x;
 				if (180 <= angleX_)
 				{
 					aimY_ = (angleX_ - 270) / 180f;
@@ -529,7 +552,7 @@ namespace RiskOfRain2.Player
 					aimY_ = (angleX_ + 90) / 180f;
 				}
 
-				float angleY_ = CinemachineCameraTarget.transform.localEulerAngles.y;
+				float angleY_ = CinemachineCameraTarget.localEulerAngles.y;
 				if (180 <= angleY_)
 				{
 					aimX_ = (angleY_ - 270) / 180f;
@@ -555,7 +578,7 @@ namespace RiskOfRain2.Player
 			CinemachineTargetYaw = ClampAngle(CinemachineTargetYaw, float.MinValue, float.MaxValue);
 			CinemachineTargetPitch = ClampAngle(CinemachineTargetPitch, BottomClamp, TopClamp);
 
-			CinemachineCameraTarget.transform.rotation = Quaternion.Euler(CinemachineTargetPitch, CinemachineTargetYaw, 0.0f);
+			CinemachineCameraTarget.rotation = Quaternion.Euler(CinemachineTargetPitch, CinemachineTargetYaw, 0.0f);
 		}
 
 		private float ClampAngle(float lfAngle, float lfMin, float lfMax)
