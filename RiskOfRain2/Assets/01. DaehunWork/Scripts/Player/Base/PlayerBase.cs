@@ -15,274 +15,274 @@ namespace RiskOfRain2.Player
 		[Header("Player Controller")]
 		[SerializeField]
 		[Tooltip("Main Camera")]
-		protected Camera _mainCamera;
+		protected Camera mainCamera;
 
 		[SerializeField]
 		[Tooltip("Ray 사거리")]
-		protected float _rayRange = float.MaxValue;
+		protected float rayRange = float.MaxValue;
 
 		[SerializeField]
 		[Tooltip("카메라 윗 방향 최대 각도")]
-		protected float _topClamp;
+		protected float topClamp;
 
 		[SerializeField]
 		[Tooltip("카메라 아랫 방향 최대 각도")]
-		protected float _bottomClamp;
+		protected float bottomClamp;
 
 		[SerializeField]
 		[Tooltip("Player Move 입력")]
-		protected Vector2 _inputMove;
+		protected Vector2 inputMove;
 
 		[SerializeField]
 		[Tooltip("Player Look Input")]
-		protected Vector2 _inputLook;
+		protected Vector2 inputLook;
 
 		[SerializeField]
 		[Tooltip("가속 감속")]
-		protected float _speedChangeRate = 10.0f;
+		protected float speedChangeRate = 10.0f;
 
 		[SerializeField]
 		[Tooltip("타겟 회전")]
-		protected float _targetRotation = 0.0f;
+		protected float targetRotation = 0.0f;
 
 		[SerializeField]
 		[Tooltip("캐릭터 회전 속도")]
 		[Range(0.0f, 0.3f)]
-		protected float _rotationSmoothTime = 0.12f;
+		protected float rotationSmoothTime = 0.12f;
 
 		[SerializeField]
 		[Tooltip("Player 회전 가속도")]
-		protected float _rotationVelocity;
+		protected float rotationVelocity;
 
 		[SerializeField]
 		[Tooltip("Player 추락 가속도")]
-		protected float _verticalVelocity = 0;
+		protected float verticalVelocity = 0;
 
 		[SerializeField]
 		[Tooltip("Ground와 거리")]
-		protected float _groundedOffset = -0.14f;
+		protected float groundedOffset = -0.14f;
 
 		[SerializeField]
 		[Tooltip("Ground 체크를 위한 반지름 CharacterController와 일치해야함")]
-		protected float _groundedRadius = 0.3f;
+		protected float groundedRadius = 0.3f;
 
 		[SerializeField]
 		[Tooltip("캐릭터가 밟을 수 있는 Ground의 Layer")]
-		protected LayerMask _groundLayers;
+		protected LayerMask groundLayers;
 
 		[SerializeField]
 		[Tooltip("낙하 상태 진입까지 소요되는 시간")]
-		protected float _fallTimeout = 0.15f;
+		protected float fallTimeout = 0.15f;
 
 		[SerializeField]
 		[Tooltip("다시 점프를 하기 위한 딜레이 시간")]
-		protected float _jumpTimeout = 0.1f;
+		protected float jumpTimeout = 0.1f;
 
 		[SerializeField]
 		[Tooltip("추락 TimeOut DeltaTime")]
-		protected float _fallTimeoutDelta;
+		protected float fallTimeoutDelta;
 
 		[SerializeField]
 		[Tooltip("점프 TimeOut DeltaTime")]
-		protected float _jumpTimeoutDelta;
+		protected float jumpTimeoutDelta;
 
 		[Space(5)]
 		[Header("Player Stat")]
 
 		[SerializeField]
 		[Tooltip("Player 이름")]
-		protected string _playerName;
+		protected string playerName;
 		[SerializeField]
 		[Tooltip("Player 정보")]
-		protected string _playerInfo;
+		protected string playerInfo;
 
 		[SerializeField]
 		[Tooltip("최대 체력")]
-		protected float _maxHp;
+		protected float maxHp;
 
 		[SerializeField]
 		[Tooltip("현재 체력")]
-		protected float _currentHp;
+		protected float currentHp;
 
 		[SerializeField]
 		[Tooltip("방어막")]
-		protected float _defense;
+		protected float defense;
 
 		[SerializeField]
 		[Tooltip("공격력")]
-		protected float _attackDamage;
+		protected float attackDamage;
 
 		[SerializeField]
 		[Tooltip("공격 속도")]
-		protected float _attackSpeed;
+		protected float attackSpeed;
 
 		[SerializeField]
 		[Tooltip("스킬")]
-		protected List<Skill> _skills = default;
+		protected List<Skill> skills = default;
 
 		[SerializeField]
 		[Tooltip("체력 회복")]
-		protected float _healthRegen;
+		protected float healthRegen;
 
 		[SerializeField]
 		[Tooltip("현재 이동속도")]
-		protected float _currentSpeed = 0f;
+		protected float currentSpeed = 0f;
 
 		[SerializeField]
 		[Tooltip("기본 걷기 속도")]
-		protected float _defaultWalkSpeed = 7.0f;
+		protected float defaultWalkSpeed = 7.0f;
 
 		[SerializeField]
 		[Tooltip("현재 걷기 속도")]
-		protected float _currentWalkSpeed = 7.0f;
+		protected float currentWalkSpeed = 7.0f;
 
 		[SerializeField]
 		[Tooltip("기본 질주 속도")]
-		protected float _defaultSprintSpeed = 8.75f;
+		protected float defaultSprintSpeed = 8.75f;
 
 		[SerializeField]
 		[Tooltip("현재 질주 속도")]
-		protected float _currentSprintSpeed = 8.75f;
+		protected float currentSprintSpeed = 8.75f;
 
 		[SerializeField]
 		[Tooltip("최대 점프 카운트")]
-		protected int _maxJumpCount = 1;
+		protected int maxJumpCount = 1;
 
 		[SerializeField]
 		[Tooltip("현재 점프 횟수")]
-		protected int _currentJumpCount = default;
+		protected int currentJumpCount = default;
 
 		[SerializeField]
 		[Tooltip("점프력")]
-		protected float _jumpHeight = 5f;
+		protected float jumpHeight = 5f;
 
 		[SerializeField]
 		[Tooltip("중력")]
-		protected float _gravity = -9.81f;
+		protected float gravity = -9.81f;
 
 		[SerializeField]
 		[Tooltip("걷기")]
-		protected bool _isMove;
+		protected bool isMove;
 
 		[SerializeField]
 		[Tooltip("달리기")]
-		protected bool _isSprint;
+		protected bool isSprint;
 
 		[SerializeField]
 		[Tooltip("사격 체크")]
-		protected bool _isShot;
+		protected bool isShot;
 
 		[SerializeField]
 		[Tooltip("바닥 체크")]
-		protected bool _isGrounded = true;
+		protected bool isGrounded = true;
 
 		[SerializeField]
 		[Tooltip("사망 체크")]
-		protected bool _isDead = false;
+		protected bool isDead = false;
 
 		[SerializeField]
 		[Tooltip("스킬 사용 가능 체크")]
-		protected bool _isSkillAvailable;
+		protected bool isSkillAvailable;
 
 		[SerializeField]
 		[Tooltip("OSP")]
-		protected bool _osp = false;
+		protected bool osp = false;
 
 		[Space(5)]
 		[Header("플레이어 오브젝트")]
 
 		[SerializeField]
 		[Tooltip("총알이 발사될 위치")]
-		protected List<Transform> _focusPoint;
+		protected List<Transform> focusPoint;
 
 		[SerializeField]
 		[Tooltip("플레이어 타입(종류)")]
-		protected PlayerType _playerType = PlayerType.NONE;
+		protected PlayerType playerType = PlayerType.NONE;
 
 		[SerializeField]
 		[Tooltip("상태머신")]
-		protected StateMachine _stateMachine = default;
+		protected StateMachine stateMachine = default;
 
 		[SerializeField]
 		[Tooltip("애니메이터 컨트롤러")]
-		protected Animator _playerAnimator;
+		protected Animator playerAnimator;
 
 		[SerializeField]
 		[Tooltip("Charcter Controller")]
-		protected CharacterController _characterController;
+		protected CharacterController characterController;
 
 		[Space(5)]
 		[Header("CineMachine")]
 		[SerializeField]
 		[Tooltip("CameraTarget")]
-		protected Transform _cinemachineCameraTarget;
+		protected Transform cinemachineCameraTarget;
 		[SerializeField]
-		protected float _cinemachineTargetYaw;
+		protected float cinemachineTargetYaw;
 		[SerializeField]
-		protected float _cinemachineTargetPitch;
+		protected float cinemachineTargetPitch;
 		#endregion
 
 		#region Property
 		#region PlayerController
 		// { PlayerController Property
-		public Camera MainCamera { get { return _mainCamera; } protected set { _mainCamera = value; } }
-		public float RayRange { get { return _rayRange; } protected set { _rayRange = value; } }
-		public float TopClamp { get { return _topClamp; } protected set { _topClamp = value; } }
-		public float BottomClamp { get { return _bottomClamp; } protected set { _bottomClamp = value; } }
-		public Vector2 InputMove { get { return _inputMove; } protected set { _inputMove = value; } }
-		public Vector2 InputLook { get { return _inputLook; } protected set { _inputLook = value; } }
-		public float SpeedChangeRate { get { return _speedChangeRate; } protected set { _speedChangeRate = value; } }
-		public float TargetRotation { get { return _targetRotation; } protected set { _targetRotation = value; } }
-		public float RotationSmoothTime { get { return _rotationSmoothTime; } protected set { _rotationSmoothTime = value; } }
-		public float VerticalVelocity { get { return _verticalVelocity; } protected set { _verticalVelocity = value; } }
-		public float RotationVelocity { get { return _rotationVelocity; } protected set { _rotationVelocity = value; } }
-		public float GroundedOffset { get { return _groundedOffset; } protected set { _groundedOffset = value; } }
-		public float GroundedRadius { get { return _groundedOffset; } protected set { _groundedOffset = value; } }
-		public LayerMask GroundLayers { get { return _groundLayers; } protected set { _groundLayers = value; } }
-		public float FallTimeOut { get { return _fallTimeout; } protected set { _fallTimeout = value; } }
-		public float JumpTimeOut { get { return _jumpTimeout; } protected set { _jumpTimeout = value; } }
-		public float FallTimeoutDelta { get { return _fallTimeoutDelta; } protected set { _fallTimeoutDelta = value; } }
-		public float JumpTimeoutDelta { get { return _jumpTimeoutDelta; } protected set { _jumpTimeoutDelta = value; } }
+		public Camera MainCamera { get { return mainCamera; } protected set { mainCamera = value; } }
+		public float RayRange { get { return rayRange; } protected set { rayRange = value; } }
+		public float TopClamp { get { return topClamp; } protected set { topClamp = value; } }
+		public float BottomClamp { get { return bottomClamp; } protected set { bottomClamp = value; } }
+		public Vector2 InputMove { get { return inputMove; } protected set { inputMove = value; } }
+		public Vector2 InputLook { get { return inputLook; } protected set { inputLook = value; } }
+		public float SpeedChangeRate { get { return speedChangeRate; } protected set { speedChangeRate = value; } }
+		public float TargetRotation { get { return targetRotation; } protected set { targetRotation = value; } }
+		public float RotationSmoothTime { get { return rotationSmoothTime; } protected set { rotationSmoothTime = value; } }
+		public float VerticalVelocity { get { return verticalVelocity; } protected set { verticalVelocity = value; } }
+		public float RotationVelocity { get { return rotationVelocity; } protected set { rotationVelocity = value; } }
+		public float GroundedOffset { get { return groundedOffset; } protected set { groundedOffset = value; } }
+		public float GroundedRadius { get { return groundedOffset; } protected set { groundedOffset = value; } }
+		public LayerMask GroundLayers { get { return groundLayers; } protected set { groundLayers = value; } }
+		public float FallTimeOut { get { return fallTimeout; } protected set { fallTimeout = value; } }
+		public float JumpTimeOut { get { return jumpTimeout; } protected set { jumpTimeout = value; } }
+		public float FallTimeoutDelta { get { return fallTimeoutDelta; } protected set { fallTimeoutDelta = value; } }
+		public float JumpTimeoutDelta { get { return jumpTimeoutDelta; } protected set { jumpTimeoutDelta = value; } }
 		// } PlayerController Property
 		#endregion
 
 		#region Player Stat
-		public string PlayerName { get { return _playerName; } protected set { _playerName = value; } }
-		public string PlayerInfo { get { return _playerInfo; } protected set { _playerInfo = value; } }
-		public float MaxHp { get { return _maxHp; } protected set { _maxHp = value; } }
-		public float CurrentHp { get { return _currentHp; } protected set { _currentHp = value; } }
-		public float Defense { get { return _defense; } protected set { _defense = value; } }
-		public float AttackDamage { get { return _attackDamage; } protected set { _attackDamage = value; } }
-		public float AttackSpeed { get { return _attackSpeed; } protected set { _attackSpeed = value; } }
-		public List<Skill> Skills { get { return _skills; } protected set { _skills = value; } }
-		public float HealthRegen { get { return _healthRegen; } protected set { _healthRegen = value; } }
-		public float CurrentSpeed { get { return _currentSpeed; } protected set { _currentSpeed = value; } }
-		public float DefaultWalkSpeed { get { return _defaultWalkSpeed; } protected set { _defaultWalkSpeed = value; } }
-		public float CurrentWalkSpeed { get { return _currentWalkSpeed; } protected set { _currentWalkSpeed = value; } }
-		public float DefaultSprintSpeed { get { return _defaultSprintSpeed; } protected set { _defaultSprintSpeed = value; } }
-		public float CurrentSprintSpeed { get { return _currentSprintSpeed; } protected set { _currentSprintSpeed = value; } }
-		public int MaxJumpCount { get { return _maxJumpCount; } protected set { _maxJumpCount = value; } }
-		public int CurrentJumpCount { get { return _currentJumpCount; } protected set { _currentJumpCount = value; } }
-		public float JumpHeight { get { return _jumpHeight; } protected set { _jumpHeight = value; } }
-		public float Gravity { get { return _gravity; } protected set { _gravity = value; } }
-		public bool IsMove { get { return _isMove; } protected set { _isMove = value; } }
-		public bool IsSprint { get { return _isSprint; } protected set { _isSprint = value; } }
-		public bool IsShot { get { return _isShot; } protected set { _isShot = value; } }
-		public bool IsGrounded { get { return _isGrounded; } protected set { _isGrounded = value; } }
-		public bool IsDead { get { return _isDead; } protected set { _isDead = value; } }
-		public bool IsSkillAvailable { get { return _isSkillAvailable; } protected set { _isSkillAvailable = value; } }
-		public bool Osp { get { return _osp; } protected set { _osp = value; } }
+		public string PlayerName { get { return playerName; } protected set { playerName = value; } }
+		public string PlayerInfo { get { return playerInfo; } protected set { playerInfo = value; } }
+		public float MaxHp { get { return maxHp; } protected set { maxHp = value; } }
+		public float CurrentHp { get { return currentHp; } protected set { currentHp = value; } }
+		public float Defense { get { return defense; } protected set { defense = value; } }
+		public float AttackDamage { get { return attackDamage; } protected set { attackDamage = value; } }
+		public float AttackSpeed { get { return attackSpeed; } protected set { attackSpeed = value; } }
+		public List<Skill> Skills { get { return skills; } protected set { skills = value; } }
+		public float HealthRegen { get { return healthRegen; } protected set { healthRegen = value; } }
+		public float CurrentSpeed { get { return currentSpeed; } protected set { currentSpeed = value; } }
+		public float DefaultWalkSpeed { get { return defaultWalkSpeed; } protected set { defaultWalkSpeed = value; } }
+		public float CurrentWalkSpeed { get { return currentWalkSpeed; } protected set { currentWalkSpeed = value; } }
+		public float DefaultSprintSpeed { get { return defaultSprintSpeed; } protected set { defaultSprintSpeed = value; } }
+		public float CurrentSprintSpeed { get { return currentSprintSpeed; } protected set { currentSprintSpeed = value; } }
+		public int MaxJumpCount { get { return maxJumpCount; } protected set { maxJumpCount = value; } }
+		public int CurrentJumpCount { get { return currentJumpCount; } protected set { currentJumpCount = value; } }
+		public float JumpHeight { get { return jumpHeight; } protected set { jumpHeight = value; } }
+		public float Gravity { get { return gravity; } protected set { gravity = value; } }
+		public bool IsMove { get { return isMove; } protected set { isMove = value; } }
+		public bool IsSprint { get { return isSprint; } protected set { isSprint = value; } }
+		public bool IsShot { get { return isShot; } protected set { isShot = value; } }
+		public bool IsGrounded { get { return isGrounded; } protected set { isGrounded = value; } }
+		public bool IsDead { get { return isDead; } protected set { isDead = value; } }
+		public bool IsSkillAvailable { get { return isSkillAvailable; } protected set { isSkillAvailable = value; } }
+		public bool Osp { get { return osp; } protected set { osp = value; } }
 		#endregion
 
 		#region Player Object
-		public List<Transform> FocusPoint { get { return _focusPoint; } protected set { _focusPoint = value; } }
-		public PlayerType PlayerType { get { return _playerType; } protected set { _playerType = value; } }
-		public StateMachine StateMachine { get { return _stateMachine; } protected set { _stateMachine = value; } }
-		public Animator PlayerAnimator { get { return _playerAnimator; } protected set { _playerAnimator = value; } }
-		public CharacterController CharacterController { get { return _characterController; } protected set { _characterController = value; } }
-		public Transform CinemachineCameraTarget { get { return _cinemachineCameraTarget; } protected set { _cinemachineCameraTarget = value; } }
-		public float CinemachineTargetYaw { get { return _cinemachineTargetYaw; } protected set { _cinemachineTargetYaw = value; } }
-		public float CinemachineTargetPitch { get { return _cinemachineTargetPitch; } protected set { _cinemachineTargetPitch = value; } }
+		public List<Transform> FocusPoint { get { return focusPoint; } protected set { focusPoint = value; } }
+		public PlayerType PlayerType { get { return playerType; } protected set { playerType = value; } }
+		public StateMachine StateMachine { get { return stateMachine; } protected set { stateMachine = value; } }
+		public Animator PlayerAnimator { get { return playerAnimator; } protected set { playerAnimator = value; } }
+		public CharacterController CharacterController { get { return characterController; } protected set { characterController = value; } }
+		public Transform CinemachineCameraTarget { get { return cinemachineCameraTarget; } protected set { cinemachineCameraTarget = value; } }
+		public float CinemachineTargetYaw { get { return cinemachineTargetYaw; } protected set { cinemachineTargetYaw = value; } }
+		public float CinemachineTargetPitch { get { return cinemachineTargetPitch; } protected set { cinemachineTargetPitch = value; } }
 		#endregion
 
 		#endregion
@@ -308,9 +308,9 @@ namespace RiskOfRain2.Player
 		protected void Start()
 		{
 			Global.FindRootObject("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow = CinemachineCameraTarget.transform;
-			TryGetComponent(out _playerAnimator);
+			TryGetComponent(out playerAnimator);
 			PlayerAnimator.SetBool("IsGrounded", IsGrounded);
-			TryGetComponent(out _characterController);
+			TryGetComponent(out characterController);
 			CinemachineTargetYaw = CinemachineCameraTarget.rotation.eulerAngles.y;
 
 			StateMachine = new StateMachine();
@@ -368,11 +368,51 @@ namespace RiskOfRain2.Player
 			}
 		}
 
+		/// <summary>
+		/// 스탯 증가
+		/// </summary>
+		/// <param name="target"></param>
+		/// <param name="value"></param>
+		public void IncreaseStat(PlayerStat target, float value)
+		{
+			switch (target)
+			{
+				case PlayerStat.MAX_HP:
+					MaxHp += value;
+					break;
+				case PlayerStat.CURRENT_HP:
+					CurrentHp += value;
+					break;
+				case PlayerStat.DEFENSE:
+					Defense += value;
+					break;
+				case PlayerStat.ATTACK_DAMAGE:
+					AttackDamage += value;
+					break;
+				case PlayerStat.ATTACK_SPEED:
+					AttackSpeed += value;
+					break;
+				case PlayerStat.WALK_SPEED:
+					CurrentWalkSpeed += value;
+					break;
+				case PlayerStat.SPRINT_SPEED:
+					CurrentSprintSpeed += value;
+					break;
+				case PlayerStat.JUMP_COUNT:
+					MaxJumpCount += (int)value;
+					break;
+				case PlayerStat.JUMP_HEIGHT:
+					JumpHeight += value;
+					break;
+
+			}
+		}
+
 		protected void SkillAction(int index, bool isPressed)
 		{
 			Skill skill_ = Skills[index];
 			skill_.Action(isPressed);
-			StartCoroutine(skill_.SkillCoolTimeRunning());
+			StartCoroutine(skill_.SkillCoolTimeRunning(true));
 		}
 
 		protected bool SkillAvailableCheck(int index)
@@ -519,7 +559,7 @@ namespace RiskOfRain2.Player
 
 			TargetRotation = Mathf.Atan2(inputDirection_.x, inputDirection_.y) * Mathf.Rad2Deg + MainCamera.transform.eulerAngles.y;
 
-			float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetRotation, ref _rotationVelocity, RotationSmoothTime);
+			float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetRotation, ref rotationVelocity, RotationSmoothTime);
 
 			transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 		}
