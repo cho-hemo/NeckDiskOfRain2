@@ -390,12 +390,8 @@ namespace RiskOfRain2.Player
 		#region StateMachine Caching
 		public void UpdateState()
 		{
-<<<<<<< HEAD
-			// StateMachine.UpdateState();
-=======
-			Debug.Log($"Current State : {StateMachine.GetState().ToString()}");
+			// Debug.Log($"Current State : {StateMachine.GetState().ToString()}");
 			StateMachine.UpdateState();
->>>>>>> 078ca4d0ab069bf1106702c689bf1009e722942a
 		}
 		public void SetState(IState state)
 		{

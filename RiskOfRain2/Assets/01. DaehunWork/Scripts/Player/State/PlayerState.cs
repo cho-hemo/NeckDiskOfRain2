@@ -65,7 +65,7 @@ namespace RiskOfRain2.Player
 			// _player.SetFloat("PosY", _player.InputMove.y);
 			_player.SetFloat("PosY", 1f);
 			_player.SetBool("IsMove", _player.IsMove);
-			Debug.Log("move");
+			// Debug.Log("move");
 			float speed_ = _player.CurrentWalkSpeed / _player.DefaultWalkSpeed;
 			_player.SetFloat(PlayerDefine.MOVE_SPEED, speed_);
 		}

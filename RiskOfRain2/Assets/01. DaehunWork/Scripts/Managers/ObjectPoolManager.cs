@@ -99,7 +99,7 @@ namespace RiskOfRain2.Manager
 		{
 			if (Global.ValidCollectionElement(_objectPool.Keys, obj_.name))
 			{
-				Debug.Log("ObjectPush");
+				// Debug.Log("ObjectPush");
 				obj_.SetActive(false);
 				obj_.transform.localPosition = Vector3.zero;
 				obj_.transform.rotation = Quaternion.identity;

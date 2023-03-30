@@ -48,4 +48,10 @@ public class Hp_Bar : MonoBehaviour
 
 		hpBar_.FilledImageControll(monsterCurrentHp_ / monsterMaxHp_);
 	}
+
+	// 디버그 모드
+	public void Debug_Test()
+	{
+		MonsterHpGaugeDown("Cube", 40f, 10f);
+	}
 }

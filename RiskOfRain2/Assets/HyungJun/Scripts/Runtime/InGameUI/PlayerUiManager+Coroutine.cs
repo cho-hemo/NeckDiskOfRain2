@@ -39,9 +39,10 @@ public partial class PlayerUiManager : MonoBehaviour
 	{
 		if (!_playerInfo.Skills[num].SkillAvailableCheck())
 		{
+			// Debug.Log("[PlayerUiManager] SkillActive : 스킬이 쿨타임 중입니다.");
 			yield break;
 		}
-
+		// Debug.Log("[PlayerUiManager] SkillActive : 확인");
 		// 스킬 비 활성화
 		// 스킬 스택 오브젝트
 		GameObject skillCount_ = _skillList[num].FindChildObj("SkillCostTxt");
