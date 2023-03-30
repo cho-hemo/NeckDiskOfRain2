@@ -775,30 +775,24 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-<<<<<<< HEAD
-=======
   - m_Name: OnDamaged
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
->>>>>>> b0dbee343e2c20767d82fc809b23b008b76b22d7
   - m_Name: SkillNum
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-<<<<<<< HEAD
-=======
   - m_Name: MoveSpeed
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
->>>>>>> b0dbee343e2c20767d82fc809b23b008b76b22d7
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1330,11 +1324,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 2548948338720608669}
-<<<<<<< HEAD
-    m_Position: {x: 280, y: 160, z: 0}
-=======
     m_Position: {x: 500, y: 150, z: 0}
->>>>>>> b0dbee343e2c20767d82fc809b23b008b76b22d7
   - serializedVersion: 1
     m_State: {fileID: -7210686475442494617}
     m_Position: {x: 280, y: 30, z: 0}

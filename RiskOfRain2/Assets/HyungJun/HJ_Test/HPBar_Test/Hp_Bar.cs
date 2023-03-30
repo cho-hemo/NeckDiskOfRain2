@@ -31,7 +31,7 @@ public class Hp_Bar : MonoBehaviour
 	{
 		for (int i = 0; i < _objectList.Count; i++)
 		{
-			_hpBarList[i].transform.position = _cam.WorldToScreenPoint(_objectList[i].position + new Vector3(0, 1f, 0f));
+			_hpBarList[i].transform.position = _cam.WorldToScreenPoint(_objectList[i].position + new Vector3(0, 3f, 0f));
 		}
 	}
 

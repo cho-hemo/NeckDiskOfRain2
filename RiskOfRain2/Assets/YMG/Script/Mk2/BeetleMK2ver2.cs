@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
-public enum MobState { Idle = 0, Recognition, Run, Attack}
+public enum MobState { Idle = 0, Recognition, Run, Attack }
 
 public class BeetleMK2ver2 : MonoBehaviour
 {
@@ -34,7 +33,7 @@ public class BeetleMK2ver2 : MonoBehaviour
 	}
 
 	void Start()
-    {
+	{
 		Target = GameObject.FindGameObjectWithTag("Player").transform;
 
 		Anime.SetBool("isMove", false);
@@ -61,8 +60,8 @@ public class BeetleMK2ver2 : MonoBehaviour
 		Anime.SetBool("SpawnEnd", true);
 	}
 
-    void Update()
-    {
+	void Update()
+	{
 		if (Anime.GetBool("SpawnEnd"))
 		{
 			float distance = Vector3.Distance(Target.position, transform.position);
@@ -76,11 +75,11 @@ public class BeetleMK2ver2 : MonoBehaviour
 	}
 	void UpdateState() // LEGACY
 	{
-		switch (mobState) 
+		switch (mobState)
 		{
 			case MobState.Idle:
 				Debug.Log("대기");
-				break; 
+				break;
 			case MobState.Run:
 				Debug.Log("네비");
 				break;
@@ -104,7 +103,7 @@ public class BeetleMK2ver2 : MonoBehaviour
 		//}
 	}
 
-	void ChangeState(MobState newState) 
+	void ChangeState(MobState newState)
 	{
 		if (mobState == newState)
 			return;
@@ -209,15 +208,15 @@ public class BeetleMK2ver2 : MonoBehaviour
 	void FaceTarget()
 	{
 		//if (_isLook)
-		
-			Debug.Log("바라보기");
-			// direction to the target
-			Vector3 direction = (Target.position - transform.position).normalized;
-			// rotation where we point to that target
-			Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-			// update our own rotation to point in this direction
-			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * Speed);
-		
+
+		Debug.Log("바라보기");
+		// direction to the target
+		Vector3 direction = (Target.position - transform.position).normalized;
+		// rotation where we point to that target
+		Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+		// update our own rotation to point in this direction
+		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * Speed);
+
 	}
 
 	IEnumerator FaceT()

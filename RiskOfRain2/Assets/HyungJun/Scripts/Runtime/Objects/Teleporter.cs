@@ -38,7 +38,9 @@ public class Teleporter : InteractionObjects
 		// 목표 UI오브젝트 세팅을 바꿔주는 함수
 		UIManager.Instance.BossMissionComplete();
 		UIManager.Instance.PopupUIActive("", false);
-		GioleFunc.GetRootObj("mdlBeetleQueen (6)").SetActive(true);
+		GameObject bossObj_ = GioleFunc.GetRootObj("BeetleQueen");
+		bossObj_.SetActive(true);
+		bossObj_.GetComponent<RootMotion>().Init();
 		UIManager.Instance.ActiveBoss("여왕 딱정벌레", "무리의 어미");
 
 	}
