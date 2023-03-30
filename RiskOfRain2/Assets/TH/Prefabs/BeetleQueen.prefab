@@ -1395,7 +1395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29400c2ffd24c74418e52712089e5a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestData: {fileID: 11400000, guid: 4f2a7377f16f05b45ab0b30938b8f0be, type: 2}
   <Type>k__BackingField: 0
   <MaxHp>k__BackingField: 0
   <Hp>k__BackingField: 0
@@ -1403,15 +1402,15 @@ MonoBehaviour:
   <Speed>k__BackingField: 0
   <MaxSqrDetectRange>k__BackingField: 0
   <MinSqrDetectRange>k__BackingField: 0
-  <skillCount>k__BackingField: 0
   <SkillNum>k__BackingField: -1
+  _data: {fileID: 11400000, guid: 4f2a7377f16f05b45ab0b30938b8f0be, type: 2}
+  _coolDownTimes: []
+  _availableSkills: 
   _spit: {fileID: 6073727914562010354, guid: 0118307fc7ccb154b837ef6efbaa9400, type: 3}
   _spitStartPos: {fileID: 1332452198}
   _beetleGrub: {fileID: 656515126719600877, guid: 908855bcad8eeab4cbb564b933001ff6, type: 3}
   _beetleGrubSpawnPos: {fileID: 2959241879262912179}
   _beetle: {fileID: 0}
-  _coolDownTimes: []
-  _availableSkills: 
 --- !u!1 &3398183235641808552
 GameObject:
   m_ObjectHideFlags: 0

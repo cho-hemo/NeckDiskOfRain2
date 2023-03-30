@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class BeetleQueen : MonsterBase
 {
-
     [SerializeField] private GameObject _spit;
     [SerializeField] private Transform _spitStartPos;
 
@@ -12,9 +11,6 @@ public class BeetleQueen : MonsterBase
 
     [SerializeField] private GameObject _beetle;
 
-    [SerializeField] private List<float> _coolDownTimes = new List<float>();
-    [SerializeField] private int[] _availableSkills;
-
     private enum Skill
     {
         FIRE_SPIT = 0,
@@ -22,14 +18,13 @@ public class BeetleQueen : MonsterBase
         SUMMON_BEETLE
     }
 
-    public override void Initialize(MonsterData data)
+    public override void Initialize()
     {
-        base.Initialize(data);
+        base.Initialize();
         for (int i = 0; i < _skills.Count; i++)
         {
             _coolDownTimes.Add(_skills[i].CoolDownTime);
         }
-        _availableSkills = new int[_skills.Count];
     }
 
     public override bool TrySelectSkill()

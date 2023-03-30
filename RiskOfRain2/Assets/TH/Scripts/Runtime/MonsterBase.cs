@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.ObjectModel;
 using Mono.Cecil.Cil;
+using System.Collections.Generic;
 
 public enum MonsterType
 {
@@ -10,9 +11,6 @@ public enum MonsterType
 
 public class MonsterBase : MonoBehaviour
 {
-    //
-    public MonsterData TestData;
-
     [field:SerializeField] public MonsterType Type { get; private set; }
     [field:SerializeField] public int MaxHp { get; private set; }
     [field:SerializeField] public int Hp { get; private set; }
@@ -20,7 +18,6 @@ public class MonsterBase : MonoBehaviour
     [field:SerializeField] public int Speed { get; private set; }
     [field:SerializeField] public int MaxSqrDetectRange { get; private set; }
     [field:SerializeField] public int MinSqrDetectRange { get; private set; }
-    [field:SerializeField] public int skillCount { get; private set; }
     [field:SerializeField] public int SkillNum { get; protected set; } = -1;
 
     public MonsterSpawn SpawnState { get; private set; }
@@ -30,27 +27,30 @@ public class MonsterBase : MonoBehaviour
     public MonsterOnDamaged OnDamagedState { get; private set; }
     public MonsterDeath DeathState { get; private set; }
 
-    private MonsterData _data;
+    [SerializeField] private MonsterData _data;
+    [SerializeField] protected ReadOnlyCollection<SkillData> _skills;
+	[SerializeField] protected List<float> _coolDownTimes = new List<float>();
+	[SerializeField] protected int[] _availableSkills;
     protected MonsterFSM _fsm;
     protected Animator _anim;
-    protected ReadOnlyCollection<SkillData> _skills;
 
 
-    /// <summary>
-    /// 몬스터의 데이터를 설정하는 메서드
-    /// </summary>
-    /// <param name="data">몬스터 SO 데이터</param>
-    public virtual void Initialize(MonsterData data)
+	/// <summary>
+	/// 몬스터의 데이터를 설정하는 메서드
+	/// </summary>
+	/// <param name="data">몬스터 SO 데이터</param>
+	public virtual void Initialize()
     {
-        _data = data;
         Type = _data.Type;
         Hp = MaxHp = _data.Health;
         Power = _data.Power;
         Speed = _data.Speed;
 		MaxSqrDetectRange= _data.MaxSqrDetectRange;
 		MinSqrDetectRange = _data.MinSqrDetectRange;
+
         _skills = _data.Skills;
-        skillCount = _data.Skills.Count;
+		_coolDownTimes.Clear();
+		_availableSkills = new int[_data.Skills.Count];
 
         _fsm.Initialize(_skills, SpawnState);
     }
@@ -106,7 +106,7 @@ public class MonsterBase : MonoBehaviour
     private void Start()
     {
         //
-        Initialize(TestData);
+        Initialize();
     }
 
 

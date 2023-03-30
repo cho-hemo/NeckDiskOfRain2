@@ -34,8 +34,6 @@ public abstract class MonsterState
 
 public class MonsterIdle : MonsterState
 {
-    private int _skillNum;
-
     public MonsterIdle(MonsterBase monster, MonsterFSM fsm) : base(monster, fsm)
     {
 
@@ -59,7 +57,6 @@ public class MonsterIdle : MonsterState
         else if (_fsm.GetSqrDistanceToPlayer() <= _monster.MaxSqrDetectRange && 
 			_fsm.GetSqrDistanceToPlayer() > _monster.MinSqrDetectRange)
         {
-			Debug.Log(_fsm.GetSqrDistanceToPlayer());
             _fsm.ChangeState(_monster.MoveState);
         }
     }
@@ -69,7 +66,6 @@ public class MonsterMove : MonsterState
 {
     private const float MOVE_COOL_DOWN_TIME = 1f;
 
-    private int _skillNum;
     private float _timer;
     private RootMotion _rootMotion;
 
