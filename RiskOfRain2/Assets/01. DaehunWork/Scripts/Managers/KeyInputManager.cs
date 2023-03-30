@@ -153,6 +153,24 @@ namespace RiskOfRain2.Manager
 			// {
 			// 	skillCooltimes.Add(GameManager.Instance.Skills[i].SkillCooltime);
 			// }
+			Global.AddOnSceneLoaded(OnSceneLoaded);
+		}
+
+		public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+		{
+			switch (scene.name)
+			{
+				case Global.PLAY_SCENE_NAME:
+					SetCursorState(cursorLocked);
+					break;
+				default:
+					break;
+			}
+		}
+
+		public void SetPlayerController(PlayerController playerController)
+		{
+			this.playerController = playerController;
 		}
 
 		public void SkillChanged(int index)
@@ -170,7 +188,7 @@ namespace RiskOfRain2.Manager
 
 		public bool IsValidCheck()
 		{
-			if (playerController == default || playerController == null || playerUIManager == default || playerUIManager == null)
+			if (playerController == default || playerController == null)
 			{
 				return false;
 			}

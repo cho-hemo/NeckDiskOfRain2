@@ -57,12 +57,14 @@ namespace RiskOfRain2.Manager
 		private void PlayerInit()
 		{
 			PlayerTransform = Global.FindRootObject("Player").transform;
-			Player = PlayerTransform.GetComponent<PlayerBase>();
+			PlayerTransform.TryGetComponent<PlayerBase>(out _player);
+			PlayerTransform.TryGetComponent<PlayerController>(out _playerController);
+			KeyInputManager.Instance.SetPlayerController(_playerController);
 		}
 
 		private void PlayerCreate()
 		{
-			Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+			Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).name = playerPrefab.name;
 			PlayerInit();
 		}
 	}

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 #endif
 using RiskOfRain2.Manager;
+using Cinemachine;
 
 namespace RiskOfRain2.Player
 {
@@ -214,7 +215,7 @@ namespace RiskOfRain2.Player
 		[Header("CineMachine")]
 		[SerializeField]
 		[Tooltip("CameraTarget")]
-		protected GameObject _cinemachineCameraTarget;
+		protected Transform _cinemachineCameraTarget;
 		[SerializeField]
 		protected float _cinemachineTargetYaw;
 		[SerializeField]
@@ -279,7 +280,7 @@ namespace RiskOfRain2.Player
 		public StateMachine StateMachine { get { return _stateMachine; } protected set { _stateMachine = value; } }
 		public Animator PlayerAnimator { get { return _playerAnimator; } protected set { _playerAnimator = value; } }
 		public CharacterController CharacterController { get { return _characterController; } protected set { _characterController = value; } }
-		public GameObject CinemachineCameraTarget { get { return _cinemachineCameraTarget; } protected set { _cinemachineCameraTarget = value; } }
+		public Transform CinemachineCameraTarget { get { return _cinemachineCameraTarget; } protected set { _cinemachineCameraTarget = value; } }
 		public float CinemachineTargetYaw { get { return _cinemachineTargetYaw; } protected set { _cinemachineTargetYaw = value; } }
 		public float CinemachineTargetPitch { get { return _cinemachineTargetPitch; } protected set { _cinemachineTargetPitch = value; } }
 		#endregion
@@ -306,10 +307,11 @@ namespace RiskOfRain2.Player
 
 		protected void Start()
 		{
+			Global.FindRootObject("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow = CinemachineCameraTarget.transform;
 			TryGetComponent(out _playerAnimator);
 			PlayerAnimator.SetBool("IsGrounded", IsGrounded);
 			TryGetComponent(out _characterController);
-			CinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+			CinemachineTargetYaw = CinemachineCameraTarget.rotation.eulerAngles.y;
 
 			StateMachine = new StateMachine();
 			SetState(new Player_IdleState(this));
@@ -536,7 +538,7 @@ namespace RiskOfRain2.Player
 				float aimX_ = default;
 				float aimY_ = default;
 
-				float angleX_ = CinemachineCameraTarget.transform.localEulerAngles.x;
+				float angleX_ = CinemachineCameraTarget.localEulerAngles.x;
 				if (180 <= angleX_)
 				{
 					aimY_ = (angleX_ - 270) / 180f;
@@ -546,7 +548,7 @@ namespace RiskOfRain2.Player
 					aimY_ = (angleX_ + 90) / 180f;
 				}
 
-				float angleY_ = CinemachineCameraTarget.transform.localEulerAngles.y;
+				float angleY_ = CinemachineCameraTarget.localEulerAngles.y;
 				if (180 <= angleY_)
 				{
 					aimX_ = (angleY_ - 270) / 180f;
@@ -572,7 +574,7 @@ namespace RiskOfRain2.Player
 			CinemachineTargetYaw = ClampAngle(CinemachineTargetYaw, float.MinValue, float.MaxValue);
 			CinemachineTargetPitch = ClampAngle(CinemachineTargetPitch, BottomClamp, TopClamp);
 
-			CinemachineCameraTarget.transform.rotation = Quaternion.Euler(CinemachineTargetPitch, CinemachineTargetYaw, 0.0f);
+			CinemachineCameraTarget.rotation = Quaternion.Euler(CinemachineTargetPitch, CinemachineTargetYaw, 0.0f);
 		}
 
 		private float ClampAngle(float lfAngle, float lfMin, float lfMax)

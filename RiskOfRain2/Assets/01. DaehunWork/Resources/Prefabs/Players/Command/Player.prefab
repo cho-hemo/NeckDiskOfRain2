@@ -3258,7 +3258,7 @@ MonoBehaviour:
   _playerType: 1
   _playerAnimator: {fileID: 0}
   _characterController: {fileID: 0}
-  _cinemachineCameraTarget: {fileID: 1408289584342218223}
+  _cinemachineCameraTarget: {fileID: 1408289584342218216}
   _cinemachineTargetYaw: 0
   _cinemachineTargetPitch: 0
 --- !u!114 &6334408844475184082
