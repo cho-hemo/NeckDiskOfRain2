@@ -6,6 +6,7 @@ using UnityEngine;
 public class CloseCombat : MonoBehaviour
 {
 	public BoxCollider closeCombat;
+	public BeetleMk4 beetle;
 
 	private void Start()
 	{
@@ -13,15 +14,17 @@ public class CloseCombat : MonoBehaviour
 
 	}
 
-	private void On()
+	private void HeadAttackOn()
 	{
-		Debug.Log("On");
+		Debug.Log("Head attack on");
 		closeCombat.enabled = true;
+		beetle.headAttack = true;
 	}
 
-	private void Off()
+	private void HeadAttackOff()
 	{
-		Debug.Log("Off");
+		Debug.Log("Head attack off");
 		closeCombat.enabled = false;
+		beetle.headAttack = false;
 	}
 }

@@ -4,11 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - CinemachineTarget
   - Chest
   - Bullet
   - Ground
   - Monster
+=======
+  - Floor
+  - Wall
+  - Weapon
+  - Melee
+  - Checkpoint
+>>>>>>> 72018c23ed0eb4ec8948b318ab07c1691afe887d
   layers:
   - Default
   - TransparentFX
@@ -18,7 +26,11 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - Post  Processing
+=======
+  - 
+>>>>>>> 72018c23ed0eb4ec8948b318ab07c1691afe887d
   - 
   - 
   - 
