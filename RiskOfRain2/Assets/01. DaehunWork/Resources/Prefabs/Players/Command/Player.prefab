@@ -3206,61 +3206,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04ea801636931f4290c92571e945a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
-  _rayRange: 3.402823e+38
-  _topClamp: 90
-  _bottomClamp: -70
-  _inputMove: {x: 0, y: 0}
-  _inputLook: {x: 0, y: 0}
-  _speedChangeRate: 10
-  _targetRotation: 0
-  _rotationSmoothTime: 0.12
-  _rotationVelocity: 0
-  _verticalVelocity: 0
-  _groundedOffset: 0.1
-  _groundedRadius: 0.3
-  _groundLayers:
+  mainCamera: {fileID: 0}
+  rayRange: 3.4028235e+38
+  topClamp: 90
+  bottomClamp: -80
+  inputMove: {x: 0, y: 0}
+  inputLook: {x: 0, y: 0}
+  speedChangeRate: 10
+  targetRotation: 0
+  rotationSmoothTime: 0.12
+  rotationVelocity: 0
+  verticalVelocity: 0
+  groundedOffset: 0.1
+  groundedRadius: 0.3
+  groundLayers:
     serializedVersion: 2
     m_Bits: 2147483647
-  _fallTimeout: 0.15
-  _jumpTimeout: 0.1
-  _fallTimeoutDelta: 0
-  _jumpTimeoutDelta: 0
-  _playerName: 
-  _playerInfo: 
-  _maxHp: 110
-  _currentHp: 110
-  _defense: 0
-  _attackDamage: 12
-  _attackSpeed: 1
-  _skills: []
-  _healthRegen: 1
-  _currentSpeed: 0
-  _defaultWalkSpeed: 7
-  _currentWalkSpeed: 7
-  _defaultSprintSpeed: 8.75
-  _currentSprintSpeed: 8.75
-  _maxJumpCount: 1
-  _currentJumpCount: 0
-  _jumpHeight: 2
-  _gravity: -9.81
-  _isMove: 0
-  _isSprint: 0
-  _isShot: 0
-  _isGrounded: 1
-  _isDead: 0
-  _isSkillAvailable: 0
-  _osp: 0
-  _focusPoint:
+  fallTimeout: 0.15
+  jumpTimeout: 0.1
+  fallTimeoutDelta: 0
+  jumpTimeoutDelta: 0
+  playerName: 
+  playerInfo: 
+  maxHp: 0
+  currentHp: 0
+  defense: 0
+  attackDamage: 0
+  attackSpeed: 1
+  skills: []
+  healthRegen: 0
+  currentSpeed: 0
+  defaultWalkSpeed: 7
+  currentWalkSpeed: 7
+  defaultSprintSpeed: 8.75
+  currentSprintSpeed: 8.75
+  maxJumpCount: 1
+  currentJumpCount: 0
+  jumpHeight: 5
+  gravity: -9.81
+  isMove: 0
+  isSprint: 0
+  isShot: 0
+  isGrounded: 1
+  isDead: 0
+  isSkillAvailable: 0
+  osp: 0
+  focusPoint:
   - {fileID: 283358522542271077}
   - {fileID: 2035722070997728184}
   - {fileID: 3386476320399352337}
-  _playerType: 1
-  _playerAnimator: {fileID: 0}
-  _characterController: {fileID: 0}
-  _cinemachineCameraTarget: {fileID: 1408289584342218216}
-  _cinemachineTargetYaw: 0
-  _cinemachineTargetPitch: 0
+  playerType: 0
+  playerAnimator: {fileID: 0}
+  characterController: {fileID: 0}
+  cinemachineCameraTarget: {fileID: 1408289584342218216}
+  cinemachineTargetYaw: 0
+  cinemachineTargetPitch: 0
 --- !u!114 &6334408844475184082
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -68,17 +68,26 @@ namespace RiskOfRain2.Player
 		/// 플레이어가 자동으로 실행해주는 쿨타임 진행 함수
 		/// </summary>
 		/// <returns></returns>
-		public IEnumerator SkillCoolTimeRunning()
+		public IEnumerator SkillCoolTimeRunning(bool value)
 		{
-			IsSkillCoolTime = true;
-			if (SkillStack - 1 <= 0)
+			if (value)
 			{
-				SkillStack = 0;
+				IsSkillCoolTime = true;
+				if (SkillStack - 1 <= 0)
+				{
+					SkillStack = 0;
+				}
+				else
+				{
+					SkillStack -= 1;
+				}
 			}
-			else
+
+			if (SkillMaxStack < SkillStack)
 			{
-				SkillStack -= 1;
+				SkillStack = SkillMaxStack;
 			}
+
 			//Debug.Log($"Skill Cool Time Running Start");
 			yield return new WaitForSeconds(SkillCooltime);
 			IsSkillCoolTime = false;
@@ -101,6 +110,7 @@ namespace RiskOfRain2.Player
 		public virtual void AddSkillMaxStack(int value)
 		{
 			SkillMaxStack += value;
+			_player.StartCoroutine(SkillCoolTimeRunning(false));
 		}
 
 		public virtual void CoolTimeReduction(float value)
