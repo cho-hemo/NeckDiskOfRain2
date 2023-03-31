@@ -36,7 +36,14 @@ public class UIManager : GioleSingletone<UIManager>
 		}
 	}
 
-	public void MonsterHpBarControl(string monsterName_, int maxHp_, int currentHp_)
+
+	/// <summary>
+	/// 일반 몬스터의 Hp 바를 컨트롤 하는 함수
+	/// </summary>
+	/// <param name="monsterName_">몬스터의 이름</param>
+	/// <param name="maxHp_">최대 채력</param>
+	/// <param name="currentHp_">현재 체력</param>
+	public void MonsterHpBarControl(string monsterName_, int currentHp_, int maxHp_)
 	{
 		_hpBarCs.MonsterHpGaugeDown(monsterName_, maxHp_, currentHp_);
 	}
@@ -77,17 +84,24 @@ public class UIManager : GioleSingletone<UIManager>
 		_playerUiManagerCs.SetBossUi(name_, secondName_);
 		_playerUiManagerCs.ActiveBossUi();
 	}
+	/// <summary>
+	/// 보스의 체력바를 컨트롤하는 함수
+	/// </summary>
+	/// <param name="currentHp_">현재 체력</param>
+	/// <param name="maxHp_"></param>
+	public void BossHpControl(int currentHp_, int maxHp_)
+	{
+		_playerUiManagerCs.BossHpControl(currentHp_, maxHp_);
+	}
 
-	public void BossMissionComplete()
+
+
+	public void MissionComplete()
 	{
 		_playerUiManagerCs.CheckMissionUiComplate();
 	}
 
 
-	public void BossHpControl(int value_)
-	{
-		_playerUiManagerCs.BossHpControl(value_);
-	}
 
 
 	/// <summary>

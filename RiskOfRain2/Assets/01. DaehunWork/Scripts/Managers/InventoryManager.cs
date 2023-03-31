@@ -12,5 +12,19 @@ namespace RiskOfRain2.Manager
 		{
 			base.Awake();
 		}
+
+		public void ItemAdd(ItemBase item)
+		{
+			item.ItemGet();
+			ItemBase tempItem = items.Find(x => x.itemName == item.itemName);
+			if (tempItem == null)
+			{
+				items.Add(item);
+			}
+			else
+			{
+				tempItem.itemNumber += 1;
+			}
+		}
 	}
 }

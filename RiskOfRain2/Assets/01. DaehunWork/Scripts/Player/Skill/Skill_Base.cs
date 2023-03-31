@@ -47,13 +47,45 @@ namespace RiskOfRain2.Player
 		protected PlayerBase _player = default;
 
 		#region Property
+		/// <summary>
+		/// 스킬 이름
+		/// </summary>
+		/// <value></value>
 		public string SkillName { get { return _skillName; } protected set { _skillName = value; } }
+		/// <summary>
+		/// 스킬 정보
+		/// </summary>
+		/// <value></value>
 		public string SkillInfo { get { return _skillInfo; } protected set { _skillInfo = value; } }
+		/// <summary>
+		/// 스킬 최대 스택
+		/// </summary>
+		/// <value></value>
 		public int SkillMaxStack { get { return _skillMaxStack; } protected set { _skillMaxStack = value; } }
+		/// <summary>
+		/// 스킬 현재 스택
+		/// </summary>
+		/// <value></value>
 		public int SkillStack { get { return _skillStack; } protected set { _skillStack = value; } }
+		/// <summary>
+		/// 스킬 쿨타임
+		/// </summary>
+		/// <value></value>
 		public float SkillCooltime { get { return _skillCoolTime; } protected set { _skillCoolTime = value; } }
+		/// <summary>
+		/// 스킬 쿨타임이 진행중인지 확인
+		/// </summary>
+		/// <value></value>
 		public bool IsSkillCoolTime { get { return _isSkillCoolTime; } protected set { _isSkillCoolTime = value; } }
+		/// <summary>
+		/// 스킬 배율
+		/// </summary>
+		/// <value></value>
 		public float Multiplier { get { return _multiplier; } protected set { _multiplier = value; } }
+		/// <summary>
+		/// 발동 계수(아이템에 타격 시 효과가 붙어있는 경우 해당 발동 계수 값이 추가적으로 연산이 진행 됨)
+		/// </summary>
+		/// <value></value>
 		public float ActivationFactor { get { return _activationFactor; } protected set { _activationFactor = value; } }
 		#endregion
 
@@ -68,17 +100,26 @@ namespace RiskOfRain2.Player
 		/// 플레이어가 자동으로 실행해주는 쿨타임 진행 함수
 		/// </summary>
 		/// <returns></returns>
-		public IEnumerator SkillCoolTimeRunning()
+		public IEnumerator SkillCoolTimeRunning(bool value)
 		{
-			IsSkillCoolTime = true;
-			if (SkillStack - 1 <= 0)
+			if (value)
 			{
-				SkillStack = 0;
+				IsSkillCoolTime = true;
+				if (SkillStack - 1 <= 0)
+				{
+					SkillStack = 0;
+				}
+				else
+				{
+					SkillStack -= 1;
+				}
 			}
-			else
+
+			if (SkillMaxStack < SkillStack)
 			{
-				SkillStack -= 1;
+				SkillStack = SkillMaxStack;
 			}
+
 			//Debug.Log($"Skill Cool Time Running Start");
 			yield return new WaitForSeconds(SkillCooltime);
 			IsSkillCoolTime = false;
@@ -101,6 +142,7 @@ namespace RiskOfRain2.Player
 		public virtual void AddSkillMaxStack(int value)
 		{
 			SkillMaxStack += value;
+			_player.StartCoroutine(SkillCoolTimeRunning(false));
 		}
 
 		public virtual void CoolTimeReduction(float value)

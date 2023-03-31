@@ -70,6 +70,7 @@ namespace RiskOfRain2.Player.Commando
 				SkillAction(PlayerDefine.PLAYER_SUB_SKILL_INDEX, isPressed);
 				SetTrigger(PlayerDefine.PLAYER_SUB_SKILL);
 			}
+			IsShot = isPressed;
 		}
 
 		public override void UtilitySkill(bool isPressed)
@@ -109,6 +110,7 @@ namespace RiskOfRain2.Player.Commando
 				IsSprint = false;
 				SkillAction(PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX, isPressed);
 			}
+			IsShot = isPressed;
 		}
 
 		public void Roll()
@@ -117,6 +119,13 @@ namespace RiskOfRain2.Player.Commando
 			Vector3 targetDirection_ = (Quaternion.Euler(0, _mainCameraYRotation, 0) * rollDirection_).normalized;
 			Vector3 move = targetDirection_ * (CurrentSpeed * 2 * Time.deltaTime);
 			CharacterController.Move(move);
+		}
+
+		protected override void LevelUp()
+		{
+			MaxHp += 33f;
+			AttackDamage += 2.4f;
+			HealthRegen += 0.2f;
 		}
 	}
 

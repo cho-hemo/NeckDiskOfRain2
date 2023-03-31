@@ -7,7 +7,7 @@ public class Items : MonoBehaviour
 	// Start is called before the first frame update
 	protected virtual void Start()
 	{
-		gameObject.SetActive(false);
+		// gameObject.SetActive(false);
 	}
 
 	private void OnEnable()

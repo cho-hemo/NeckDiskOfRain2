@@ -27,6 +27,16 @@ namespace RiskOfRain2.Player
 		NONE, COMMANDO,
 	}
 
+	public enum PlayerStat
+	{
+		NONE, MAX_HP, CURRENT_HP, ATTACK_DAMAGE, ATTACK_SPEED, DEFENSE, WALK_SPEED, SPRINT_SPEED, JUMP_COUNT, JUMP_HEIGHT,
+	}
+
+	public enum PlayerSkillStat
+	{
+		NONE, STACK, COOLTIME, MULTIPLIER, ACTIVATIONFACTOR
+	}
+
 	public enum direction
 	{
 		NONE, LEFT, RIGHT, FORWARD, BACK
