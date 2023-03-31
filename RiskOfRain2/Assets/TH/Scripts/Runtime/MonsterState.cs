@@ -6,9 +6,6 @@ public abstract class MonsterState
     protected MonsterFSM _fsm;
     protected Animator _anim;
 
-    //
-    protected string _animTriggerName;
-
     public MonsterState(MonsterBase monster, MonsterFSM fsm)
     {
 		_monster = monster;
@@ -50,7 +47,6 @@ public class MonsterIdle : MonsterState
         base.Loop();
 
         if (_monster.TrySelectSkill())
-        //if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
         {
             _fsm.ChangeState(_monster.OnSkillState);
         }
@@ -87,7 +83,6 @@ public class MonsterMove : MonsterState
         base.Loop();
 
         if (_monster.TrySelectSkill())
-        //if (_fsm.GetSqrDistanceToPlayer() <= _fsm.SqrMaxAttackRange)
         {
             _fsm.ChangeState(_monster.OnSkillState);
         }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using RiskOfRain2.Manager;
 
 namespace VagrantSkill
 {
@@ -8,16 +9,19 @@ namespace VagrantSkill
         private Rigidbody _rigidbody;
         private float SPEED = 1000f;
 
-        private void Awake()
+        private void Start()
         {
-            //_player = FindRootObject("Player");
+            _player = GameManager.Instance.Player.gameObject;
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void OnEnable()
-        {
-            transform.LookAt(_player.transform);
-        }
+		private void OnEnable()
+		{
+			if (_player != null)
+			{
+				transform.LookAt(_player.transform);
+			}
+		}
 
         private void Update()
         {

@@ -1,3 +1,4 @@
+using RiskOfRain2.Manager;
 using UnityEngine;
 
 namespace BeetleQueenSkills
@@ -8,21 +9,24 @@ namespace BeetleQueenSkills
         private Rigidbody _rigidbody;
         private float SPEED = 1600f;
 
-        private void Awake()
+        private void Start()
         {
-            _player = GioleFunc.GetRootObj("Player");
+            _player = GameManager.Instance.Player.gameObject;
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void OnEnable()
-        {
-            Vector3 toPlayer = (_player.transform.position - transform.position).normalized;
-            _rigidbody.AddForce(toPlayer * SPEED);
+		private void OnEnable()
+		{
+			if (_player != null)
+			{
+				Vector3 toPlayer = (_player.transform.position - transform.position).normalized;
+				_rigidbody.AddForce(toPlayer * SPEED);
 
-            //lookAtYZ
-            Quaternion lookRot = Quaternion.LookRotation(toPlayer);
-            transform.rotation = Quaternion.Euler(0f, lookRot.eulerAngles.y, lookRot.eulerAngles.z);
-        }
+				//lookAtYZ
+				Quaternion lookRot = Quaternion.LookRotation(toPlayer);
+				transform.rotation = Quaternion.Euler(0f, lookRot.eulerAngles.y, lookRot.eulerAngles.z);
+			}
+		}
 
         private void OnTriggerEnter(Collider other)
         {
