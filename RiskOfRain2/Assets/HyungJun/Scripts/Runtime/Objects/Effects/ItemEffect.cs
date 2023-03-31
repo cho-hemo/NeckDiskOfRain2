@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemEffect : MonoBehaviour
 {
+	public GameObject ItemPrefab = default;
+
 	private void Awake()
 	{
 		gameObject.SetActive(false);
