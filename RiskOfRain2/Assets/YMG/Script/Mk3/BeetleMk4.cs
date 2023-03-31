@@ -18,9 +18,9 @@ public class BeetleMk4 : MonoBehaviour
 	public float MonsterSpeed = default; // 속도
 
 	public bool headAttack = false;
-	public bool isDelay = false;
-	public float delayTime = 2f;
-	float timer = 0f;
+	//public bool isDelay = false;
+	//public float delayTime = 2f;
+	//float timer = 0f;
 
 	WaitForSeconds Delay300 = new WaitForSeconds(3f);
 
@@ -36,15 +36,26 @@ public class BeetleMk4 : MonoBehaviour
 	//상태 처리
 	State state;
 
-	void Start()
+	private void Awake()
 	{
 		anim = GetComponent<Animator>();
 		pathFinder = GetComponent<NavMeshAgent>();
+		
+	}
+
+	private void OnEnable()
+	{
 		StartCoroutine(AnimeWaiting());
 		state = State.Idle;
-		Target = GameObject.FindGameObjectWithTag("Player").transform;
 		anim.SetBool("isDead", false);
+		
 	}
+
+	void Start()
+	{
+		Target = GameObject.FindGameObjectWithTag("Player").transform;
+	}
+
 
 	void Update()
 	{
@@ -65,29 +76,29 @@ public class BeetleMk4 : MonoBehaviour
 			}
 		}
 
-		if (shot) 
-		{
-			if (!isDelay)
-			{
-				isDelay = true;
-				//Debug.Log("Look");
-			}
-			else
-			{
-				//Debug.Log("noLook");
-			}
+		//if (shot) 
+		//{
+		//	if (!isDelay)
+		//	{
+		//		isDelay = true;
+		//		//Debug.Log("Look");
+		//	}
+		//	else
+		//	{
+		//		//Debug.Log("noLook");
+		//	}
 
-			if (isDelay)
-			{
-				timer += Time.deltaTime;
+		//	if (isDelay)
+		//	{
+		//		timer += Time.deltaTime;
 
-				if (timer >= delayTime)
-				{
-					timer = 0f;
-					isDelay = false;
-				}
-			}
-		}
+		//		if (timer >= delayTime)
+		//		{
+		//			timer = 0f;
+		//			isDelay = false;
+		//		}
+		//	}
+		//}
 		
 	}
 
@@ -237,6 +248,5 @@ public class BeetleMk4 : MonoBehaviour
 		yield return Delay300;
 
 		pathFinder.isStopped = false;
-
 	}
 }

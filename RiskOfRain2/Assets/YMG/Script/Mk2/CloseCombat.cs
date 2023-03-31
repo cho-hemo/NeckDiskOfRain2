@@ -11,7 +11,6 @@ public class CloseCombat : MonoBehaviour
 	private void Start()
 	{
 		closeCombat.enabled = false;
-
 	}
 
 	private void HeadAttackOn()
