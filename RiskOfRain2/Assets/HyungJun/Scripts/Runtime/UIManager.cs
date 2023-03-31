@@ -77,17 +77,24 @@ public class UIManager : GioleSingletone<UIManager>
 		_playerUiManagerCs.SetBossUi(name_, secondName_);
 		_playerUiManagerCs.ActiveBossUi();
 	}
+	/// <summary>
+	/// 보스의 체력바를 컨트롤하는 함수
+	/// </summary>
+	/// <param name="currentHp_">현재 체력</param>
+	/// <param name="maxHp_"></param>
+	public void BossHpControl(int currentHp_, int maxHp_)
+	{
+		_playerUiManagerCs.BossHpControl(currentHp_, maxHp_);
+	}
 
-	public void BossMissionComplete()
+
+
+	public void MissionComplete()
 	{
 		_playerUiManagerCs.CheckMissionUiComplate();
 	}
 
 
-	public void BossHpControl(int value_)
-	{
-		_playerUiManagerCs.BossHpControl(value_);
-	}
 
 
 	/// <summary>

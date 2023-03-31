@@ -183,8 +183,8 @@ public partial class PlayerUiManager : MonoBehaviour
 		_playerCurrentHp = _playerMaxHp;
 
 		// 보스 최대 체력 설정
-		_bossMaxHp = 1100;
-		_bossCurrentHp = _bossMaxHp;
+		// _bossMaxHp = 여기서 보스의 체력을 동기화
+		// _bossCurrentHp = _bossMaxHp;
 
 		// Setting Instance
 		_popMenuObj.SetActive(false);
@@ -374,10 +374,10 @@ public partial class PlayerUiManager : MonoBehaviour
 		}
 
 		// { 2023-03-21 / HyungJun / DebugMode
-		if (Input.GetKeyDown(KeyCode.H))
-		{
-			BossHpControl(-10);
-		}
+		// if (Input.GetKeyDown(KeyCode.H))
+		// {
+		// BossHpControl(-10);
+		// }
 		// } 2023-03-21 / HyungJun / DebugMode
 
 
@@ -556,11 +556,14 @@ public partial class PlayerUiManager : MonoBehaviour
 		}
 	}
 
+
+
+	#region 보스 UI 관련 로직
+	/// <summary>보스 UI를 켜주는 함수</summary>
 	public void ActiveBossUi()
 	{
 		_bossUiObj.SetActive(true);
 	}
-
 	/// <summary>
 	/// 보스의 UI를 설정하고 보여주는 함수
 	/// </summary>
@@ -568,12 +571,30 @@ public partial class PlayerUiManager : MonoBehaviour
 	/// <param name="secondName_">보스의 두번쨰 이름</param>
 	public void SetBossUi(string name_, string secondName_)
 	{
-		BossHpControl(0);
+		// BossHpControl(0);
 		_bossUiObj.FindChildObj("BossNameTxt").SetTmpText(name_);
 
 		_bossUiObj.FindChildObj("BossSecondNameTxt").SetTmpText("<sprite name=\"CloudLeft\">" + secondName_ + "<sprite name=\"CloudRight\">");
 	}       // SetBossUi
 
+	/// <summary>
+	/// 보스의 체력바를 컨트롤 하는 함수
+	/// </summary>
+	/// <param name="hpValue_"></param>
+	public void BossHpControl(int bossCurrentHp_, int bossMaxHp_)
+	{
+		// 현재 체력바 반영
+		_bossHpbarTxtObj.SetTmpText($"{bossCurrentHp_}/{bossMaxHp_}");
+		_bossHpBarValue = (float)bossCurrentHp_ / (float)bossMaxHp_;
+
+		// Hp바의 fill 갑을 조절하는 함수
+		_bossHpbarObj.FilledImageControll(_bossHpBarValue);
+		if (bossCurrentHp_ <= 0)
+		{
+			_bossUiObj.SetActive(false);
+		}       // if: 보스의 체력이 0 이하면 Ui를 꺼준다.
+	}       // BossHpControl()
+	#endregion 보스 UI 관련 로직
 
 	/// <summary>
 	/// 미션 UI를 체크해주는 함수
@@ -585,20 +606,6 @@ public partial class PlayerUiManager : MonoBehaviour
 		_missionUiObj.FindChildObj("MissionTxt").SetFontStyle(TMPro.FontStyles.Strikethrough);
 		_missionUiObj.FindChildObj("MissionTxt").SetFontColor(0.5f, 0.5f, 0.5f);
 	}
-
-
-	public void BossHpControl(int hpValue_)
-	{
-		_bossCurrentHp += hpValue_;
-		// 현재 체력바 반영
-		_bossHpbarTxtObj.SetTmpText($"{_bossCurrentHp}/{_bossMaxHp}");
-		_bossHpBarValue = (float)_bossCurrentHp / (float)_bossMaxHp;
-		_bossHpbarObj.FilledImageControll(_bossHpBarValue);
-		if (_bossCurrentHp <= 0)
-		{
-			_bossUiObj.SetActive(false);
-		}
-	}       // BossHpControl()
 
 	// 아이템 리스트에 아이템을 추가하고 스코어보드의 아이템에 아이템 이미지를 추가하는 함수
 	public void AddItemList(GameObject obj_)
