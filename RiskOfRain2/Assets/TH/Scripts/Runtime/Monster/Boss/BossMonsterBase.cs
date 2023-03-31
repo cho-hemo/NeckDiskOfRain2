@@ -20,7 +20,7 @@ public class BossMonsterBase : MonsterBase
 	public override void Initialize()
 	{
 		base.Initialize();
-		SecondName = _data.Name;
+		SecondName = _data.SecondName;
 		_skills = _data.Skills;
 		_coolDownTimes.Clear();
 		_availableSkills = new int[_data.Skills.Count];
@@ -31,6 +31,7 @@ public class BossMonsterBase : MonsterBase
 			_coolDownTimes.Add(_skills[i].CoolDownTime);
 		}
 		UIManager.Instance.ActiveBoss(Name, SecondName);
+		UIManager.Instance.BossHpControl(Hp, MaxHp);
 	}
 
 	/// <summary>
