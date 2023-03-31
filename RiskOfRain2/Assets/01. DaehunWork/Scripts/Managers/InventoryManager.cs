@@ -13,8 +13,9 @@ namespace RiskOfRain2.Manager
 			base.Awake();
 		}
 
-		public void ItemGet(ItemBase item)
+		public void ItemAdd(ItemBase item)
 		{
+			item.ItemGet();
 			ItemBase tempItem = items.Find(x => x.itemName == item.itemName);
 			if (tempItem == null)
 			{

@@ -17,6 +17,8 @@ namespace RiskOfRain2.Manager
 		private PlayerController _playerController = default;
 		private List<Skill> _skills = default;
 
+		public int coin = default;
+
 		#region Property
 		public Transform PlayerTransform { get { return _playerTransform; } private set { _playerTransform = value; } }
 		public PlayerBase Player { get { return _player; } private set { _player = value; } }
@@ -64,7 +66,7 @@ namespace RiskOfRain2.Manager
 		/// </summary>
 		private void PlayerCreate()
 		{
-			Instantiate(playerPrefab, new Vector3(-60f, -160f, -120f), Quaternion.identity).name = playerPrefab.name;
+			Instantiate(playerPrefab, new Vector3(-60f, -150f, -120f), Quaternion.identity).name = playerPrefab.name;
 			PlayerInit();
 		}
 
@@ -83,9 +85,15 @@ namespace RiskOfRain2.Manager
 		/// <summary>
 		/// 총알 타격시 호출되는 함수
 		/// </summary>
-		public void BulletHit(GameObject obj)
+		public void BulletOnCollision(GameObject obj, int skillIndex)
 		{
+			float damage = _player.AttackDamage * _player.Skills[skillIndex].Multiplier;
+			obj.GetComponent<MonsterBase>().OnDamaged((int)damage);
+		}
 
+		public void AddCoin(int value)
+		{
+			coin += value;
 		}
 	}
 }

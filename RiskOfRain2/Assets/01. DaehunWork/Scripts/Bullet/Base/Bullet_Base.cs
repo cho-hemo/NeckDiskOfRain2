@@ -12,6 +12,10 @@ namespace RiskOfRain2.Bullet
 		protected RaycastHit rayHit = default;
 
 		[SerializeField]
+		[Tooltip("사용 스킬의 Index")]
+		protected int skillIndex = default;
+
+		[SerializeField]
 		[Tooltip("총알 충돌 처리를 위한 RayCast 거리")]
 		protected float rayDistance = 0.5f;
 
@@ -84,10 +88,11 @@ namespace RiskOfRain2.Bullet
 		public virtual void OnCollision()
 		{
 			ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
-			if (rayHit.collider.tag == "")
-			{
+		}
 
-			}
+		public virtual void OnHit()
+		{
+
 		}
 	}
 }
