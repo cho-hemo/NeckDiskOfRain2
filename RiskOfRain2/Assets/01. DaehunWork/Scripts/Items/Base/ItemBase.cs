@@ -7,22 +7,27 @@ namespace RiskOfRain2.Item
 {
 	public abstract class ItemBase : MonoBehaviour
 	{
-		[SerializeField]
 		[Tooltip("아이템 이름")]
 		public string itemName;
-		[SerializeField]
+
 		[Tooltip("아이템 정보")]
 		public string itemInfo;
-		[SerializeField]
+
 		[Tooltip("아이템 타입")]
 		public ItemType itemType;
-		[SerializeField]
+
 		[Tooltip("아이템 갯수")]
 		public int itemNumber;
-		[SerializeField]
+
 		[Tooltip("타겟 스탯")]
 		public PlayerStat targetStat;
-		[SerializeField]
+
+		[Tooltip("타겟 스킬 인덱스")]
+		public int targetSkillIndex;
+
+		[Tooltip("타겟 스킬 스탯")]
+		public PlayerSkillStat targetSkillStat;
+
 		[Tooltip("아이템에 수치(발동확률, 스탯 증가 폭)")]
 		public float value;
 
@@ -40,8 +45,12 @@ namespace RiskOfRain2.Item
 		/// 아이템 삭제 시 수행 할 함수
 		/// </summary>
 		public abstract void ItemRemove();
-	}
 
+		private void Start()
+		{
+			ItemInit();
+		}
+	}
 
 	/// <summary>
 	/// 아이템의 발동 조건

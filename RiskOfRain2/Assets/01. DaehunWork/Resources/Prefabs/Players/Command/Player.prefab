@@ -3130,7 +3130,6 @@ GameObject:
   - component: {fileID: 6736581160172539070}
   - component: {fileID: 60473859259878514}
   - component: {fileID: 6334408844475184082}
-  - component: {fileID: 60473859259878513}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -3226,12 +3225,26 @@ MonoBehaviour:
   jumpTimeout: 0.1
   fallTimeoutDelta: 0
   jumpTimeoutDelta: 0
-  playerName: 
-  playerInfo: 
-  maxHp: 0
-  currentHp: 0
+  playerName: "\uCF54\uB9CC\uB3C4"
+  playerInfo: "\uCF54\uB9CC\uB3C4\uB294 \uC5B4\uB5A4 \uC0C1\uD669\uC5D0\uC11C\uB098
+    \uBBFF\uC744 \uC218 \uC788\uB294 \uB9CC\uB2A5 \uCE90\uB9AD\uD130\uC785\uB2C8\uB2E4.
+    2\uC5F0\uC0AC\uB294 \uB2E8\uAC70\uB9AC\uC5D0\uC11C\uB098 \uC7A5\uAC70\uB9AC\uC5D0\uC11C\uB098
+    \uAC15\uB825\uD558\uBA70, \uC0AC\uACA9 \uC18D\uB3C4\uAC00 \uBE60\uB974\uACE0
+    \uB2E4\uC591\uD55C \uC544\uC774\uD15C \uD6A8\uACFC\uB97C \uBC1C\uB3D9\uD560 \uC218
+    \uC788\uC2B5\uB2C8\uB2E4. \uC804\uC220 \uAD6C\uB974\uAE30\uB97C \uD6A8\uC728\uC801\uC73C\uB85C
+    \uC0AC\uC6A9\uD558\uBA74 \uC608\uACE0\uB41C \uACF5\uACA9\uC744 \uD53C\uD560 \uC218
+    \uC788\uC2B5\uB2C8\uB2E4. \uC81C\uC555 \uC0AC\uACA9\uC740 \uD558\uB098\uC758
+    \uC801\uC5D0\uAC8C \uBC18\uBCF5\uD558\uC5EC \uB9C8\uBE44\uB97C \uAC78\uAC70\uB098
+    \uC5EC\uB7EC \uC801\uC744 \uB9C8\uBE44\uC2DC\uD0A4\uB294 \uB370 \uC0AC\uC6A9\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC704\uC0C1\uC870\uC815\uD0C4\uC740 \uBCBD\uC744
+    \uD1B5\uACFC\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC798 \uC774\uC6A9\uD558\uC138\uC694!"
+  level: 1
+  currentExp: 0
+  maxExp: 10
+  maxHp: 110
+  currentHp: 110
   defense: 0
-  attackDamage: 0
+  attackDamage: 12
   attackSpeed: 1
   skills: []
   healthRegen: 0
@@ -3273,19 +3286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2dca41def765d4f8da962a9c176683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &60473859259878513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736581160172539060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41a46eb69f6d49543aa5ea37cc176ab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!1 &6997052157521682256
 GameObject:
   m_ObjectHideFlags: 0

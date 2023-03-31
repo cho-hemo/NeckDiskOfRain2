@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 using RiskOfRain2.Manager;
-using Cinemachine;
+using RiskOfRain2.Item;
 
 namespace RiskOfRain2.Player
 {
@@ -98,7 +99,7 @@ namespace RiskOfRain2.Player
 
 		[SerializeField]
 		[Tooltip("레벨")]
-		protected int level;
+		protected int level = 1;
 
 		[SerializeField]
 		[Tooltip("현재 경험치")]
@@ -106,7 +107,7 @@ namespace RiskOfRain2.Player
 
 		[SerializeField]
 		[Tooltip("최대 경험치")]
-		protected int maxExp;
+		protected int maxExp = 10;
 
 		[SerializeField]
 		[Tooltip("최대 체력")]
@@ -383,6 +384,7 @@ namespace RiskOfRain2.Player
 					CurrentHp -= damage_;
 				}
 			}
+			NotifyObservers();
 		}
 
 		/// <summary>
@@ -425,6 +427,35 @@ namespace RiskOfRain2.Player
 			}
 		}
 
+		/// <summary>
+		/// Exp 증가 함수
+		/// </summary>
+		private void IncreaseExp()
+		{
+			if (MaxExp <= CurrentExp + 1)
+			{
+				Level += 1;
+				CurrentExp = 0;
+				MaxExp = Level * 10;
+				LevelUp();
+			}
+			else
+			{
+				CurrentExp += 1;
+			}
+			NotifyObservers();
+		}
+
+		/// <summary>
+		/// 레벨 업 함수
+		/// </summary>
+		protected abstract void LevelUp();
+
+		/// <summary>
+		/// 스킬 동작 함수
+		/// </summary>
+		/// <param name="index"></param>
+		/// <param name="isPressed"></param>
 		protected void SkillAction(int index, bool isPressed)
 		{
 			Skill skill_ = Skills[index];
@@ -432,11 +463,20 @@ namespace RiskOfRain2.Player
 			StartCoroutine(skill_.SkillCoolTimeRunning(true));
 		}
 
+		/// <summary>
+		/// 스킬 사용 가능 체크 함수
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
 		protected bool SkillAvailableCheck(int index)
 		{
 			return Skills[index].SkillAvailableCheck() & IsSkillAvailable;
 		}
 
+		/// <summary>
+		/// 일정 이상의 피해를 무시하는 즉사 보호 시스템
+		/// </summary>
+		/// <returns></returns>
 		protected IEnumerator OneShotProtection()
 		{
 			Osp = true;
@@ -498,6 +538,7 @@ namespace RiskOfRain2.Player
 		}
 		#endregion
 
+		#region Player Controll
 		public void Move(Vector2 value)
 		{
 			if (value == Vector2.zero)
@@ -719,7 +760,7 @@ namespace RiskOfRain2.Player
 				VerticalVelocity += Gravity * Time.deltaTime;
 			}
 		}
-
+		#endregion
 		#region IPlayerSkill
 		public abstract void PassiveSkill();
 		public abstract void MainSkill(bool isPressed_);
@@ -753,17 +794,23 @@ namespace RiskOfRain2.Player
 		{
 			foreach (var observer in Observers)
 			{
-				observer.UpdateDate(gameObject);
+				observer.UpdateDate();
 			}
 		}
 		#endregion
 
-		private void OnTriggerEnter(Collider other)
+		public void OnTriggerEnter(Collider other)
 		{
 			if (other.tag == "EXP")
 			{
-				CurrentExp += 1;
+				IncreaseExp();
+			}
+			else if (other.tag == "item")
+			{
+				ItemBase item = other.GetComponent<ItemBase>();
+				InventoryManager.Instance.ItemAdd(item);
 			}
 		}
+
 	}
 }

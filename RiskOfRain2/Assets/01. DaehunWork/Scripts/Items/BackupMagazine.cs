@@ -3,16 +3,15 @@ using RiskOfRain2.Player;
 
 namespace RiskOfRain2.Item
 {
-	public class SoldiersSyringe : ItemBase
+	public class BackupMagazine : ItemBase
 	{
 		public override void ItemInit()
 		{
-			itemName = "군인의 주사기";
-			itemInfo = "공격 속도가 15%(중첩당 +15%) 증가합니다.";
+			itemName = "보조 탄창";
+			itemInfo = "보조 스킬에 +1 충전을 추가합니다.";
 			itemType = ItemType.STATUS;
 			itemNumber = 0;
-			value = 0.15f;
-			targetStat = PlayerStat.ATTACK_SPEED;
+			value = 1f;
 		}
 
 		public override void ItemAction()
@@ -22,7 +21,7 @@ namespace RiskOfRain2.Item
 
 		public override void ItemGet()
 		{
-			GameManager.Instance.Player.IncreaseStat(targetStat, value * itemNumber);
+			GameManager.Instance.Player.Skills[1].AddSkillMaxStack((int)value);
 		}
 
 		public override void ItemRemove()
