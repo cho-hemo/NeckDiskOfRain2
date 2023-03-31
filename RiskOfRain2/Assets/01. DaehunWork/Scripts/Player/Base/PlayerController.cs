@@ -21,7 +21,7 @@ namespace RiskOfRain2.Player
 		public void LookInput(Vector2 value)
 		{
 			_player.Look(value);
-			Debug.Log($"InputLook Debug : {value}");
+			// Debug.Log($"InputLook Debug : {value}");
 		}
 
 		public void JumpInput(bool isPressed)
