@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
-  - Wall
-  - Weapon
-  - Melee
-  - Checkpoint
+  - CinemachineTarget
+  - Bullet
+  - Exp
   layers:
   - Default
   - TransparentFX
@@ -16,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - PostProcess
   - 
   - 
   - 

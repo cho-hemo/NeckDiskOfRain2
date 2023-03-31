@@ -3,7 +3,12 @@ guid: b5b6a27458231f3488bb1863db6c9133
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BeetleQueenWardMesh_0Mat
+    second: {fileID: 2100000, guid: 0e7a9f1628e54fb49bc2f64eb32b7f47, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

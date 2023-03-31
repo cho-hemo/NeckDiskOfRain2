@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RiskOfRain2.Manager;
 
 public class mdlBarrel1 : InteractionObjects
 {
@@ -21,7 +22,7 @@ public class mdlBarrel1 : InteractionObjects
 				_isActive = false;
 				UIManager.Instance.PopupUIActive("", false);
 				StartCoroutine(PlayerHaveMoney(10, 5));
-				ExpEffectSpawn(5);
+				GameManager.Instance.ExpEffectSpawn(5, transform);
 			}
 		}
 	}
@@ -35,15 +36,15 @@ public class mdlBarrel1 : InteractionObjects
 		}
 	}
 
-	private void ExpEffectSpawn(int cycle)
-	{
-		for (int i = 0; i < cycle; i++)
-		{
-			GameObject expEffect = ObjectPoolManager.Instance.ObjectPoolPop("ExpEffect");
-			expEffect.transform.position = transform.position;
-			expEffect.SetActive(true);
-		}
-	}
+	// private void ExpEffectSpawn(int cycle, Transform tf_)
+	// {
+	// 	for (int i = 0; i < cycle; i++)
+	// 	{
+	// 		GameObject expEffect = ObjectPoolManager.Instance.ObjectPoolPop("ExpEffect");
+	// 		expEffect.transform.position = tf_.position;
+	// 		expEffect.SetActive(true);
+	// 	}
+	// }
 
 
 

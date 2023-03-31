@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RiskOfRain2.Manager;
 
 public class PopMenu : MonoBehaviour
 {

@@ -45,6 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingObjectList:
-  - objectName: Bullet
+  - objectName: NormalBullet
     obj: {fileID: 1270646887611103440, guid: 2c1544520bf85f148a5a56930e091529, type: 3}
-    count: 10000
+    count: 1000
+  - objectName: Phase_Round_Bullet
+    obj: {fileID: 1270646887611103440, guid: 6121e396947897f418a44a2f8ed4b8c8, type: 3}
+    count: 100
+  - objectName: Phase_Round_Hit
+    obj: {fileID: 3492691017000508022, guid: 2487b6872f1800e4582019293a0b2c04, type: 3}
+    count: 100
+  - objectName: NormalBullet_Hit
+    obj: {fileID: 9195378185894143248, guid: afa8ef8c069267a4c9ad04dbaa91a1f2, type: 3}
+    count: 100
+  - objectName: ExpEffect
+    obj: {fileID: 4861130222573197198, guid: 87d1f844bf468e34899039613d8fc207, type: 3}
+    count: 100

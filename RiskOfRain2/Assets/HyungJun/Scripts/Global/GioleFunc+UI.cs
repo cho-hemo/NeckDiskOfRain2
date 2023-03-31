@@ -66,15 +66,45 @@ public static partial class GioleFunc
 	/// 이미지의 색상을 설정하는 함수
 	/// </summary>
 	/// <param name="imageObj_">해당 이미지 게임오브젝트</param>
-	/// <param name="r">0 ~ 1의 값</param>
-	/// <param name="g">0 ~ 1의 값</param>
-	/// <param name="b">0 ~ 1의 값</param>
+	/// <param name="r">0 ~ 1의 레드값</param>
+	/// <param name="g">0 ~ 1의 그린값</param>
+	/// <param name="b">0 ~ 1의 블루값</param>
 	public static void SetImageColor(this GameObject imageObj_, float r, float g, float b)
 	{
 		Image targetImage = imageObj_.GetComponentMust<Image>();
 		targetImage.color = new Color(r, g, b);
 	}       // ImageColorControll()
 
+
+	/// <summary>
+	/// 이미지의 색상을 설정하는 함수
+	/// </summary>
+	/// <param name="imageObj_">해당 이미지 게임오브젝트</param>
+	/// <param name="r">0 ~ 1의 레드값</param>
+	/// <param name="g">0 ~ 1의 그린값</param>
+	/// <param name="b">0 ~ 1의 블루값</param>
+	/// <param name="a">0 ~ 1의 알파값</param>
+	public static void SetImageColor(this GameObject imageObj_, float r, float g, float b, float a)
+	{
+		Image targetImage = imageObj_.GetComponentMust<Image>();
+		targetImage.color = new Color(r, g, b, a);
+	}       // ImageColorControll()
+
+
+	/// <summary>
+	/// 스프라이트를 넣으면 이미지 오브젝트가 붙어있는 게임 오브젝트로 반환하는 함수
+	/// </summary>
+	/// <param name="sprite_"></param>
+	/// <returns></returns>
+	public static GameObject SpriteToImage(Sprite sprite_)
+	{
+		GameObject resultObj_ = new GameObject();
+		resultObj_.AddComponent<Image>();
+		Image image_ = resultObj_.GetComponent<Image>();
+		image_.sprite = sprite_;
+
+		return resultObj_;
+	}
 
 
 }

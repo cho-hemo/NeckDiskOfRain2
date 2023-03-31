@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924905823553eec438be1d302dc8bcd9, type: 3}
+  m_Name: Vagrant
+  m_EditorClassIdentifier: 
+  _name: "\uB5A0\uB3C4\uB294 \uC720\uB791\uC790"
+  _secondName: "\uCE5C\uC808\uD55C \uBCF4\uD638\uC790"
+  _type: 1
+  _health: 1000
+  _power: 4
+  _speed: 1
+  _minSqrDetectRange: 10000
+  _maxSqrDetectRange: 10000
+  skills:
+  - {fileID: 11400000, guid: f8d18c2d78ed5d4428d50490e7f325d8, type: 2}
+  - {fileID: 11400000, guid: 9f6054bb12ba4784fac0d7e0c613a71c, type: 2}
+  - {fileID: 11400000, guid: 326bcfdd95b4b69428d2c1e5f35d63a1, type: 2}

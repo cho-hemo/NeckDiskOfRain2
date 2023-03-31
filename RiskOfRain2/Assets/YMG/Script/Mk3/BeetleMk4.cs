@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class BeetleMk4 : MonoBehaviour
 {
 	Transform Target;
 	NavMeshAgent pathFinder;
 	Animator anim;
-	public AnimationClip SpawnAnime; 
+	public AnimationClip SpawnAnime;
 	public AnimationClip AttackAnime;
 
 	public float LookRange = 20f; // 시야 영역
@@ -124,12 +123,12 @@ public class BeetleMk4 : MonoBehaviour
 		pathFinder.speed = 0;
 		//Debug.Log("Attack");
 		float distance = Vector3.Distance(transform.position, Target.transform.position);
-		
+
 		if (distance > AttackRange && headAttack == false)
 		{
 			state = State.Move;
 			anim.SetTrigger("isMoveTrg");
-		}		// if: Attack range를 벗어 났을 때
+		}       // if: Attack range를 벗어 났을 때
 
 		// Attack motion 재생 중일 때는 FaceTarget() 을 무시하고 싶음.
 		FaceTarget();
@@ -154,7 +153,7 @@ public class BeetleMk4 : MonoBehaviour
 		pathFinder.SetDestination(Target.position);
 	}
 
-	void UpdateReady() 
+	void UpdateReady()
 	{
 		//isLook = true;
 		//StartCoroutine(LookAt());
@@ -175,7 +174,7 @@ public class BeetleMk4 : MonoBehaviour
 			//anim.SetTrigger("isAttackTrg");
 		}
 
-		
+
 	}
 
 	void UpdateIdle()
