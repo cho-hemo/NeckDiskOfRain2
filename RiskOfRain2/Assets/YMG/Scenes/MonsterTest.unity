@@ -2083,7 +2083,7 @@ BoxCollider:
   m_GameObject: {fileID: 1533383303}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0.99, z: 0}
@@ -2162,6 +2162,7 @@ GameObject:
   - component: {fileID: 1719291128}
   - component: {fileID: 1719291127}
   - component: {fileID: 1719291126}
+  - component: {fileID: 1719291131}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -2181,6 +2182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75971d1fc845acc4991e616ebb1b60bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   closeCombat: {fileID: 1602256214}
   beetle: {fileID: 0}
 --- !u!95 &1719291127
@@ -2192,8 +2194,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719291125}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b568350197fcca64c8313f7219dd6a93, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
+  m_Controller: {fileID: 9100000, guid: e562d6c730fb4194c9a2e99866d9d886, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2257,6 +2259,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1719291131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719291125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6211bf6a9ce2e4349be2102d7e9df2d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 0}
+  <Type>k__BackingField: 0
+  <Name>k__BackingField: 
+  <MaxHp>k__BackingField: 0
+  <Hp>k__BackingField: 0
+  <Power>k__BackingField: 0
+  <Speed>k__BackingField: 5
+  <MaxSqrDetectRange>k__BackingField: 0
+  <MinSqrDetectRange>k__BackingField: 0
+  LookRange: 0
+  BeAttackedEnd: 0
+  SpawnAnime: {fileID: -6334359206281630133, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
+  AttackAnime: {fileID: -3540618317404458185, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
+  CheckRange: 10
+  AttackRange: 4
+  headAttack: 0
+  Charging: 0
+  spawnPoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!1001 &1732548364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2435,16 +2468,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b4deab826b28c4db0eb139939b473c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestData: {fileID: 11400000, guid: 4f2a7377f16f05b45ab0b30938b8f0be, type: 2}
+  _data: {fileID: 0}
   <Type>k__BackingField: 0
+  <Name>k__BackingField: 
   <MaxHp>k__BackingField: 0
   <Hp>k__BackingField: 0
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 0
-  spit: {fileID: 0}
-  spitStartPos: {fileID: 0}
-  spitCount: 6
-  degree: 150
+  <MaxSqrDetectRange>k__BackingField: 0
+  <MinSqrDetectRange>k__BackingField: 0
 --- !u!1 &1912454296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
@@ -2472,13 +2504,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 668249204, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 668249213, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: _data
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 668249213, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: <Speed>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559526518, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559526520, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3806698491185135600, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
       propertyPath: m_RootOrder
@@ -2524,17 +2564,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3806698491185135601, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
       propertyPath: m_Name
       value: BeetleMK2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
@@ -2954,13 +2986,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ec12dbed0c8ac44a4ca5bce2abf457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 0}
+  <Type>k__BackingField: 0
+  <Name>k__BackingField: 
+  <MaxHp>k__BackingField: 0
+  <Hp>k__BackingField: 0
+  <Power>k__BackingField: 0
+  <Speed>k__BackingField: 0
+  <MaxSqrDetectRange>k__BackingField: 0
+  <MinSqrDetectRange>k__BackingField: 0
+  LookRange: 20
+  BeAttackedEnd: 0
   SpawnAnime: {fileID: 8066408097816550420, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
   AttackAnime: {fileID: 66523498526954736, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
-  LookRange: 20
-  AttackRange: 4
-  MonsterSpeed: 5
   headAttack: 0
-  shot: 0
 --- !u!114 &2143477781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2973,12 +3012,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459426cdffed1d0418e7d39d709c6370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 0}
+  <Type>k__BackingField: 0
+  <Name>k__BackingField: 
+  <MaxHp>k__BackingField: 0
+  <Hp>k__BackingField: 0
+  <Power>k__BackingField: 0
+  <Speed>k__BackingField: 5
+  <MaxSqrDetectRange>k__BackingField: 0
+  <MinSqrDetectRange>k__BackingField: 0
+  LookRange: 20
+  BeAttackedEnd: 0
   SpawnAnime: {fileID: 8066408097816550420, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
   AttackAnime: {fileID: -3528188488481617793, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
-  LookRange: 20
   CheckRange: 10
   AttackRange: 4
-  MonsterSpeed: 5
   headAttack: 0
   Charging: 0
   spawnPoint: {fileID: 906495975}
@@ -6036,6 +6084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75971d1fc845acc4991e616ebb1b60bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   closeCombat: {fileID: 5587871499972723315}
   beetle: {fileID: 0}
 --- !u!114 &8743747052875923972

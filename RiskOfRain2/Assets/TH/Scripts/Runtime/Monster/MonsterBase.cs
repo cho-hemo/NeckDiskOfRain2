@@ -14,9 +14,9 @@ public class MonsterBase : MonoBehaviour
     [field: SerializeField] public MonsterType Type { get; private set; }
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int MaxHp { get; private set; }
-    [field: SerializeField] public int Hp { get; private set; }
-    [field: SerializeField] public int Power { get; private set; }
-    [field: SerializeField] public int Speed { get; private set; }
+    [field: SerializeField] public int Hp { get; protected set; }
+    [field: SerializeField] public int Power { get; protected set; }
+    [field: SerializeField] public float Speed { get; protected set; }
     [field: SerializeField] public int MaxSqrDetectRange { get; private set; }
     [field: SerializeField] public int MinSqrDetectRange { get; private set; }
 

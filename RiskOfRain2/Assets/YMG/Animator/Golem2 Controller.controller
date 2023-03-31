@@ -23,7 +23,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6243987962168344095, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
+  m_Motion: {fileID: 3268654408438866481, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -96,7 +96,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7302752764469186236, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
+  m_Motion: {fileID: 2030298368462350399, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -124,7 +124,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 66523498526954736, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
+  m_Motion: {fileID: -3540618317404458185, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -243,7 +243,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8066408097816550420, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
+  m_Motion: {fileID: -6334359206281630133, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -271,7 +271,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2531965445123197182, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
+  m_Motion: {fileID: -765275983181679080, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -305,7 +305,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lemurian Controller
+  m_Name: Golem2 Controller
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: SpawnEnd
@@ -565,7 +565,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7203364711169444175, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
+  m_Motion: {fileID: 4457310441469560916, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -594,7 +594,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3528188488481617793, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
+  m_Motion: {fileID: 2362239765841482990, guid: 783996fc4ee4efe44a5cd6c565f6d7cd, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

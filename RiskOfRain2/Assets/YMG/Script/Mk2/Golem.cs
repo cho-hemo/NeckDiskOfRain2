@@ -1,8 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Lemurian : NormalMonsterBase
+public class Golem : NormalMonsterBase
 {
 	public AnimationClip SpawnAnime;
 	public AnimationClip AttackAnime;
@@ -89,7 +90,6 @@ public class Lemurian : NormalMonsterBase
 	private void UpdateAttack()
 	{
 		Charging = true;
-
 		_pathFinder.speed = 0;
 
 		float distance = Vector3.Distance(transform.position, _player.transform.position);
@@ -104,7 +104,7 @@ public class Lemurian : NormalMonsterBase
 		FaceTarget();
 	}
 
-	private void UpdateCheck() 
+	private void UpdateCheck()
 	{
 		_pathFinder.speed = 0;
 		Charging = false;
@@ -126,7 +126,6 @@ public class Lemurian : NormalMonsterBase
 		FaceTarget();
 		Fireball();
 	}
-
 	private void UpdateRun()
 	{
 		Charging = true;
@@ -144,7 +143,6 @@ public class Lemurian : NormalMonsterBase
 		//요원에게 목적지를 알려준다.
 		_pathFinder.SetDestination(_player.position);
 	}
-
 	void UpdateIdle()
 	{
 		Charging = true;
@@ -183,9 +181,9 @@ public class Lemurian : NormalMonsterBase
 		}
 	}       // FaceTarget()
 
-	void Fireball() 
+	void Fireball()
 	{
-		if (Charging == false) 
+		if (Charging == false)
 		{
 			// timeAfterSpawn 갱신
 			timeAfterSpawn += Time.deltaTime;
@@ -224,6 +222,4 @@ public class Lemurian : NormalMonsterBase
 			_anim.SetTrigger("BeAttackedTrg");
 		}
 	}
-
-
 }

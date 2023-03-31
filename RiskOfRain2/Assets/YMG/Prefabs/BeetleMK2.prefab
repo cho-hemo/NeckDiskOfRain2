@@ -41,7 +41,7 @@ BoxCollider:
   m_GameObject: {fileID: 1559526518}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
@@ -91,7 +91,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3806698491185135604}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.8
   m_Height: 2.8
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75971d1fc845acc4991e616ebb1b60bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   closeCombat: {fileID: 1559526520}
   beetle: {fileID: 668249213}
 --- !u!114 &668249213
@@ -166,15 +167,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ec12dbed0c8ac44a4ca5bce2abf457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 0}
+  <Type>k__BackingField: 0
+  <Name>k__BackingField: 
+  <MaxHp>k__BackingField: 0
+  <Hp>k__BackingField: 0
+  <Power>k__BackingField: 0
+  <Speed>k__BackingField: 0
+  <MaxSqrDetectRange>k__BackingField: 0
+  <MinSqrDetectRange>k__BackingField: 0
+  LookRange: 20
+  BeAttackedEnd: 0
   SpawnAnime: {fileID: -3247251495056633262, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
   AttackAnime: {fileID: 7570010672536006877, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
-  LookRange: 20
-  AttackRange: 4
-  MonsterSpeed: 5
   headAttack: 0
-  isDelay: 0
-  delayTime: 2
-  shot: 0
 --- !u!1001 &3806698490500524927
 PrefabInstance:
   m_ObjectHideFlags: 0
