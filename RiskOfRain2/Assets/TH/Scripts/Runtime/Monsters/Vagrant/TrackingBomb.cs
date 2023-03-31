@@ -10,7 +10,7 @@ namespace VagrantSkill
 
         private void Awake()
         {
-            _player = Global.FindRootObject("Player");
+            //_player = FindRootObject("Player");
             _rigidbody = GetComponent<Rigidbody>();
         }
 
