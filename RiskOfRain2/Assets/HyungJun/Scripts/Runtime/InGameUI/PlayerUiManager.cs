@@ -7,7 +7,7 @@ using RiskOfRain2.Manager;
 using RiskOfRain2.Player;
 
 
-public partial class PlayerUiManager : MonoBehaviour
+public partial class PlayerUiManager : MonoBehaviour, IObserver
 {
 	// { Debug Mode
 
@@ -198,60 +198,6 @@ public partial class PlayerUiManager : MonoBehaviour
 			obj_.gameObject.SetActive(false);
 		}
 
-
-
-		// int skillCount_ = 2;
-		// // 스킬 스택을 초기화 하는 로직
-		// for (int i = 0; i < 5; i++)
-		// {
-		// 	_skillStackList.Add(skillCount_);
-		// 	_skillList[i].FindChildObj("SkillCostTxt").SetTmpText($"{skillCount_}");
-		// }
-		// _skillStackList[2] = 1;
-		// _skillList[2].FindChildObj("SkillCostTxt").SetTmpText($"{_skillStackList[2]}");
-
-		// uiObj_.FindChildObj("Skill" + "0").FindChildObj("SkillCostTxt").SetActive(false);
-
-		// for (int i = 0; i < 5; i++)
-		// {
-		// 	if (_skillStackList[i] == 1)
-		// 	{
-
-		// 	}
-		// }
-
-
-
-		// GameObject skillObj_ = default;
-		// GameObject skillCount_ = default;
-		// // 스킬 리스트에 스킬 담는 로직
-		// for (int i = 0; i < 5; i++)
-		// {
-		// 	skillObj_ = uiObj_.FindChildObj($"Skill{i}");
-		// 	_skillList.Add(skillObj_);
-		// 	skillObj_.FindChildObj("CoolDown").SetActive(false);
-		// }
-
-		// // 스킬 스택을 초기화하는 로직
-		// int index = 0;
-		// foreach (var value_ in _playerInfo.Skills)
-		// {
-		// 	skillCount_ = uiObj_.FindChildObj($"Skill{index}").FindChildObj("SkillCostTxt");
-		// 	if (value_.SkillMaxStack == 1)
-		// 	{
-		// 		skillCount_.SetActive(false);
-		// 	}
-		// 	index++;
-		// }
-		// if (_playerInfo.Skills[i].SkillMaxStack == 1)
-		// {
-		// 	skillCount_.SetActive(false);
-		// }
-
-
-
-
-
 		// 게임의 난이도에 따라서 아이콘을 변경하는 로직
 		switch (GameManager.Instance.GameDiffi)
 		{
@@ -272,7 +218,8 @@ public partial class PlayerUiManager : MonoBehaviour
 		}
 
 		PlayerExpPlus(0);
-		PlayerHpControl(0);
+
+
 
 		PlayerMoneyControl(0);
 		PlayerLunaCoinControl(0);
@@ -309,6 +256,8 @@ public partial class PlayerUiManager : MonoBehaviour
 			}
 			index++;
 		}
+
+		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);        // 플레이어 Hp UI 초기화
 	}
 
 
@@ -322,22 +271,6 @@ public partial class PlayerUiManager : MonoBehaviour
 
 		_stageLevelTxtObj.SetTmpText("스테이지 " + StageLevel.ToString());
 		_monsterLevelTxtObj.SetTmpText("레벨. " + MonsterLevel.ToString());
-
-
-
-		// Debug.Log((int)(_times * 10));
-		// if ((int)(_times * 10) % 37 == 0)
-		// {
-		//     Debug.Log("레벨바 벨류 증가!");
-		//     _levelBarMoveValue++;
-		// }
-
-		// 난이도바 반영
-		// _levelBarObj.transform.localPosition += Vector3.left;
-
-		// 플레이어가 ESC키를 누르면 팝업메뉴가 나온다.
-
-
 
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -373,57 +306,7 @@ public partial class PlayerUiManager : MonoBehaviour
 			ScoreBoardPopup(false);
 		}
 
-		// { 2023-03-21 / HyungJun / DebugMode
-		// if (Input.GetKeyDown(KeyCode.H))
-		// {
-		// BossHpControl(-10);
-		// }
-		// } 2023-03-21 / HyungJun / DebugMode
-
-
-
-
-		// { 2023-03-22 / HyungJun / Develop Message Box
-		// if (Input.GetKeyDown(KeyCode.M))
-		// {
-		// 	SendMessageToChat("[PlayerUiMnager] Update : NewMessage Add");
-		// }
 	}       // Update()
-
-	// private int _maxChatNum = 25;
-	// public GameObject chatPanel, textObject;
-
-	// [SerializeField]
-	// private List<Message> _messageList = new List<Message>();
-	// public void SendMessageToChat(string text_)
-	// {
-	// 	if (_maxChatNum <= _messageList.Count)
-	// 	{
-	// 		Destroy(_messageList[0].textObject.gameObject);
-	// 		_messageList.Remove(_messageList[0]);
-	// 	}
-	// 	Message newMessage = new Message();
-
-	// 	newMessage.text = text_;
-
-	// 	GameObject newText = Instantiate(textObject, chatPanel.transform);
-
-	// 	newMessage.textObject = newText.GetComponent<Text>();
-
-	// 	newMessage.textObject.text = newMessage.text;
-
-	// 	_messageList.Add(newMessage);
-	// }       // SendMessageToChat()
-
-	// [Serializable]
-	// public class Message
-	// {
-	// 	public string text;
-	// 	public Text textObject;
-	// }       // class Message
-	// // } 2023-03-22 / HyungJun / Develop Message Box
-
-
 
 	/// <summary>
 	/// 탭 키를 누를경우 나오는 점수화면 호출하는 함수
@@ -435,6 +318,9 @@ public partial class PlayerUiManager : MonoBehaviour
 		_crossHair.SetActive(!popupCheck);
 	}
 
+
+	#region  플레이어 관련 함수
+	public void UpdateDate(object data) {/* Do nothing */}
 
 	/// <summary>
 	/// 플레이어의 경험치를 올려주고 최대 경험치량에 도달할 경우 레벨 업 함수
@@ -451,22 +337,36 @@ public partial class PlayerUiManager : MonoBehaviour
 		}
 		else { /* Do nothing */ }
 
+	}
+	public void UpdateDate()
+	{
+		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);
+		// PlayerExpSync(_Player);
+	}
+
+	/// <summary>
+	/// 플레이어 경험치를 가져와서 UI에 동기화 하는 로직
+	/// </summary>
+	/// <param name="level_"></param>
+	/// <param name="currentExp_"></param>
+	/// <param name="maxExp_"></param>
+	public void PlayerExpSync(ref int level_, ref int currentExp_, ref int maxExp_)
+	{
 		// 현재 경험치바 반영
-		_expLevelTxtObj.SetTmpText($"레벨: {PlayerLevel}");
-		_expBarValue = (float)_playerCurrentExp / (float)_playerMaxExp;
-		_expBarObj.FilledImageControll(_expBarValue);
+		_expLevelTxtObj.SetTmpText($"레벨: {level_}");
+		float expBarValue_ = (float)currentExp_ / (float)maxExp_;
+		_expBarObj.FilledImageControll(expBarValue_);
 	}
 
 	/// <summary>
 	/// 플레이어의 Hp를 컨드롤하는 함수
 	/// </summary>
 	/// <param name="hpValue_">+ 또는 - 의 조정 값</param>
-	public void PlayerHpControl(int hpValue_)
+	public void PlayerHpControl(int currentHp_, int maxHp_)
 	{
-		_playerCurrentHp += hpValue_;
 		// 현재 체력바 반영
-		_hpBarTxtObj.SetTmpText($"{_playerCurrentHp}/{_playerMaxHp}");
-		_hpBarValue = (float)_playerCurrentHp / (float)_playerMaxHp;
+		_hpBarTxtObj.SetTmpText($"{currentHp_}/{maxHp_}");
+		_hpBarValue = (float)currentHp_ / (float)maxHp_;
 		_hpBarObj.FilledImageControll(_hpBarValue);
 	}
 
@@ -536,6 +436,7 @@ public partial class PlayerUiManager : MonoBehaviour
 	{
 		StartCoroutine(SkillActive(num, coolTime_));
 	}
+	#endregion  플레이어 관련 함수
 
 
 	/// <summary>

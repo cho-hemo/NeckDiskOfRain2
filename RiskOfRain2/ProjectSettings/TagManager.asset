@@ -8,7 +8,8 @@ TagManager:
   - Bullet
   - Chest
   - Ground
-  - Monster
+  - Enemy
+  - Exp
   layers:
   - Default
   - TransparentFX

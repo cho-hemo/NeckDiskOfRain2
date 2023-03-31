@@ -16,7 +16,7 @@ public class Hp_Bar : MonoBehaviour
 	{
 		_cam = Camera.main;
 
-		GameObject[] objects_ = GameObject.FindGameObjectsWithTag("Monster");
+		GameObject[] objects_ = GameObject.FindGameObjectsWithTag("Enemy");
 		for (int i = 0; i < objects_.Length; i++)
 		{
 			_objectList.Add(objects_[i].transform);
