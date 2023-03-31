@@ -2,129 +2,122 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class Player_Commando : Player
+using RiskOfRain2.Manager;
+
+namespace RiskOfRain2.Player.Commando
 {
-	public Transform debugObject = default;
-	protected new void Start()
+	public class Player_Commando : PlayerBase
 	{
-		base.Start();
-		PlayerType = PlayerType.COMMANDO;
+		private Vector2 _rollDirection = default;
+		private float _mainCameraYRotation = default;
 
-	}
-	public override void PassiveSkill()
-	{
-	}
-
-	public override void MainSkill(bool isPressed)
-	{
-		switch (StateMachine.GetState())
+		protected void Awake()
 		{
-			case Player_Commando_RollState:
+			IsSkillAvailable = true;
+			PlayerType = PlayerType.COMMANDO;
+			Skills.Add(new DoubleTap());
+			Skills.Add(new PhaseRound());
+			Skills.Add(new TacticalDive());
+			Skills.Add(new SuppressiveFire());
+			foreach (var skill in Skills)
+			{
+				skill.Init(this);
+			}
+
+		}
+
+		protected new void Start()
+		{
+			base.Start();
+		}
+		public override void PassiveSkill()
+		{
+		}
+
+		public override void MainSkill(bool isPressed)
+		{
+			bool isSkillAvailable_ = SkillAvailableCheck(PlayerDefine.PLAYER_MAIN_SKILL_INDEX);
+			if (!isSkillAvailable_)
+			{
 				return;
-		}
-		if (isPressed)
-		{
-			IsSprint = false;
+			}
+
+			if (isPressed)
+			{
+				IsSprint = false;
+			}
+
+			IsShot = isPressed;
+			SetBool(PlayerDefine.PLAYER_IS_MAIN_SKILL, isPressed);
+			SetFloat(PlayerDefine.ATTACK_SPEED, AttackSpeed);
 		}
 
-		SetBool(Global.PLAYER_IS_MAIN_SKILL, isPressed);
-		SetFloat(Global.ATTACK_SPEED, AttackSpeed);
-	}
-
-	public override void SubSkill(bool isPressed)
-	{
-		switch (StateMachine.GetState())
+		public void MainSkillAction()
 		{
-			case Player_Commando_RollState:
+			SkillAction(PlayerDefine.PLAYER_MAIN_SKILL_INDEX, true);
+		}
+
+		public override void SubSkill(bool isPressed)
+		{
+			bool isSkillAvailable_ = SkillAvailableCheck(PlayerDefine.PLAYER_SUB_SKILL_INDEX);
+			if (!isSkillAvailable_)
+			{
 				return;
-		}
-		if (isPressed)
-		{
-			SetTrigger(Global.PLAYER_SUB_SKILL);
-			IsSprint = false;
-		}
-	}
+			}
 
-	public override void UtilitySkill(bool isPressed)
-	{
-		switch (StateMachine.GetState())
+			if (isPressed)
+			{
+				SkillAction(PlayerDefine.PLAYER_SUB_SKILL_INDEX, isPressed);
+				SetTrigger(PlayerDefine.PLAYER_SUB_SKILL);
+			}
+		}
+
+		public override void UtilitySkill(bool isPressed)
 		{
-			case Player_Commando_RollState:
+			bool isSkillAvailable_ = SkillAvailableCheck(PlayerDefine.PLAYER_UTILITY_SKILL_INDEX);
+
+			if (!isSkillAvailable_)
+			{
 				return;
-		}
-		if (isPressed)
-		{
-			SetState(new Player_Commando_RollState(this));
-			IsSprint = false;
-		}
-	}
+			}
 
-	public override void SpecialSkill(bool isPressed)
-	{
-		switch (StateMachine.GetState())
+			if (isPressed)
+			{
+				if (InputMove == Vector2.zero)
+				{
+					_rollDirection = new Vector2(0, 1f);
+				}
+				else
+				{
+					_rollDirection = InputMove;
+				}
+				_mainCameraYRotation = MainCamera.transform.eulerAngles.y;
+				SkillAction(PlayerDefine.PLAYER_UTILITY_SKILL_INDEX, isPressed);
+			}
+		}
+
+		public override void SpecialSkill(bool isPressed)
 		{
-			case Player_Commando_RollState:
+			bool isSkillAvailable_ = SkillAvailableCheck(PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX);
+			if (!isSkillAvailable_)
+			{
 				return;
+			}
+
+			if (isPressed)
+			{
+				IsSprint = false;
+				SkillAction(PlayerDefine.PLAYER_SPECIAL_SKILL_INDEX, isPressed);
+			}
 		}
-		if (isPressed)
+
+		public void Roll()
 		{
-			StartCoroutine(SpecialSkillCoroutine(isPressed));
-			IsSprint = false;
+			Vector3 rollDirection_ = new Vector3(_rollDirection.x, 0, _rollDirection.y);
+			Vector3 targetDirection_ = (Quaternion.Euler(0, _mainCameraYRotation, 0) * rollDirection_).normalized;
+			Vector3 move = targetDirection_ * (CurrentSpeed * 2 * Time.deltaTime);
+			CharacterController.Move(move);
 		}
 	}
 
-	public void MainSkillShot()
-	{
-		Vector3 pos_ = default;
-		Quaternion rotation_ = default;
-		AnimatorStateInfo currentStateInfo_ = PlayerAnimator.GetCurrentAnimatorStateInfo(Global.PLAYER_ATTACK_LAYER);
-		if (currentStateInfo_.IsName("FirePistol_Left"))
-		{
-			pos_ = FocusPoint[0].position;
-			rotation_ = RayShoot(pos_);
-			BulletShoot(pos_, rotation_, AttackDamage);
-		}
-		else if (currentStateInfo_.IsName("FirePistol_Right"))
-		{
-			pos_ = FocusPoint[1].position;
-			rotation_ = RayShoot(pos_);
-			BulletShoot(pos_, rotation_, AttackDamage);
-		}
-		//RayShoot();
-	}
-
-	public void BulletShoot(Vector3 pos, Quaternion rotation, float damage)
-	{
-		GameObject bullet_ = ObjectPoolManager.Instance.ObjectPoolPop("Bullet");
-		bullet_.transform.localPosition = pos;
-		bullet_.transform.rotation = rotation;
-		bullet_.SetActive(true);
-	}
-
-	public Quaternion RayShoot(Vector3 start)
-	{
-		Vector2 screenCenterPoint_ = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
-		Ray ray_ = MainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-		if (Physics.Raycast(ray_, out RaycastHit rayCastHit_, RayRange))
-		{
-			debugObject.position = rayCastHit_.point;
-			Vector3 direction = rayCastHit_.point - start;
-			return Quaternion.LookRotation(direction);
-		}
-		else
-		{
-			return Quaternion.identity;
-		}
-	}
-
-	IEnumerator SpecialSkillCoroutine(bool isPressed)
-	{
-		int loopCount_ = Mathf.RoundToInt(AttackSpeed * 6);
-		for (int i = 0; i < loopCount_; i++)
-		{
-			SetTrigger(Global.PLAYER_SPECIAL_SKILL);
-			yield return new WaitForSeconds(1 / loopCount_);
-
-		}
-	}
 }

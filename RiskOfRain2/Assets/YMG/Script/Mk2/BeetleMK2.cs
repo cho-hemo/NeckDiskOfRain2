@@ -210,9 +210,9 @@ public class BeetleMK2 : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, LookRange);
         Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, LookRange);
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, AttackRange);
     }
 
