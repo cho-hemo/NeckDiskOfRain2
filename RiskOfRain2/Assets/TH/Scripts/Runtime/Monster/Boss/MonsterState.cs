@@ -183,7 +183,11 @@ public class MonsterDeath : MonsterState
     public override void Loop()
     {
         base.Loop();
-    }
+		if (_fsm.IsAnimationEnd)
+		{
+			//사망
+		}
+	}
 
     public override void Exit()
     {

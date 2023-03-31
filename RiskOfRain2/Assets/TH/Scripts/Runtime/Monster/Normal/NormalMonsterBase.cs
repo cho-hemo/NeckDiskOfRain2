@@ -19,11 +19,13 @@ public class NormalMonsterBase : MonsterBase
 	public override void OnDamaged(int damage)
 	{
 		base.OnDamaged(damage);
+
 	}
 
 	protected override void OnDie()
 	{
 		base.OnDie();
+
 	}
 
 	protected override void Awake()
