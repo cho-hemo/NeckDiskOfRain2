@@ -6,22 +6,15 @@ TagManager:
   tags:
   - CinemachineTarget
   - Bullet
-  - Chest
-  - Ground
-  - Enemy
   - Exp
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-<<<<<<< HEAD
-  - Post Process
-=======
-  - Ground
->>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
+  - PostProcess
   - 
   - 
   - 

@@ -345,8 +345,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.size
       value: 9
@@ -411,7 +409,6 @@ PrefabInstance:
       propertyPath: poolingObjectList.Array.data[8].objectName
       value: Vagrant_Orb
       objectReference: {fileID: 0}
->>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
     - target: {fileID: 4340443341294376372, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_Name
       value: ObjectPoolManager

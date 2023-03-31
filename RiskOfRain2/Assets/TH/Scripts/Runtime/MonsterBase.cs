@@ -76,6 +76,7 @@ public class MonsterBase : MonoBehaviour
 		if (Type == MonsterType.NORMAL)
 		{
 			_fsm.ChangeState(OnDamagedState);
+			UIManager.Instance.MonsterHpBarControl(gameObject.name, Hp, MaxHp);
 		}
 		else
 		{
@@ -100,7 +101,7 @@ public class MonsterBase : MonoBehaviour
 	private void OnDie()
 	{
 		_fsm.ChangeState(DeathState);
-		//GameManager.Instance.ExpEffectSpawn();
+		GameManager.Instance.ExpEffectSpawn(3, transform);
 	}
 
 	private void Awake()

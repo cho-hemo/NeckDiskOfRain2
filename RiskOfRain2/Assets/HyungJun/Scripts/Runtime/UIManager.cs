@@ -36,7 +36,14 @@ public class UIManager : GioleSingletone<UIManager>
 		}
 	}
 
-	public void MonsterHpBarControl(string monsterName_, int maxHp_, int currentHp_)
+
+	/// <summary>
+	/// 일반 몬스터의 Hp 바를 컨트롤 하는 함수
+	/// </summary>
+	/// <param name="monsterName_">몬스터의 이름</param>
+	/// <param name="maxHp_">최대 채력</param>
+	/// <param name="currentHp_">현재 체력</param>
+	public void MonsterHpBarControl(string monsterName_, int currentHp_, int maxHp_)
 	{
 		_hpBarCs.MonsterHpGaugeDown(monsterName_, maxHp_, currentHp_);
 	}
