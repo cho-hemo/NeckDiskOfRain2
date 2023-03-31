@@ -349,7 +349,7 @@ PrefabInstance:
 =======
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[4].obj
@@ -362,9 +362,13 @@ PrefabInstance:
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[6].obj
       value: 
-      objectReference: {fileID: 6073727914562010354, guid: 4ea6579823dc8d94a8b74dfb829fe059, type: 3}
+      objectReference: {fileID: 656515126719600877, guid: 908855bcad8eeab4cbb564b933001ff6, type: 3}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[7].obj
+      value: 
+      objectReference: {fileID: 6073727914562010354, guid: 4ea6579823dc8d94a8b74dfb829fe059, type: 3}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[8].obj
       value: 
       objectReference: {fileID: 6073727914562010354, guid: 829081cb21c421d4391834e4edc3be48, type: 3}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
@@ -384,6 +388,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[8].count
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[4].objectName
       value: ExpEffect
       objectReference: {fileID: 0}
@@ -393,10 +401,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[6].objectName
-      value: Vagrant_TrackingBomb
+      value: BeetleQueen_BeetleWard
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[7].objectName
+      value: Vagrant_TrackingBomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[8].objectName
       value: Vagrant_Orb
       objectReference: {fileID: 0}
 >>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129

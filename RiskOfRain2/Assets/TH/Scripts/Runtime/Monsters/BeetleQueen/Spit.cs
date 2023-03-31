@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using RiskOfRain2.Manager;
 
 namespace BeetleQueenSkills
 {
@@ -14,50 +13,16 @@ namespace BeetleQueenSkills
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        void Start()
+        private void Start()
         {
             _rigidbody.AddForce(transform.forward * SPEED);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Ground" || other.tag == "Player")
+            if (other.CompareTag("Ground") || other.CompareTag("Player"))
             {
-                //int pixelSize = 100;
-
-                //RaycastHit hit;
-                //Vector3 rayVec = Vector3.down;
-                //if (!Physics.Raycast(transform.position, rayVec, out hit))
-                //{
-                //	return;
-                //}
-                //Debug.Log($"[transform] {hit.transform.position}, [texCoord] {hit.textureCoord}");
-
-                //Renderer rend = other.GetComponent<MeshRenderer>();
-
-                //Texture2D tex = rend.material.mainTexture as Texture2D;
-                //Vector2 pixelUV = hit.textureCoord;
-                //pixelUV.x *= tex.width;
-                //pixelUV.y *= tex.height;
-
-                //Color[] colors = new Color[pixelSize * pixelSize];
-
-                //for (var i = 0; i < pixelSize * pixelSize; i++)
-                //{
-                //	colors[i] = Color.black;
-                //}
-
-                //tex.SetPixels((int)pixelUV.x, (int)pixelUV.y, pixelSize, pixelSize, colors);
-
-                //tex.Apply();
-
-                Destroy(gameObject);
+				ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
             }
         }
 

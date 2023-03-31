@@ -44,10 +44,14 @@ MonoBehaviour:
     height: 1037
   m_ShowMode: 4
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Title: Scene
   m_RootView: {fileID: 5}
 =======
   m_Title: Project
+=======
+  m_Title: Console
+>>>>>>> d72b9a7ca1cc075fda4ec39779d83de9ff3f9800
   m_RootView: {fileID: 2}
 >>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
   m_MinSize: {x: 875, y: 300}
@@ -199,10 +203,14 @@ MonoBehaviour:
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 92846
 --- !u!114 &9
 =======
   controlID: 120
+=======
+  controlID: 54
+>>>>>>> d72b9a7ca1cc075fda4ec39779d83de9ff3f9800
 --- !u!114 &6
 >>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
 MonoBehaviour:
@@ -807,10 +815,14 @@ MonoBehaviour:
       m_SelectedIDs: 
       m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ExpandedIDs: 7ae279ffd4e279ff20f579ff9c057aff92337affb4337affe6407affee517affdc547affac657affec937aff44947affb4ae7aff407b7bffe68e7bff725b7cffd26d7cffb27e7cff445f7dffc27d7dffa4937dff8a737eff1c847eff62b27eff16407fff66587fff90617fffec2081ff425b81ff4a4582ff18c682ff14b283ff2a7984ff928f84ff469c84ffaaad84ff62bc84ff544986ff082087ff1ee787ff34fb87ff580188ffc4d788ff3ef988ff78d489ff7cd489ff8ad489ff7ce089ff24a78affc6068bff18138bff2c2d90ffacfb90ff8eff90ff5e0091ff680091ff3e0691ffe68c93ff5c3598ff2e0d99ff002999ff104e99ff144e99ff1e4e99ff485599ff0a429aff0e429aff18429affee479aff68e49bff0e919dff2c589efffa6b9eff107d9effa4899eff749a9eff74c99effcec99efff8d79eff90ad9fff06c19fff00d19fff70a0a0ffb2a4a0ffbca4a0ffe6aba0ff3caca0ff0cbda0ff84c9a0ffcecca0ff2ccda0ff86a0a1ffd0a0a1ff1ca3a1ffb4afa1ff0cb0a1ff40dea1ff12efa1ff6cefa1ffb6efa1ffa4fea1ff860fa2ffcc0fa2ffeaeba4ff7895aaff6e92b8ff02dacfff44decfff76e5cfffc6e5cffffa13d0ff7844d0ff9855d0ff021edcff1030dcff6030dcff14c1ddff54c1ddff98c1ddffe8c6ddff6cc9ddff40e0ddff82ecddffaaf2e0ffacfbe0ff18fce0ff54fce0ffb0fde0ff52ffe0ff3e01e1ffde0ce1ff300de1ff7e42e1ffaa6de1ffac6de1ff6e7ce1ffd84ce4ffea34e7fff43be7fffe47e7ffc458e7ff1459e7ffcc5be7ffaa6ce7ff1221edff2a45edff2e45edff3045edffb674edfff044f0ffb417f3ff2a2bf3ff462bf3ff6c30f3ff7406f6ff4417f9ffa6ecfbfffccffeff80e2feffb223ffff1836ffff3e3bffff6269ffff6669ffff226dffff246dffff267afffff4ffffffdc0402004cc8030056420400f6d30400807906005a990600f00907000c0a0700be1d07002e1e0700081f0700ac1f070002230700f024070020380700f03a0700d652070060bf070086140800
 =======
       m_ExpandedIDs: 34f9ffff8af9ffffcefaffff
 >>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
+=======
+      m_ExpandedIDs: 78f9ffffb8f9ffffcefaffff
+>>>>>>> d72b9a7ca1cc075fda4ec39779d83de9ff3f9800
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1661,21 +1673,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/TH/Scenes
+    - Assets/QuarterView 3D Action BE5
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 51
   m_LastFolders:
-  - Assets/TH/Scenes
+  - Assets/QuarterView 3D Action BE5
   m_LastFoldersGridSize: 51
   m_LastProjectPath: C:\thkim\UnityProjects\RiskOfRainRepos\TaeHee\RiskOfRain2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 180}
-    m_SelectedIDs: 00930000
-    m_LastClickedID: 37632
+    m_SelectedIDs: ee920000
+    m_LastClickedID: 37614
     m_ExpandedIDs: 00000000de700000e0700000e2700000e4700000e6700000e8700000ea700000ec700000ee700000f0700000f2700000f4700000d0920000
 >>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
     m_RenameOverlay:
@@ -1738,7 +1750,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: fcbb020062bc0200f48f03000491030000000000126e0000cc920000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

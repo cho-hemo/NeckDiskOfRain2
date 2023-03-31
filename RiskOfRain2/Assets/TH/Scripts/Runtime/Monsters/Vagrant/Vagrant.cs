@@ -24,7 +24,8 @@ public class Vagrant : MonsterBase
     public override void Initialize()
     {
         base.Initialize();
-        for (int i = 0; i < _skills.Count; i++)
+		UIManager.Instance.ActiveBoss(Name, SecondName);
+		for (int i = 0; i < _skills.Count; i++)
         {
             _coolDownTimes.Add(_skills[i].CoolDownTime);
         }
