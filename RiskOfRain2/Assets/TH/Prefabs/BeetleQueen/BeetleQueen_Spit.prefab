@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9196734074962933099}
   - component: {fileID: 2117298162849360843}
   m_Layer: 0
-  m_Name: Spit
+  m_Name: BeetleQueen_Spit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

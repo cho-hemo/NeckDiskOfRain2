@@ -1,15 +1,11 @@
+using RiskOfRain2;
 using RiskOfRain2.Manager;
 using UnityEngine;
 
-public class BeetleQueen : MonsterBase
+public class BeetleQueen : BossMonsterBase
 {
-    [SerializeField] private GameObject _spit;
-    [SerializeField] private Transform _spitStartPos;
-
-    [SerializeField] private GameObject _beetleWard;
-    [SerializeField] private Transform _beetleWardSpawnPos;
-
-    [SerializeField] private GameObject _beetle;
+    private Transform _spitSpawnPos;
+    private Transform _beetleWardSpawnPos;
 
     private enum Skill
     {
@@ -21,11 +17,6 @@ public class BeetleQueen : MonsterBase
     public override void Initialize()
     {
         base.Initialize();
-		UIManager.Instance.ActiveBoss(Name, SecondName);
-		for (int i = 0; i < _skills.Count; i++)
-        {
-            _coolDownTimes.Add(_skills[i].CoolDownTime);
-        }
     }
 
     public override bool TrySelectSkill()
@@ -33,20 +24,20 @@ public class BeetleQueen : MonsterBase
         int currentIndex = 0;
 
         if (_coolDownTimes[(int)Skill.FIRE_SPIT] <= 0 && 
-			_fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.FIRE_SPIT].SqrRange)
+            _fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.FIRE_SPIT].SqrRange)
         {
             _availableSkills[currentIndex] = (int)Skill.FIRE_SPIT;
             ++currentIndex;
         }
         if (_coolDownTimes[(int)Skill.FIRE_BEETLE] <= 0 && 
-			_fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.FIRE_BEETLE].SqrRange)// && Hp <= MaxHp / 2)
+            _fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.FIRE_BEETLE].SqrRange)// && Hp <= MaxHp / 2)
         {
             _availableSkills[currentIndex] = (int)Skill.FIRE_BEETLE;
             ++currentIndex;
         }
         if (_coolDownTimes[(int)Skill.SUMMON_BEETLE] <= 0 && 
-			_fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.SUMMON_BEETLE].SqrRange && 
-			MonsterSpawner.IsSpawnable())
+            _fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.SUMMON_BEETLE].SqrRange && 
+            MonsterSpawner.IsSpawnable())
         {
             _availableSkills[currentIndex] = (int)Skill.SUMMON_BEETLE;
             ++currentIndex;
@@ -82,14 +73,9 @@ public class BeetleQueen : MonsterBase
 
         for (int i = 0; i < spitCount; i++)
         {
-			//GameObject inst = Instantiate(
-			//    _spit,
-			//    _spitStartPos.position,
-			//    Quaternion.Euler(-30, _spitStartPos.eulerAngles.y + (standardDegree / 2) - (standardDegree / 5) * i, 0));
-
-			GameObject spit = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_SPIT);
-			spit.transform.position = _spitStartPos.position;
-			spit.transform.rotation = Quaternion.Euler(-30, _spitStartPos.eulerAngles.y + (standardDegree / 2) - (standardDegree / 5) * i, 0);
+            GameObject spit = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_SPIT);
+            spit.transform.position = _spitSpawnPos.position;
+            spit.transform.rotation = Quaternion.Euler(-30, _spitSpawnPos.eulerAngles.y + (standardDegree / 2) - (standardDegree / 5) * i, 0);
         }
     }
 
@@ -98,15 +84,10 @@ public class BeetleQueen : MonsterBase
     /// </summary>
     public void FireBeetle()
     {
-        GameObject inst = Instantiate(
-            _beetleWard,
-            _beetleWardSpawnPos.position,
-            transform.rotation);
-
-		GameObject beetleWard = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
-		beetleWard.transform.position = _beetleWardSpawnPos.position;
-		beetleWard.transform.rotation = transform.rotation;
-	}
+        GameObject beetleWard = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
+        beetleWard.transform.position = _beetleWardSpawnPos.position;
+        beetleWard.transform.rotation = transform.rotation;
+    }
 
     /// <summary>
     /// 딱정벌레 소환 스킬 애니메이션 이벤트
@@ -124,6 +105,13 @@ public class BeetleQueen : MonsterBase
         //    _beetle,
         //    new Vector3(transform.position.x + 5, transform.position.y, transform.position.z),
         //    transform.rotation);
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _spitSpawnPos = gameObject.FindChildObject(Functions.BEETLE_QUEEN_SPIT_SPAWN_POS).transform;
+        _beetleWardSpawnPos = gameObject.FindChildObject(Functions.BEETLE_QUEEN_BEETLE_WARD_SPAWN_POS).transform;
     }
 
     private void Update()

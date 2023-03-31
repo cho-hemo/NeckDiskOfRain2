@@ -2,13 +2,13 @@ using UnityEngine;
 
 public abstract class MonsterState
 {
-	protected MonsterBase _monster;
+    protected BossMonsterBase _boss;
     protected MonsterFSM _fsm;
     protected Animator _anim;
 
-    public MonsterState(MonsterBase monster, MonsterFSM fsm)
+    public MonsterState(BossMonsterBase boss, MonsterFSM fsm)
     {
-		_monster = monster;
+        _boss = boss;
         _fsm = fsm;
         _anim = fsm.GetComponent<Animator>();
     }
@@ -31,7 +31,7 @@ public abstract class MonsterState
 
 public class MonsterIdle : MonsterState
 {
-    public MonsterIdle(MonsterBase monster, MonsterFSM fsm) : base(monster, fsm)
+    public MonsterIdle(BossMonsterBase boss, MonsterFSM fsm) : base(boss, fsm)
     {
 
     }
@@ -46,14 +46,14 @@ public class MonsterIdle : MonsterState
     {
         base.Loop();
 
-        if (_monster.TrySelectSkill())
+        if (_boss.TrySelectSkill())
         {
-            _fsm.ChangeState(_monster.OnSkillState);
+            _fsm.ChangeState(_boss.OnSkillState);
         }
-        else if (_fsm.GetSqrDistanceToPlayer() <= _monster.MaxSqrDetectRange && 
-			_fsm.GetSqrDistanceToPlayer() > _monster.MinSqrDetectRange)
+        else if (_fsm.GetSqrDistanceToPlayer() <= _boss.MaxSqrDetectRange && 
+            _fsm.GetSqrDistanceToPlayer() > _boss.MinSqrDetectRange)
         {
-            _fsm.ChangeState(_monster.MoveState);
+            _fsm.ChangeState(_boss.MoveState);
         }
     }
 }
@@ -65,7 +65,7 @@ public class MonsterMove : MonsterState
     private float _timer;
     private RootMotion _rootMotion;
 
-    public MonsterMove(MonsterBase monster, MonsterFSM fsm) : base(monster, fsm)
+    public MonsterMove(BossMonsterBase boss, MonsterFSM fsm) : base(boss, fsm)
     {
         _rootMotion = _fsm.GetComponent<RootMotion>();
     }
@@ -82,14 +82,14 @@ public class MonsterMove : MonsterState
     {
         base.Loop();
 
-        if (_monster.TrySelectSkill())
+        if (_boss.TrySelectSkill())
         {
-            _fsm.ChangeState(_monster.OnSkillState);
+            _fsm.ChangeState(_boss.OnSkillState);
         }
-		else if(_fsm.GetSqrDistanceToPlayer() <= _monster.MinSqrDetectRange)
-		{
-			_fsm.ChangeState(_monster.IdleState);
-		}
+        else if(_fsm.GetSqrDistanceToPlayer() <= _boss.MinSqrDetectRange)
+        {
+            _fsm.ChangeState(_boss.IdleState);
+        }
         else
         {
             _timer -= Time.deltaTime;
@@ -110,7 +110,7 @@ public class MonsterMove : MonsterState
 
 public class MonsterOnSkill : MonsterState
 {
-    public MonsterOnSkill(MonsterBase monster, MonsterFSM fsm) : base(monster, fsm)
+    public MonsterOnSkill(BossMonsterBase boss, MonsterFSM fsm) : base(boss, fsm)
     {
 
     }
@@ -127,21 +127,21 @@ public class MonsterOnSkill : MonsterState
         base.Loop();
         if (_fsm.IsAnimationEnd)
         {
-            _fsm.ChangeState(_monster.IdleState);
+            _fsm.ChangeState(_boss.IdleState);
         }
     }
 
     public override void Exit()
     {
         base.Exit();
-        _fsm.GetComponent<MonsterBase>().ResetCoolDown();
+        _fsm.GetComponent<BossMonsterBase>().ResetCoolDown();
 
     }
 }
 
 public class MonsterSpawn : MonsterState
 {
-    public MonsterSpawn(MonsterBase monster, MonsterFSM fsm) : base(monster, fsm)
+    public MonsterSpawn(BossMonsterBase boss, MonsterFSM fsm) : base(boss, fsm)
     {
 
     }
@@ -157,7 +157,7 @@ public class MonsterSpawn : MonsterState
         base.Loop();
         if (_fsm.IsAnimationEnd)
         {
-            _fsm.ChangeState(_monster.IdleState);
+            _fsm.ChangeState(_boss.IdleState);
         }
     }
 
@@ -169,7 +169,7 @@ public class MonsterSpawn : MonsterState
 
 public class MonsterDeath : MonsterState
 {
-    public MonsterDeath(MonsterBase monster, MonsterFSM fsm) : base(monster, fsm)
+    public MonsterDeath(BossMonsterBase boss, MonsterFSM fsm) : base(boss, fsm)
     {
 
     }
@@ -188,46 +188,5 @@ public class MonsterDeath : MonsterState
     public override void Exit()
     {
         base.Exit();
-    }
-}
-
-public class MonsterOnDamaged : MonsterState
-{
-    public MonsterOnDamaged(MonsterBase monster, MonsterFSM fsm) : base(monster, fsm)
-    {
-
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-        _anim.SetTrigger(Functions.MONSTER_ANIM_DEATH);
-    }
-
-    public override void Loop()
-    {
-        base.Loop();
-        if (_fsm.IsAnimationEnd)
-        {
-            _fsm.ChangeState(_monster.IdleState);
-        }
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
-}
-
-public class MonsterAction1 : MonsterOnSkill
-{
-    public MonsterAction1(MonsterBase monster, MonsterFSM fsm) : base(monster, fsm)
-    {
-
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
     }
 }
