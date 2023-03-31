@@ -15,16 +15,16 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.376, g: 0.7592441, b: 1, a: 1}
+  m_FogColor: {r: 0.5019608, g: 0.79248375, b: 1, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.3
+  m_FogDensity: 0.4
   m_LinearFogStart: 1.89
   m_LinearFogEnd: 104.41
-  m_AmbientSkyColor: {r: 0.021493407, g: 0.066037714, b: 0.02834637, a: 1}
-  m_AmbientEquatorColor: {r: 0.028969374, g: 0.066037714, b: 0.03233922, a: 1}
-  m_AmbientGroundColor: {r: 0.103773594, g: 0.03037434, b: 0.013216449, a: 1}
+  m_AmbientSkyColor: {r: 0.05357778, g: 0.26415092, b: 0.09034453, a: 1}
+  m_AmbientEquatorColor: {r: 0.006862745, g: 0.016666668, b: 0.007843138, a: 1}
+  m_AmbientGroundColor: {r: 0.008655517, g: 0.042452842, b: 0.007809722, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 1
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: edb2c51a9d1b5744593dea09e001d3e7, type: 2}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2.9304821, g: 2.106762, b: 1.3977084, a: 1}
+  m_IndirectSpecularColor: {r: 0.34316456, g: 0.5224322, b: 0.63736093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7914,6 +7914,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 3362350692633531679, guid: cf53c6bbcdd94d447b379098f7eb91cb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26a087f9df8c80c43a37a1f0154f0638, type: 2}
     - target: {fileID: 3369443176385895391, guid: cf53c6bbcdd94d447b379098f7eb91cb, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
@@ -11799,7 +11803,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -11832,14 +11836,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636447991}
-  m_LocalRotation: {x: -0.04434514, y: 0.0704111, z: 0.0036362323, w: 0.9965252}
-  m_LocalPosition: {x: 0.12296148, y: 0.024941564, z: -0.069862366}
+  m_LocalRotation: {x: 0.0041718995, y: 0.085151665, z: 0.007305833, w: 0.99633247}
+  m_LocalPosition: {x: 0.013, y: 0.022, z: 0.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.405, y: 9.773, z: 0.875}
 --- !u!220 &1636447995
 LightProbeGroup:
   m_ObjectHideFlags: 0
