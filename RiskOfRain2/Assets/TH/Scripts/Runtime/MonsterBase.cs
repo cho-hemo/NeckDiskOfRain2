@@ -26,12 +26,12 @@ public class MonsterBase : MonoBehaviour
 	public MonsterOnDamaged OnDamagedState { get; private set; }
 	public MonsterDeath DeathState { get; private set; }
 
-	[SerializeField] private MonsterData _data;
-	[SerializeField] protected ReadOnlyCollection<SkillData> _skills;
-	[SerializeField] protected List<float> _coolDownTimes = new List<float>();
-	[SerializeField] protected int[] _availableSkills;
-	protected MonsterFSM _fsm;
-	protected Animator _anim;
+    [SerializeField] private MonsterData _data;
+    [SerializeField] protected ReadOnlyCollection<SkillData> _skills;
+    [SerializeField] protected List<float> _coolDownTimes = new List<float>();
+    [SerializeField] protected int[] _availableSkills;
+    protected MonsterFSM _fsm;
+    protected Animator _anim;
 
 
 	/// <summary>
@@ -47,9 +47,9 @@ public class MonsterBase : MonoBehaviour
 		MaxSqrDetectRange = _data.MaxSqrDetectRange;
 		MinSqrDetectRange = _data.MinSqrDetectRange;
 
-		_skills = _data.Skills;
-		_coolDownTimes.Clear();
-		_availableSkills = new int[_data.Skills.Count];
+        _skills = _data.Skills;
+        _coolDownTimes.Clear();
+        _availableSkills = new int[_data.Skills.Count];
 
 		_fsm.Initialize(_skills, SpawnState);
 	}
@@ -70,14 +70,14 @@ public class MonsterBase : MonoBehaviour
 		}
 	}
 
-	/// <summary>
-	/// 사용 가능한 스킬을 선택하는 메서드
-	/// </summary>
-	/// <returns>스킬 사용 가능 여부</returns>
-	public virtual bool TrySelectSkill()
-	{
-		return false;
-	}
+    /// <summary>
+    /// 사용 가능한 스킬을 선택하는 메서드
+    /// </summary>
+    /// <returns>스킬 사용 가능 여부</returns>
+    public virtual bool TrySelectSkill()
+    {
+        return false;
+    }
 
 	public virtual void ResetCoolDown()
 	{

@@ -1,3 +1,4 @@
+using RiskOfRain2.Manager;
 using UnityEngine;
 
 namespace VagrantSkill
@@ -8,24 +9,27 @@ namespace VagrantSkill
         private Rigidbody _rigidbody;
         private float SPEED = 3200f;
 
-        private void Awake()
+        private void Start()
         {
-            _player = GioleFunc.GetRootObj("Player");
+            _player = GameManager.Instance.Player.gameObject;
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void OnEnable()
-        {
-            Vector3 toPlayer = (_player.transform.position - transform.position).normalized;
-            _rigidbody.AddForce(toPlayer * SPEED);
-        }
-
-		private void OnTriggerEnter(Collider other)
+		private void OnEnable()
 		{
-			if (other.tag == "Ground" || other.tag == "Player")
+			if (_player != null)
 			{
-				Destroy(gameObject);
+				Vector3 toPlayer = (_player.transform.position - transform.position).normalized;
+				_rigidbody.AddForce(toPlayer * SPEED);
 			}
 		}
-	}
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Ground" || other.tag == "Player")
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

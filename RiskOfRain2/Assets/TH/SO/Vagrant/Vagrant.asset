@@ -17,7 +17,7 @@ MonoBehaviour:
   _health: 1000
   _power: 4
   _speed: 1
-  _minSqrDetectRange: 8100
+  _minSqrDetectRange: 10000
   _maxSqrDetectRange: 10000
   skills:
   - {fileID: 11400000, guid: f8d18c2d78ed5d4428d50490e7f325d8, type: 2}

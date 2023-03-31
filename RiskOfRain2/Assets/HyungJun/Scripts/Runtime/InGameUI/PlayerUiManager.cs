@@ -338,10 +338,14 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 		else { /* Do nothing */ }
 
 	}
+
+	/// <summary>
+	/// 플레이어의 정보를 갱신해주는 함수
+	/// </summary>
 	public void UpdateDate()
 	{
 		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);
-		// PlayerExpSync(_Player);
+		PlayerExpSync(_playerInfo.Level, _playerInfo.CurrentExp, _playerInfo.MaxExp);
 	}
 
 	/// <summary>
@@ -350,7 +354,7 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 	/// <param name="level_"></param>
 	/// <param name="currentExp_"></param>
 	/// <param name="maxExp_"></param>
-	public void PlayerExpSync(ref int level_, ref int currentExp_, ref int maxExp_)
+	public void PlayerExpSync(int level_, int currentExp_, int maxExp_)
 	{
 		// 현재 경험치바 반영
 		_expLevelTxtObj.SetTmpText($"레벨: {level_}");

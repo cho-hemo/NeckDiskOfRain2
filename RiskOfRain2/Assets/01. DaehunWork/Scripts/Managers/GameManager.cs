@@ -64,7 +64,7 @@ namespace RiskOfRain2.Manager
 		/// </summary>
 		private void PlayerCreate()
 		{
-			Instantiate(playerPrefab, new Vector3(-60f, -160f, -120f), Quaternion.identity).name = playerPrefab.name;
+			Instantiate(playerPrefab, new Vector3(-60f, -140f, -120f), Quaternion.identity).name = playerPrefab.name;
 			PlayerInit();
 		}
 
@@ -87,5 +87,21 @@ namespace RiskOfRain2.Manager
 		{
 
 		}
+
+		/// <summary>
+		/// 경험치 볼을 생성하는 함수
+		/// </summary>
+		/// <param name="cycle">경험치볼의 생성 개수</param>
+		/// <param name="tf_">생성할 곳의 트랜스폼</param>
+		public void ExpEffectSpawn(int cycle, Transform tf_)
+		{
+			for (int i = 0; i < cycle; i++)
+			{
+				GameObject expEffect = ObjectPoolManager.Instance.ObjectPoolPop("ExpEffect");
+				expEffect.transform.position = tf_.position;
+				expEffect.SetActive(true);
+			}
+		}
+
 	}
 }

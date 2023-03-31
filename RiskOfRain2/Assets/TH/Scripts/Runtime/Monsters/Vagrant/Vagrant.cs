@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using RiskOfRain2.Manager;
 using UnityEngine;
 
 public class Vagrant : MonsterBase
@@ -10,6 +10,9 @@ public class Vagrant : MonsterBase
 
     [SerializeField] private GameObject _orb;
     [SerializeField] private Transform _orbSpawnPos;
+
+    private GameObject _player;
+    private LayerMask _mask;
 
     private enum Skill
     {
@@ -25,6 +28,9 @@ public class Vagrant : MonsterBase
         {
             _coolDownTimes.Add(_skills[i].CoolDownTime);
         }
+
+        _player = GameManager.Instance.Player.gameObject;
+        _mask = LayerMask.GetMask(Functions.LAYER_GROUND) | LayerMask.GetMask(Functions.LAYER_PLAYER);
     }
 
     public override bool TrySelectSkill()
@@ -80,12 +86,16 @@ public class Vagrant : MonsterBase
     /// </summary>
     public void OnSuperNova(float radius)
     {
-		//애니메이션 재생
-		_anim.SetTrigger("OnPostNova");
-		if (_fsm.GetSqrDistanceToPlayer() <= radius * radius)//&& ray mask(ground, player)
-		{
-        //데미지 계산
-		}
+        _anim.SetTrigger("OnPostNova");
+        if (_fsm.GetSqrDistanceToPlayer() <= radius * radius)
+        {
+            Ray ray = new Ray(transform.position, (_player.transform.position - transform.position).normalized);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, radius, _mask))
+            {
+                //데미지
+            }
+        }
     }
 
     /// <summary>
@@ -110,7 +120,7 @@ public class Vagrant : MonsterBase
             transform.rotation);
     }
 
-	private void Update()
+    private void Update()
     {
         for (int i = 0; i < _coolDownTimes.Count; i++)
         {

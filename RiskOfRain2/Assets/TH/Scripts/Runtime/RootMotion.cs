@@ -5,16 +5,17 @@ using RiskOfRain2;
 
 public class RootMotion : MonoBehaviour
 {
+<<<<<<< HEAD
 	[SerializeField] private GameObject _player;
 	[SerializeField] private Transform[] footTargets;
+=======
+    [SerializeField] private GameObject _player;
+    [SerializeField] private Transform[] footTargets;
+>>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
 
-	private MonsterBase _monster;
-	private MonsterFSM _fsm;
-	private Animator _animator;
-	private NavMeshAgent _agent;
-
-	private Vector2 _velocity;
-	private Vector2 SmoothDeltaPosition;
+    private MonsterBase _monster;
+    private Animator _animator;
+    private NavMeshAgent _agent;
 
 
 
@@ -24,18 +25,34 @@ public class RootMotion : MonoBehaviour
 		_animator = GetComponent<Animator>();
 		_agent = GetComponent<NavMeshAgent>();
 	}
+<<<<<<< HEAD
 	public void Init()
 	{
 		_player = Global.FindRootObject("Player");
 	}
+=======
 
-	public void InitMove()
+	private void Start()
 	{
-		_animator.applyRootMotion = true;
-		_agent.updatePosition = false;
-		_agent.updateRotation = true;
+		//transform.GetChild(0).transform.localPosition = Vector3.zero;
+		//_agent.SetDestination(_player.transform.position);
+		//SyncRootPosAndAgent();
 	}
 
+    public void Init()
+    {
+        _player = Global.FindRootObject("Player");
+    }
+>>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
+
+    public void InitMove()
+    {
+        _animator.applyRootMotion = true;
+        _agent.updatePosition = false;
+        _agent.updateRotation = true;
+    }
+
+<<<<<<< HEAD
 	private void Start()
 	{
 		//transform.GetChild(0).transform.localPosition = Vector3.zero;
@@ -55,6 +72,12 @@ public class RootMotion : MonoBehaviour
 		_agent.SetDestination(_player.transform.position);
 		//SyncRootPosAndAgent();
 	}
+=======
+    public void Move()
+    {
+        _agent.SetDestination(_player.transform.position);
+    }
+>>>>>>> a7a5151ec5aff19e6577ad75ab9049622fe59129
 
 	public void Stop()
 	{
@@ -63,19 +86,13 @@ public class RootMotion : MonoBehaviour
 		_agent.updateRotation = true;
 	}
 
-	private void SyncRootPosAndAgent()
-	{
-		//_agent.velocity = _animator.deltaPosition / Time.deltaTime;
-		//_animator.SetFloat("MoveSpeed", _agent.velocity.magnitude);
-	}
-
-	private void OnAnimatorMove()
-	{
-		if (Functions.GetSqrDistance(_agent.destination, transform.position) < _monster.MinSqrDetectRange)
-		{
-			_agent.ResetPath();
-			return;
-		}
+    private void OnAnimatorMove()
+    {
+        if (Functions.GetSqrDistance(_agent.destination, transform.position) < _monster.MinSqrDetectRange)
+        {
+            _agent.ResetPath();
+            return;
+        }
 
 		Vector3 nextPos = _animator.rootPosition;
 		nextPos.y = _agent.nextPosition.y;

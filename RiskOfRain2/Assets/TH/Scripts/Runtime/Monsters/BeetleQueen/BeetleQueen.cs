@@ -36,7 +36,7 @@ public class BeetleQueen : MonsterBase
             ++currentIndex;
         }
         if (_coolDownTimes[(int)Skill.FIRE_BEETLE] <= 0 && _fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.FIRE_BEETLE].SqrRange)// && Hp <= MaxHp / 2)
-		{
+        {
             _availableSkills[currentIndex] = (int)Skill.FIRE_BEETLE;
             ++currentIndex;
         }
@@ -88,11 +88,11 @@ public class BeetleQueen : MonsterBase
     /// </summary>
     public void FireBeetle()
     {
-		GameObject inst = Instantiate(
-			_beetleGrub,
-			_beetleGrubSpawnPos.position,
-			transform.rotation);
-	}
+        GameObject inst = Instantiate(
+            _beetleGrub,
+            _beetleGrubSpawnPos.position,
+            transform.rotation);
+    }
 
     /// <summary>
     /// 딱정벌레 소환 스킬 애니메이션 이벤트
