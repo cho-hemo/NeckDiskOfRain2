@@ -97,6 +97,18 @@ namespace RiskOfRain2.Player
 		protected string playerInfo;
 
 		[SerializeField]
+		[Tooltip("레벨")]
+		protected int level;
+
+		[SerializeField]
+		[Tooltip("현재 경험치")]
+		protected int currentExp;
+
+		[SerializeField]
+		[Tooltip("최대 경험치")]
+		protected int maxExp;
+
+		[SerializeField]
 		[Tooltip("최대 체력")]
 		protected float maxHp;
 
@@ -249,6 +261,9 @@ namespace RiskOfRain2.Player
 		#region Player Stat
 		public string PlayerName { get { return playerName; } protected set { playerName = value; } }
 		public string PlayerInfo { get { return playerInfo; } protected set { playerInfo = value; } }
+		public int Level { get { return level; } protected set { level = value; } }
+		public int CurrentExp { get { return currentExp; } protected set { currentExp = value; } }
+		public int MaxExp { get { return maxExp; } protected set { maxExp = value; } }
 		public float MaxHp { get { return maxHp; } protected set { maxHp = value; } }
 		public float CurrentHp { get { return currentHp; } protected set { currentHp = value; } }
 		public float Defense { get { return defense; } protected set { defense = value; } }
@@ -317,6 +332,8 @@ namespace RiskOfRain2.Player
 			SetState(new Player_IdleState(this));
 
 			MainCamera = Camera.main;
+
+
 		}
 
 		protected void Update()
@@ -740,5 +757,13 @@ namespace RiskOfRain2.Player
 			}
 		}
 		#endregion
+
+		private void OnTriggerEnter(Collider other)
+		{
+			if (other.tag == "EXP")
+			{
+				CurrentExp += 1;
+			}
+		}
 	}
 }
