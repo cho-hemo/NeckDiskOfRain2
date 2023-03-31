@@ -5,7 +5,7 @@ namespace BeetleQueenSkills
 {
     public class Spit : MonoBehaviour
     {
-        private const float SPEED = 800f;
+        private const float SPEED = 400f;
         private Rigidbody _rigidbody;
 
         private void Awake()
@@ -13,8 +13,9 @@ namespace BeetleQueenSkills
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
+            _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(transform.forward * SPEED);
         }
 
@@ -22,7 +23,7 @@ namespace BeetleQueenSkills
         {
             if (other.CompareTag("Ground") || other.CompareTag("Player"))
             {
-				ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+                ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
             }
         }
 

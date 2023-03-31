@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924905823553eec438be1d302dc8bcd9, type: 3}
   m_Name: Vagrant
   m_EditorClassIdentifier: 
-  _name: Vagrant
+  _name: "\uB5A0\uB3C4\uB294 \uC720\uB791\uC790"
+  _secondName: "\uCE5C\uC808\uD55C \uBCF4\uD638\uC790"
   _type: 1
   _health: 1000
   _power: 4

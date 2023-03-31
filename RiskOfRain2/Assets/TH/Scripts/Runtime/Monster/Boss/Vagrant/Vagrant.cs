@@ -1,15 +1,11 @@
+using RiskOfRain2;
 using RiskOfRain2.Manager;
 using UnityEngine;
 
-public class Vagrant : MonsterBase
+public class Vagrant : BossMonsterBase
 {
-    [SerializeField] private GameObject _superNovaHitArea;
-
-    [SerializeField] private GameObject _trackingBomb;
-    [SerializeField] private Transform _bombSpawnPos;
-
-    [SerializeField] private GameObject _orb;
-    [SerializeField] private Transform _orbSpawnPos;
+    private GameObject _superNovaHitArea;
+    private Transform _projectileSpawnPos;
 
     private GameObject _player;
     private LayerMask _mask;
@@ -24,11 +20,6 @@ public class Vagrant : MonsterBase
     public override void Initialize()
     {
         base.Initialize();
-		UIManager.Instance.ActiveBoss(Name, SecondName);
-		for (int i = 0; i < _skills.Count; i++)
-        {
-            _coolDownTimes.Add(_skills[i].CoolDownTime);
-        }
 
         _player = GameManager.Instance.Player.gameObject;
         _mask = LayerMask.GetMask(Functions.LAYER_GROUND) | LayerMask.GetMask(Functions.LAYER_PLAYER);
@@ -104,10 +95,10 @@ public class Vagrant : MonsterBase
     /// </summary>
     public void FireTrackingBomb()
     {
-        Instantiate(
-            _trackingBomb,
-            _bombSpawnPos.position,
-            transform.rotation);
+        GameObject trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
+        trackingBomb.transform.position = _projectileSpawnPos.position;
+        trackingBomb.transform.rotation = transform.rotation;
+		trackingBomb.SetActive(true);
     }
 
     /// <summary>
@@ -115,20 +106,16 @@ public class Vagrant : MonsterBase
     /// </summary>
     public void FireOrb()
     {
-        Instantiate(
-            _orb,
-            _orbSpawnPos.position,
-            transform.rotation);
+        GameObject orb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
+        orb.transform.position = _projectileSpawnPos.position;
+        orb.transform.rotation = transform.rotation;
+		orb.SetActive(true);
     }
 
-    private void Update()
+    protected override void Awake()
     {
-        for (int i = 0; i < _coolDownTimes.Count; i++)
-        {
-            if (_coolDownTimes[i] > 0)
-            {
-                _coolDownTimes[i] -= Time.deltaTime;
-            }
-        }
+        base.Awake();
+        _superNovaHitArea = gameObject.FindChildObject(Functions.VAGRANT_SUPER_NOVA_HIT_AREA);
+        _projectileSpawnPos = gameObject.FindChildObject(Functions.VAGRANT_PROJECTILE_SPAWN_POS).transform;
     }
 }

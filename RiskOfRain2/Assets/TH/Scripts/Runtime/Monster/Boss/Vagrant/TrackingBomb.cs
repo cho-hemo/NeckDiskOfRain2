@@ -9,14 +9,18 @@ namespace VagrantSkill
         private Rigidbody _rigidbody;
         private float SPEED = 1000f;
 
-        private void Start()
+        private void Awake()
         {
-            _player = GameManager.Instance.Player.gameObject;
             _rigidbody = GetComponent<Rigidbody>();
         }
 
 		private void OnEnable()
 		{
+			if (_player == null && GameManager.Instance.Player != null)
+			{
+				_player = GameManager.Instance.Player.gameObject;
+			}
+
 			if (_player != null)
 			{
 				transform.LookAt(_player.transform);
@@ -31,7 +35,7 @@ namespace VagrantSkill
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Ground" || other.tag == "Player")
+            if (other.CompareTag("Ground") || other.CompareTag("Player"))
             {
                 Destroy(gameObject);
             }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9196734074962933099}
   - component: {fileID: -5556126080167572867}
   m_Layer: 0
-  m_Name: Orb
+  m_Name: Vagrant_Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

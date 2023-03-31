@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9196734074962933099}
   - component: {fileID: 7042846009696603037}
   m_Layer: 0
-  m_Name: TrackingBomb
+  m_Name: Vagrant_TrackingBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
