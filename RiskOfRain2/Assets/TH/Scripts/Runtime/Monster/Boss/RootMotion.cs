@@ -5,12 +5,7 @@ using RiskOfRain2;
 
 public class RootMotion : MonoBehaviour
 {
-<<<<<<< HEAD:RiskOfRain2/Assets/TH/Scripts/Runtime/Monster/Boss/RootMotion.cs
     [SerializeField] private GameObject _player;
-=======
-	[SerializeField] private GameObject _player;
-	[SerializeField] private Transform[] footTargets;
->>>>>>> d4f92780f4b707568c9e528223b39541114f75d3:RiskOfRain2/Assets/TH/Scripts/Runtime/RootMotion.cs
 
 	private MonsterBase _monster;
 	private Animator _animator;

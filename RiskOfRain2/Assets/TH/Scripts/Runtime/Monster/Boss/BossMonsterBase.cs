@@ -40,7 +40,7 @@ public class BossMonsterBase : MonsterBase
 	public override void OnDamaged(int damage)
 	{
 		base.OnDamaged(damage);
-		UIManager.Instance.BossHpControl(damage);
+		UIManager.Instance.BossHpControl(Hp, MaxHp);
 	}
 
 	/// <summary>
@@ -75,6 +75,17 @@ public class BossMonsterBase : MonsterBase
 		MoveState = new MonsterMove(this, _fsm);
 		OnSkillState = new MonsterOnSkill(this, _fsm);
 		DeathState = new MonsterDeath(this, _fsm);
+	}
+
+	private void Update()
+	{
+		for (int i = 0; i < _coolDownTimes.Count; i++)
+		{
+			if (_coolDownTimes[i] > 0)
+			{
+				_coolDownTimes[i] -= Time.deltaTime;
+			}
+		}
 	}
 
 	private void OnDrawGizmosSelected()

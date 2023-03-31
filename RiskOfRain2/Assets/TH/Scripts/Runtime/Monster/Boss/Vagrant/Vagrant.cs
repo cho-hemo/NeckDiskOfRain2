@@ -98,6 +98,7 @@ public class Vagrant : BossMonsterBase
         GameObject trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
         trackingBomb.transform.position = _projectileSpawnPos.position;
         trackingBomb.transform.rotation = transform.rotation;
+		trackingBomb.SetActive(true);
     }
 
     /// <summary>
@@ -108,6 +109,7 @@ public class Vagrant : BossMonsterBase
         GameObject orb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
         orb.transform.position = _projectileSpawnPos.position;
         orb.transform.rotation = transform.rotation;
+		orb.SetActive(true);
     }
 
     protected override void Awake()
@@ -115,16 +117,5 @@ public class Vagrant : BossMonsterBase
         base.Awake();
         _superNovaHitArea = gameObject.FindChildObject(Functions.VAGRANT_SUPER_NOVA_HIT_AREA);
         _projectileSpawnPos = gameObject.FindChildObject(Functions.VAGRANT_PROJECTILE_SPAWN_POS).transform;
-    }
-
-    private void Update()
-    {
-        for (int i = 0; i < _coolDownTimes.Count; i++)
-        {
-            if (_coolDownTimes[i] > 0)
-            {
-                _coolDownTimes[i] -= Time.deltaTime;
-            }
-        }
     }
 }

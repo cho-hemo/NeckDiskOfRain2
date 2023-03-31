@@ -76,6 +76,7 @@ public class BeetleQueen : BossMonsterBase
             GameObject spit = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_SPIT);
             spit.transform.position = _spitSpawnPos.position;
             spit.transform.rotation = Quaternion.Euler(-30, _spitSpawnPos.eulerAngles.y + (standardDegree / 2) - (standardDegree / 5) * i, 0);
+			spit.SetActive(true);
         }
     }
 
@@ -87,6 +88,7 @@ public class BeetleQueen : BossMonsterBase
         GameObject beetleWard = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
         beetleWard.transform.position = _beetleWardSpawnPos.position;
         beetleWard.transform.rotation = transform.rotation;
+		beetleWard.SetActive(true);
     }
 
     /// <summary>
@@ -112,16 +114,5 @@ public class BeetleQueen : BossMonsterBase
         base.Awake();
         _spitSpawnPos = gameObject.FindChildObject(Functions.BEETLE_QUEEN_SPIT_SPAWN_POS).transform;
         _beetleWardSpawnPos = gameObject.FindChildObject(Functions.BEETLE_QUEEN_BEETLE_WARD_SPAWN_POS).transform;
-    }
-
-    private void Update()
-    {
-        for (int i = 0; i < _coolDownTimes.Count; i++)
-        {
-            if (_coolDownTimes[i] > 0)
-            {
-                _coolDownTimes[i] -= Time.deltaTime;
-            }
-        }
     }
 }
