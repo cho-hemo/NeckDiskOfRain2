@@ -35,9 +35,11 @@ public class ItemEffect : MonoBehaviour
 		// Debug.Log(other)
 		if (other.tag == "Ground")
 		{
-			GameObject itemObj_ = transform.parent.GetChild(1).gameObject;
-			itemObj_.transform.localPosition = transform.localPosition;
-			itemObj_.SetActive(true);
+			GameObject item_ = Instantiate(ItemPrefab, transform.parent);
+			item_.transform.localPosition = transform.localPosition;
+			Debug.Log(item_.activeSelf);
+			item_.SetActive(true);
+			Debug.Log(item_.activeSelf);
 
 			gameObject.SetActive(false);
 		}

@@ -15,14 +15,14 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.5019608, g: 0.80892533, b: 1, a: 1}
+  m_FogColor: {r: 0.376, g: 0.7592441, b: 1, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.4
+  m_FogDensity: 0.3
   m_LinearFogStart: 1.89
   m_LinearFogEnd: 104.41
-  m_AmbientSkyColor: {r: 0.22895159, g: 0.46226418, b: 0.26309493, a: 1}
+  m_AmbientSkyColor: {r: 0.021493407, g: 0.066037714, b: 0.02834637, a: 1}
   m_AmbientEquatorColor: {r: 0.028969374, g: 0.066037714, b: 0.03233922, a: 1}
-  m_AmbientGroundColor: {r: 0.041651838, g: 0.2264151, b: 0.0786045, a: 1}
+  m_AmbientGroundColor: {r: 0.103773594, g: 0.03037434, b: 0.013216449, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 64
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0.021
+  m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.061540123, g: 0.044242, b: 0.029351877, a: 0.021}
+  m_IndirectSpecularColor: {r: 0.8245339, g: 1.0323592, b: 1.4105732, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2881,6 +2881,18 @@ PrefabInstance:
     - target: {fileID: -4835942500071465110, guid: cf53c6bbcdd94d447b379098f7eb91cb, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: -4835357268809129073, guid: cf53c6bbcdd94d447b379098f7eb91cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.859
+      objectReference: {fileID: 0}
+    - target: {fileID: -4835357268809129073, guid: cf53c6bbcdd94d447b379098f7eb91cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.137
+      objectReference: {fileID: 0}
+    - target: {fileID: -4835357268809129073, guid: cf53c6bbcdd94d447b379098f7eb91cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.726
       objectReference: {fileID: 0}
     - target: {fileID: -4822202249155118358, guid: cf53c6bbcdd94d447b379098f7eb91cb, type: 3}
       propertyPath: m_Materials.Array.data[0]

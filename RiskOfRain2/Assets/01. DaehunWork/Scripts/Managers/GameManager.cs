@@ -66,11 +66,7 @@ namespace RiskOfRain2.Manager
 		/// </summary>
 		private void PlayerCreate()
 		{
-<<<<<<< HEAD
 			Instantiate(playerPrefab, new Vector3(-60f, -140f, -120f), Quaternion.identity).name = playerPrefab.name;
-=======
-			Instantiate(playerPrefab, new Vector3(-60f, -150f, -120f), Quaternion.identity).name = playerPrefab.name;
->>>>>>> 614cd26f3cc3a356f2e5b7ba06d9c230a8c26425
 			PlayerInit();
 		}
 
