@@ -28,28 +28,28 @@ public class MonsterBase : MonoBehaviour
 
     [SerializeField] private MonsterData _data;
     [SerializeField] protected ReadOnlyCollection<SkillData> _skills;
-	[SerializeField] protected List<float> _coolDownTimes = new List<float>();
-	[SerializeField] protected int[] _availableSkills;
+    [SerializeField] protected List<float> _coolDownTimes = new List<float>();
+    [SerializeField] protected int[] _availableSkills;
     protected MonsterFSM _fsm;
     protected Animator _anim;
 
 
-	/// <summary>
-	/// 몬스터의 데이터를 설정하는 메서드
-	/// </summary>
-	/// <param name="data">몬스터 SO 데이터</param>
-	public virtual void Initialize()
+    /// <summary>
+    /// 몬스터의 데이터를 설정하는 메서드
+    /// </summary>
+    /// <param name="data">몬스터 SO 데이터</param>
+    public virtual void Initialize()
     {
         Type = _data.Type;
         Hp = MaxHp = _data.Health;
         Power = _data.Power;
         Speed = _data.Speed;
-		MaxSqrDetectRange= _data.MaxSqrDetectRange;
-		MinSqrDetectRange = _data.MinSqrDetectRange;
+        MaxSqrDetectRange= _data.MaxSqrDetectRange;
+        MinSqrDetectRange = _data.MinSqrDetectRange;
 
         _skills = _data.Skills;
-		_coolDownTimes.Clear();
-		_availableSkills = new int[_data.Skills.Count];
+        _coolDownTimes.Clear();
+        _availableSkills = new int[_data.Skills.Count];
 
         _fsm.Initialize(_skills, SpawnState);
     }
@@ -70,11 +70,11 @@ public class MonsterBase : MonoBehaviour
         }
     }
 
-	/// <summary>
-	/// 사용 가능한 스킬을 선택하는 메서드
-	/// </summary>
-	/// <returns>스킬 사용 가능 여부</returns>
-	public virtual bool TrySelectSkill()
+    /// <summary>
+    /// 사용 가능한 스킬을 선택하는 메서드
+    /// </summary>
+    /// <returns>스킬 사용 가능 여부</returns>
+    public virtual bool TrySelectSkill()
     {
         return false;
     }

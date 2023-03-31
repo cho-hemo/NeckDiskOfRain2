@@ -8,12 +8,8 @@ public class RootMotion : MonoBehaviour
     [SerializeField] private Transform[] footTargets;
 
     private MonsterBase _monster;
-    private MonsterFSM _fsm;
     private Animator _animator;
     private NavMeshAgent _agent;
-
-    private Vector2 _velocity;
-    private Vector2 SmoothDeltaPosition;
 
     private void Awake()
     {
@@ -29,21 +25,14 @@ public class RootMotion : MonoBehaviour
         //SyncRootPosAndAgent();
     }
 
-	public void Init()
-	{
-		_player = Global.FindRootObject("Player");
-	}
-
-	public void InitMove()
+    public void Init()
     {
-        _animator.applyRootMotion = true;
-        _agent.updatePosition = false;
-        _agent.updateRotation = true;
+        _player = Global.FindRootObject("Player");
     }
 
-    public void InitRotate()
+    public void InitMove()
     {
-        _animator.applyRootMotion = false;
+        _animator.applyRootMotion = true;
         _agent.updatePosition = false;
         _agent.updateRotation = true;
     }
@@ -51,7 +40,6 @@ public class RootMotion : MonoBehaviour
     public void Move()
     {
         _agent.SetDestination(_player.transform.position);
-        //SyncRootPosAndAgent();
     }
 
     public void Stop()
@@ -61,13 +49,7 @@ public class RootMotion : MonoBehaviour
         _agent.updateRotation = true;
     }
 
-    private void SyncRootPosAndAgent()
-    {
-		//_agent.velocity = _animator.deltaPosition / Time.deltaTime;
-		//_animator.SetFloat("MoveSpeed", _agent.velocity.magnitude);
-	}
-
-	private void OnAnimatorMove()
+    private void OnAnimatorMove()
     {
         if (Functions.GetSqrDistance(_agent.destination, transform.position) < _monster.MinSqrDetectRange)
         {

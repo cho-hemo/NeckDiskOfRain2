@@ -80,7 +80,6 @@ public class Vagrant : MonsterBase
     /// </summary>
     public void OnSuperNova(float radius)
     {
-		//애니메이션 재생
 		_anim.SetTrigger("OnPostNova");
 		if (_fsm.GetSqrDistanceToPlayer() <= radius * radius)//&& ray mask(ground, player)
 		{

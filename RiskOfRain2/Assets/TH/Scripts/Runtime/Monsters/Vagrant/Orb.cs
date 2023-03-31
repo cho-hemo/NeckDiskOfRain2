@@ -20,12 +20,12 @@ namespace VagrantSkill
             _rigidbody.AddForce(toPlayer * SPEED);
         }
 
-		private void OnTriggerEnter(Collider other)
-		{
-			if (other.tag == "Ground" || other.tag == "Player")
-			{
-				Destroy(gameObject);
-			}
-		}
-	}
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Ground" || other.tag == "Player")
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }
