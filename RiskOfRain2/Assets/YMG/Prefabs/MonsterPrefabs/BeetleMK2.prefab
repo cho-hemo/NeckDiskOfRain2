@@ -167,15 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ec12dbed0c8ac44a4ca5bce2abf457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
   <Type>k__BackingField: 0
   <Name>k__BackingField: 
   <MaxHp>k__BackingField: 0
   <Hp>k__BackingField: 0
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 5
-  <MaxSqrDetectRange>k__BackingField: 0
-  <MinSqrDetectRange>k__BackingField: 0
   LookRange: 20
   BeAttackedEnd: 0
   SpawnAnime: {fileID: -3247251495056633262, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
