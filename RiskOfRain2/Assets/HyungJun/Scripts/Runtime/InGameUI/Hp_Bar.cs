@@ -45,7 +45,7 @@ public class Hp_Bar : MonoBehaviour
 	/// <param name="objTp_">해당 몬스터의 트랜스폼</param>
 	public void UpdateHpBarPosition(int id_, Transform objTp_)
 	{
-		_hpBarInstanceIdDic[id_].transform.position = _cam.WorldToScreenPoint(objTp_.position + new Vector3(0, 3f, 0f));
+		_hpBarInstanceIdDic[id_].transform.position = _cam.WorldToScreenPoint(objTp_.position);
 	}
 
 	/// <summary>
