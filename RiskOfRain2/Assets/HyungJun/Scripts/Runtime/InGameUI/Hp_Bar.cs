@@ -31,7 +31,7 @@ public class Hp_Bar : MonoBehaviour
 	/// <param name="id_">해당 몬스터의 ID 값</param>
 	public void MakeHpBarFromInstanceId(int id_)
 	{
-		GameObject hpBar_ = ObjectPoolManager.Instance.ObjectPoolPop("HP_Bar");
+		GameObject hpBar_ = ObjectPoolManager.Instance.ObjectPoolPop("Hp_Bar");
 		// 풀에서 꺼내서 부모오브젝트를 캔버스에 넣는 함수
 		hpBar_.transform.SetParent(transform);
 		hpBar_.SetActive(true);
