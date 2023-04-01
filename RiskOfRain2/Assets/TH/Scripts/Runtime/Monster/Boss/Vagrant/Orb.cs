@@ -1,15 +1,23 @@
 using RiskOfRain2.Manager;
+using RiskOfRain2.Player;
 using UnityEngine;
 
 namespace VagrantSkill
 {
     public class Orb : MonoBehaviour
     {
+        private const float SPEED = 3200f;
+
         private GameObject _player;
         private Rigidbody _rigidbody;
-        private float SPEED = 3200f;
+		private int _damage = 3;
 
-        private void Awake()
+		public void SetStats(int power)
+		{
+			_damage *= power;
+		}
+
+		private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
@@ -33,8 +41,9 @@ namespace VagrantSkill
         {
             if (other.CompareTag("Ground") || other.CompareTag("Player"))
             {
-                Destroy(gameObject);
-            }
+				other.GetComponent<PlayerBase>().TakeDamage(_damage);
+				ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+			}
         }
     }
 }

@@ -16,8 +16,8 @@ MonoBehaviour:
   _secondName: "\uBB34\uB9AC\uC758 \uC5B4\uBBF8"
   _type: 1
   _health: 1000
-  _power: 4
-  _speed: 8
+  _power: 5
+  _speed: 5
   _minSqrDetectRange: 250
   _maxSqrDetectRange: 22500
   skills:
