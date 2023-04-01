@@ -28,8 +28,7 @@ public class NormalMonsterBase : MonsterBase
 	{
 		base.OnDamaged(damage);
 
-		// Change after merge Scene
-		//UIManager.Instance.MonsterHpBarControl(Name, Hp, MaxHp);
+		UIManager.Instance.MonsterHpBarControl(Name, Hp, MaxHp);
 	}
 
 	/// <summary>
@@ -46,10 +45,10 @@ public class NormalMonsterBase : MonsterBase
 	public virtual void OnDeathEnd()
 	{
 		//풀에 오브젝트 반환
-		// Change after merge Scene
-		//ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+		ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+		MonsterSpawner.ReduceMonsterCount();
 
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
 
 		//
 		//
