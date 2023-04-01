@@ -27,10 +27,6 @@ public class NormalMonsterBase : MonsterBase
 	public override void OnDamaged(int damage)
 	{
 		base.OnDamaged(damage);
-<<<<<<< HEAD
-=======
-
->>>>>>> 633ebe8ab84586231d43ac897b6ace7027038c0d
 		// Change after merge Scene
 		//UIManager.Instance.MonsterHpBarControl(Name, Hp, MaxHp);
 	}
@@ -65,10 +61,6 @@ public class NormalMonsterBase : MonsterBase
 	protected override void OnDie()
 	{
 		base.OnDie();
-<<<<<<< HEAD
-=======
-
->>>>>>> 633ebe8ab84586231d43ac897b6ace7027038c0d
 		_pathFinder.enabled = false;
 		_anim.SetTrigger("DeathTrg");
 	}
@@ -82,10 +74,6 @@ public class NormalMonsterBase : MonsterBase
 	{
 		if (_player == null && GameManager.Instance.Player != null)
 		{
-<<<<<<< HEAD
-=======
-			Debug.Log($"Player {_player}");
->>>>>>> 633ebe8ab84586231d43ac897b6ace7027038c0d
 			_player = GameManager.Instance.Player.transform;
 		}
 		_pathFinder.enabled = true;

@@ -30,6 +30,7 @@ public class UIManager : GioleSingletone<UIManager>
 			case Global.PLAY_SCENE_NAME:
 				_playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
 				_hpBarCs = GioleFunc.GetRootObj("Hp_bar").GetComponent<Hp_Bar>();
+
 				break;
 			default:
 				break;

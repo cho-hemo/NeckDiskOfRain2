@@ -46,6 +46,8 @@ public class ExpEffect : MonoBehaviour
 			gameObject.SetActive(false);
 			// 사라지면서 오브젝트 풀에 넣어주는 로직 작성중
 			ObjectPoolManager.Instance.ObjectPoolPush("ExpEffect", gameObject);
+
+
 		}
 	}
 }

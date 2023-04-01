@@ -249,6 +249,8 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 		}
 
 		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);        // 플레이어 Hp UI 초기화
+
+		_playerInfo.RegisterObserver(this);
 	}
 
 	private void Update()
@@ -328,8 +330,6 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 		}
 	}
 
-
-
 	/// <summary>
 	/// 미션 UI를 체크해주는 함수
 	/// </summary>
@@ -355,6 +355,15 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 	public void UpdateDate(object data) {/* Do nothing */}
 
 	/// <summary>
+	/// 플레이어의 정보를 갱신해주는 함수
+	/// </summary>
+	public void UpdateDate()
+	{
+		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);
+		PlayerExpSync(_playerInfo.Level, _playerInfo.CurrentExp, _playerInfo.MaxExp);
+	}
+
+	/// <summary>
 	/// 플레이어의 경험치를 올려주고 최대 경험치량에 도달할 경우 레벨 업 함수
 	/// </summary>
 	/// <param name="expValue_">+ 의 추가 값</param>
@@ -371,14 +380,6 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 
 	}
 
-	/// <summary>
-	/// 플레이어의 정보를 갱신해주는 함수
-	/// </summary>
-	public void UpdateDate()
-	{
-		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);
-		PlayerExpSync(_playerInfo.Level, _playerInfo.CurrentExp, _playerInfo.MaxExp);
-	}
 
 	/// <summary>
 	/// 플레이어 경험치를 가져와서 UI에 동기화 하는 로직

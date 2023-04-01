@@ -802,7 +802,7 @@ namespace RiskOfRain2.Player
 		public void OnTriggerEnter(Collider other)
 		{
 			Debug.Log($"OnTrigger Debug : {other.tag}");
-			if (other.tag == "EXP")
+			if (other.tag == "Exp")
 			{
 				IncreaseExp();
 			}
