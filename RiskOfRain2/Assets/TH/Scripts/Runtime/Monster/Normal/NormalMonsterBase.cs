@@ -11,13 +11,17 @@ public class NormalMonsterBase : MonsterBase
 	[SerializeField] protected float LookRange; // 시야 영역
 
 	public bool BeAttackedEnd = false;
+	private int _monsterId = default;
+	private bool _HpBarCondition = false;
 
 	/// <summary>
 	/// 몬스터의 데이터를 설정하는 메서드
 	/// </summary>
 	public override void Initialize()
 	{
-		/* Do nothing */
+		_monsterId = GetInstanceID();
+		UIManager.Instance.CreateMonsterHpBar(_monsterId);
+		_HpBarCondition = true;
 	}
 
 	/// <summary>
@@ -27,13 +31,12 @@ public class NormalMonsterBase : MonsterBase
 	public override void OnDamaged(int damage)
 	{
 		base.OnDamaged(damage);
-<<<<<<< HEAD
-		// Change after merge Scene
-		//UIManager.Instance.MonsterHpBarControl(Name, Hp, MaxHp);
-=======
+		UIManager.Instance.OnDamageMonsterHpBar(_monsterId, Hp, MaxHp);
+	}
 
-		UIManager.Instance.MonsterHpBarControl(Name, Hp, MaxHp);
->>>>>>> 09c1f0d9729916fe68ddf3aa1bcfec9a99899208
+	protected virtual void Update()
+	{
+		if (_HpBarCondition) { UIManager.Instance.UpdateMonsterHpBar(_monsterId, transform); }
 	}
 
 	/// <summary>
@@ -66,6 +69,7 @@ public class NormalMonsterBase : MonsterBase
 	protected override void OnDie()
 	{
 		base.OnDie();
+		UIManager.Instance.DisableMonsterHpBar(_monsterId);
 		_pathFinder.enabled = false;
 		_anim.SetTrigger("DeathTrg");
 	}

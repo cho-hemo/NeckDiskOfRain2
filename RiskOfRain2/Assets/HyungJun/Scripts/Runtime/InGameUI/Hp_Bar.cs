@@ -11,7 +11,6 @@ public class Hp_Bar : MonoBehaviour
 	private Dictionary<int, GameObject> _hpBarInstanceIdDic = new Dictionary<int, GameObject>();
 	// private Transform HP_BarTp = default;
 
-
 	void Start()
 	{
 		_cam = Camera.main;
@@ -26,8 +25,6 @@ public class Hp_Bar : MonoBehaviour
 		// }
 	}
 
-
-
 	/// <summary>
 	/// 몬스터가 스폰될 때 Hp바를 딕셔너리에 추가하는 로직
 	/// </summary>
@@ -40,7 +37,6 @@ public class Hp_Bar : MonoBehaviour
 		hpBar_.SetActive(true);
 		_hpBarInstanceIdDic.Add(id_, hpBar_);
 	}
-
 
 	/// <summary>
 	/// 몬스터가 자신의 hp바를 계속해서 출력하는 함수 (Update 용 함수)
@@ -64,7 +60,6 @@ public class Hp_Bar : MonoBehaviour
 		hpBar_.transform.SetParent(transform);
 		hpBar_.SetActive(false);
 		ObjectPoolManager.Instance.ObjectPoolPush(hpBar_);
-
 	}
 
 	/// <summary>
@@ -73,11 +68,11 @@ public class Hp_Bar : MonoBehaviour
 	/// <param name="monsterName_">몬스터 오브젝트의 이름</param>
 	/// <param name="monsterMaxHp_">몬스터의 최대 체력</param>
 	/// <param name="monsterCurrentHp_">몬스터의 현재 체력</param>
-	public void MonsterHpGaugeDown(int id_, float monsterMaxHp_, float monsterCurrentHp_)
+	public void MonsterHpGaugeDown(int id_, int monsterCurrentHp_, int monsterMaxHp_)
 	{
 		GameObject hpBar_ = _hpBarInstanceIdDic[id_];
 
-		hpBar_.FilledImageControll(monsterCurrentHp_ / monsterMaxHp_);
+		hpBar_.FilledImageControll((float)monsterCurrentHp_ / (float)monsterMaxHp_);
 	}
 
 

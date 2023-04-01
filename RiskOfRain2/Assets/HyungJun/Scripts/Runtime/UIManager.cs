@@ -38,17 +38,6 @@ public class UIManager : GioleSingletone<UIManager>
 	}
 
 
-	// /// <summary>
-	// /// 일반 몬스터의 Hp 바를 컨트롤 하는 함수
-	// /// </summary>
-	// /// <param name="monsterName_">몬스터의 이름</param>
-	// /// <param name="maxHp_">최대 채력</param>
-	// /// <param name="currentHp_">현재 체력</param>
-	// public void MonsterHpBarControl(string monsterName_, int currentHp_, int maxHp_)
-	// {
-	// 	_hpBarCs.MonsterHpGaugeDown(monsterName_, maxHp_, currentHp_);
-	// }
-
 	/// <summary>
 	/// 플레이어의 상호작용 팝업 UI를 활성화 하는 함수
 	/// </summary>
@@ -155,6 +144,52 @@ public class UIManager : GioleSingletone<UIManager>
 	}
 
 
+	#region 일반 몬스터의 HP Bar 관련 함수
+	// /// <summary>
+	// /// 일반 몬스터의 Hp 바를 컨트롤 하는 함수
+	// /// </summary>
+	// /// <param name="monsterName_">몬스터의 이름</param>
+	// /// <param name="maxHp_">최대 채력</param>
+	// /// <param name="currentHp_">현재 체력</param>
+	// public void MonsterHpBarControl(string monsterName_, int currentHp_, int maxHp_)
+	// {
+	// 	_hpBarCs.MonsterHpGaugeDown(monsterName_, maxHp_, currentHp_);
+	// }
+
+
+	/// <summary>
+	/// 일반 몬스터가 생성될때 id값으로 hpBar 딕셔너리 생성
+	/// </summary>
+	/// <param name="id_">몬스터의 id값</param>
+	public void CreateMonsterHpBar(int id_)
+	{
+		_hpBarCs.MakeHpBarFromInstanceId(id_);
+	}
+
+	/// <summary>
+	/// 일반 몬스터의 hp바를 자신의 머리 위에 띄워주는 함수
+	/// </summary>
+	/// <param name="id_">몬스터의 id값</param>
+	/// <param name="tp_">몬스터의 Transform</param>
+	public void UpdateMonsterHpBar(int id_, Transform tp_)
+	{
+		_hpBarCs.UpdateHpBarPosition(id_, tp_);
+	}
+
+	/// <summary>
+	/// 몬스터가 죽을때 해당 hpBar를 지워주는 함수
+	/// </summary>
+	/// <param name="id_">몬스터의 id값</param>
+	public void DisableMonsterHpBar(int id_)
+	{
+		_hpBarCs.deleteHpBar(id_);
+	}
+
+	public void OnDamageMonsterHpBar(int id_, int currentHp_, int maxHp_)
+	{
+		_hpBarCs.MonsterHpGaugeDown(id_, currentHp_, maxHp_);
+	}
+	#endregion 일반 몬스터의 HP Bar 관련 함수
 
 
 }
