@@ -484,6 +484,8 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 		{
 			skillCount_.SetActive(true);
 			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+			// 스킬 스택이 늘어났으므로 쿨타임을 돌려준다.
+
 		}
 		// Max 스킬 스택이 1인 경우 꺼준다.
 		else if (_playerInfo.Skills[num].SkillMaxStack == 1)

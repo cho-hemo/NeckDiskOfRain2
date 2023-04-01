@@ -125,6 +125,7 @@ namespace RiskOfRain2.Player
 				else
 				{
 					SkillStack -= 1;
+					UIManager.Instance.PlayerSkillStackSync(1);
 				}
 			}
 
@@ -145,6 +146,7 @@ namespace RiskOfRain2.Player
 			else
 			{
 				SkillStack += 1;
+				UIManager.Instance.PlayerSkillStackSync(1);
 			}
 
 			if (SkillStack < SkillMaxStack)
