@@ -159,7 +159,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7840250405879481522}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5918729033263292894
 MeshFilter:
@@ -1532,7 +1532,7 @@ Transform:
   m_Children:
   - {fileID: 1644009662733546260}
   m_Father: {fileID: 7840250405879481522}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6776541971516060197
 GameObject:
@@ -1725,9 +1725,9 @@ Transform:
   m_LocalScale: {x: 500, y: 500, z: 500}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8786062437231227196}
   - {fileID: 887703284356776402}
   - {fileID: 3372009784198293323}
+  - {fileID: 8786062437231227196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1787,7 +1787,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  footTargets: []
 --- !u!114 &7729464802682948648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1813,21 +1812,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 0
+  <Name>k__BackingField: 
   <MaxHp>k__BackingField: 0
   <Hp>k__BackingField: 0
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 0
   <MaxSqrDetectRange>k__BackingField: 0
   <MinSqrDetectRange>k__BackingField: 0
-  <SkillNum>k__BackingField: -1
   _data: {fileID: 11400000, guid: 196fbd967fc365a4caad120e40710ab5, type: 2}
+  <SecondName>k__BackingField: 
+  <SkillNum>k__BackingField: -1
   _coolDownTimes: []
   _availableSkills: 
-  _superNovaHitArea: {fileID: 723193076438845664}
-  _trackingBomb: {fileID: 6073727914562010354, guid: 4ea6579823dc8d94a8b74dfb829fe059, type: 3}
-  _bombSpawnPos: {fileID: 3372009784198293323}
-  _orb: {fileID: 6073727914562010354, guid: 829081cb21c421d4391834e4edc3be48, type: 3}
-  _orbSpawnPos: {fileID: 3372009784198293323}
 --- !u!1 &7607652448672179946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3372009784198293323}
   m_Layer: 0
-  m_Name: BombAndOrdSpawnPos
+  m_Name: ProjectileSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2077,7 +2073,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7840250405879481522}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8724430323525493855
 GameObject:

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1332452198}
   m_Layer: 0
-  m_Name: SpitStartPos
+  m_Name: SpitSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332452197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.094, z: 0.099}
+  m_LocalPosition: {x: 0, y: 0.094, z: 0.099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2737873278683020752}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &38016405599854619
 GameObject:
@@ -1289,9 +1289,9 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 3090764554283567449}
   - {fileID: 1332452198}
   - {fileID: 2959241879262912179}
+  - {fileID: 3090764554283567449}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -157.559, z: 0}
@@ -1364,13 +1364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  footTargets:
-  - {fileID: 6936922518362380862}
-  - {fileID: 5392175773117372571}
-  - {fileID: 7692453579110466727}
-  - {fileID: 8122519598504441704}
-  - {fileID: 8779084113509096171}
-  - {fileID: 2595284542092602230}
 --- !u!114 &7641472574696431846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,21 +1389,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 0
+  <Name>k__BackingField: 
   <MaxHp>k__BackingField: 0
   <Hp>k__BackingField: 0
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 0
   <MaxSqrDetectRange>k__BackingField: 0
   <MinSqrDetectRange>k__BackingField: 0
-  <SkillNum>k__BackingField: -1
   _data: {fileID: 11400000, guid: 4f2a7377f16f05b45ab0b30938b8f0be, type: 2}
+  <SecondName>k__BackingField: 
+  <SkillNum>k__BackingField: -1
   _coolDownTimes: []
   _availableSkills: 
-  _spit: {fileID: 6073727914562010354, guid: 0118307fc7ccb154b837ef6efbaa9400, type: 3}
   _spitStartPos: {fileID: 1332452198}
-  _beetleGrub: {fileID: 656515126719600877, guid: 908855bcad8eeab4cbb564b933001ff6, type: 3}
-  _beetleGrubSpawnPos: {fileID: 2959241879262912179}
-  _beetle: {fileID: 0}
+  _beetleWardSpawnPos: {fileID: 0}
 --- !u!1 &3398183235641808552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,7 +1759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2959241879262912179}
   m_Layer: 0
-  m_Name: GrubSpawnPos
+  m_Name: BeetleWardSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1786,7 +1778,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2737873278683020752}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4136325973825395945
 GameObject:
@@ -2837,7 +2829,7 @@ Transform:
   m_Children:
   - {fileID: 6796563859566106036}
   m_Father: {fileID: 2737873278683020752}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6648867226931134468
 GameObject:

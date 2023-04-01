@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924905823553eec438be1d302dc8bcd9, type: 3}
   m_Name: BeetleQueen
   m_EditorClassIdentifier: 
-  _name: BeetleQueen
+  _name: "\uC5EC\uC655 \uB531\uC815\uBC8C\uB808"
+  _secondName: "\uBB34\uB9AC\uC758 \uC5B4\uBBF8"
   _type: 1
   _health: 1000
   _power: 4

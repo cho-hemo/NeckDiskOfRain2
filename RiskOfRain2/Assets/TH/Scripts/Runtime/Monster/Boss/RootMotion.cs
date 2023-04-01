@@ -5,14 +5,11 @@ using RiskOfRain2;
 
 public class RootMotion : MonoBehaviour
 {
-	[SerializeField] private GameObject _player;
-	[SerializeField] private Transform[] footTargets;
+    [SerializeField] private GameObject _player;
 
 	private MonsterBase _monster;
 	private Animator _animator;
 	private NavMeshAgent _agent;
-
-
 
 	private void Awake()
 	{
