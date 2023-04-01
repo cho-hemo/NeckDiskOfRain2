@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -347,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[4].obj
@@ -419,7 +419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[12].count
+<<<<<<< HEAD
       value: 20
+=======
+      value: 30
+>>>>>>> 497e3671f83c1e8d49f700264231ed3e71c0a50e
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[4].objectName
