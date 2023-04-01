@@ -46,7 +46,7 @@ public class Lemurian : NormalMonsterBase
 		state = State.Idle;
 	}
 
-	void Update()
+	protected override void Update()
 	{
 		if (_anim.GetBool("SpawnEnd") && _pathFinder.enabled == true)
 		{

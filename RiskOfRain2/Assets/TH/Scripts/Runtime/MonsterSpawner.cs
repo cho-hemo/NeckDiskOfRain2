@@ -15,7 +15,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private List<string> _monsterPrefabNames = new List<string>()
     {
-        "BeetleMk2",
+        "BeetleMK2",
 		"Lemurian",
 		"Golem"
 	};
@@ -64,9 +64,9 @@ public class MonsterSpawner : MonoBehaviour
 
         int randomNum = Random.Range(0, _monsterPrefabNames.Count);
         GameObject monster = ObjectPoolManager.Instance.ObjectPoolPop(_monsterPrefabNames[randomNum]);
-        monster.transform.position = spawnPos;
         monster.transform.rotation = Quaternion.Euler(_player.transform.position - monster.transform.position).normalized;
-        monster.SetActive(true);
+		monster.GetComponent<MonsterBase>().Initialize();
+        monster.gameObject.SetActive(true);
 		AddMonsterCount();
     }
 

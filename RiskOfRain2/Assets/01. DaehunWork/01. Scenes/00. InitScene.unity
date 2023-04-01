@@ -382,6 +382,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8902960942874785307, guid: 569c0b5522513de4d8346482dcade423, type: 3}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[12].obj
+      value: 
+      objectReference: {fileID: 2465862697790938106, guid: f7a6a66ec77dab54ebc4f80bf6ec725d, type: 3}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[4].count
       value: 100
       objectReference: {fileID: 0}
@@ -411,6 +415,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[11].count
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[12].count
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
@@ -444,6 +452,10 @@ PrefabInstance:
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[11].objectName
       value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[12].objectName
+      value: Hp_Bar
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376372, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_Name
