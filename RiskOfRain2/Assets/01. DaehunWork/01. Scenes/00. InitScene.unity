@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -374,6 +374,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+<<<<<<< HEAD
+=======
+      propertyPath: poolingObjectList.Array.data[10].obj
+      value: 
+      objectReference: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+>>>>>>> c1f1226832b966c102af44cd3dbfce0a681665e4
       propertyPath: poolingObjectList.Array.data[4].count
       value: 100
       objectReference: {fileID: 0}
@@ -398,6 +405,13 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+<<<<<<< HEAD
+=======
+      propertyPath: poolingObjectList.Array.data[10].count
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+>>>>>>> c1f1226832b966c102af44cd3dbfce0a681665e4
       propertyPath: poolingObjectList.Array.data[4].objectName
       value: ExpEffect
       objectReference: {fileID: 0}
@@ -421,6 +435,13 @@ PrefabInstance:
       propertyPath: poolingObjectList.Array.data[9].objectName
       value: BeetleMK2
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[10].objectName
+      value: safsad
+      objectReference: {fileID: 0}
+>>>>>>> c1f1226832b966c102af44cd3dbfce0a681665e4
     - target: {fileID: 4340443341294376372, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_Name
       value: ObjectPoolManager
