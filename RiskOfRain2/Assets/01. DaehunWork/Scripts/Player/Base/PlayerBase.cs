@@ -801,11 +801,12 @@ namespace RiskOfRain2.Player
 
 		public void OnTriggerEnter(Collider other)
 		{
+			Debug.Log($"OnTrigger Debug : {other.tag}");
 			if (other.tag == "EXP")
 			{
 				IncreaseExp();
 			}
-			else if (other.tag == "item")
+			else if (other.tag == "Item")
 			{
 				ItemBase item = other.GetComponent<ItemBase>();
 				InventoryManager.Instance.ItemAdd(item);

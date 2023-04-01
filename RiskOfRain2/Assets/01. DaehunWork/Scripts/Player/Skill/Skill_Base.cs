@@ -89,22 +89,35 @@ namespace RiskOfRain2.Player
 		public float ActivationFactor { get { return _activationFactor; } protected set { _activationFactor = value; } }
 		#endregion
 
+		/// <summary>
+		/// 스킬 초기화 함수
+		/// </summary>
+		/// <param name="player"></param>
 		public virtual void Init(PlayerBase player)
 		{
 			_player = player;
 		}
 
+		/// <summary>
+		/// 스킬 사용 함수
+		/// </summary>
+		/// <param name="isPressed"></param>
 		public virtual void Action(bool isPressed) { }
 
 		/// <summary>
-		/// 플레이어가 자동으로 실행해주는 쿨타임 진행 함수
+		/// 플레이어 스킬 쿨타임 동작 함수
 		/// </summary>
+		/// <param name="value">true : 스킬 사용, false : 스택 추가로 인한 추가 쿨타임 가동</param>
 		/// <returns></returns>
 		public IEnumerator SkillCoolTimeRunning(bool value)
 		{
+			if (SkillMaxStack < SkillStack)
+			{
+				SkillStack = SkillMaxStack;
+			}
+
 			if (value)
 			{
-				IsSkillCoolTime = true;
 				if (SkillStack - 1 <= 0)
 				{
 					SkillStack = 0;
@@ -115,13 +128,15 @@ namespace RiskOfRain2.Player
 				}
 			}
 
-			if (SkillMaxStack < SkillStack)
+			if (IsSkillCoolTime)
 			{
-				SkillStack = SkillMaxStack;
+				yield break;
 			}
 
-			//Debug.Log($"Skill Cool Time Running Start");
+			IsSkillCoolTime = true;
+			Debug.Log($"Skill Cool Time Start");
 			yield return new WaitForSeconds(SkillCooltime);
+			Debug.Log($"Skill Cool Time Stop");
 			IsSkillCoolTime = false;
 			if (SkillMaxStack <= SkillStack + 1)
 			{
@@ -131,7 +146,11 @@ namespace RiskOfRain2.Player
 			{
 				SkillStack += 1;
 			}
-			//Debug.Log($"Skill Cool Time Running Stop");
+
+			if (SkillStack < SkillMaxStack)
+			{
+				_player.StartCoroutine(SkillCoolTimeRunning(false));
+			}
 		}
 
 		public virtual void MultiplierChanged(float value)
@@ -163,8 +182,7 @@ namespace RiskOfRain2.Player
 		/// <returns>true: 사용 가능 false: 사용 불가능</returns>
 		public virtual bool SkillAvailableCheck()
 		{
-			// Debug.Log($"SkillAvailableCheck IsSkillCoolTime : {IsSkillCoolTime} / SkillStack : {SkillStack} ");
-			if (IsSkillCoolTime || SkillStack <= 0)
+			if (SkillStack <= 0)
 			{
 				return false;
 			}

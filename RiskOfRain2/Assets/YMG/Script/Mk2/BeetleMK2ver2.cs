@@ -21,7 +21,7 @@ public class BeetleMK2ver2 : MonoBehaviour
 	public AnimationClip SpawnAnime;
 	public AnimationClip AttackAnime;
 
-	private bool _isLook = default;
+	private bool _isLook;
 
 
 

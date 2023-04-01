@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1397470044960339355}
   - component: {fileID: 1397470044960339354}
   - component: {fileID: 1397470044960339349}
+  - component: {fileID: 5967932611910877403}
   m_Layer: 0
   m_Name: Double_Magazine
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6da38d16a0f207488e9961732e86e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5967932611910877403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397470044960339351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f022263a80e15548a1f5f998926a466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemInfo: 
+  itemType: 0
+  itemNumber: 0
+  targetStat: 0
+  targetSkillIndex: 0
+  targetSkillStat: 0
+  value: 0
 --- !u!1 &1397470046245807125
 GameObject:
   m_ObjectHideFlags: 0

@@ -96,9 +96,10 @@ GameObject:
   - component: {fileID: 621799381623048734}
   - component: {fileID: 621799381623048735}
   - component: {fileID: 621799381623048728}
+  - component: {fileID: 1492389623545064188}
   m_Layer: 0
   m_Name: Solider_Syringe
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +163,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6da38d16a0f207488e9961732e86e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1492389623545064188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621799381623048730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a29b6b31fbb4b47bf75a12434b7758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemInfo: 
+  itemType: 0
+  itemNumber: 0
+  targetStat: 0
+  targetSkillIndex: 0
+  targetSkillStat: 0
+  value: 0
 --- !u!1 &621799382052924363
 GameObject:
   m_ObjectHideFlags: 0

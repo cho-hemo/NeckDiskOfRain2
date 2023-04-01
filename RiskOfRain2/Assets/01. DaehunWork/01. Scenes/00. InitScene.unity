@@ -372,7 +372,15 @@ PrefabInstance:
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[9].obj
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 2465862697790938106, guid: f7a6a66ec77dab54ebc4f80bf6ec725d, type: 3}
+=======
+      objectReference: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[10].obj
+      value: 
+      objectReference: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+>>>>>>> e9cffbbf4290c054a34fd9c66e2b1b8ffd53561d
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[4].count
       value: 100
@@ -395,7 +403,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[9].count
+<<<<<<< HEAD
       value: 100
+=======
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[10].count
+      value: 0
+>>>>>>> e9cffbbf4290c054a34fd9c66e2b1b8ffd53561d
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[4].objectName
@@ -419,7 +435,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: poolingObjectList.Array.data[9].objectName
+<<<<<<< HEAD
       value: HP_Bar
+=======
+      value: BeetleMK2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
+      propertyPath: poolingObjectList.Array.data[10].objectName
+      value: safsad
+>>>>>>> e9cffbbf4290c054a34fd9c66e2b1b8ffd53561d
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376372, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_Name

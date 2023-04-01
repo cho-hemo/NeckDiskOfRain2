@@ -131,8 +131,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -230,7 +230,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 1
+        functionName: OnDeathEnd
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 459426cdffed1d0418e7d39d709c6370, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -259,7 +266,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 1
+        functionName: HitAnimeEnd
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 459426cdffed1d0418e7d39d709c6370, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -334,8 +348,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -347,17 +361,17 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.4233291
-        functionName: On
+      - time: 0.33016136
+        functionName: BiteOn
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 75971d1fc845acc4991e616ebb1b60bf, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: ac1ef5f49a619d645beb3d7648d03687, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.7559429
-        functionName: Off
+        functionName: BiteOff
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 75971d1fc845acc4991e616ebb1b60bf, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: ac1ef5f49a619d645beb3d7648d03687, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -551,8 +565,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -563,7 +577,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.12752432
+        functionName: BreathOn
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ac1ef5f49a619d645beb3d7648d03687, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6741939
+        functionName: BreathOff
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ac1ef5f49a619d645beb3d7648d03687, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -725,8 +753,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -807,7 +835,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
