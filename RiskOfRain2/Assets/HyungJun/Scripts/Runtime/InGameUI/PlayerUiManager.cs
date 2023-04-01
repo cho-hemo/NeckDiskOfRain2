@@ -377,9 +377,7 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 			PlayerLevel += 1;
 		}
 		else { /* Do nothing */ }
-
 	}
-
 
 	/// <summary>
 	/// 플레이어 경험치를 가져와서 UI에 동기화 하는 로직
@@ -472,6 +470,26 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 	public void PlayerSkillActiveIcon(int num, float coolTime_)
 	{
 		StartCoroutine(SkillActive(num, coolTime_));
+	}       // PlayerSkillActiiveIcon()
+
+	/// <summary>
+	/// 플레이어의 스킬 스택을 갱신하는 로직
+	/// </summary>
+	/// <param name="num"></param>
+	public void PlayerSkillStackSync(int num)
+	{
+		GameObject skillCount_ = _skillList[num].FindChildObj("SkillCostTxt");
+		// Max 스킬 스택이 1이 아닌경우 표시해준다
+		if (_playerInfo.Skills[num].SkillMaxStack != 1)
+		{
+			skillCount_.SetActive(true);
+			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+		}
+		// Max 스킬 스택이 1인 경우 꺼준다.
+		else if (_playerInfo.Skills[num].SkillMaxStack == 1)
+		{
+			skillCount_.SetActive(false);
+		}
 	}
 	#endregion  플레이어 UI 관련 함수
 

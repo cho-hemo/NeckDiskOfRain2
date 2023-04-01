@@ -55,17 +55,17 @@ public partial class PlayerUiManager : MonoBehaviour
 		icon_.SetImageColor(0.5f, 0.5f, 0.5f);
 
 		// Max 스킬 스택이 1이 아닌경우 표시해준다
-		if (_playerInfo.Skills[num].SkillMaxStack != 1)
-		{
-			// Debug.Log("")
-			skillCount_.SetActive(true);
-			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
-		}
-		// Max 스킬 스택이 1인 경우 꺼준다.
-		else if (_playerInfo.Skills[num].SkillMaxStack == 1)
-		{
-			skillCount_.SetActive(false);
-		}
+		// if (_playerInfo.Skills[num].SkillMaxStack != 1)
+		// {
+		// 	// Debug.Log("")
+		// 	skillCount_.SetActive(true);
+		// 	skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+		// }
+		// // Max 스킬 스택이 1인 경우 꺼준다.
+		// else if (_playerInfo.Skills[num].SkillMaxStack == 1)
+		// {
+		// 	skillCount_.SetActive(false);
+		// }
 
 		// 스킬 쿨타임 로직
 		for (float i = 0.001f; i < coolTime_; i += 0.1f)

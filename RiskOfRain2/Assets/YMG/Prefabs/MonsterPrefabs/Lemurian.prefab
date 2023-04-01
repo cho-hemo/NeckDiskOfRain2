@@ -67,6 +67,7 @@ Transform:
   - {fileID: 1633761096576415655}
   - {fileID: 1235939524068555321}
   - {fileID: 1235939522501750614}
+  - {fileID: 8759458690060808884}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -139,15 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459426cdffed1d0418e7d39d709c6370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
   <Type>k__BackingField: 0
   <Name>k__BackingField: 
   <MaxHp>k__BackingField: 0
   <Hp>k__BackingField: 0
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 5
-  <MaxSqrDetectRange>k__BackingField: 0
-  <MinSqrDetectRange>k__BackingField: 0
   LookRange: 20
   BeAttackedEnd: 0
   SpawnAnime: {fileID: 8066408097816550420, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
@@ -226,6 +224,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0.99, z: 0}
+--- !u!1 &6520226530453240585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8759458690060808884}
+  m_Layer: 0
+  m_Name: HpBarPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8759458690060808884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6520226530453240585}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1235939523454552224}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1235939523665809484
 PrefabInstance:
   m_ObjectHideFlags: 0

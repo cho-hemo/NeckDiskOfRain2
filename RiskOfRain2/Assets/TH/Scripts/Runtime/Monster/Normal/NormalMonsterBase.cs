@@ -13,6 +13,7 @@ public class NormalMonsterBase : MonsterBase
 	public bool BeAttackedEnd = false;
 	private int _monsterId = default;
 	private bool _HpBarCondition = false;
+	private Transform _hpBarTransform = default;
 
 	/// <summary>
 	/// 몬스터의 데이터를 설정하는 메서드
@@ -36,7 +37,8 @@ public class NormalMonsterBase : MonsterBase
 
 	protected virtual void Update()
 	{
-		if (_HpBarCondition) { UIManager.Instance.UpdateMonsterHpBar(_monsterId, transform); }
+		// 여기다가 트랜스폼의 값이 자식의 hp바 위치를 넣어주면 됩니다.
+		if (_HpBarCondition) { UIManager.Instance.UpdateMonsterHpBar(_monsterId, _hpBarTransform); }
 	}
 
 	/// <summary>
@@ -77,6 +79,7 @@ public class NormalMonsterBase : MonsterBase
 	protected override void Awake()
 	{
 		base.Awake();
+		_hpBarTransform = gameObject.FindChildObj("HpBarPos").transform;
 	}
 
 	protected virtual void OnEnable()
