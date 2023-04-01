@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6073727914562010348}
   - component: {fileID: 6073727914562010355}
   - component: {fileID: 9196734074962933099}
-  - component: {fileID: -5556126080167572867}
+  - component: {fileID: 7042846009696603037}
   m_Layer: 0
-  m_Name: Vagrant_Orb
+  m_Name: Vagrant_TrackingBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-5556126080167572867
+--- !u!114 &7042846009696603037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,6 +124,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6073727914562010354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f7584067c9cbe84d8db4510f4f64a9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 17a7714e8f5c00f4796ab11a4eb4f6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

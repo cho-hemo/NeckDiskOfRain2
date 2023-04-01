@@ -67,7 +67,7 @@ public class MonsterSpawner : MonoBehaviour
 		monster.transform.position = spawnPos;
         monster.transform.rotation = Quaternion.Euler(_player.transform.position - monster.transform.position).normalized;
 		monster.GetComponent<MonsterBase>().Initialize();
-        monster.gameObject.SetActive(true);
+        monster.SetActive(true);
 		AddMonsterCount();
 	}
 

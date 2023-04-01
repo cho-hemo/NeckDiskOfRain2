@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2131,6 +2131,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7378909769963545239, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
+      propertyPath: _bossMonsters.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378909769963545239, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
+      propertyPath: _bossMonsters.Array.data[0]
+      value: 
+      objectReference: {fileID: 3365650796130543466, guid: 2b257a87921a9fa49ad062a5a06e392d, type: 3}
+    - target: {fileID: 7378909769963545239, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
+      propertyPath: _bossMonsters.Array.data[1]
+      value: 
+      objectReference: {fileID: 7459643892615306760, guid: 89da44ae26c733a47840388f8bbbfaae, type: 3}
     - target: {fileID: 7684916154893537250, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
       propertyPath: m_Name
       value: Teleporter

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using RiskOfRain2;
+using RiskOfRain2.Manager;
 
 public class RootMotion : MonoBehaviour
 {
@@ -15,10 +16,10 @@ public class RootMotion : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
     }
 
-    public void Init()
-    {
-        _player = Global.FindRootObject("Player");
-    }
+	private void Start()
+	{
+		_player = GameManager.Instance.Player.gameObject;
+	}
 
     public void InitMove()
     {

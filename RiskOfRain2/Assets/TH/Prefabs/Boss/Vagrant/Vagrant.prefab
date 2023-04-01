@@ -1706,6 +1706,7 @@ GameObject:
   - component: {fileID: 7729464802682948651}
   - component: {fileID: 7729464802682948648}
   - component: {fileID: 1358240355832122762}
+  - component: {fileID: -1540914811661814701}
   m_Layer: 0
   m_Name: Vagrant
   m_TagString: Untagged
@@ -1722,7 +1723,7 @@ Transform:
   m_GameObject: {fileID: 7459643892615306760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0000002813339, y: -66.1, z: -124.5}
-  m_LocalScale: {x: 500, y: 500, z: 500}
+  m_LocalScale: {x: 250, y: 250, z: 250}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 887703284356776402}
@@ -1771,7 +1772,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.15
-  m_BaseOffset: 0.13
+  m_BaseOffset: 0.08
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7729464802682948651
@@ -1817,13 +1818,26 @@ MonoBehaviour:
   <Hp>k__BackingField: 0
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 0
+  _data: {fileID: 11400000, guid: 196fbd967fc365a4caad120e40710ab5, type: 2}
   <MaxSqrDetectRange>k__BackingField: 0
   <MinSqrDetectRange>k__BackingField: 0
-  _data: {fileID: 11400000, guid: 196fbd967fc365a4caad120e40710ab5, type: 2}
   <SecondName>k__BackingField: 
   <SkillNum>k__BackingField: -1
   _coolDownTimes: []
   _availableSkills: 
+--- !u!65 &-1540914811661814701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7459643892615306760}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03, y: 0.055, z: 0.025}
+  m_Center: {x: 0, y: -0.01, z: 0}
 --- !u!1 &7607652448672179946
 GameObject:
   m_ObjectHideFlags: 0
