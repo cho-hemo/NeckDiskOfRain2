@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 7245660147995990656}
   - component: {fileID: 7834932209157329824}
   - component: {fileID: 3606232884919152936}
-  - component: {fileID: 851749891}
+  - component: {fileID: 7710671597365584127}
   m_Layer: 0
   m_Name: TeleporterBaseMesh
   m_TagString: Untagged
@@ -1839,7 +1839,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &851749891
+--- !u!64 &7710671597365584127
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

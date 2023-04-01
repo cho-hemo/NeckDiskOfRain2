@@ -72,9 +72,9 @@ public class NormalMonsterBase : MonsterBase
 
 	protected virtual void OnEnable()
 	{
-		if (_player == null && Global.FindRootObject("Player") != null)
+		if (_player == null && GameManager.Instance.Player != null)
 		{
-			_player = Global.FindRootObject("Player").transform;
+			_player = GameManager.Instance.Player.transform;
 		}
 		_pathFinder.enabled = true;
 	}

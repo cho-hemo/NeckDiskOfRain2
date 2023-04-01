@@ -1,6 +1,7 @@
 using RiskOfRain2;
 using RiskOfRain2.Manager;
 using UnityEngine;
+using VagrantSkill;
 
 public class Vagrant : BossMonsterBase
 {
@@ -95,10 +96,11 @@ public class Vagrant : BossMonsterBase
     /// </summary>
     public void FireTrackingBomb()
     {
-        GameObject trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
+        TrackingBomb trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD).GetComponent<TrackingBomb>();
+		trackingBomb.SetStats(Power);
         trackingBomb.transform.position = _projectileSpawnPos.position;
         trackingBomb.transform.rotation = transform.rotation;
-		trackingBomb.SetActive(true);
+		trackingBomb.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -106,10 +108,11 @@ public class Vagrant : BossMonsterBase
     /// </summary>
     public void FireOrb()
     {
-        GameObject orb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
-        orb.transform.position = _projectileSpawnPos.position;
+        Orb orb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD).GetComponent<Orb>();
+		orb.SetStats(Power);
+		orb.transform.position = _projectileSpawnPos.position;
         orb.transform.rotation = transform.rotation;
-		orb.SetActive(true);
+		orb.gameObject.SetActive(true);
     }
 
     protected override void Awake()

@@ -6,18 +6,29 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-	private static int s_currentMonsterCount;
+	public static int s_currentMonsterCount { get; private set; } = 0;
+    public const int MAX_MONSTER_COUNT = 20;
     private const float SPAWN_CHECK_TIME = 10f;
-    private const int MAX_MONSTER_COUNT = 20;
 
-	private GameObject _spawnSpots;
+    private GameObject _spawnSpots;
     private GameObject _player;
 
-	public static bool IsSpawnable()
+    private List<string> _monsterPrefabNames = new List<string>()
+    {
+        "BeetleMk2",
+		"Lemurian",
+		"Golem"
+	};
+
+	public static void AddMonsterCount()
 	{
-		bool isSpawnable = (s_currentMonsterCount < MAX_MONSTER_COUNT) ? true : false;
-		return isSpawnable;
+		++s_currentMonsterCount;
 	}
+
+    public static void ReduceMonsterCount()
+    {
+        --s_currentMonsterCount;
+    }
 
     private IEnumerator SpawnMonsterLoop()
     {
@@ -50,11 +61,18 @@ public class MonsterSpawner : MonoBehaviour
                 spawnPos = childPos;
             }
         }
+
+        int randomNum = Random.Range(0, _monsterPrefabNames.Count);
+        GameObject monster = ObjectPoolManager.Instance.ObjectPoolPop(_monsterPrefabNames[randomNum]);
+        monster.transform.position = spawnPos;
+        monster.transform.rotation = Quaternion.Euler(_player.transform.position - monster.transform.position).normalized;
+        monster.SetActive(true);
+		AddMonsterCount();
     }
 
     private void Start()
     {
-		_spawnSpots = Global.FindRootObject(Functions.ROOT_SPAWN_SPOTS);
+        _spawnSpots = Global.FindRootObject(Functions.ROOT_SPAWN_SPOTS);
         _player = GameManager.Instance.Player.gameObject;
         SpawnMonster();
         StartCoroutine(SpawnMonsterLoop());

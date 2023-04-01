@@ -185,7 +185,7 @@ public class MonsterDeath : MonsterState
         base.Loop();
 		if (_fsm.IsAnimationEnd)
 		{
-			//사망
+			GameObject.Destroy(_fsm.gameObject);
 		}
 	}
 

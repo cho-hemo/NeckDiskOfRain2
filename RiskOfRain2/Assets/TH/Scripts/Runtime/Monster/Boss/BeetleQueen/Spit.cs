@@ -1,14 +1,22 @@
 using UnityEngine;
 using RiskOfRain2.Manager;
+using RiskOfRain2.Player;
 
 namespace BeetleQueenSkills
 {
     public class Spit : MonoBehaviour
     {
         private const float SPEED = 400f;
-        private Rigidbody _rigidbody;
 
-        private void Awake()
+        private Rigidbody _rigidbody;
+		private int _damage = 3;
+
+		public void SetStats(int power)
+		{
+			_damage *= power;
+		}
+
+		private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
@@ -23,6 +31,7 @@ namespace BeetleQueenSkills
         {
             if (other.CompareTag("Ground") || other.CompareTag("Player"))
             {
+                other.GetComponent<PlayerBase>().TakeDamage(_damage);
                 ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
             }
         }

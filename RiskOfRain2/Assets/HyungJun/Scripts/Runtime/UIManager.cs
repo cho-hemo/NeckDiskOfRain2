@@ -29,7 +29,8 @@ public class UIManager : GioleSingletone<UIManager>
 		{
 			case Global.PLAY_SCENE_NAME:
 				_playerUiManagerCs = GioleFunc.GetRootObj("PlayerUiManager").GetComponent<PlayerUiManager>();
-				_hpBarCs = GioleFunc.GetRootObj("Hp_bar_Canvas").GetComponent<Hp_Bar>();
+				_hpBarCs = GioleFunc.GetRootObj("Hp_bar").GetComponent<Hp_Bar>();
+
 				break;
 			default:
 				break;
@@ -37,16 +38,16 @@ public class UIManager : GioleSingletone<UIManager>
 	}
 
 
-	/// <summary>
-	/// 일반 몬스터의 Hp 바를 컨트롤 하는 함수
-	/// </summary>
-	/// <param name="monsterName_">몬스터의 이름</param>
-	/// <param name="maxHp_">최대 채력</param>
-	/// <param name="currentHp_">현재 체력</param>
-	public void MonsterHpBarControl(string monsterName_, int currentHp_, int maxHp_)
-	{
-		_hpBarCs.MonsterHpGaugeDown(monsterName_, maxHp_, currentHp_);
-	}
+	// /// <summary>
+	// /// 일반 몬스터의 Hp 바를 컨트롤 하는 함수
+	// /// </summary>
+	// /// <param name="monsterName_">몬스터의 이름</param>
+	// /// <param name="maxHp_">최대 채력</param>
+	// /// <param name="currentHp_">현재 체력</param>
+	// public void MonsterHpBarControl(string monsterName_, int currentHp_, int maxHp_)
+	// {
+	// 	_hpBarCs.MonsterHpGaugeDown(monsterName_, maxHp_, currentHp_);
+	// }
 
 	/// <summary>
 	/// 플레이어의 상호작용 팝업 UI를 활성화 하는 함수

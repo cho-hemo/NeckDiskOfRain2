@@ -37,7 +37,7 @@ public partial class PlayerUiManager : MonoBehaviour
 	/// <returns></returns>
 	private IEnumerator SkillActive(int num, float coolTime_)
 	{
-		if (!_playerInfo.Skills[num].SkillAvailableCheck())
+		if (!_playerInfo.Skills[num].IsSkillCoolTime)
 		{
 			// Debug.Log("[PlayerUiManager] SkillActive : 스킬이 쿨타임 중입니다.");
 			yield break;
@@ -57,6 +57,7 @@ public partial class PlayerUiManager : MonoBehaviour
 		// 스킬 스택이 1이 아닌경우 표시해주고 1인 경우 꺼버린다.
 		if (_playerInfo.Skills[num].SkillMaxStack != 1)
 		{
+			// Debug.Log("")
 			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
 		}
 		else if (_playerInfo.Skills[num].SkillMaxStack == 1)
