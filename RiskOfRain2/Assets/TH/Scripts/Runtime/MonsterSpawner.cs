@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    public static int s_currentMonsterCount { get; private set; }
+	public static int s_currentMonsterCount { get; private set; } = 0;
     public const int MAX_MONSTER_COUNT = 20;
     private const float SPAWN_CHECK_TIME = 10f;
 
@@ -15,8 +15,10 @@ public class MonsterSpawner : MonoBehaviour
 
     private List<string> _monsterPrefabNames = new List<string>()
     {
-        "BeetleMk2"
-    };
+        "BeetleMk2",
+		"Lemurian",
+		"Golem"
+	};
 
 	public static void AddMonsterCount()
 	{

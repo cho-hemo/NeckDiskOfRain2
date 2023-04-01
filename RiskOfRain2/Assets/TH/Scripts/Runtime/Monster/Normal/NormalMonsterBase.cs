@@ -27,9 +27,7 @@ public class NormalMonsterBase : MonsterBase
 	public override void OnDamaged(int damage)
 	{
 		base.OnDamaged(damage);
-<<<<<<< HEAD
 
-=======
 		// Change after merge Scene
 		//UIManager.Instance.MonsterHpBarControl(Name, Hp, MaxHp);
 	}
@@ -59,18 +57,14 @@ public class NormalMonsterBase : MonsterBase
 		//GameObject inst = ObjectPoolManager.Instance.ObjectPoolPop("BeetleMK2");
 		//inst.transform.position = Vector3.zero;
 		//inst.SetActive(true);
->>>>>>> c1f1226832b966c102af44cd3dbfce0a681665e4
 	}
 
 	protected override void OnDie()
 	{
 		base.OnDie();
-<<<<<<< HEAD
 
-=======
 		_pathFinder.enabled = false;
 		_anim.SetTrigger("DeathTrg");
->>>>>>> c1f1226832b966c102af44cd3dbfce0a681665e4
 	}
 
 	protected override void Awake()
@@ -80,9 +74,10 @@ public class NormalMonsterBase : MonsterBase
 
 	protected virtual void OnEnable()
 	{
-		if (_player == null && Global.FindRootObject("Player") != null)
+		if (_player == null && GameManager.Instance.Player != null)
 		{
-			_player = Global.FindRootObject("Player").transform;
+			Debug.Log($"Player {_player}");
+			_player = GameManager.Instance.Player.transform;
 		}
 		_pathFinder.enabled = true;
 	}
