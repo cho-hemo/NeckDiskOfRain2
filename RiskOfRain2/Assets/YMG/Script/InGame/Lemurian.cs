@@ -46,8 +46,9 @@ public class Lemurian : NormalMonsterBase
 		state = State.Idle;
 	}
 
-	void Update()
+	protected override void Update()
 	{
+		base.Update();
 		if (_anim.GetBool("SpawnEnd") && _pathFinder.enabled == true)
 		{
 			if (state == State.Idle)
@@ -104,7 +105,7 @@ public class Lemurian : NormalMonsterBase
 		FaceTarget();
 	}
 
-	private void UpdateCheck() 
+	private void UpdateCheck()
 	{
 		_pathFinder.speed = 0;
 		Charging = false;
@@ -183,9 +184,9 @@ public class Lemurian : NormalMonsterBase
 		}
 	}       // FaceTarget()
 
-	void Fireball() 
+	void Fireball()
 	{
-		if (Charging == false) 
+		if (Charging == false)
 		{
 			// timeAfterSpawn 갱신
 			timeAfterSpawn += Time.deltaTime;

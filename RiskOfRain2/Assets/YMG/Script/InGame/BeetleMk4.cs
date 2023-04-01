@@ -33,18 +33,19 @@ public class BeetleMk4 : NormalMonsterBase
 		_pathFinder = GetComponent<NavMeshAgent>();
 
 		LookRange = 20f; // 시야 영역
-		//Speed = 5f;
-}
+						 //Speed = 5f;
+	}
 
 	protected override void OnEnable()
 	{
 		base.OnEnable();
 		StartCoroutine(AnimeWaiting());
-		state = State.Idle;	
+		state = State.Idle;
 	}
 
-	void Update()
+	protected override void Update()
 	{
+		base.Update();
 		if (_anim.GetBool("SpawnEnd") && _pathFinder.enabled == true)
 		{
 			//만약 state가 idle이라면
@@ -258,6 +259,4 @@ public class BeetleMk4 : NormalMonsterBase
 			_anim.SetTrigger("BeAttackedTrg");
 		}
 	}
-
-	
 }

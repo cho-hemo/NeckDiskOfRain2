@@ -96,7 +96,7 @@ public class Vagrant : BossMonsterBase
     /// </summary>
     public void FireTrackingBomb()
     {
-        TrackingBomb trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD).GetComponent<TrackingBomb>();
+        TrackingBomb trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_VAGRANT_TRACKING_BOMB).GetComponent<TrackingBomb>();
 		trackingBomb.SetStats(Power);
         trackingBomb.transform.position = _projectileSpawnPos.position;
         trackingBomb.transform.rotation = transform.rotation;
@@ -108,7 +108,7 @@ public class Vagrant : BossMonsterBase
     /// </summary>
     public void FireOrb()
     {
-        Orb orb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD).GetComponent<Orb>();
+        Orb orb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_VAGRANT_ORB).GetComponent<Orb>();
 		orb.SetStats(Power);
 		orb.transform.position = _projectileSpawnPos.position;
         orb.transform.rotation = transform.rotation;

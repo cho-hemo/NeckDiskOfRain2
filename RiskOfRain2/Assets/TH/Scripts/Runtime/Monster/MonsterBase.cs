@@ -50,9 +50,4 @@ public class MonsterBase : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
     }
-
-    protected virtual void Start()
-    {
-        Initialize();
-    }
 }

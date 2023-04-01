@@ -47,8 +47,9 @@ public class Golem : NormalMonsterBase
 		state = State.Idle;
 	}
 
-	void Update()
+	protected override void Update()
 	{
+		base.Update();
 		if (_anim.GetBool("SpawnEnd") && _pathFinder.enabled == true)
 		{
 			if (state == State.Idle)
