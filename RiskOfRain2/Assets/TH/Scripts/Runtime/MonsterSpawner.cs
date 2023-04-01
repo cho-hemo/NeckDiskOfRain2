@@ -13,15 +13,9 @@ public class MonsterSpawner : MonoBehaviour
 	private GameObject _spawnSpots;
 	private GameObject _player;
 
-<<<<<<< HEAD
     private List<string> _monsterPrefabNames = new List<string>()
     {
         "BeetleMK2",
-=======
-	private List<string> _monsterPrefabNames = new List<string>()
-	{
-		"BeetleMk2",
->>>>>>> 497e3671f83c1e8d49f700264231ed3e71c0a50e
 		"Lemurian",
 		"Golem"
 	};
@@ -68,19 +62,11 @@ public class MonsterSpawner : MonoBehaviour
 			}
 		}
 
-<<<<<<< HEAD
         int randomNum = Random.Range(0, _monsterPrefabNames.Count);
         GameObject monster = ObjectPoolManager.Instance.ObjectPoolPop(_monsterPrefabNames[randomNum]);
         monster.transform.rotation = Quaternion.Euler(_player.transform.position - monster.transform.position).normalized;
-		monster.GetComponent<MonsterBase>().Initialize();
+		monster.GetComponent<NormalMonsterBase>().Initialize();
         monster.gameObject.SetActive(true);
-=======
-		int randomNum = Random.Range(0, _monsterPrefabNames.Count);
-		GameObject monster = ObjectPoolManager.Instance.ObjectPoolPop(_monsterPrefabNames[randomNum]);
-		monster.transform.position = spawnPos;
-		monster.transform.rotation = Quaternion.Euler(_player.transform.position - monster.transform.position).normalized;
-		monster.SetActive(true);
->>>>>>> 497e3671f83c1e8d49f700264231ed3e71c0a50e
 		AddMonsterCount();
 	}
 

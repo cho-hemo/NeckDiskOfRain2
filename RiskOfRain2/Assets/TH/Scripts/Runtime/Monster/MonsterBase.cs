@@ -53,6 +53,6 @@ public class MonsterBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        Initialize();
+        //Initialize();
     }
 }
