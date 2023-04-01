@@ -11,6 +11,20 @@ public class Hp_Bar : MonoBehaviour
 
 	private Camera _cam = default;
 
+	// 몬스터의 ID에 맞는 HP바 딕셔너리
+	private Dictionary<int, GameObject> _hpBarInstanceIdDic = new Dictionary<int, GameObject>();
+
+
+
+
+	public void MakeHpBarFromInstanceId(int id_, GameObject obj_)
+	{
+		GameObject hpBar_ = Instantiate(_goPrefab, obj_.transform.position, Quaternion.identity, transform);
+		_hpBarInstanceIdDic.Add(id_, _goPrefab);
+	}
+
+
+
 
 	void Start()
 	{
@@ -26,14 +40,14 @@ public class Hp_Bar : MonoBehaviour
 		}
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-		for (int i = 0; i < _objectList.Count; i++)
-		{
-			_hpBarList[i].transform.position = _cam.WorldToScreenPoint(_objectList[i].position + new Vector3(0, 3f, 0f));
-		}
-	}
+	// // Update is called once per frame
+	// void Update()
+	// {
+	// 	for (int i = 0; i < _objectList.Count; i++)
+	// 	{
+	// 		_hpBarList[i].transform.position = _cam.WorldToScreenPoint(_objectList[i].position + new Vector3(0, 3f, 0f));
+	// 	}
+	// }
 
 	/// <summary>
 	/// 몬스터의 체력 표시 바의 상태를 바꾸는 함수
