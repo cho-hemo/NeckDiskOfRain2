@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2703,6 +2703,7 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 1227499628868006277, guid: f3cd76be2da098a4b94efc80bc81e10a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.005894
@@ -2746,6 +2747,15 @@ PrefabInstance:
     - target: {fileID: 1892396693566630719, guid: f3cd76be2da098a4b94efc80bc81e10a, type: 3}
       propertyPath: m_Name
       value: Barrel (2)
+=======
+    - target: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+>>>>>>> 633ebe8ab84586231d43ac897b6ace7027038c0d
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3cd76be2da098a4b94efc80bc81e10a, type: 3}

@@ -1,15 +1,24 @@
 using UnityEngine;
 using RiskOfRain2.Manager;
+using RiskOfRain2.Player;
 
 namespace VagrantSkill
 {
     public class TrackingBomb : MonoBehaviour
     {
+        private const float SPEED = 1000f;
+
         private GameObject _player;
         private Rigidbody _rigidbody;
-        private float SPEED = 1000f;
 
-        private void Awake()
+		private int _damage = 5;
+
+		public void SetStats(int power)
+		{
+			_damage *= power;
+		}
+
+		private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
@@ -37,8 +46,9 @@ namespace VagrantSkill
         {
             if (other.CompareTag("Ground") || other.CompareTag("Player"))
             {
-                Destroy(gameObject);
-            }
+				other.GetComponent<PlayerBase>().TakeDamage(_damage);
+				ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+			}
         }
     }
 }

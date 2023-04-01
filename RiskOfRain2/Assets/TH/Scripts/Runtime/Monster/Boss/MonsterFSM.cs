@@ -7,13 +7,8 @@ public class MonsterFSM : MonoBehaviour
     private const string PLAYER = "Player";
     private static GameObject _player;
 
-    //public float SqrDetectRange { get { return _detectRange * _detectRange; } }
-    //public float SqrMaxAttackRange { get { return _maxAttackRange * _maxAttackRange; } }
     public bool IsAnimationEnd { get; private set; } = false;
     public MonsterState CurrentState { get; private set; }
-
-    //private float _detectRange = 200;
-    //private float _maxAttackRange = 50;
 
     /// <summary>
     /// 클래스를 초기화하는 메서드
@@ -50,15 +45,6 @@ public class MonsterFSM : MonoBehaviour
     }
 
     /// <summary>
-    /// 플레이어 바라보는 메서드
-    /// </summary> 
-
-    public void LookAtPlayer()
-    {
-        StartCoroutine(LookAtIE());
-    }
-
-    /// <summary>
     /// 애니메이션 종료 시 호출되는 메서드
     /// </summary>
     public void OnAnimationExit()
@@ -72,30 +58,6 @@ public class MonsterFSM : MonoBehaviour
 
         CurrentState = initState;
         CurrentState.Enter();
-    }
-
-    private IEnumerator LookAtIE()
-    {
-        //transform.LookAt(_player.transform);
-        //transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y, transform.eulerAngles.z);
-
-        Quaternion lookRot = Quaternion.LookRotation(_player.transform.position);
-        Quaternion sourRot = transform.rotation;
-        Quaternion destRot = Quaternion.Euler(0f, lookRot.eulerAngles.y, lookRot.eulerAngles.z);
-
-        float timer = 1f;
-        int frame = 60;
-        float term = timer / frame;
-
-        while (timer < 0f)
-        {
-            transform.rotation = Quaternion.Slerp(sourRot, destRot, 1 - timer);
-
-            timer -= term;
-            yield return new WaitForSeconds(term);
-        }
-
-        yield return null;
     }
 
     private void Awake()
