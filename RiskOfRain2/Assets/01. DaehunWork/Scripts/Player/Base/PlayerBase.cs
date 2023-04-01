@@ -333,8 +333,6 @@ namespace RiskOfRain2.Player
 			SetState(new Player_IdleState(this));
 
 			MainCamera = Camera.main;
-
-
 		}
 
 		protected void Update()
@@ -802,7 +800,7 @@ namespace RiskOfRain2.Player
 		public void OnTriggerEnter(Collider other)
 		{
 			Debug.Log($"OnTrigger Debug : {other.tag}");
-			if (other.tag == "EXP")
+			if (other.tag == "Exp")
 			{
 				IncreaseExp();
 			}
