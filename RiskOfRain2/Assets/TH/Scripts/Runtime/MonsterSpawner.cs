@@ -15,7 +15,7 @@ public class MonsterSpawner : MonoBehaviour
 
 	private List<string> _monsterPrefabNames = new List<string>()
 	{
-		"BeetleMk2",
+		"BeetleMK2",
 		"Lemurian",
 		"Golem"
 	};
