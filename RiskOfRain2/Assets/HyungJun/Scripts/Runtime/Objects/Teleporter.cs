@@ -2,6 +2,7 @@ using RiskOfRain2;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RiskOfRain2.Manager;
 
 public class Teleporter : InteractionObjects
 {
@@ -20,6 +21,10 @@ public class Teleporter : InteractionObjects
 			_disposable = true;
 			UIManager.Instance.PopupUIActive(" 텔레포터 가동..?", true);
 		}
+		else if (GameManager.Instance.IsBossDie)
+		{
+			UIManager.Instance.PopupUIActive(" 텔레포터 가동..?", true);
+		}
 	}
 
 	private void Update()
@@ -27,6 +32,12 @@ public class Teleporter : InteractionObjects
 		if (Input.GetKeyDown(KeyCode.E) && _disposable)
 		{
 			Interaction();
+
+		}
+		else if (Input.GetKeyDown(KeyCode.E) && GameManager.Instance.IsBossDie)
+		{
+			KeyInputManager.Instance.SetCursorState(false);
+			GioleFunc.LoadScene("04. EndingScene");
 		}
 	}
 
