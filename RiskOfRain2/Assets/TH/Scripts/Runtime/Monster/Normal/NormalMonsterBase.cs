@@ -89,6 +89,13 @@ public class NormalMonsterBase : MonsterBase
 		{
 			_player = GameManager.Instance.Player.transform;
 		}
+		ReSpawn();
+	}
+
+	protected virtual void ReSpawn()
+	{
+		Hp = MaxHp;
+		_HpBarCondition = true;
 		_pathFinder.enabled = true;
 	}
 }

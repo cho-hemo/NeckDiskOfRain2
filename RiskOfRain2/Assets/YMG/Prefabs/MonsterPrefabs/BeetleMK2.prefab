@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 668249213}
   m_Layer: 0
   m_Name: BeetleMK2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 0
   <Name>k__BackingField: 
-  <MaxHp>k__BackingField: 0
-  <Hp>k__BackingField: 0
+  <MaxHp>k__BackingField: 80
+  <Hp>k__BackingField: 80
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 5
   LookRange: 20
@@ -469,6 +469,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.109431274
       objectReference: {fileID: 0}
+    - target: {fileID: -1750197354950549132, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c65c30cb3fe6aea40b206c55530d603c, type: 2}
     - target: {fileID: -1490886783576400440, guid: 99e8cbf11e64aaf41b88cff718ff4701, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.891787e-10

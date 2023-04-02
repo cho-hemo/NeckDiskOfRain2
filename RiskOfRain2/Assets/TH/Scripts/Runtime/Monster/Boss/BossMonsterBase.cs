@@ -93,6 +93,11 @@ public class BossMonsterBase : MonsterBase
 		DeathState = new MonsterDeath(this, _fsm);
 	}
 
+	private void Start()
+	{
+		Initialize();
+	}
+
 	private void Update()
 	{
 		for (int i = 0; i < _coolDownTimes.Count; i++)

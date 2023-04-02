@@ -43,7 +43,7 @@ public class BeetleMk4 : NormalMonsterBase
 		state = State.Idle;
 	}
 
-	void Update()
+	protected override void Update()
 	{
 		base.Update();
 		if (_anim.GetBool("SpawnEnd") && _pathFinder.enabled == true)
@@ -259,6 +259,4 @@ public class BeetleMk4 : NormalMonsterBase
 			_anim.SetTrigger("BeAttackedTrg");
 		}
 	}
-
-
 }

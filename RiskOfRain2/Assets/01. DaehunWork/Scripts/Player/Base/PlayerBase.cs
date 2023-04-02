@@ -334,7 +334,7 @@ namespace RiskOfRain2.Player
 
 			MainCamera = Camera.main;
 
-
+			StartCoroutine(HealthRegeneration());
 		}
 
 		protected void Update()
@@ -450,6 +450,23 @@ namespace RiskOfRain2.Player
 		/// 레벨 업 함수
 		/// </summary>
 		protected abstract void LevelUp();
+
+		protected IEnumerator HealthRegeneration()
+		{
+			while (true)
+			{
+				yield return new WaitForSeconds(1f);
+				if (MaxHp <= CurrentHp + HealthRegen)
+				{
+					CurrentHp = MaxHp;
+				}
+				else
+				{
+					CurrentHp += HealthRegen;
+				}
+				NotifyObservers();
+			}
+		}
 
 		/// <summary>
 		/// 스킬 동작 함수

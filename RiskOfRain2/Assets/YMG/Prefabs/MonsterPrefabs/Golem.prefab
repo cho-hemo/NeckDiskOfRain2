@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 8902960942874785298}
   m_Layer: 0
   m_Name: Golem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 0
   <Name>k__BackingField: 
-  <MaxHp>k__BackingField: 0
-  <Hp>k__BackingField: 0
+  <MaxHp>k__BackingField: 480
+  <Hp>k__BackingField: 480
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 5
   LookRange: 0
@@ -322,6 +322,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7670800601166319672, guid: 9d2473779dae743468ccf570842539dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 736975de6312aef4e9eba97cf763aee2, type: 2}
     - target: {fileID: 919132149155446097, guid: 9d2473779dae743468ccf570842539dd, type: 3}
       propertyPath: m_Name
       value: mdlGolem

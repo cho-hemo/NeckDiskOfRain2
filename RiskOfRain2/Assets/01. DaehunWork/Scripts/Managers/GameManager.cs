@@ -88,7 +88,16 @@ namespace RiskOfRain2.Manager
 		public void BulletOnCollision(GameObject obj, int skillIndex)
 		{
 			float damage = _player.AttackDamage * _player.Skills[skillIndex].Multiplier;
-			obj.GetComponent<MonsterBase>().OnDamaged((int)damage);
+			Debug.Log($"데미지를 입힘 damage : {damage}");
+			Debug.Log($"Obj : {obj.name} / tag : {obj.tag}");
+			if (obj.tag == "Boss")
+			{
+				obj.GetComponent<BossMonsterBase>().OnDamaged((int)damage);
+			}
+			else
+			{
+				obj.GetComponent<MonsterBase>().OnDamaged((int)damage);
+			}
 		}
 
 		public void AddCoin(int value)

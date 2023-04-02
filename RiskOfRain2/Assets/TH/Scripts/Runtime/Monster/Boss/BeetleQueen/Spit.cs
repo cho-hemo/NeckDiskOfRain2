@@ -29,11 +29,15 @@ namespace BeetleQueenSkills
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Ground") || other.CompareTag("Player"))
+            if (other.CompareTag("Ground"))
             {
-                other.GetComponent<PlayerBase>().TakeDamage(_damage);
                 ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
             }
+			else if (other.CompareTag("Player"))
+			{
+				other.GetComponent<PlayerBase>().TakeDamage(_damage);
+				ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+			}
         }
 
         private void OnDrawGizmos()
