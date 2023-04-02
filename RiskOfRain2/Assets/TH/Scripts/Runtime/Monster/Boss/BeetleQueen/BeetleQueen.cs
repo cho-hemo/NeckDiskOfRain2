@@ -102,17 +102,21 @@ public class BeetleQueen : BossMonsterBase
         Debug.Log("SkillNum2");
 
 		GameObject monster1 = ObjectPoolManager.Instance.ObjectPoolPop("BeetleMK2");
-		monster1.transform.position = new Vector3(transform.position.x - 5, transform.position.y, transform.position.z);
+		monster1.transform.position = new Vector3(transform.position.x - 8, transform.position.y, transform.position.z);
 		monster1.transform.rotation = transform.rotation;
+		monster1.GetComponent<MonsterBase>().Initialize();
 		monster1.SetActive(true);
+		MonsterSpawner.AddMonsterCount();
 
 		GameObject monster2 = ObjectPoolManager.Instance.ObjectPoolPop("BeetleMK2");
-		monster2.transform.position = new Vector3(transform.position.x + 5, transform.position.y, transform.position.z);
+		monster2.transform.position = new Vector3(transform.position.x + 8, transform.position.y, transform.position.z);
 		monster2.transform.rotation = transform.rotation;
+		monster2.GetComponent<MonsterBase>().Initialize();
 		monster2.SetActive(true);
+		MonsterSpawner.AddMonsterCount();
 	}
 
-    protected override void Awake()
+	protected override void Awake()
     {
         base.Awake();
         _spitSpawnPos = gameObject.FindChildObject(Functions.BEETLE_QUEEN_SPIT_SPAWN_POS).transform;
