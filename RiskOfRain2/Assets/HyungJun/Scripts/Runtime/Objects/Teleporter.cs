@@ -8,6 +8,7 @@ public class Teleporter : InteractionObjects
 {
 	[SerializeField] private List<GameObject> _bossMonsters;
 	private Transform _bossSpawnSpot;
+	private bool _gameover = false;
 
 	private void Start()
 	{
@@ -21,20 +22,22 @@ public class Teleporter : InteractionObjects
 			_disposable = true;
 			UIManager.Instance.PopupUIActive(" 텔레포터 가동..?", true);
 		}
-		else if (GameManager.Instance.IsBossDie)
+		else if (other.tag.Equals("Player") && GameManager.Instance.IsBossDie)
 		{
+			_gameover = true;
 			UIManager.Instance.PopupUIActive(" 텔레포터 가동..?", true);
 		}
 	}
 
 	private void Update()
 	{
+		Debug.Log(GameManager.Instance.IsBossDie);
 		if (Input.GetKeyDown(KeyCode.E) && _disposable)
 		{
 			Interaction();
 
 		}
-		else if (Input.GetKeyDown(KeyCode.E) && GameManager.Instance.IsBossDie)
+		else if (Input.GetKeyDown(KeyCode.E) && GameManager.Instance.IsBossDie && _gameover)
 		{
 			KeyInputManager.Instance.SetCursorState(false);
 			GioleFunc.LoadScene("04. EndingScene");
