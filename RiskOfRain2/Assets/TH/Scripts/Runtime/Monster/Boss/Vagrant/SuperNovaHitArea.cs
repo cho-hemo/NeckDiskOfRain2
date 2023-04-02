@@ -34,7 +34,6 @@ namespace VagrantSkill
             {
                 transform.localScale += new Vector3(deltaScale, deltaScale, deltaScale);
                 timer += deltaTime;
-                Debug.Log(timer);
                 yield return new WaitForSeconds(deltaTime);
             }
 
@@ -43,7 +42,7 @@ namespace VagrantSkill
 
         private void OnDisable()
         {
-            _radius = transform.localScale.x * transform.lossyScale.x / 2f;
+            _radius = transform.localScale.x * transform.lossyScale.x;
             _vagrant.OnSuperNova(_radius);
         }
     }

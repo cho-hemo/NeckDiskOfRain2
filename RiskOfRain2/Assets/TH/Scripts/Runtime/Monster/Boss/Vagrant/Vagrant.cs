@@ -81,11 +81,12 @@ public class Vagrant : BossMonsterBase
 	public void OnSuperNova(float radius)
 	{
 		_anim.SetTrigger("OnPostNova");
+
 		if (_fsm.GetSqrDistanceToPlayer() <= radius * radius)
 		{
-			Ray ray = new Ray(transform.position, (_player.transform.position - transform.position).normalized);
+			Ray ray = new Ray(transform.position, (_player.transform.GetChild(2).transform.position - transform.position).normalized);
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit, radius, _mask) && hit.collider.gameObject.CompareTag("Player"))
+			if (Physics.SphereCast(ray, 1, out hit, radius, _mask) && hit.collider.gameObject.CompareTag("Player"))
 			{
 				_player.GetComponent<PlayerBase>().TakeDamage(Power * 10);
 			}
@@ -96,8 +97,8 @@ public class Vagrant : BossMonsterBase
 	/// 추적 폭탄 발사 스킬 애니메이션 이벤트
 	/// </summary>
 	public void FireTrackingBomb()
-	{
-		TrackingBomb trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_VAGRANT_TRACKING_BOMB).GetComponent<TrackingBomb>();
+    {
+        TrackingBomb trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_VAGRANT_TRACKING_BOMB).GetComponent<TrackingBomb>();
 		trackingBomb.SetStats(Power);
 		trackingBomb.transform.position = _projectileSpawnPos.position;
 		trackingBomb.transform.rotation = transform.rotation;

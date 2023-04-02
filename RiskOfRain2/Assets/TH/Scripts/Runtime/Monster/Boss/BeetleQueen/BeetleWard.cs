@@ -32,7 +32,7 @@ namespace BeetleQueenSkills
             if (_player != null)
             {
                 _rigidbody.velocity = Vector3.zero;
-                Vector3 toPlayer = (_player.transform.position - transform.position).normalized;
+                Vector3 toPlayer = (_player.transform.GetChild(2).transform.position - transform.position).normalized;
                 _rigidbody.AddForce(toPlayer * SPEED);
 
                 //lookAtYZ

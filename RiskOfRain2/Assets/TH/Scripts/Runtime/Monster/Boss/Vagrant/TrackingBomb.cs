@@ -29,16 +29,11 @@ namespace VagrantSkill
 			{
 				_player = GameManager.Instance.Player.gameObject;
 			}
-
-			if (_player != null)
-			{
-				transform.LookAt(_player.transform);
-			}
 		}
 
         private void Update()
         {
-            transform.LookAt(_player.transform);
+            transform.LookAt(_player.transform.GetChild(2).transform);
             _rigidbody.velocity = transform.forward * SPEED * Time.deltaTime;
         }
 
