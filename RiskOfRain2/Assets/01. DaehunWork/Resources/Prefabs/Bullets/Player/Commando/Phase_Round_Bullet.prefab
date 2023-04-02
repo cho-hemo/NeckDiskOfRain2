@@ -76,10 +76,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d55913b5202e1d4ab87f1479b1db3e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rayDistance: 0.5
-  _bulletRigidbody: {fileID: 0}
-  _speed: 100
-  _target: {x: 0, y: 0, z: 0}
+  skillIndex: 0
+  rayDistance: 0.5
+  bulletRigidbody: {fileID: 0}
+  speed: 100
+  target: {x: 0, y: 0, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 503
 --- !u!1001 &4430215491372019080
 PrefabInstance:
   m_ObjectHideFlags: 0

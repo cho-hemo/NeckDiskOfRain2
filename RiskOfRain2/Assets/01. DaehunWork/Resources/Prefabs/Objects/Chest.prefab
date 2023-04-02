@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236185046788}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236329989530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.m
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236382375258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: zipper1.001_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236401326770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: zipper1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236511680837}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5517313236607862791}
   - component: {fileID: 5517313236607862788}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: chest2Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236626656849}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.m_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236715922935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.l_end_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236737282629}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: zipper1_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313236878389422}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313237205898443}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 5517313237236235351}
   - component: {fileID: 5517313237236235350}
   - component: {fileID: 5517313237236235353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NeededMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313237251375210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313237354252739}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mdlChest2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313237360246039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: zipper1.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 5517313237694578434}
   - component: {fileID: 5517313237694578437}
   - component: {fileID: 5517313237694578436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ItemEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -753,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313237725533582}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: zipper1.001_end_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313237771995848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.r_end_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313237880421522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: zipper1_end_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313238078430663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -880,7 +880,7 @@ GameObject:
   - component: {fileID: 5517313238108496409}
   - component: {fileID: 5517313238108496407}
   - component: {fileID: 5517313238108496406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1013,7 +1013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313238125105782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hydraulic.m_end_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,7 +1044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5517313238156797759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: chest2Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,7 +1082,7 @@ GameObject:
   - component: {fileID: 5517313238211251348}
   - component: {fileID: 5517313238211251351}
   - component: {fileID: 5517313238211251350}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chest
   m_TagString: Chest
   m_Icon: {fileID: 0}

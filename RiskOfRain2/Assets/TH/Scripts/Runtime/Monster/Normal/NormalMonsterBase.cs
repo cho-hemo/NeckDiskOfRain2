@@ -54,6 +54,7 @@ public class NormalMonsterBase : MonsterBase
 	/// </summary>
 	public virtual void OnDeathEnd()
 	{
+		Debug.Log($"Ondeath Debug : {this.name}");
 		//풀에 오브젝트 반환
 		ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
 		MonsterSpawner.ReduceMonsterCount();
@@ -90,6 +91,7 @@ public class NormalMonsterBase : MonsterBase
 			_player = GameManager.Instance.Player.transform;
 		}
 		ReSpawn();
+		UIManager.Instance.OnDamageMonsterHpBar(_monsterId, Hp, MaxHp);
 	}
 
 	protected virtual void ReSpawn()

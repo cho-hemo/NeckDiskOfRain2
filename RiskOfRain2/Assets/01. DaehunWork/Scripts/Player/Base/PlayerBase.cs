@@ -235,6 +235,8 @@ namespace RiskOfRain2.Player
 		protected float cinemachineTargetPitch;
 		#endregion
 
+		public LayerMask layerMask;
+
 		#region Property
 		#region PlayerController
 		// { PlayerController Property
@@ -828,6 +830,7 @@ namespace RiskOfRain2.Player
 				ItemBase item = other.GetComponent<ItemBase>();
 				InventoryManager.Instance.ItemAdd(item);
 			}
+
 		}
 
 	}

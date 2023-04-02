@@ -51,7 +51,7 @@ namespace RiskOfRain2.Player.Commando
 		{
 			Vector2 screenCenterPoint_ = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
 			Ray ray_ = _player.MainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-			if (Physics.Raycast(ray_, out RaycastHit rayCastHit_, _player.RayRange))
+			if (Physics.Raycast(ray_, out RaycastHit rayCastHit_, _player.RayRange, _player.layerMask))
 			{
 				Vector3 direction = rayCastHit_.point - start;
 				return Quaternion.LookRotation(direction);
@@ -111,7 +111,7 @@ namespace RiskOfRain2.Player.Commando
 		{
 			Vector2 screenCenterPoint_ = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
 			Ray ray_ = _player.MainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-			if (Physics.Raycast(ray_, out RaycastHit rayCastHit_, _player.RayRange))
+			if (Physics.Raycast(ray_, out RaycastHit rayCastHit_, _player.RayRange, _player.layerMask))
 			{
 				Vector3 direction = rayCastHit_.point - start;
 				return Quaternion.LookRotation(direction);
@@ -248,7 +248,7 @@ namespace RiskOfRain2.Player.Commando
 		{
 			Vector2 screenCenterPoint_ = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
 			Ray ray_ = _player.MainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-			if (Physics.Raycast(ray_, out RaycastHit rayCastHit_, _player.RayRange))
+			if (Physics.Raycast(ray_, out RaycastHit rayCastHit_, _player.RayRange, _player.layerMask))
 			{
 				Vector3 direction = rayCastHit_.point - start;
 				return Quaternion.LookRotation(direction);

@@ -31,6 +31,8 @@ namespace RiskOfRain2.Bullet
 		[Tooltip("충돌 오브젝트의 위치")]
 		protected Vector3 target;
 
+		public LayerMask layerMask;
+
 		protected void Start()
 		{
 			TryGetComponent(out bulletRigidbody);
@@ -39,7 +41,7 @@ namespace RiskOfRain2.Bullet
 		protected void OnEnable()
 		{
 			float maxDistance_ = float.MaxValue;
-			if (Physics.Raycast(transform.localPosition, transform.forward, out rayHit, maxDistance_))
+			if (Physics.Raycast(transform.localPosition, transform.forward, out rayHit, maxDistance_, layerMask))
 			{
 				target = rayHit.point;
 			}

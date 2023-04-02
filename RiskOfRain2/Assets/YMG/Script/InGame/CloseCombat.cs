@@ -35,6 +35,6 @@ public class CloseCombat : MonoBehaviour
 			//int damage_ = normalMonster.Power * 10;
 			other.GetComponent<PlayerBase>().TakeDamage(damage);
 			closeCombat.enabled = false;
-		}		
+		}
 	}
 }

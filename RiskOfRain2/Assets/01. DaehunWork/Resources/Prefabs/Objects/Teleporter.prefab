@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8102371472793857706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3699620552352670696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InitialBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1305223064284889368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshTiny 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8655309099956863552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6673351506755236636}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4444276857031632645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PointLight 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2036706717242184722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BuiltInEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5594772361362720369}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MSPortalIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6012536009394074733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ChargingEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8708410795263897043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InitialBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1125817336883194147}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ParticlesSuckingInward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6967683062105655236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshTiny 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1715283782163654443}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 527061334828361864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ParticlesRingInward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615268115854163647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoldshoresPortalIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6893468822818121090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2540083581339314992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PassiveParticle, Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1730016697368468156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7774235099938565732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4229105412245747256}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,7 +655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771391169580642414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash Lines, Vertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4928837483552754752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash Lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1738125170692299449}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GlowFlowerProps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,8 +754,7 @@ GameObject:
   - component: {fileID: 2905012373631045491}
   - component: {fileID: 4069527430630048745}
   - component: {fileID: 4974089667833300897}
-  - component: {fileID: 851749887}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TeleporterProngMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,20 +826,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &851749887
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2612687471652345360}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6455888619568125633, guid: 508b82772361fe74a947154bd6ff63f3, type: 3}
 --- !u!1 &2688900439034194620
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +835,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414607750002026608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireworkOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -881,7 +866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8333412418575292631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +897,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7572450375573596676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshTiny 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,7 +928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3603829212971639162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8951058816136485782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1005,7 +990,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8484041017327972503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4165342827668750395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HologramPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1067,7 +1052,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1782368550152149669}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GlowFlowerMeshNoStem (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1083,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4666828726539500688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ReferencePointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1129,7 +1114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5865263960407002731}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1160,7 +1145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6589700132857190862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TeleporterSecuredTeleportChargeEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5837144148188265628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RockDisruptionParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1226,7 +1211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2790730836628523901}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GlowFlowerMeshNoStem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1257,7 +1242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4003565120766142454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1293936039821750765}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teleporter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1320,7 +1305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1278625623847500112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BetweenProngs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1352,7 +1337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7223322687241636227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1383,7 +1368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8272683058244829429}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,7 +1399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6522211024971384183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1445,7 +1430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2442276896319225632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,7 +1461,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6012702423108440057}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1507,7 +1492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3901185010828896607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash Lines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1538,7 +1523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4333910021023011960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1569,7 +1554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7236551614926099260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RadiusScaler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1601,7 +1586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6814083756220066154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3DDebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1632,7 +1617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4192267961947460019}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshTiny 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1663,7 +1648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5304317668112041275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloorDust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1694,7 +1679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8360868921918329534}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1725,7 +1710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 773236479583460822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1758,8 +1743,8 @@ GameObject:
   - component: {fileID: 7245660147995990656}
   - component: {fileID: 7834932209157329824}
   - component: {fileID: 3606232884919152936}
-  - component: {fileID: 1249500512649193282}
-  m_Layer: 0
+  - component: {fileID: 425673685042968149}
+  m_Layer: 8
   m_Name: TeleporterBaseMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1839,7 +1824,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1249500512649193282
+--- !u!64 &425673685042968149
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1850,7 +1835,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8549629752924629097, guid: 508b82772361fe74a947154bd6ff63f3, type: 3}
 --- !u!1 &4885573381467095445
@@ -1862,7 +1847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9205191630781823922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1893,7 +1878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1563295961941829467}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1924,7 +1909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 937573405484667526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1955,7 +1940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6837331892922732102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TimeCrystalBeaconBlocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1986,7 +1971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7717439570451748104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2020,7 +2005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3356579277244658464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BetweenProngs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2053,7 +2038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9213675493357189485}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2084,7 +2069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4135864164213363882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2115,7 +2100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7965936803853797091}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2146,7 +2131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1807295184040674660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BetweenProngs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2179,7 +2164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5859215053677300955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshMedium 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2210,7 +2195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8292539888196735081}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2241,7 +2226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1010902162445170779}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2272,7 +2257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6490747217708000498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SurfaceHeight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2304,7 +2289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4501993837806213661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2335,7 +2320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 77277879448149016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2366,7 +2351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508520814795944416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2397,7 +2382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7462411088918662005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShopPortalIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2429,7 +2414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6468771708184301872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2460,7 +2445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5309059918291783558}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2491,7 +2476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4241136055252740262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2522,7 +2507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1669132706082101570}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GlowFlowerMeshNoStem (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2553,7 +2538,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52130984402104966}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2584,7 +2569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3380979647529273102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BossShrineSymbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2617,8 +2602,8 @@ GameObject:
   - component: {fileID: 1369817153324703181}
   - component: {fileID: 6646358138575146455}
   - component: {fileID: 5279289255476121138}
-  - component: {fileID: 2574673993894811300}
-  m_Layer: 0
+  - component: {fileID: 851749889}
+  m_Layer: 8
   m_Name: TeleporterBeacon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2692,7 +2677,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2574673993894811300
+--- !u!64 &851749889
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2703,7 +2688,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3682025824684764764, guid: 508b82772361fe74a947154bd6ff63f3, type: 3}
 --- !u!1 &7159908116928483937
@@ -2715,7 +2700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1639196875970517855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshTiny 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2746,7 +2731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8977736293681275536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PointLight 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2777,7 +2762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7136574466539322695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ChargedEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2811,7 +2796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6093246633069611042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2842,7 +2827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 435075918205978908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TimeCrystalProps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2917,7 +2902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 994851105870507968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VoidPortalIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2949,7 +2934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6294484025975042675}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2983,7 +2968,7 @@ GameObject:
   - component: {fileID: 7378909769963545238}
   - component: {fileID: 7378909769963545237}
   - component: {fileID: 7378909769963545239}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teleporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3018,7 +3003,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -3059,7 +3044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726786713235357180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3090,7 +3075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7116755519823703671}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3121,7 +3106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 705660566173014589}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash Lines, Vertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3152,7 +3137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7323302512627631998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3183,7 +3168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3979410696493615465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ClearAreaIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3214,7 +3199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7296852565052395360}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PassiveParticle, Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3245,7 +3230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4915284123301311367}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshTiny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3276,7 +3261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3975240476065770188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3307,7 +3292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3196417165050937379}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teleporter1 (merge)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3339,7 +3324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1113093381407964842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LightningAlongProngs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3371,7 +3356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4375908504646976145}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3402,7 +3387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1173717336448086397}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshLarge 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3433,7 +3418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4490337155220116315}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GlowFlowerMeshNoStem (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3464,7 +3449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4398709909864176525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: IdleToChargingEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3501,8 +3486,8 @@ GameObject:
   - component: {fileID: 5737295049644431054}
   - component: {fileID: 8211714652128909170}
   - component: {fileID: 2517546226165346037}
-  - component: {fileID: 3974219235631776821}
-  m_Layer: 0
+  - component: {fileID: 851749887}
+  m_Layer: 8
   m_Name: ReferenceProng
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3574,7 +3559,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3974219235631776821
+--- !u!64 &851749887
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3585,7 +3570,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8707427314914132484, guid: 508b82772361fe74a947154bd6ff63f3, type: 3}
 --- !u!1 &8570875017006147329
@@ -3597,7 +3582,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7212070576036757712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3628,7 +3613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6392840975133880987}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3659,7 +3644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3809903237444844554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PointLight 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3690,7 +3675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1587555877919294833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3721,7 +3706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 156833725562902775}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3752,7 +3737,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6837005340900494479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane Transform 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3783,7 +3768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6283664971820062183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3814,7 +3799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4180893441049850381}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3845,7 +3830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4457145939751960833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3876,7 +3861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2868697738274001748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrystalMeshSmall 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}

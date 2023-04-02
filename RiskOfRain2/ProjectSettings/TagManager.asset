@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - Boss
   - Enemy
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - Water
   - UI
   - PostProcess
-  - 
-  - 
-  - 
+  - Player
+  - Ground
+  - Objects
   - 
   - 
   - 
