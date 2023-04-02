@@ -187,8 +187,7 @@ public class MonsterDeath : MonsterState
 		if (_fsm.IsAnimationEnd)
 		{
 			GameObject.Destroy(_fsm.gameObject);
-			KeyInputManager.Instance.SetCursorState(false);
-			GioleFunc.LoadScene("04. EndingScene");
+			GameManager.Instance.IsBossDie = true;
 		}
 	}
 
