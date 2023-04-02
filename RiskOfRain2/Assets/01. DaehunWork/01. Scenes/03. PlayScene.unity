@@ -2135,23 +2135,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teleporter
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 7710671597365584127, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7710671597365584127, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 851749887, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
-    - {fileID: 851749889, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
-    - {fileID: 851749890, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
-    - {fileID: 7710671597365584127, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
-=======
     m_RemovedComponents: []
->>>>>>> b3086fcc0f95a769765b27240e9127f8c14a0fd5
   m_SourcePrefab: {fileID: 100100000, guid: 6a193a0627982ef4d86279d111ea6461, type: 3}
 --- !u!4 &851749885 stripped
 Transform:

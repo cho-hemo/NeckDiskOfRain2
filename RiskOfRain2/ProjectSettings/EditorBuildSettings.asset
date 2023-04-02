@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01. DaehunWork/01. Scenes/03. PlayScene.unity
     guid: 00ae546272806e74190ef829992049fa
+  - enabled: 1
+    path: Assets/01. DaehunWork/01. Scenes/04. EndingScene.unity
+    guid: 66a73acdad824a4459cc3b2851d042a7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
