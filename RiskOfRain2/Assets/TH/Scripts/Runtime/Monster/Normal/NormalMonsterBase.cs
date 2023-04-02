@@ -71,6 +71,7 @@ public class NormalMonsterBase : MonsterBase
 	protected override void OnDie()
 	{
 		base.OnDie();
+		_HpBarCondition = false;
 		UIManager.Instance.DisableMonsterHpBar(_monsterId);
 		_pathFinder.enabled = false;
 		_anim.SetTrigger("DeathTrg");

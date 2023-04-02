@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-{}
-=======
 trackSelection = true
 fetchPreview = true
 defaultFlags = 0
@@ -10,12 +7,9 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.DA949528" = ""
-	"OpenInspectorPreview.DA949528" = "0"
-	"currentGroup.DA949528" = "all"
-	"last_search.DD5CDD96" = ""
+	"last_search.DD5CDD96" = "ref:Assets/HyungJun/Resources/Shaders/BlurShader.shader"
 	"OpenInspectorPreview.DD5CDD96" = "0"
-	"currentGroup.DD5CDD96" = "asset"
+	"currentGroup.DD5CDD96" = "all"
 }
 providers = {
 	adb = {
@@ -62,6 +56,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"ref:Assets/HyungJun/Resources/Shaders/BlurShader.shader"
 ]
 searchItemFavorites = [
 ]
@@ -73,4 +68,3 @@ queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "all"
 disabledIndexers = ""
->>>>>>> e994976e26d50f8fc04d15e21e843ceb1bd7f7bc
