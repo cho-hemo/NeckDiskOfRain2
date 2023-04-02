@@ -530,7 +530,6 @@ namespace RiskOfRain2.Player
 			StateMachine.Action();
 		}
 		#endregion
-
 		#region Animator Caching
 		public AnimatorStateInfo GetCurrentAnimatorStateInfo(int layer)
 		{
@@ -556,7 +555,6 @@ namespace RiskOfRain2.Player
 			PlayerAnimator.SetInteger(param, value);
 		}
 		#endregion
-
 		#region Player Controll
 		public void Move(Vector2 value)
 		{
@@ -787,7 +785,6 @@ namespace RiskOfRain2.Player
 		public abstract void UtilitySkill(bool isPressed_);
 		public abstract void SpecialSkill(bool isPressed_);
 		#endregion
-
 		#region Observer Pattern
 		protected List<IObserver> _observers = new List<IObserver>();
 		public List<IObserver> Observers { get { return _observers; } protected set { _observers = value; } }
