@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 7245660147995990656}
   - component: {fileID: 7834932209157329824}
   - component: {fileID: 3606232884919152936}
-  - component: {fileID: 7710671597365584127}
+  - component: {fileID: 1249500512649193282}
   m_Layer: 0
   m_Name: TeleporterBaseMesh
   m_TagString: Untagged
@@ -1839,7 +1839,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7710671597365584127
+--- !u!64 &1249500512649193282
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2617,7 +2617,7 @@ GameObject:
   - component: {fileID: 1369817153324703181}
   - component: {fileID: 6646358138575146455}
   - component: {fileID: 5279289255476121138}
-  - component: {fileID: 851749889}
+  - component: {fileID: 2574673993894811300}
   m_Layer: 0
   m_Name: TeleporterBeacon
   m_TagString: Untagged
@@ -2692,7 +2692,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &851749889
+--- !u!64 &2574673993894811300
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3047,6 +3047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40474dfc29319714ea8c8ccaa8836d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bossMonsters:
+  - {fileID: 3365650796130543466, guid: 2b257a87921a9fa49ad062a5a06e392d, type: 3}
+  - {fileID: 7459643892615306760, guid: 89da44ae26c733a47840388f8bbbfaae, type: 3}
 --- !u!1 &7695985077180227712
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,7 +3501,7 @@ GameObject:
   - component: {fileID: 5737295049644431054}
   - component: {fileID: 8211714652128909170}
   - component: {fileID: 2517546226165346037}
-  - component: {fileID: 851749890}
+  - component: {fileID: 3974219235631776821}
   m_Layer: 0
   m_Name: ReferenceProng
   m_TagString: Untagged
@@ -3571,7 +3574,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &851749890
+--- !u!64 &3974219235631776821
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

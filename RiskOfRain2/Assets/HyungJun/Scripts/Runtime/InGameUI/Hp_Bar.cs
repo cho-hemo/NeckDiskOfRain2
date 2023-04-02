@@ -70,7 +70,7 @@ public class Hp_Bar : MonoBehaviour
 	/// <param name="monsterCurrentHp_">몬스터의 현재 체력</param>
 	public void MonsterHpGaugeDown(int id_, int monsterCurrentHp_, int monsterMaxHp_)
 	{
-		GameObject hpBar_ = _hpBarInstanceIdDic[id_];
+		GameObject hpBar_ = _hpBarInstanceIdDic[id_].FindChildObj("HpBar");
 
 		hpBar_.FilledImageControll((float)monsterCurrentHp_ / (float)monsterMaxHp_);
 	}

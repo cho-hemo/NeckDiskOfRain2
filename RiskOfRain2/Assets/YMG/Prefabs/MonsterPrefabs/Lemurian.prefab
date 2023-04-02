@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 1235939523454552231}
   m_Layer: 0
   m_Name: Lemurian
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 0
   <Name>k__BackingField: 
-  <MaxHp>k__BackingField: 0
-  <Hp>k__BackingField: 0
+  <MaxHp>k__BackingField: 80
+  <Hp>k__BackingField: 80
   <Power>k__BackingField: 0
   <Speed>k__BackingField: 5
   LookRange: 20
@@ -306,6 +306,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 494090867492268560, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcf9750eb1548c841b9d313b1804eb6e, type: 2}
     - target: {fileID: 617206163341235042, guid: 3d8d26ae247cb5944adc6650092fb2a1, type: 3}
       propertyPath: m_LocalScale.x
       value: 100

@@ -124,6 +124,7 @@ namespace RiskOfRain2.Player.Commando
 		protected override void LevelUp()
 		{
 			MaxHp += 33f;
+			CurrentHp += 33f;
 			AttackDamage += 2.4f;
 			HealthRegen += 0.2f;
 		}

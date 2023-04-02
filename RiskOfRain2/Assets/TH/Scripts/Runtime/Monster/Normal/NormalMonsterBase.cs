@@ -71,6 +71,7 @@ public class NormalMonsterBase : MonsterBase
 	protected override void OnDie()
 	{
 		base.OnDie();
+		_HpBarCondition = false;
 		UIManager.Instance.DisableMonsterHpBar(_monsterId);
 		_pathFinder.enabled = false;
 		_anim.SetTrigger("DeathTrg");
@@ -88,6 +89,13 @@ public class NormalMonsterBase : MonsterBase
 		{
 			_player = GameManager.Instance.Player.transform;
 		}
+		ReSpawn();
+	}
+
+	protected virtual void ReSpawn()
+	{
+		Hp = MaxHp;
+		_HpBarCondition = true;
 		_pathFinder.enabled = true;
 	}
 }

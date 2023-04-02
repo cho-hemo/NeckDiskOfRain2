@@ -60,3 +60,27 @@ MonoBehaviour:
   - objectName: ExpEffect
     obj: {fileID: 4861130222573197198, guid: 87d1f844bf468e34899039613d8fc207, type: 3}
     count: 100
+  - objectName: BeetleQueen_Spit
+    obj: {fileID: 6073727914562010354, guid: 0118307fc7ccb154b837ef6efbaa9400, type: 3}
+    count: 100
+  - objectName: BeetleQueen_BeetleWard
+    obj: {fileID: 656515126719600877, guid: 908855bcad8eeab4cbb564b933001ff6, type: 3}
+    count: 100
+  - objectName: Vagrant_TrackingBomb
+    obj: {fileID: 6073727914562010354, guid: 4ea6579823dc8d94a8b74dfb829fe059, type: 3}
+    count: 100
+  - objectName: Vagrant_Orb
+    obj: {fileID: 6073727914562010354, guid: 829081cb21c421d4391834e4edc3be48, type: 3}
+    count: 100
+  - objectName: BeetleMK2
+    obj: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
+    count: 20
+  - objectName: Lemurian
+    obj: {fileID: 1235939523454552252, guid: a63ce6e724f771943b7dc0381869c956, type: 3}
+    count: 20
+  - objectName: Golem
+    obj: {fileID: 8902960942874785307, guid: 569c0b5522513de4d8346482dcade423, type: 3}
+    count: 20
+  - objectName: Hp_Bar
+    obj: {fileID: 2465862697790938106, guid: f7a6a66ec77dab54ebc4f80bf6ec725d, type: 3}
+    count: 30
