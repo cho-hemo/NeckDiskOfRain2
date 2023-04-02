@@ -139,6 +139,12 @@ public class UIManager : GioleSingletone<UIManager>
 		}
 		GioleFunc.LoadScene(loadSceneName);
 	}       // FadeWindow()
+
+	public void EndingGame(GameObject obj_)
+	{
+		StartCoroutine(FadeWindow(obj_, "04. EndingScene", true));
+	}
+
 	#endregion 화면 효과 함수
 
 	#region 아이템 UI 관련 함수

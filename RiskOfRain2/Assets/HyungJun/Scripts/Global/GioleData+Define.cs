@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static partial class GioleData
 {
-	public const string SELECT_CHARACTER_SCENE_NAME = "SelectCharacter";
-	public const string TITLE_SCENE_NAME = "Title";
-	public const string GOLEM_PLAINS_SCENE_NAME = "Golemplains";
+	public const string SELECT_CHARACTER_SCENE_NAME = "02. CharacterSelectedScene";
+	public const string TITLE_SCENE_NAME = "01. TitleScene";
+	public const string GOLEM_PLAINS_SCENE_NAME = "03. PlayScene";
 
 
 
