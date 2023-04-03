@@ -17,9 +17,11 @@ namespace RiskOfRain2.Manager
 		private PlayerController _playerController = default;
 		private List<Skill> _skills = default;
 
+
 		public int coin = default;
 
 		#region Property
+		public bool IsBossDie = false;
 		public Transform PlayerTransform { get { return _playerTransform; } private set { _playerTransform = value; } }
 		public PlayerBase Player { get { return _player; } private set { _player = value; } }
 		public PlayerController PlayerController { get { return _playerController; } private set { _playerController = value; } }

@@ -23,7 +23,6 @@ public class Title_Canvas : MonoBehaviour
 		GioleFunc.QuitThisGame();
 	}
 
-
 	// // 화면 페이드 아웃
 	// private IEnumerator FadeOut(string loadSceneName)
 	// {

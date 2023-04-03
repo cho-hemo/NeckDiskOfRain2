@@ -185,9 +185,6 @@ public class ButtonUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		}
 		_selectDifficultyList.Clear();
 
-
-
-
 		GameObject pickUpObj_ = gameObject.FindChildObj("PickImage");
 		_selectDifficultyList.Add(pickUpObj_);
 		pickUpObj_.SetActive(true);
