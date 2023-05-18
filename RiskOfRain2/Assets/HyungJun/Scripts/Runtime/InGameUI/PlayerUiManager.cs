@@ -9,8 +9,7 @@ using RiskOfRain2.Player;
 
 public partial class PlayerUiManager : MonoBehaviour, IObserver
 {
-	// { Debug Mode
-
+	#region DebugMode
 	// public float BarMoveSpeed = 0.3f;
 	public void Debug_MoneyBtn(int value_)
 	{
@@ -24,11 +23,12 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 	{
 		PlayerSkillActiveIcon(num_, 4);
 	}
-	public void Debug_MonsterHpBtn()
-	{
-		UIManager.Instance.MonsterHpBarControl("Cube", 40, 10);
-	}
+	// public void Debug_MonsterHpBtn()
+	// {
+	// 	UIManager.Instance.MonsterHpBarControl("Cube", 40, 10);
+	// }
 	// } Debug Mode
+	#endregion DebugMode
 
 	#region 게임오브젝트
 	private GameObject _popMenuObj = default;
@@ -72,6 +72,7 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 
 	#endregion 게임오브젝트
 
+	#region 전역 변수들
 	private PlayerBase _playerInfo = default;
 
 
@@ -126,8 +127,7 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 	private float _hpBarValue = 0f;
 	private float _bossHpBarValue = 0f;
 	private float _expBarValue = 0f;
-
-
+	#endregion 전역 변수들
 
 	private void Awake()
 	{
@@ -136,7 +136,6 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 		// } DebugMode
 
 		GameObject uiObj_ = GioleFunc.GetRootObj(GioleData.PLAYER_UI_CANVAS_OBJ_NAME);
-
 		// Init Instance
 		_popMenuObj = uiObj_.FindChildObj("PopUpMenu");
 		_timerObj = uiObj_.FindChildObj("TimerTxt");
@@ -168,8 +167,6 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 
 		_missionUiObj = uiObj_.FindChildObj("MissionUI");
 		_ItemListObj = uiObj_.FindChildObj("ItemListPanel");
-
-
 
 		StageLevel = 1;
 
@@ -216,17 +213,11 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 				_levelIconObj.FindChildObj("Hard").SetActive(true);
 				break;
 		}
-
 		PlayerExpPlus(0);
-
-
-
 		PlayerMoneyControl(0);
 		PlayerLunaCoinControl(0);
-
 		StartCoroutine(LevelBarController());
 		// StartCoroutine(LevelBarMove());
-
 	}
 
 	private void Start()
@@ -258,8 +249,9 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 		}
 
 		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);        // 플레이어 Hp UI 초기화
-	}
 
+		_playerInfo.RegisterObserver(this);
+	}
 
 	private void Update()
 	{
@@ -308,6 +300,8 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 
 	}       // Update()
 
+
+	#region UI관련 함수
 	/// <summary>
 	/// 탭 키를 누를경우 나오는 점수화면 호출하는 함수
 	/// </summary>
@@ -318,9 +312,56 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 		_crossHair.SetActive(!popupCheck);
 	}
 
+	/// <summary>
+	/// 팝업 UI를 관리하는 함수
+	/// </summary>
+	/// <param name="text_"></param>
+	/// <param name="active_"></param>
+	public void InteractionPopupUIActive(string text_, bool active_)
+	{
+		if (active_)
+		{
+			_interactionPopupObj.SetActive(true);
+			_interactionPopupObj.FindChildObj("InteractionTxt").SetTmpText(text_);
+		}
+		else
+		{
+			_interactionPopupObj.SetActive(false);
+		}
+	}
 
-	#region  플레이어 관련 함수
+	/// <summary>
+	/// 미션 UI를 체크해주는 함수
+	/// </summary>
+	public void CheckMissionUiComplate()
+	{
+		_missionUiObj.FindChildObj("CheckBoxImage").SetActive(false);
+		_missionUiObj.FindChildObj("CheckBoxComeplateImage").SetActive(true);
+		_missionUiObj.FindChildObj("MissionTxt").SetFontStyle(TMPro.FontStyles.Strikethrough);
+		_missionUiObj.FindChildObj("MissionTxt").SetFontColor(0.5f, 0.5f, 0.5f);
+	}
+
+	// 아이템 리스트에 아이템을 추가하고 스코어보드의 아이템에 아이템 이미지를 추가하는 함수
+	public void AddItemList(GameObject obj_)
+	{
+		ItemList.Add(obj_);
+		Instantiate(obj_, _ItemListObj.transform);
+
+	}
+	#endregion UI관련 함수
+
+
+	#region  플레이어 UI 관련 함수
 	public void UpdateDate(object data) {/* Do nothing */}
+
+	/// <summary>
+	/// 플레이어의 정보를 갱신해주는 함수
+	/// </summary>
+	public void UpdateDate()
+	{
+		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);
+		PlayerExpSync(_playerInfo.Level, _playerInfo.CurrentExp, _playerInfo.MaxExp);
+	}
 
 	/// <summary>
 	/// 플레이어의 경험치를 올려주고 최대 경험치량에 도달할 경우 레벨 업 함수
@@ -336,16 +377,6 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 			PlayerLevel += 1;
 		}
 		else { /* Do nothing */ }
-
-	}
-
-	/// <summary>
-	/// 플레이어의 정보를 갱신해주는 함수
-	/// </summary>
-	public void UpdateDate()
-	{
-		PlayerHpControl((int)_playerInfo.CurrentHp, (int)_playerInfo.MaxHp);
-		PlayerExpSync(_playerInfo.Level, _playerInfo.CurrentExp, _playerInfo.MaxExp);
 	}
 
 	/// <summary>
@@ -439,28 +470,30 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 	public void PlayerSkillActiveIcon(int num, float coolTime_)
 	{
 		StartCoroutine(SkillActive(num, coolTime_));
-	}
-	#endregion  플레이어 관련 함수
-
+	}       // PlayerSkillActiiveIcon()
 
 	/// <summary>
-	/// 팝업 UI를 관리하는 함수
+	/// 플레이어의 스킬 스택을 갱신하는 로직
 	/// </summary>
-	/// <param name="text_"></param>
-	/// <param name="active_"></param>
-	public void InteractionPopupUIActive(string text_, bool active_)
+	/// <param name="num"></param>
+	public void PlayerSkillStackSync(int num)
 	{
-		if (active_)
+		GameObject skillCount_ = _skillList[num].FindChildObj("SkillCostTxt");
+		// Max 스킬 스택이 1이 아닌경우 표시해준다
+		if (_playerInfo.Skills[num].SkillMaxStack != 1)
 		{
-			_interactionPopupObj.SetActive(true);
-			_interactionPopupObj.FindChildObj("InteractionTxt").SetTmpText(text_);
+			skillCount_.SetActive(true);
+			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+			// 스킬 스택이 늘어났으므로 쿨타임을 돌려준다.
+
 		}
-		else
+		// Max 스킬 스택이 1인 경우 꺼준다.
+		else if (_playerInfo.Skills[num].SkillMaxStack == 1)
 		{
-			_interactionPopupObj.SetActive(false);
+			skillCount_.SetActive(false);
 		}
 	}
-
+	#endregion  플레이어 UI 관련 함수
 
 
 	#region 보스 UI 관련 로직
@@ -500,25 +533,5 @@ public partial class PlayerUiManager : MonoBehaviour, IObserver
 		}       // if: 보스의 체력이 0 이하면 Ui를 꺼준다.
 	}       // BossHpControl()
 	#endregion 보스 UI 관련 로직
-
-	/// <summary>
-	/// 미션 UI를 체크해주는 함수
-	/// </summary>
-	public void CheckMissionUiComplate()
-	{
-		_missionUiObj.FindChildObj("CheckBoxImage").SetActive(false);
-		_missionUiObj.FindChildObj("CheckBoxComeplateImage").SetActive(true);
-		_missionUiObj.FindChildObj("MissionTxt").SetFontStyle(TMPro.FontStyles.Strikethrough);
-		_missionUiObj.FindChildObj("MissionTxt").SetFontColor(0.5f, 0.5f, 0.5f);
-	}
-
-	// 아이템 리스트에 아이템을 추가하고 스코어보드의 아이템에 아이템 이미지를 추가하는 함수
-	public void AddItemList(GameObject obj_)
-	{
-		ItemList.Add(obj_);
-		Instantiate(obj_, _ItemListObj.transform);
-
-	}
-
 
 }       // Class PlayerUiManager

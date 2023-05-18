@@ -17,9 +17,11 @@ namespace RiskOfRain2.Manager
 		private PlayerController _playerController = default;
 		private List<Skill> _skills = default;
 
+
 		public int coin = default;
 
 		#region Property
+		public bool IsBossDie = false;
 		public Transform PlayerTransform { get { return _playerTransform; } private set { _playerTransform = value; } }
 		public PlayerBase Player { get { return _player; } private set { _player = value; } }
 		public PlayerController PlayerController { get { return _playerController; } private set { _playerController = value; } }
@@ -88,7 +90,16 @@ namespace RiskOfRain2.Manager
 		public void BulletOnCollision(GameObject obj, int skillIndex)
 		{
 			float damage = _player.AttackDamage * _player.Skills[skillIndex].Multiplier;
-			obj.GetComponent<MonsterBase>().OnDamaged((int)damage);
+			Debug.Log($"데미지를 입힘 damage : {damage}");
+			Debug.Log($"Obj : {obj.name} / tag : {obj.tag}");
+			if (obj.tag == "Boss")
+			{
+				obj.GetComponent<BossMonsterBase>().OnDamaged((int)damage);
+			}
+			else
+			{
+				obj.GetComponent<MonsterBase>().OnDamaged((int)damage);
+			}
 		}
 
 		public void AddCoin(int value)

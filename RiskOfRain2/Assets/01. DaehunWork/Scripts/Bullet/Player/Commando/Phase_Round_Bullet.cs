@@ -14,7 +14,7 @@ namespace RiskOfRain2.Player.Commando
 			tempObject.transform.rotation = transform.rotation;
 			tempObject.SetActive(true);
 
-			if (rayHit.collider.tag == "Boss")
+			if (rayHit.collider.tag == "Boss" || rayHit.collider.tag == "Enemy")
 			{
 				GameManager.Instance.BulletOnCollision(rayHit.collider.gameObject, PlayerDefine.PLAYER_SUB_SKILL_INDEX);
 			}

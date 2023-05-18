@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossMonsterBase : MonsterBase
 {
+	[SerializeField] private MonsterData _data;
+	[field: SerializeField] public int MaxSqrDetectRange { get; private set; }
+	[field: SerializeField] public int MinSqrDetectRange { get; private set; }
 	[field: SerializeField] public string SecondName { get; private set; }
 	[SerializeField] protected ReadOnlyCollection<SkillData> _skills;
 	[field: SerializeField] public int SkillNum { get; protected set; } = -1;
@@ -17,9 +20,21 @@ public class BossMonsterBase : MonsterBase
 	public MonsterOnSkill OnSkillState { get; private set; }
 	public MonsterDeath DeathState { get; private set; }
 
+	/// <summary>
+	/// 몬스터의 데이터를 설정하는 메서드
+	/// </summary>
 	public override void Initialize()
 	{
 		base.Initialize();
+
+		Name = _data.Name;
+		Type = _data.Type;
+		Hp = MaxHp = _data.Health;
+		Power = _data.Power;
+		Speed = _data.Speed;
+		MaxSqrDetectRange = _data.MaxSqrDetectRange;
+		MinSqrDetectRange = _data.MinSqrDetectRange;
+
 		SecondName = _data.SecondName;
 		_skills = _data.Skills;
 		_coolDownTimes.Clear();
@@ -76,6 +91,11 @@ public class BossMonsterBase : MonsterBase
 		MoveState = new MonsterMove(this, _fsm);
 		OnSkillState = new MonsterOnSkill(this, _fsm);
 		DeathState = new MonsterDeath(this, _fsm);
+	}
+
+	private void Start()
+	{
+		Initialize();
 	}
 
 	private void Update()

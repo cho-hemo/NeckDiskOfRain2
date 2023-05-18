@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -344,94 +344,6 @@ PrefabInstance:
     - target: {fileID: 4340443341294376370, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[4].obj
-      value: 
-      objectReference: {fileID: 4861130222573197198, guid: 87d1f844bf468e34899039613d8fc207, type: 3}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[5].obj
-      value: 
-      objectReference: {fileID: 6073727914562010354, guid: 0118307fc7ccb154b837ef6efbaa9400, type: 3}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[6].obj
-      value: 
-      objectReference: {fileID: 656515126719600877, guid: 908855bcad8eeab4cbb564b933001ff6, type: 3}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[7].obj
-      value: 
-      objectReference: {fileID: 6073727914562010354, guid: 4ea6579823dc8d94a8b74dfb829fe059, type: 3}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[8].obj
-      value: 
-      objectReference: {fileID: 6073727914562010354, guid: 829081cb21c421d4391834e4edc3be48, type: 3}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[9].obj
-      value: 
-      objectReference: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[10].obj
-      value: 
-      objectReference: {fileID: 3806698491185135604, guid: 245b5679e88330b418dbd5406c0dbacf, type: 3}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[4].count
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[5].count
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[6].count
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[7].count
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[8].count
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[9].count
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[10].count
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[4].objectName
-      value: ExpEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[5].objectName
-      value: BeetleQueen_Spit
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[6].objectName
-      value: BeetleQueen_BeetleWard
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[7].objectName
-      value: Vagrant_TrackingBomb
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[8].objectName
-      value: Vagrant_Orb
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[9].objectName
-      value: BeetleMK2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340443341294376371, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
-      propertyPath: poolingObjectList.Array.data[10].objectName
-      value: safsad
       objectReference: {fileID: 0}
     - target: {fileID: 4340443341294376372, guid: 7a76efee2c04db44b87f0ed5cadebdd1, type: 3}
       propertyPath: m_Name

@@ -6,57 +6,76 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-	private static int s_currentMonsterCount;
-    private const float SPAWN_CHECK_TIME = 10f;
-    private const int MAX_MONSTER_COUNT = 20;
+	public static int s_currentMonsterCount { get; private set; } = 0;
+	public const int MAX_MONSTER_COUNT = 20;
+	private const float SPAWN_CHECK_TIME = 10f;
 
 	private GameObject _spawnSpots;
-    private GameObject _player;
+	private GameObject _player;
 
-	public static bool IsSpawnable()
+    private List<string> _monsterPrefabNames = new List<string>()
+    {
+        "BeetleMK2",
+		"Lemurian",
+		"Golem"
+	};
+
+	public static void AddMonsterCount()
 	{
-		bool isSpawnable = (s_currentMonsterCount < MAX_MONSTER_COUNT) ? true : false;
-		return isSpawnable;
+		++s_currentMonsterCount;
 	}
 
-    private IEnumerator SpawnMonsterLoop()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(SPAWN_CHECK_TIME);
+	public static void ReduceMonsterCount()
+	{
+		--s_currentMonsterCount;
+	}
 
-            SpawnMonster();
-        }
-    }
+	private IEnumerator SpawnMonsterLoop()
+	{
+		while (true)
+		{
+			yield return new WaitForSeconds(SPAWN_CHECK_TIME);
 
-    private void SpawnMonster()
-    {
-        float minSqrDistance = float.MaxValue;
-        Vector3 spawnPos = Vector3.zero;
+			SpawnMonster();
+		}
+	}
 
-        if (s_currentMonsterCount >= MAX_MONSTER_COUNT)
-        {
-            return;
-        }
+	private void SpawnMonster()
+	{
+		float minSqrDistance = float.MaxValue;
+		Vector3 spawnPos = Vector3.zero;
 
-        for (int i = 0; i < _spawnSpots.transform.childCount; i++)
-        {
-            Vector3 childPos = _spawnSpots.transform.GetChild(i).position;
+		if (s_currentMonsterCount >= MAX_MONSTER_COUNT)
+		{
+			return;
+		}
 
-            float sqrDistance = Functions.GetSqrDistance(_player.transform.position, childPos);
-            if (sqrDistance < minSqrDistance)
-            {
-                minSqrDistance = sqrDistance;
-                spawnPos = childPos;
-            }
-        }
-    }
+		for (int i = 0; i < _spawnSpots.transform.childCount; i++)
+		{
+			Vector3 childPos = _spawnSpots.transform.GetChild(i).position;
 
-    private void Start()
-    {
+			float sqrDistance = Functions.GetSqrDistance(_player.transform.position, childPos);
+			if (sqrDistance < minSqrDistance)
+			{
+				minSqrDistance = sqrDistance;
+				spawnPos = childPos;
+			}
+		}
+
+		int randomNum = Random.Range(0, _monsterPrefabNames.Count);
+		GameObject monster = ObjectPoolManager.Instance.ObjectPoolPop(_monsterPrefabNames[randomNum]);
+		monster.transform.position = spawnPos;
+        monster.transform.rotation = Quaternion.Euler(_player.transform.position - monster.transform.position).normalized;
+		monster.GetComponent<MonsterBase>().Initialize();
+        monster.SetActive(true);
+		AddMonsterCount();
+	}
+
+	private void Start()
+	{
 		_spawnSpots = Global.FindRootObject(Functions.ROOT_SPAWN_SPOTS);
-        _player = GameManager.Instance.Player.gameObject;
-        SpawnMonster();
-        StartCoroutine(SpawnMonsterLoop());
-    }
+		_player = GameManager.Instance.Player.gameObject;
+		SpawnMonster();
+		StartCoroutine(SpawnMonsterLoop());
+	}
 }

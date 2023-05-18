@@ -1,3 +1,4 @@
+using BeetleQueenSkills;
 using RiskOfRain2;
 using RiskOfRain2.Manager;
 using UnityEngine;
@@ -37,7 +38,7 @@ public class BeetleQueen : BossMonsterBase
         }
         if (_coolDownTimes[(int)Skill.SUMMON_BEETLE] <= 0 && 
             _fsm.GetSqrDistanceToPlayer() <= _skills[(int)Skill.SUMMON_BEETLE].SqrRange && 
-            MonsterSpawner.IsSpawnable())
+            MonsterSpawner.s_currentMonsterCount <= MonsterSpawner.MAX_MONSTER_COUNT - 2)
         {
             _availableSkills[currentIndex] = (int)Skill.SUMMON_BEETLE;
             ++currentIndex;
@@ -73,10 +74,11 @@ public class BeetleQueen : BossMonsterBase
 
         for (int i = 0; i < spitCount; i++)
         {
-            GameObject spit = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_SPIT);
+            Spit spit = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_SPIT).GetComponent<Spit>();
+			spit.SetStats(Power);
             spit.transform.position = _spitSpawnPos.position;
             spit.transform.rotation = Quaternion.Euler(-30, _spitSpawnPos.eulerAngles.y + (standardDegree / 2) - (standardDegree / 5) * i, 0);
-			spit.SetActive(true);
+			spit.gameObject.SetActive(true);
         }
     }
 
@@ -85,10 +87,11 @@ public class BeetleQueen : BossMonsterBase
     /// </summary>
     public void FireBeetle()
     {
-        GameObject beetleWard = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
-        beetleWard.transform.position = _beetleWardSpawnPos.position;
+        BeetleWard beetleWard = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD).GetComponent<BeetleWard>();
+		beetleWard.SetStats(Power);
+		beetleWard.transform.position = _beetleWardSpawnPos.position;
         beetleWard.transform.rotation = transform.rotation;
-		beetleWard.SetActive(true);
+		beetleWard.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -98,18 +101,22 @@ public class BeetleQueen : BossMonsterBase
     {
         Debug.Log("SkillNum2");
 
-        //GameObject inst1 = Instantiate(
-        //    _beetle,
-        //    new Vector3(transform.position.x - 5, transform.position.y, transform.position.z),
-        //    transform.rotation);
+		GameObject monster1 = ObjectPoolManager.Instance.ObjectPoolPop("BeetleMK2");
+		monster1.transform.position = new Vector3(transform.position.x - 8, transform.position.y, transform.position.z);
+		monster1.transform.rotation = transform.rotation;
+		monster1.GetComponent<MonsterBase>().Initialize();
+		monster1.SetActive(true);
+		MonsterSpawner.AddMonsterCount();
 
-        //GameObject inst2 = Instantiate(
-        //    _beetle,
-        //    new Vector3(transform.position.x + 5, transform.position.y, transform.position.z),
-        //    transform.rotation);
-    }
+		GameObject monster2 = ObjectPoolManager.Instance.ObjectPoolPop("BeetleMK2");
+		monster2.transform.position = new Vector3(transform.position.x + 8, transform.position.y, transform.position.z);
+		monster2.transform.rotation = transform.rotation;
+		monster2.GetComponent<MonsterBase>().Initialize();
+		monster2.SetActive(true);
+		MonsterSpawner.AddMonsterCount();
+	}
 
-    protected override void Awake()
+	protected override void Awake()
     {
         base.Awake();
         _spitSpawnPos = gameObject.FindChildObject(Functions.BEETLE_QUEEN_SPIT_SPAWN_POS).transform;

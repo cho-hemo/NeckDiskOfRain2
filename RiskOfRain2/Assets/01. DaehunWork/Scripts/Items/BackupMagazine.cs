@@ -22,6 +22,8 @@ namespace RiskOfRain2.Item
 		public override void ItemGet()
 		{
 			GameManager.Instance.Player.Skills[1].AddSkillMaxStack((int)value);
+			// 여기다가 플레이어 UI의 스킬 스택을 갱신하는 로직 추가해주기!!
+			UIManager.Instance.PlayerSkillStackSync(1);
 		}
 
 		public override void ItemRemove()

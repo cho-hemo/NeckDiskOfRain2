@@ -1,15 +1,23 @@
 using RiskOfRain2.Manager;
+using RiskOfRain2.Player;
 using UnityEngine;
 
 namespace BeetleQueenSkills
 {
     public class BeetleWard : MonoBehaviour
     {
+        private const float SPEED = 1600f;
+
         private GameObject _player;
         private Rigidbody _rigidbody;
-        private float SPEED = 1600f;
+		private int _damage = 5;
 
-        private void Awake()
+		public void SetStats(int power)
+		{
+			_damage *= power;
+		}
+
+		private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
@@ -24,7 +32,7 @@ namespace BeetleQueenSkills
             if (_player != null)
             {
                 _rigidbody.velocity = Vector3.zero;
-                Vector3 toPlayer = (_player.transform.position - transform.position).normalized;
+                Vector3 toPlayer = (_player.transform.GetChild(2).transform.position - transform.position).normalized;
                 _rigidbody.AddForce(toPlayer * SPEED);
 
                 //lookAtYZ
@@ -35,10 +43,15 @@ namespace BeetleQueenSkills
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Ground") || other.CompareTag("Player"))
+            if (other.CompareTag("Ground"))
             {
-                Destroy(gameObject);
-            }
+				ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+			}
+			else if (other.CompareTag("Player"))
+			{
+				other.GetComponent<PlayerBase>().TakeDamage(_damage);
+				ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+			}
         }
     }
 }

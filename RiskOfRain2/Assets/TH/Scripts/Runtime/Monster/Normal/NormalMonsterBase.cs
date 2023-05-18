@@ -11,13 +11,18 @@ public class NormalMonsterBase : MonsterBase
 	[SerializeField] protected float LookRange; // 시야 영역
 
 	public bool BeAttackedEnd = false;
+	private int _monsterId = default;
+	private bool _HpBarCondition = false;
+	private Transform _hpBarTransform = default;
 
 	/// <summary>
 	/// 몬스터의 데이터를 설정하는 메서드
 	/// </summary>
 	public override void Initialize()
 	{
-		/* Do nothing */
+		_monsterId = GetInstanceID();
+		UIManager.Instance.CreateMonsterHpBar(_monsterId);
+		_HpBarCondition = true;
 	}
 
 	/// <summary>
@@ -27,8 +32,13 @@ public class NormalMonsterBase : MonsterBase
 	public override void OnDamaged(int damage)
 	{
 		base.OnDamaged(damage);
-		// Change after merge Scene
-		//UIManager.Instance.MonsterHpBarControl(Name, Hp, MaxHp);
+		UIManager.Instance.OnDamageMonsterHpBar(_monsterId, Hp, MaxHp);
+	}
+
+	protected virtual void Update()
+	{
+		// 여기다가 트랜스폼의 값이 자식의 hp바 위치를 넣어주면 됩니다.
+		if (_HpBarCondition) { UIManager.Instance.UpdateMonsterHpBar(_monsterId, _hpBarTransform); }
 	}
 
 	/// <summary>
@@ -45,10 +55,10 @@ public class NormalMonsterBase : MonsterBase
 	public virtual void OnDeathEnd()
 	{
 		//풀에 오브젝트 반환
-		// Change after merge Scene
-		//ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+		ObjectPoolManager.Instance.ObjectPoolPush(gameObject);
+		MonsterSpawner.ReduceMonsterCount();
 
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
 
 		//
 		//
@@ -61,6 +71,8 @@ public class NormalMonsterBase : MonsterBase
 	protected override void OnDie()
 	{
 		base.OnDie();
+		_HpBarCondition = false;
+		UIManager.Instance.DisableMonsterHpBar(_monsterId);
 		_pathFinder.enabled = false;
 		_anim.SetTrigger("DeathTrg");
 	}
@@ -68,14 +80,22 @@ public class NormalMonsterBase : MonsterBase
 	protected override void Awake()
 	{
 		base.Awake();
+		_hpBarTransform = gameObject.FindChildObj("HpBarPos").transform;
 	}
 
 	protected virtual void OnEnable()
 	{
-		if (_player == null && Global.FindRootObject("Player") != null)
+		if (_player == null && GameManager.Instance.Player != null)
 		{
-			_player = Global.FindRootObject("Player").transform;
+			_player = GameManager.Instance.Player.transform;
 		}
+		ReSpawn();
+	}
+
+	protected virtual void ReSpawn()
+	{
+		Hp = MaxHp;
+		_HpBarCondition = true;
 		_pathFinder.enabled = true;
 	}
 }

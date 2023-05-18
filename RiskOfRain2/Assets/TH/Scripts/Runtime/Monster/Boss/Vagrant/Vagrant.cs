@@ -1,6 +1,8 @@
 using RiskOfRain2;
 using RiskOfRain2.Manager;
+using RiskOfRain2.Player;
 using UnityEngine;
+using VagrantSkill;
 
 public class Vagrant : BossMonsterBase
 {
@@ -73,32 +75,34 @@ public class Vagrant : BossMonsterBase
         _superNovaHitArea.SetActive(true);
     }
 
-    /// <summary>
-    /// 슈퍼 노바 스킬
-    /// </summary>
-    public void OnSuperNova(float radius)
-    {
-        _anim.SetTrigger("OnPostNova");
-        if (_fsm.GetSqrDistanceToPlayer() <= radius * radius)
-        {
-            Ray ray = new Ray(transform.position, (_player.transform.position - transform.position).normalized);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, radius, _mask))
-            {
-                //데미지
-            }
-        }
-    }
+	/// <summary>
+	/// 슈퍼 노바 스킬
+	/// </summary>
+	public void OnSuperNova(float radius)
+	{
+		_anim.SetTrigger("OnPostNova");
 
-    /// <summary>
-    /// 추적 폭탄 발사 스킬 애니메이션 이벤트
-    /// </summary>
-    public void FireTrackingBomb()
+		if (_fsm.GetSqrDistanceToPlayer() <= radius * radius)
+		{
+			Ray ray = new Ray(transform.position, (_player.transform.GetChild(2).transform.position - transform.position).normalized);
+			RaycastHit hit;
+			if (Physics.SphereCast(ray, 1, out hit, radius, _mask) && hit.collider.gameObject.CompareTag("Player"))
+			{
+				_player.GetComponent<PlayerBase>().TakeDamage(Power * 10);
+			}
+		}
+	}
+
+	/// <summary>
+	/// 추적 폭탄 발사 스킬 애니메이션 이벤트
+	/// </summary>
+	public void FireTrackingBomb()
     {
-        GameObject trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
+        TrackingBomb trackingBomb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_VAGRANT_TRACKING_BOMB).GetComponent<TrackingBomb>();
+		trackingBomb.SetStats(Power);
         trackingBomb.transform.position = _projectileSpawnPos.position;
         trackingBomb.transform.rotation = transform.rotation;
-		trackingBomb.SetActive(true);
+		trackingBomb.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -106,10 +110,11 @@ public class Vagrant : BossMonsterBase
     /// </summary>
     public void FireOrb()
     {
-        GameObject orb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_BEETLE_QUEEN_BEETLE_WARD);
-        orb.transform.position = _projectileSpawnPos.position;
+        Orb orb = ObjectPoolManager.Instance.ObjectPoolPop(Functions.POOL_VAGRANT_ORB).GetComponent<Orb>();
+		orb.SetStats(Power);
+		orb.transform.position = _projectileSpawnPos.position;
         orb.transform.rotation = transform.rotation;
-		orb.SetActive(true);
+		orb.gameObject.SetActive(true);
     }
 
     protected override void Awake()

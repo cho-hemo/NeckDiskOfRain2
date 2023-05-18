@@ -37,35 +37,46 @@ public partial class PlayerUiManager : MonoBehaviour
 	/// <returns></returns>
 	private IEnumerator SkillActive(int num, float coolTime_)
 	{
-		if (!_playerInfo.Skills[num].SkillAvailableCheck())
-		{
-			// Debug.Log("[PlayerUiManager] SkillActive : 스킬이 쿨타임 중입니다.");
-			yield break;
-		}
+		// if (_playerInfo.Skills[num].SkillStack <= 1)
+		// {
+		// 	Debug.Log("[PlayerUiManager] SkillActive : 스킬이 쿨타임 중입니다.");
+		// 	yield break;
+		// }
 		// Debug.Log("[PlayerUiManager] SkillActive : 확인");
 		// 스킬 비 활성화
 		// 스킬 스택 오브젝트
-		GameObject skillCount_ = _skillList[num].FindChildObj("SkillCostTxt");
+		// GameObject skillCount_ = _skillList[num].FindChildObj("SkillCostTxt");
+
+		// Max 스킬 스택이 1이 아닌경우 표시해준다
+		// if (_playerInfo.Skills[num].SkillMaxStack != 1)
+		// {
+		// 	// Debug.Log("")
+		// 	skillCount_.SetActive(true);
+		// 	skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+		// }
+		// // Max 스킬 스택이 1인 경우 꺼준다.
+		// else if (_playerInfo.Skills[num].SkillMaxStack == 1)
+		// {
+		// 	skillCount_.SetActive(false);
+		// }
+
+
+
 		GameObject icon_ = _skillList[num].FindChildObj("Icon");
 		GameObject coolDownObj_ = _skillList[num].FindChildObj("CoolDown");
 		GameObject outLineBox_ = _skillList[num].FindChildObj("OutLineBox");
+
+		if (coolDownObj_.activeSelf)
+		{
+			yield break;
+		}
 
 		coolDownObj_.SetActive(true);
 		outLineBox_.SetActive(false);
 		icon_.SetImageColor(0.5f, 0.5f, 0.5f);
 
-		// 스킬 스택이 1이 아닌경우 표시해주고 1인 경우 꺼버린다.
-		if (_playerInfo.Skills[num].SkillMaxStack != 1)
-		{
-			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
-		}
-		else if (_playerInfo.Skills[num].SkillMaxStack == 1)
-		{
-			skillCount_.SetActive(false);
-		}
-
 		// 스킬 쿨타임 로직
-		for (float i = 0.001f; i < coolTime_; i += 0.1f)
+		for (float i = 0.001f; i <= coolTime_; i += 0.1f)
 		{
 			coolDownObj_.SetTmpText(((int)(coolTime_ - i + 1)).ToString());
 			yield return new WaitForSeconds(0.1f);
@@ -75,10 +86,19 @@ public partial class PlayerUiManager : MonoBehaviour
 		coolDownObj_.SetActive(false);
 		outLineBox_.SetActive(true);
 		icon_.SetImageColor(1f, 1f, 1f);
-		if (_playerInfo.Skills[num].SkillMaxStack != 1)
+
+
+		// 플레이어의 현재 스텍이 최대 스택보다 적을 경우 한번 더 실행
+		if (_playerInfo.Skills[num].SkillStack < _playerInfo.Skills[num].SkillMaxStack)
 		{
-			skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+			StartCoroutine(SkillActive(num, coolTime_));
 		}
+
+
+		// if (_playerInfo.Skills[num].SkillMaxStack != 1)
+		// {
+		// 	skillCount_.SetTmpText($"{_playerInfo.Skills[num].SkillStack}");
+		// }
 	}
 
 
